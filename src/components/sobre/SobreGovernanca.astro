@@ -1,0 +1,72 @@
+---
+// SobreGovernanca.astro - Sub-view 2: Governança Estatutária e Estrutura Orgânica
+import { route, asset } from '../../lib/paths';
+
+const diretorias = [
+  { sigla: 'DIPRE', nome: '1. Diretoria da Presidência', icon: 'bi-bank', desc: 'Presidência e Vice-Presidência. Representação jurídica, institucional e política perante a UFMG e a sociedade (Art. 28).' },
+  { sigla: 'DIJUR', nome: '2. Diretoria de Assuntos Jurídicos', icon: 'bi-shield-check', desc: 'Atas de assembleias, arquivo institucional, conformidade jurídica e transparência (Art. 29).' },
+  { sigla: 'DIFI', nome: '3. Diretoria Financeira', icon: 'bi-cash-coin', desc: 'Livro-caixa, prestação de contas e RREO mensal, e gestão dos itens do curso (Art. 30).' },
+  { sigla: 'DIAC', nome: '4. Diretoria Acadêmica', icon: 'bi-mortarboard', desc: 'Acompanhamento discente junto ao Colegiado, NDE, percursos curriculares e AAC/extensão (Art. 31).' },
+  { sigla: 'DIAP', nome: '5. Diretoria de Articulação e Assuntos Políticos', icon: 'bi-diagram-3', desc: 'Relações institucionais com CEB, DA FAFICH, DCE UFMG e campo de públicas (Art. 32).' },
+  { sigla: 'DICULT', nome: '6. Diretoria de Cultura', icon: 'bi-palette', desc: 'Calouradas semestrais, eventos culturais, debates extracurriculares e esportes (Art. 33).' },
+  { sigla: 'DIMAC', nome: '7. Diretoria de Marketing e Comunicação', icon: 'bi-broadcast-pin', desc: 'Redes sociais, murais da FAFICH e manutenção contínua do Super App discente (Art. 34).' },
+];
+---
+
+<div class="space-y-4 text-[#0A0A0A]">
+  <div class="cagp-tool-box p-4 space-y-3">
+    <div class="border-b border-[#DFDBD2] pb-2.5 flex items-center justify-between flex-wrap gap-2">
+      <div>
+        <div class="flex items-center gap-2">
+          <i class="bi bi-diagram-3-fill text-[#8B1E2D] text-lg" aria-hidden="true"></i>
+          <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A]">
+            Estrutura em 7 Diretorias Executivas (Regimento de 14/10/2024)
+          </h3>
+        </div>
+        <p class="text-xs text-gray-600 mt-0.5">Divisão funcional de competências para garantir eficiência e transparência:</p>
+      </div>
+      <span class="cagp-badge cagp-badge-red font-mono">
+        Regimento 14/10/2024
+      </span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+      {diretorias.map((d) => (
+        <div class="cagp-card p-3 bg-white flex items-start gap-2.5">
+          <div class="w-8 h-8 rounded-[4px] bg-[#F7F5F0] border border-[#DFDBD2] flex items-center justify-center text-[#8B1E2D] shrink-0 mt-0.5 shadow-[1px_1px_0_#0A0A0A]">
+            <i class={`bi ${d.icon} text-sm`} aria-hidden="true" />
+          </div>
+          <div class="min-w-0">
+            <span class="font-['Oswald'] font-bold uppercase text-[#8B1E2D] block mb-0.5">{d.nome}</span>
+            <p class="text-xs text-gray-600 leading-snug">{d.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="cagp-card p-3.5 bg-[#F7F5F0] text-xs space-y-1 mt-2">
+      <div class="flex items-center gap-2 mb-1">
+        <i class="bi bi-check2-square text-[#15803D] text-base" aria-hidden="true"></i>
+        <span class="font-['Oswald'] font-bold uppercase text-xs text-[#0A0A0A]">
+          Processo Eleitoral Democrático
+        </span>
+      </div>
+      <p class="text-xs text-gray-600 leading-relaxed">
+        A Diretoria Executiva é eleita anualmente por voto direto, secreto e universal de todos os estudantes regularmente matriculados no curso. As eleições são conduzidas por Comissão Eleitoral independente sorteada em Assembleia Geral.
+      </p>
+    </div>
+
+    <div class="pt-2 flex items-center gap-2 flex-wrap">
+      <a href={route('/documentos/regimento-interno-cagp-ufmg')} class="cagp-btn-secondary inline-flex items-center gap-1.5 text-xs py-1.5 px-3 no-underline">
+        <i class="bi bi-eye" aria-hidden="true"></i> Ler Regimento Transcrito
+      </a>
+      <a href={asset('/documentos/regimento-interno-cagp-ufmg.pdf')} download class="cagp-btn-primary inline-flex items-center gap-1.5 text-xs py-1.5 px-3 no-underline">
+        <i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> Baixar Regimento CAGP (PDF)
+      </a>
+      <a href={asset('/documentos/regimento-geral-ufmg.pdf')} download class="cagp-btn-secondary inline-flex items-center gap-1.5 text-xs py-1.5 px-3 no-underline">
+        <i class="bi bi-building" aria-hidden="true"></i> Regimento Geral UFMG (PDF)
+      </a>
+    </div>
+    </div>
+  </div>
+</div>

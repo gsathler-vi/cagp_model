@@ -1,0 +1,10 @@
+{
+  "codigo": "EST 057",
+  "nome": "Introdução À Estatistica",
+  "natureza": "obrigatoria",
+  "periodo": 4,
+  "ch": 60,
+  "ementa": "Amostragem, Estatística Descritiva: tabelas e gráficos, medidas de síntese numérica. Introdução ao cálculo de probabilidade. Variáveis aleatórias discretas e contínuas. Inferência Estatística. Uso do software R.",
+  "preRequisitos": [],
+  "modulo": "Complementar"
+}

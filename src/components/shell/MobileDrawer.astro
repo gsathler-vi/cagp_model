@@ -1,0 +1,273 @@
+---
+// MobileDrawer.astro - Menu Lateral Off-Canvas para Telas Mobile e Tablet (< 1024px)
+import { asset } from '../../lib/paths';
+import { HEADER_NAV_ITEMS } from './headerNavData';
+
+const axisSections = HEADER_NAV_ITEMS.filter((item) => Boolean(item.children && item.children.length > 0));
+---
+
+<div id="cagp-mobile-drawer" class="cagp-mobile-drawer" role="dialog" aria-modal="true" aria-label="Menu Lateral do Portal">
+  <div class="cagp-drawer-backdrop" id="cagp-drawer-backdrop" onclick="window.dispatchEvent(new CustomEvent('cagp:close-drawer'))"></div>
+  <div class="cagp-drawer-panel" role="document">
+    <!-- Header do Menu -->
+    <div class="cagp-drawer-header">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-white flex items-center justify-center p-1 border border-black/15 shadow-xs">
+          <img src={asset('/logos/cagp/10_simbolo_transparente_positivo.svg')} alt="Emblema Candangos CAGP" class="w-full h-full object-contain" />
+        </div>
+        <div>
+          <span class="font-['Oswald'] font-black text-sm uppercase tracking-wide text-[#0A0A0A] block leading-none">
+            Navegação Geral
+          </span>
+          <span class="text-[11px] text-gray-500 font-mono block mt-0.5"><strong class="text-[#8B1E2D]">CAGP</strong> FAFICH / UFMG</span>
+        </div>
+      </div>
+      <button type="button" id="cagp-drawer-close" class="cagp-drawer-close-btn" onclick="window.dispatchEvent(new CustomEvent('cagp:close-drawer'))" aria-label="Fechar menu lateral">
+        ✕
+      </button>
+    </div>
+
+    <!-- Atalho para o Passaporte do Estudante -->
+    <button
+      type="button"
+      id="cagp-drawer-passport-cta"
+      class="mb-3 p-2.5 rounded-xl border border-black/15 bg-[#F7F5F0] hover:bg-white text-left flex items-center gap-3 shadow-xs hover:shadow-sm active:scale-[0.98] transition-all cursor-pointer w-full group min-h-[44px]"
+    >
+      <div
+        id="cagp-drawer-avatar-slot"
+        class="w-10 h-10 rounded-full bg-[#8B1E2D] text-white flex items-center justify-center font-['Oswald'] font-bold text-sm border border-black/15 shadow-xs shrink-0 overflow-hidden relative"
+      >
+        <i class="bi bi-person-badge-fill text-lg"></i>
+      </div>
+      <div class="flex-1 min-w-0">
+        <span
+          id="cagp-drawer-student-name"
+          class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block group-hover:text-[#8B1E2D] leading-tight truncate"
+        >
+          Passaporte Discente
+        </span>
+        <span
+          id="cagp-drawer-student-sub"
+          class="text-[11px] text-gray-500 block leading-tight mt-0.5 truncate font-mono"
+        >
+          Horas, Perfil & Banco de Talentos &rarr;
+        </span>
+      </div>
+    </button>
+
+    <!-- Seções de Navegação dos Eixos (Cards Neo-Brutalistas Estilo Desktop) -->
+    <div class="space-y-1 flex-1 overflow-y-auto pr-1">
+      <!-- Eixo 1: Início & Bússola Discente -->
+      <div class="cagp-drawer-section-card">
+        <div class="cagp-drawer-section-header">
+          <span class="cagp-drawer-section-title">1. Hoje & Campus</span>
+          <a href="/" class="cagp-drawer-section-overview-btn">
+            <span>Página Inicial</span>
+            <i class="bi bi-house-door-fill text-xs" aria-hidden="true" />
+          </a>
+        </div>
+        <div class="space-y-0.5">
+          <a href="/#hoje" class="cagp-drawer-link group/item">
+            <div class="w-7 h-7 rounded-md bg-[#F7F5F0] group-hover/item:bg-[#8B1E2D] border border-[#DFDBD2] group-hover/item:border-[#0A0A0A] flex items-center justify-center shrink-0 transition-colors">
+              <i class="bi bi-compass text-sm text-[#8B1E2D] group-hover/item:text-white transition-colors" aria-hidden="true" />
+            </div>
+            <div class="min-w-0 flex-1">
+              <span class="cagp-drawer-link-title group-hover/item:text-[#8B1E2D]">Bússola & Rotina Discente</span>
+              <span class="cagp-drawer-link-desc line-clamp-1">Status dos restaurantes, notícias e atalhos essenciais</span>
+            </div>
+          </a>
+          <a href="/#apps" class="cagp-drawer-link group/item">
+            <div class="w-7 h-7 rounded-md bg-[#F7F5F0] group-hover/item:bg-[#8B1E2D] border border-[#DFDBD2] group-hover/item:border-[#0A0A0A] flex items-center justify-center shrink-0 transition-colors">
+              <i class="bi bi-grid-3x3-gap text-sm text-[#8B1E2D] group-hover/item:text-white transition-colors" aria-hidden="true" />
+            </div>
+            <div class="min-w-0 flex-1">
+              <span class="cagp-drawer-link-title group-hover/item:text-[#8B1E2D]">Sistemas & Aplicativos UFMG</span>
+              <span class="cagp-drawer-link-desc line-clamp-1">SIGA, MinhaUFMG, Moodle, FUMP e Carteirinha</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      {axisSections.map((section) => (
+        <div class="cagp-drawer-section-card">
+          <div class="cagp-drawer-section-header">
+            <span class="cagp-drawer-section-title">{section.label}</span>
+            <a href={section.href} class="cagp-drawer-section-overview-btn">
+              <span>Visão Geral</span>
+              <i class="bi bi-arrow-right text-xs" aria-hidden="true" />
+            </a>
+          </div>
+          <div class="space-y-0.5">
+            {section.children?.map((child) => (
+              <a href={child.href} class="cagp-drawer-link group/item">
+                <div class="w-7 h-7 rounded-md bg-[#F7F5F0] group-hover/item:bg-[#8B1E2D] border border-[#DFDBD2] group-hover/item:border-[#0A0A0A] flex items-center justify-center shrink-0 transition-colors">
+                  <i class={`bi ${child.icon} text-sm text-[#8B1E2D] group-hover/item:text-white transition-colors`} aria-hidden="true" />
+                </div>
+                <div class="min-w-0 flex-1">
+                  <span class="cagp-drawer-link-title group-hover/item:text-[#8B1E2D]">{child.label}</span>
+                  <span class="cagp-drawer-link-desc line-clamp-1">{child.desc}</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Rodapé do Drawer com Ações Rápidas -->
+    <div class="pt-3 mt-2 border-t border-black/15 flex items-center justify-between text-[11px]">
+      <button
+        type="button"
+        id="cagp-drawer-a11y-btn"
+        class="text-gray-800 hover:text-[#8B1E2D] font-['Oswald'] uppercase font-bold flex items-center gap-1.5 cursor-pointer active:scale-95 transition-transform min-h-[44px] px-3 py-2 rounded-lg"
+      >
+        <i class="bi bi-universal-access text-sm text-[#8B1E2D]"></i>
+        <span>Acessibilidade</span>
+      </button>
+      <button
+        type="button"
+        id="cagp-drawer-settings-btn"
+        class="text-gray-800 hover:text-[#8B1E2D] font-['Oswald'] uppercase font-bold flex items-center gap-1.5 cursor-pointer active:scale-95 transition-transform min-h-[44px] px-3 py-2 rounded-lg"
+      >
+        <i class="bi bi-gear-fill text-sm text-[#8B1E2D]"></i>
+        <span>Ajustes</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { renderAvatarHtml } from '../../lib/avatarHelper';
+
+  function openDrawer() {
+    if ((window as any).__cagp_open_drawer) {
+      (window as any).__cagp_open_drawer();
+    } else {
+      const drawer = document.getElementById('cagp-mobile-drawer');
+      if (drawer) {
+        drawer.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        document.body.classList.add('cagp-drawer-open');
+      }
+    }
+  }
+
+  function closeDrawer() {
+    if ((window as any).__cagp_close_drawer) {
+      (window as any).__cagp_close_drawer();
+    } else {
+      const drawer = document.getElementById('cagp-mobile-drawer');
+      if (drawer) {
+        drawer.classList.remove('is-open');
+        document.body.style.overflow = '';
+        document.body.classList.remove('cagp-drawer-open');
+      }
+    }
+  }
+
+  function toggleDrawer() {
+    if ((window as any).__cagp_toggle_drawer) {
+      (window as any).__cagp_toggle_drawer();
+    } else {
+      const drawer = document.getElementById('cagp-mobile-drawer');
+      if (drawer) {
+        if (drawer.classList.contains('is-open')) closeDrawer();
+        else openDrawer();
+      }
+    }
+  }
+
+  // Bind global event listeners once on window
+  if (!(window as any).__cagp_drawer_initialized) {
+    (window as any).__cagp_drawer_initialized = true;
+    window.addEventListener('cagp:open-drawer', openDrawer);
+    window.addEventListener('cagp:close-drawer', closeDrawer);
+    window.addEventListener('cagp:toggle-drawer', toggleDrawer);
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeDrawer();
+    });
+    window.addEventListener('cagp:vault-updated', () => {
+      updateDrawerAvatar();
+    });
+  }
+
+  function updateDrawerAvatar() {
+    const slot = document.getElementById('cagp-drawer-avatar-slot');
+    const nameEl = document.getElementById('cagp-drawer-student-name');
+    const subEl = document.getElementById('cagp-drawer-student-sub');
+    if (!slot) return;
+    try {
+      const raw = localStorage.getItem('cagp_student_profile_v1');
+      const profile = raw ? JSON.parse(raw) : null;
+      slot.innerHTML = renderAvatarHtml(profile, 'md');
+      if (profile?.name && nameEl) {
+        nameEl.textContent = profile.name;
+      }
+      if (profile?.period && subEl) {
+        subEl.textContent = `${profile.period} • ${profile.semester || 'Ativo'} →`;
+      }
+    } catch (e) {
+      slot.innerHTML = '<i class="bi bi-person-badge-fill text-lg"></i>';
+    }
+  }
+
+  function setupMobileDrawer() {
+    (window as any).__cagp_update_drawer_avatar = updateDrawerAvatar;
+    closeDrawer();
+    updateDrawerAvatar();
+
+    const backdrop = document.getElementById('cagp-drawer-backdrop');
+    if (backdrop) backdrop.onclick = closeDrawer;
+
+    const closeBtn = document.getElementById('cagp-drawer-close');
+    if (closeBtn) closeBtn.onclick = closeDrawer;
+
+    document.querySelectorAll<HTMLElement>('#cagp-mobile-drawer .cagp-drawer-link').forEach((link) => {
+      link.onclick = closeDrawer;
+    });
+
+    const panel = document.querySelector<HTMLElement>('#cagp-mobile-drawer .cagp-drawer-panel');
+    if (panel) {
+      let touchStartX = 0;
+      let touchStartY = 0;
+      panel.ontouchstart = (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      };
+      panel.ontouchend = (e) => {
+        const deltaX = e.changedTouches[0].clientX - touchStartX;
+        const deltaY = Math.abs(e.changedTouches[0].clientY - touchStartY);
+        if (deltaX < -60 && deltaY < 100) {
+          closeDrawer();
+        }
+      };
+    }
+
+    const passportCta = document.getElementById('cagp-drawer-passport-cta');
+    if (passportCta) {
+      passportCta.onclick = () => {
+        closeDrawer();
+        window.dispatchEvent(new CustomEvent('cagp:open-passport'));
+      };
+    }
+
+    const a11yBtn = document.getElementById('cagp-drawer-a11y-btn');
+    if (a11yBtn) {
+      a11yBtn.onclick = () => {
+        closeDrawer();
+        window.dispatchEvent(new CustomEvent('cagp:open-a11y'));
+      };
+    }
+
+    const settingsBtn = document.getElementById('cagp-drawer-settings-btn');
+    if (settingsBtn) {
+      settingsBtn.onclick = () => {
+        closeDrawer();
+        window.dispatchEvent(new CustomEvent('cagp:open-settings'));
+      };
+    }
+  }
+
+  setupMobileDrawer();
+  document.addEventListener('astro:page-load', setupMobileDrawer);
+</script>

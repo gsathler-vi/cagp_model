@@ -1,0 +1,285 @@
+---
+// src/components/features/estagio/tce/EstagioTceCore.astro — Tutorial Visual do Termo de Compromisso de Estágio (TCE) & Matriz Oficial de Modelos
+import { asset } from '../../../../lib/paths';
+
+const etapasTCE = [
+  {
+    num: 1,
+    titulo: '1. Dados da Entidade Concedente',
+    icon: 'bi-building',
+    desc: 'Preencha a Razão Social completa, CNPJ, endereço oficial do órgão concedente (ministério, secretaria, fundação, ONG ou empresa conveniada) e os dados do representante legal signatário.',
+  },
+  {
+    num: 2,
+    titulo: '2. Identificação Acadêmica do Discente',
+    icon: 'bi-person-vcard',
+    desc: 'Insira seus dados cadastrais (CPF, RG, endereço) e declare expressamente o curso como Bacharelado em Gestão Pública, o turno Noturno e o número de matrícula no SIGA.',
+  },
+  {
+    num: 3,
+    titulo: '3. Interveniência Institucional FAFICH/UFMG',
+    icon: 'bi-bank',
+    desc: 'Identifique a Faculdade de Filosofia e Ciências Humanas e o Colegiado de Gestão Pública. A assinatura é firmada pela Coordenação do Curso em conjunto com o docente orientador do DCP.',
+  },
+  {
+    num: 4,
+    titulo: '4. Plano de Atividades & Seguro Obrigatório',
+    icon: 'bi-shield-shaded',
+    desc: 'Anexe o Plano de Atividades com tarefas compatíveis com o perfil de Gestão Pública e informe a apólice do Seguro contra Acidentes Pessoais contratada pela concedente (Lei nº 11.788/2008).',
+  },
+];
+
+const formulariosGoogle = [
+  {
+    titulo: 'Solicitação Inicial de Estágio',
+    desc: 'Envio do Termo de Compromisso (TCE) e Plano de Atividades para homologação da Coordenação.',
+    link: 'https://docs.google.com/forms/d/e/1FAIpQLScnRdWYJDa4yERPesbL4IZ-Atk2uPBE4ihR2ht9ho0mIeumMQ/viewform',
+    badge: 'Início de Estágio',
+  },
+  {
+    titulo: 'Envio de Requerimento Art. 41 (Servidores)',
+    desc: 'Submissão de processo para integralização das 300h com base em exercício profissional na administração.',
+    link: 'https://docs.google.com/forms/d/e/1FAIpQLSdIGMGFzJMsnyLTvkDTDVPQddU37S_OO1ABuQbMv5F3wElKLA/viewform',
+    badge: 'Dispensa Art. 41',
+  },
+];
+
+const modelosEstagio = [
+  {
+    titulo: 'Plano de Atividades de Estágio (PAE)',
+    desc: 'Cronograma e plano assinado para deferimento prévio no Colegiado.',
+    pdf: 'estagio-modelo-plano-de-atividades.pdf',
+    docx: 'estagio-modelo-plano-de-atividades.docx',
+    gdoc: 'https://docs.google.com/document/d/100ECMbDcwXjIUojwU6WwcN0eWN72NIjI/edit',
+  },
+  {
+    titulo: 'Termo de Compromisso com Convênio',
+    desc: 'Modelo padrão para concedentes com convênio ativo formal com a UFMG.',
+    pdf: 'estagio-modelo-termo-de-compromisso-com-convenio.pdf',
+    docx: 'estagio-modelo-termo-de-compromisso-com-convenio.docx',
+    gdoc: 'https://docs.google.com/document/d/1bzFYhmoGkgcEnBwMqSDBlENP-r2ke1X_/edit',
+  },
+  {
+    titulo: 'Termo de Compromisso sem Vínculo Prévio',
+    desc: 'Minuta para celebração com empresas via agentes integradores de estágio.',
+    pdf: 'estagio-modelo-termo-de-compromisso-sem-vinculo.pdf',
+    docx: 'estagio-modelo-termo-de-compromisso-sem-vinculo.docx',
+    gdoc: 'https://docs.google.com/document/d/19-Elm9v0ztx3sWgwPsRGB-NuaxoaByI4/edit',
+  },
+  {
+    titulo: 'Relatório Semestral de Estágio',
+    desc: 'Acompanhamento periódico exigido a cada 6 meses de vigência do estágio.',
+    pdf: 'estagio-modelo-relatorio-semestral.pdf',
+    docx: 'estagio-modelo-relatorio-semestral.docx',
+    gdoc: 'https://docs.google.com/document/d/1SNyHiDvFQocVO5W6FiJIBtomJasQis_d/edit',
+  },
+  {
+    titulo: 'Relatório Final de Estágio Supervisionado',
+    desc: 'Entrega final para integralização de créditos de DCP 135 ou DCP 136.',
+    pdf: 'estagio-modelo-relatorio-final.pdf',
+    docx: 'estagio-modelo-relatorio-final.docx',
+    gdoc: 'https://docs.google.com/document/d/1fB4afw-U3ODnZrkOjk9R5q3-a8qYNtVV/edit',
+  },
+  {
+    titulo: 'Requerimento de Dispensa Art. 41 (Servidores)',
+    desc: 'Protocolo de integralização de 300h com base em cargo público efetivo ou celetista.',
+    pdf: 'estagio-requerimento-integralizacao-experiencia-profissional.pdf',
+    docx: 'estagio-requerimento-integralizacao-experiencia-profissional.docx',
+    gdoc: 'https://docs.google.com/document/d/1QJJ8wLISxpztQFH--V2aYm8-509D6_418o14zSfxbe4/edit',
+  },
+  {
+    titulo: 'Relatório de Atividades Art. 41',
+    desc: 'Memorial descritivo das atribuições laborais para instrução da comissão avaliadora.',
+    pdf: 'estagio-relatorio-atividades-experiencia-profissional.pdf',
+    docx: 'estagio-relatorio-atividades-experiencia-profissional.docx',
+    gdoc: 'https://docs.google.com/document/d/1Uc3oHwEBM9zbf9tJ2q5N80YPQme3niFh/edit',
+  },
+];
+
+const normasEstagio = [
+  { titulo: 'Manual de Orientações de Estágio FAFICH', desc: 'Diretrizes do Setor de Estágios e fluxos de assinatura.', file: 'estagio-manual-orientacoes-fafich.pdf' },
+  { titulo: 'Resolução GP nº 01/2019 (Colegiado)', desc: 'Regulamentação do estágio supervisionado de Gestão Pública.', file: 'resolucao-01-2019-estagio-curricular.pdf' },
+  { titulo: 'Resolução CEPE nº 02/2009 (UFMG)', desc: 'Normas gerais de estágio da Universidade Federal de Minas Gerais.', file: 'resolucao-cepe-02-2009-estagio-ufmg.pdf' },
+];
+---
+
+<div class="cagp-estagio-tce space-y-6 select-none text-[#0A0A0A]">
+  {/* Cabeçalho */}
+  <div class="p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
+    <div>
+      <span class="text-[11px] font-['Oswald'] uppercase font-bold tracking-wider text-[#8B1E2D]">
+        Guia Visual Passo a Passo
+      </span>
+      <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A] m-0">
+        Preenchimento do Termo de Compromisso de Estágio (TCE)
+      </h3>
+      <p class="text-xs text-gray-600 mt-0.5 m-0">
+        Documento jurídico obrigatório pela Lei nº 11.788/2008 para formalizar Estágio Obrigatório ou Não-Obrigatório.
+      </p>
+    </div>
+
+    <a
+      href={asset('/documentos/estagio-modelo-termo-de-compromisso-com-convenio.pdf')}
+      download
+      class="min-h-[44px] px-4 py-2 bg-[#8B1E2D] hover:bg-[#0A0A0A] text-white rounded-lg text-xs font-['Oswald'] uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all no-underline shrink-0 shadow-[2px_2px_0px_#0A0A0A]"
+    >
+      <i class="bi bi-file-earmark-arrow-down-fill" aria-hidden="true" />
+      <span>Baixar TCE Padrão (PDF)</span>
+    </a>
+  </div>
+
+  {/* Protocolos Online: Google Forms Oficiais */}
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    {formulariosGoogle.map((f) => (
+      <div class="p-3.5 bg-white border-2 border-[#8B1E2D] rounded-xl flex flex-col justify-between shadow-[2px_2px_0px_#8B1E2D]">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-1">
+            <span class="cagp-badge cagp-badge-red text-[10px] font-mono">{f.badge}</span>
+            <span class="text-[11px] text-gray-400 font-mono">Google Forms Oficial</span>
+          </div>
+          <h4 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] m-0 mb-1">{f.titulo}</h4>
+          <p class="text-xs text-gray-600 leading-snug m-0">{f.desc}</p>
+        </div>
+        <div class="mt-3 pt-2 border-t border-[#DFDBD2]">
+          <a
+            href={f.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="cagp-btn-primary text-xs py-1.5 px-3 no-underline inline-flex items-center justify-center gap-1.5 w-full"
+          >
+            <span>Preencher no Formulário Oficial</span>
+            <i class="bi bi-box-arrow-up-right text-[10px]" aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  {/* Tutorial com Imagem Anotada e Pins */}
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
+    <div class="cagp-doc-preview-wrapper" role="region" aria-label="Visualização anotada do modelo de TCE">
+      <img
+        src={asset('/imagens/tutoriais/print-termo-estagio-1.png')}
+        alt="Primeira folha do modelo oficial de Termo de Compromisso de Estágio da UFMG com demarcações dos campos de preenchimento"
+        class="cagp-doc-preview-img"
+        loading="lazy"
+      />
+
+      <div class="cagp-doc-box" style="top: 36%; left: 5%; width: 90%; height: 30.69%;" aria-hidden="true"></div>
+      <button type="button" class="cagp-doc-pin" style="top: 36%; left: 5%;" aria-label="Ponto 1: Instituição Concedente">1</button>
+
+      <div class="cagp-doc-box" style="top: 67%; left: 5%; width: 90%; height: 26.7%;" aria-hidden="true"></div>
+      <button type="button" class="cagp-doc-pin" style="top: 67%; left: 5%;" aria-label="Ponto 2: Dados do Estudante">2</button>
+    </div>
+
+    <div class="space-y-3">
+      {etapasTCE.map((et) => (
+        <div class="cagp-card p-3.5 bg-white border border-[#DFDBD2] rounded-xl flex items-start gap-3 shadow-xs">
+          <span class="w-8 h-8 rounded-lg bg-[#8B1E2D] text-white flex items-center justify-center font-['Oswald'] text-sm font-bold shrink-0 shadow-[1px_1px_0px_#0A0A0A]">
+            {et.num}
+          </span>
+          <div class="min-w-0">
+            <h4 class="font-['Oswald'] text-xs font-bold uppercase text-[#0A0A0A] leading-tight m-0 mb-1">
+              {et.titulo}
+            </h4>
+            <p class="text-xs text-gray-700 leading-relaxed m-0">
+              {et.desc}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  {/* Acervo Completo de Modelos Oficiais de Estágio (PDF + DOCX + Google Docs) */}
+  <div class="p-4 bg-[#F7F5F0] border border-[#DFDBD2] rounded-xl space-y-3 shadow-xs">
+    <div class="flex items-center justify-between border-b border-[#DFDBD2] pb-2 flex-wrap gap-2">
+      <div>
+        <h4 class="font-['Oswald'] text-sm font-bold uppercase text-[#0A0A0A] m-0 flex items-center gap-2">
+          <i class="bi bi-folder-symlink text-[#8B1E2D]" aria-hidden="true" />
+          <span>Matriz de Modelos Oficiais de Estágio (PDF, DOCX e Google Docs)</span>
+        </h4>
+        <p class="text-xs text-gray-600 mt-0.5 m-0">Preenchimento direto em computador ou edição na nuvem pelo Google Drive:</p>
+      </div>
+      <span class="text-xs text-gray-500 font-mono">7 Modelos Homologados</span>
+    </div>
+
+    <div class="space-y-2.5">
+      {modelosEstagio.map((m) => (
+        <div class="p-3 bg-white border border-[#DFDBD2] rounded-lg flex flex-col md:flex-row md:items-center justify-between gap-3 shadow-xs">
+          <div class="min-w-0">
+            <h5 class="font-['Oswald'] text-xs font-bold uppercase text-[#0A0A0A] m-0 mb-0.5">
+              {m.titulo}
+            </h5>
+            <p class="text-[11px] text-gray-500 m-0">
+              {m.desc}
+            </p>
+          </div>
+
+          <div class="flex items-center gap-2 shrink-0 flex-wrap">
+            <a
+              href={m.gdoc}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-2.5 py-1 bg-[#F7F5F0] hover:bg-[#EAE6DE] border border-[#DFDBD2] rounded text-[11px] font-['Oswald'] font-bold uppercase text-[#0A0A0A] no-underline inline-flex items-center gap-1"
+              title="Abrir modelo no Google Docs"
+            >
+              <i class="bi bi-google" aria-hidden="true" />
+              <span>Google Docs</span>
+            </a>
+            <a
+              href={asset(`/documentos/${m.docx}`)}
+              download
+              class="px-2.5 py-1 bg-[#005A9C] hover:bg-[#004080] text-white rounded text-[11px] font-mono font-bold no-underline inline-flex items-center gap-1"
+              title="Baixar versão Word DOCX"
+            >
+              <i class="bi bi-file-earmark-word" aria-hidden="true" />
+              <span>DOCX</span>
+            </a>
+            <a
+              href={asset(`/documentos/${m.pdf}`)}
+              download
+              class="px-2.5 py-1 bg-[#8B1E2D] hover:bg-[#0A0A0A] text-white rounded text-[11px] font-mono font-bold no-underline inline-flex items-center gap-1"
+              title="Baixar versão PDF"
+            >
+              <i class="bi bi-file-earmark-pdf" aria-hidden="true" />
+              <span>PDF</span>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  {/* Resoluções Normativas e Manual da FAFICH */}
+  <div class="p-4 bg-white border border-[#DFDBD2] rounded-xl space-y-3 shadow-xs">
+    <div class="flex items-center justify-between border-b border-[#DFDBD2] pb-2">
+      <h4 class="font-['Oswald'] text-sm font-bold uppercase text-[#0A0A0A] m-0 flex items-center gap-2">
+        <i class="bi bi-shield-check text-[#15803D]" aria-hidden="true" />
+        <span>Atos Normativos e Manual de Estágio FAFICH</span>
+      </h4>
+      <span class="text-xs text-gray-500 font-mono">Downloads</span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      {normasEstagio.map((n) => (
+        <div class="p-3 bg-[#F7F5F0] border border-[#DFDBD2] rounded-lg flex flex-col justify-between">
+          <div>
+            <h5 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] m-0 mb-1">{n.titulo}</h5>
+            <p class="text-[11px] text-gray-600 leading-snug m-0">{n.desc}</p>
+          </div>
+          <div class="mt-3 pt-2 border-t border-[#DFDBD2]">
+            <a
+              href={asset(`/documentos/${n.file}`)}
+              download
+              class="cagp-btn-primary text-xs py-1.5 px-2.5 no-underline flex items-center justify-center gap-1.5 w-full"
+            >
+              <i class="bi bi-download" aria-hidden="true" />
+              <span>Baixar PDF</span>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

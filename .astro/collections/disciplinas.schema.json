@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "codigo": {
+      "type": "string"
+    },
+    "nome": {
+      "type": "string"
+    },
+    "natureza": {
+      "type": "string",
+      "enum": [
+        "obrigatoria",
+        "optativa"
+      ]
+    },
+    "periodo": {
+      "type": "number"
+    },
+    "ch": {
+      "type": "number"
+    },
+    "ementa": {
+      "type": "string"
+    },
+    "preRequisitos": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "modulo": {
+      "type": "string"
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "codigo",
+    "nome",
+    "natureza",
+    "ch",
+    "ementa"
+  ]
+}

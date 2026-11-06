@@ -1,0 +1,480 @@
+---
+// [slug].astro - Leitor Editorial Apple HIG + Neo-brutalista de Transcrições Oficiais
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { asset, route } from '../../lib/paths';
+
+// Metadados canônicos mapeados por slug
+const DOC_METADATA: Record<string, {
+  title: string;
+  pdf: string;
+  orgao: string;
+  ano: string;
+  badge: string;
+  badgeVariant: 'red' | 'dark' | 'blue' | 'green' | 'gold';
+  icon: string;
+}> = {
+  'ppc-gestao-publica-ufmg': {
+    title: 'Projeto Pedagógico do Curso de Gestão Pública (PPC 2020)',
+    pdf: 'ppc-gestao-publica-ufmg.pdf',
+    orgao: 'Colegiado de Gestão Pública / FAFICH / UFMG',
+    ano: '2020 (Aprov. Câmara 2021 / Assin. PROGRAD 2023)',
+    badge: 'Documento Mestre',
+    badgeVariant: 'red',
+    icon: 'bi-book-half',
+  },
+  'regulamento-gestao-publica-ufmg': {
+    title: 'Regulamento do Curso de Graduação em Gestão Pública (Versão N-20229)',
+    pdf: 'regulamento-gestao-publica-ufmg.pdf',
+    orgao: 'Câmara de Graduação / Colegiado FAFICH',
+    ano: 'Versão N-20229 Vigente',
+    badge: 'Norma Vigente',
+    badgeVariant: 'dark',
+    icon: 'bi-file-earmark-check-fill',
+  },
+  'regimento-interno-cagp-ufmg': {
+    title: 'Regimento Interno do Centro Acadêmico de Gestão Pública (CAGP)',
+    pdf: 'regimento-interno-cagp-ufmg.pdf',
+    orgao: 'Assembleia Geral Discente do CAGP',
+    ano: '14 de Outubro de 2024',
+    badge: 'Entidade Discente',
+    badgeVariant: 'blue',
+    icon: 'bi-people-fill',
+  },
+  'percurso-bacharelado-nucleo-geral': {
+    title: 'Relatório de Percurso Curricular — Bacharelado / Núcleo Geral (01-01)',
+    pdf: 'percurso-bacharelado-nucleo-geral.pdf',
+    orgao: 'Pró-reitoria de Graduação (PROGRAD / DRCA / UFMG)',
+    ano: 'Identificador 01-01 • Versão N-20229',
+    badge: 'Percurso 01-01 Padrão',
+    badgeVariant: 'green',
+    icon: 'bi-diagram-3-fill',
+  },
+  'percurso-bacharelado-nucleo-complementar': {
+    title: 'Relatório de Percurso Curricular — Núcleo Geral + Complementar (01-02)',
+    pdf: 'percurso-bacharelado-nucleo-complementar.pdf',
+    orgao: 'Pró-reitoria de Graduação (PROGRAD / DRCA / UFMG)',
+    ano: 'Identificador 01-02 • Formação Complementar Aberta',
+    badge: 'Percurso 01-02 FCA',
+    badgeVariant: 'green',
+    icon: 'bi-diagram-3-fill',
+  },
+  'percurso-bacharelado-nucleo-avancado': {
+    title: 'Relatório de Percurso Curricular — Núcleo Geral + Avançado Pós (01-03)',
+    pdf: 'percurso-bacharelado-nucleo-avancado.pdf',
+    orgao: 'Pró-reitoria de Graduação (PROGRAD / DRCA / UFMG)',
+    ano: 'Identificador 01-03 • Pós-graduação PPGCP',
+    badge: 'Percurso 01-03 Pós',
+    badgeVariant: 'green',
+    icon: 'bi-diagram-3-fill',
+  },
+  'ementario-gestao-publica-ufmg': {
+    title: 'Ementário Oficial do Curso de Gestão Pública (27 Obrigatórias + 68 Optativas)',
+    pdf: 'ementario-gestao-publica-ufmg.pdf',
+    orgao: 'Departamento de Ciência Política (DCP / FAFICH / UFMG)',
+    ano: 'Apêndice 2 do PPC 2020',
+    badge: 'Catálogo de Ementas',
+    badgeVariant: 'gold',
+    icon: 'bi-card-text',
+  },
+  'transcricao-recepcao-ingressantes-2024-2': {
+    title: 'Transcrição da Palestra de Recepção de Ingressantes 2024/2',
+    pdf: 'recepcao-ingressantes-2024-2.pdf',
+    orgao: 'Coordenação do Curso / Profª Ana Paula Karruz',
+    ano: 'Semestre 2024/2 • Apresentação em 49 Slides',
+    badge: 'Guia do Calouro',
+    badgeVariant: 'blue',
+    icon: 'bi-mortarboard-fill',
+  },
+};
+
+export async function getStaticPaths() {
+  const allowed = new Set([
+    'ppc-gestao-publica-ufmg',
+    'regulamento-gestao-publica-ufmg',
+    'regimento-interno-cagp-ufmg',
+    'percurso-bacharelado-nucleo-geral',
+    'percurso-bacharelado-nucleo-complementar',
+    'percurso-bacharelado-nucleo-avancado',
+    'ementario-gestao-publica-ufmg',
+    'transcricao-recepcao-ingressantes-2024-2',
+  ]);
+  const docs = await getCollection('documentosOficiais');
+  return docs
+    .filter((doc) => allowed.has(doc.id.replace(/\.md$/, '')))
+    .map((doc) => ({
+      params: { slug: doc.id.replace(/\.md$/, '') },
+      props: { doc },
+    }));
+}
+
+const { doc } = Astro.props;
+const { Content, headings } = await render(doc);
+
+const slugKey = doc.id.replace(/\.md$/, '');
+const meta = DOC_METADATA[slugKey] || {
+  title: doc.data.titulo || doc.data.title || slugKey,
+  pdf: `${slugKey}.pdf`,
+  orgao: 'Colegiado de Gestão Pública / FAFICH / UFMG',
+  ano: 'Oficial UFMG',
+  badge: 'Documento Oficial',
+  badgeVariant: 'dark' as const,
+  icon: 'bi-file-earmark-text',
+};
+
+// Filtrar headings relevantes para o sumário (h1, h2, h3)
+const filteredHeadings = headings.filter((h) => h.depth >= 1 && h.depth <= 3 && h.text.trim().length > 0);
+---
+
+<BaseLayout
+  title={`${meta.title} — Transcrição Oficial`}
+  description={`Transcrição completa do documento oficial "${meta.title}" do curso de Gestão Pública UFMG com download do PDF assinado.`}
+>
+  <!-- Barra de Progresso de Leitura Superior -->
+  <div id="cagp-reading-progress" class="fixed top-0 left-0 h-[3px] bg-[#8B1E2D] z-50 transition-all duration-75 w-0" aria-hidden="true"></div>
+
+  <!-- Cabeçalho de Navegação e Metadados -->
+  <div class="mb-4 space-y-3">
+    <!-- Breadcrumbs & Voltar -->
+    <div class="flex items-center justify-between flex-wrap gap-2 text-xs">
+      <nav aria-label="Trilha de navegação" class="flex items-center gap-1.5 text-gray-600 font-mono">
+        <a href={route('/')} class="hover:text-[#8B1E2D] underline">Início</a>
+        <span>/</span>
+        <a href={route('/documentos')} class="hover:text-[#8B1E2D] underline">Acervo de Documentos</a>
+        <span>/</span>
+        <span class="text-[#0A0A0A] font-bold truncate max-w-[200px] sm:max-w-[400px]">{meta.badge}</span>
+      </nav>
+
+      <a
+        href={route('/documentos')}
+        class="inline-flex items-center gap-1 font-['Oswald'] font-bold uppercase text-xs text-[#8B1E2D] hover:underline"
+      >
+        <i class="bi bi-arrow-left" aria-hidden="true"></i> Voltar ao Acervo
+      </a>
+    </div>
+
+    <!-- Card de Cabeçalho do Documento -->
+    <header class="cagp-card p-4 bg-white border-2 border-[#0A0A0A] shadow-[2px_2px_0_#0A0A0A] space-y-3">
+      <div class="flex items-start justify-between gap-3 flex-wrap sm:flex-nowrap">
+        <div class="space-y-1.5 min-w-0">
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class={`cagp-badge cagp-badge-${meta.badgeVariant} font-mono text-xs uppercase inline-flex items-center gap-1`}>
+              <i class={`bi ${meta.icon}`} aria-hidden="true"></i> {meta.badge}
+            </span>
+            <span class="text-xs font-mono text-gray-500">{meta.ano}</span>
+          </div>
+
+          <h1 class="font-['Oswald'] font-bold text-xl sm:text-2xl uppercase tracking-wide text-[#0A0A0A] leading-tight">
+            {meta.title}
+          </h1>
+
+          <p class="text-xs text-gray-600 flex items-center gap-1.5">
+            <i class="bi bi-bank" aria-hidden="true"></i>
+            <span>Órgão Emissor: <strong>{meta.orgao}</strong></span>
+          </p>
+        </div>
+
+        <!-- Botão Primário: Download do PDF Assinado -->
+        <a
+          href={asset(`/documentos/${meta.pdf}`)}
+          download
+          class="cagp-btn-primary py-2.5 px-4 text-xs font-bold whitespace-nowrap inline-flex items-center gap-2 shrink-0 self-start no-underline shadow-[2px_2px_0_#0A0A0A]"
+        >
+          <i class="bi bi-file-earmark-pdf-fill text-sm" aria-hidden="true"></i>
+          <span>Baixar PDF Oficial</span>
+        </a>
+      </div>
+
+      <!-- Alerta Institucional de Fé Pública -->
+      <div class="p-2.5 bg-[#F7F5F0] rounded-[4px] border border-[#DFDBD2] text-xs text-gray-700 flex items-start gap-2">
+        <i class="bi bi-info-circle-fill text-[#8B1E2D] text-sm shrink-0 mt-0.5" aria-hidden="true"></i>
+        <p class="leading-relaxed">
+          <strong>Fé Pública e Validade Jurídica:</strong> Esta transcrição digital em Markdown destina-se à consulta rápida, acessibilidade e busca textual. Em processos administrativos no SEI/UFMG e comprovação regimental, <strong>o PDF oficial assinado prevalece integralmente</strong>.
+        </p>
+      </div>
+    </header>
+  </div>
+
+  <!-- Layout Principal de Leitura: Conteúdo + Sumário Sticky -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+    <!-- Sumário Mobile Retrátil (visível apenas em telas pequenas) -->
+    {filteredHeadings.length > 0 && (
+      <div class="lg:hidden cagp-card p-3 bg-[#F7F5F0] border border-[#DFDBD2]">
+        <details class="group">
+          <summary class="cursor-pointer font-['Oswald'] font-bold uppercase text-xs text-[#0A0A0A] flex items-center justify-between min-h-[44px] py-3.5 px-4">
+            <span class="flex items-center gap-1.5">
+              <i class="bi bi-list-nested text-[#8B1E2D]" aria-hidden="true"></i>
+              Sumário do Documento ({filteredHeadings.length} seções)
+            </span>
+            <i class="bi bi-chevron-down group-open:rotate-180 transition-transform text-xs" aria-hidden="true"></i>
+          </summary>
+          <nav class="mt-2.5 pt-2.5 border-t border-[#DFDBD2] space-y-1 max-h-60 overflow-y-auto text-xs">
+            {filteredHeadings.map((h) => (
+              <a
+                href={`#${h.slug}`}
+                class={`block py-1 hover:text-[#8B1E2D] transition-colors truncate ${h.depth === 1 ? 'font-bold text-[#0A0A0A]' : h.depth === 2 ? 'pl-2 text-gray-700' : 'pl-4 text-gray-500'}`}
+              >
+                {h.text}
+              </a>
+            ))}
+          </nav>
+        </details>
+      </div>
+    )}
+
+    <!-- Corpo do Artigo / Documento Transcrito -->
+    <main class="lg:col-span-8 xl:col-span-9 bg-white border border-black/15 rounded-[6px] shadow-sm p-4 sm:p-6 lg:p-8 min-w-0">
+      <article class="cagp-doc-reader prose prose-sm sm:prose-base lg:prose-lg max-w-[72ch] mx-auto text-[#0A0A0A] leading-relaxed">
+        <Content />
+      </article>
+
+      <!-- Rodapé do Leitor -->
+      <footer class="mt-8 pt-4 border-t border-[#DFDBD2] flex items-center justify-between flex-wrap gap-3 text-xs text-gray-600">
+        <span class="font-mono">Fonte: Centro Acadêmico de Gestão Pública (CAGP UFMG)</span>
+        <div class="flex items-center gap-2">
+          <a href="#top" class="font-['Oswald'] font-bold uppercase text-[#8B1E2D] hover:underline inline-flex items-center gap-1">
+            <i class="bi bi-arrow-up" aria-hidden="true"></i> Voltar ao Topo
+          </a>
+          <span>•</span>
+          <a href={asset(`/documentos/${meta.pdf}`)} download class="font-['Oswald'] font-bold uppercase text-[#8B1E2D] hover:underline inline-flex items-center gap-1">
+            <i class="bi bi-download" aria-hidden="true"></i> Baixar PDF
+          </a>
+        </div>
+      </footer>
+    </main>
+
+    <!-- Barra Lateral Sticky: Sumário do Documento (Desktop) -->
+    {filteredHeadings.length > 0 && (
+      <aside class="hidden lg:block lg:col-span-4 xl:col-span-3 sticky top-20 max-h-[calc(100dvh-6rem)] overflow-y-auto cagp-card p-3.5 bg-white border border-black/15 shadow-sm space-y-2 text-xs">
+        <div class="flex items-center justify-between border-b border-[#DFDBD2] pb-2">
+          <span class="font-['Oswald'] font-bold uppercase text-xs tracking-wider text-[#0A0A0A] flex items-center gap-1.5">
+            <i class="bi bi-list-nested text-[#8B1E2D]" aria-hidden="true"></i>
+            Sumário Navegável
+          </span>
+          <span class="font-mono text-[11px] text-gray-500">{filteredHeadings.length} seções</span>
+        </div>
+
+        <nav id="cagp-toc-nav" class="space-y-0.5 max-h-[calc(100dvh-10rem)] overflow-y-auto pr-1">
+          {filteredHeadings.map((h) => (
+            <a
+              href={`#${h.slug}`}
+              data-toc-slug={h.slug}
+              class={`toc-link block py-1 px-1.5 rounded-[3px] transition-colors truncate hover:bg-[#F7F5F0] hover:text-[#8B1E2D] ${
+                h.depth === 1
+                  ? 'font-bold text-[#0A0A0A] text-xs'
+                  : h.depth === 2
+                  ? 'pl-3 text-gray-700 text-xs'
+                  : 'pl-5 text-gray-500 text-[11px]'
+              }`}
+            >
+              {h.text}
+            </a>
+          ))}
+        </nav>
+      </aside>
+    )}
+  </div>
+</BaseLayout>
+
+<style is:global>
+  /* Tipografia Editorial para o Leitor de Documentos */
+  .cagp-doc-reader {
+    font-family: var(--font-body, system-ui, sans-serif);
+    color: #0A0A0A;
+  }
+
+  .cagp-doc-reader h1 {
+    font-family: var(--font-display, 'Oswald', sans-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    color: #0A0A0A;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #0A0A0A;
+  }
+
+  .cagp-doc-reader h2 {
+    font-family: var(--font-display, 'Oswald', sans-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    color: #8B1E2D;
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid #DFDBD2;
+  }
+
+  .cagp-doc-reader h3 {
+    font-family: var(--font-display, 'Oswald', sans-serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #0A0A0A;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .cagp-doc-reader h4 {
+    font-family: var(--font-display, 'Oswald', sans-serif);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0A0A0A;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .cagp-doc-reader p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    color: #0A0A0A;
+  }
+
+  .cagp-doc-reader ul,
+  .cagp-doc-reader ol {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .cagp-doc-reader ul {
+    list-style-type: disc;
+  }
+
+  .cagp-doc-reader ol {
+    list-style-type: decimal;
+  }
+
+  .cagp-doc-reader li {
+    margin-bottom: 0.35rem;
+  }
+
+  .cagp-doc-reader blockquote {
+    border-left: 4px solid #8B1E2D;
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin: 1rem 0;
+    background-color: #FBF8F3;
+    font-style: italic;
+    color: #0A0A0A;
+  }
+
+  .cagp-doc-reader table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.25rem 0;
+    font-size: 0.85rem;
+    border: 1px solid #0A0A0A;
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .cagp-doc-reader th {
+    background-color: #F7F5F0;
+    border: 1px solid #0A0A0A;
+    padding: 0.6rem 0.75rem;
+    font-family: var(--font-display, 'Oswald', sans-serif);
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: left;
+    color: #0A0A0A;
+    white-space: nowrap;
+  }
+
+  .cagp-doc-reader td {
+    border: 1px solid #DFDBD2;
+    padding: 0.5rem 0.75rem;
+    color: #0A0A0A;
+    vertical-align: top;
+  }
+
+  .cagp-doc-reader tr:nth-child(even) td {
+    background-color: #FBF8F3;
+  }
+
+  .cagp-doc-reader hr {
+    border: 0;
+    border-top: 1px solid #DFDBD2;
+    margin: 2rem 0;
+  }
+
+  .cagp-doc-reader strong {
+    font-weight: 700;
+    color: #0A0A0A;
+  }
+
+  .cagp-doc-reader code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85em;
+    background-color: #F7F5F0;
+    border: 1px solid #DFDBD2;
+    padding: 0.15rem 0.35rem;
+    border-radius: 3px;
+  }
+
+  /* Destaque ativo no Sumário (TOC) */
+  .toc-link.is-active {
+    background-color: #8B1E2D;
+    color: #FFFFFF !important;
+    font-weight: 700;
+  }
+</style>
+
+<script>
+  // Barra de Progresso de Leitura & IntersectionObserver para o Sumário
+  function setupDocReader() {
+    const progressBar = document.getElementById('cagp-reading-progress');
+    const tocLinks = document.querySelectorAll<HTMLAnchorElement>('.toc-link');
+
+    // 1. Barra de Progresso
+    const updateProgress = () => {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollHeight <= 0) return;
+      const progress = (window.scrollY / scrollHeight) * 100;
+      if (progressBar) {
+        progressBar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+      }
+    };
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    // 2. IntersectionObserver para o TOC
+    if (tocLinks.length === 0) return;
+
+    const headings = Array.from(document.querySelectorAll<HTMLElement>('.cagp-doc-reader h1, .cagp-doc-reader h2, .cagp-doc-reader h3'));
+    if (headings.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        let activeId = '';
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            activeId = entry.target.id;
+          }
+        });
+
+        if (activeId) {
+          tocLinks.forEach((link) => {
+            const match = link.getAttribute('data-toc-slug') === activeId;
+            link.classList.toggle('is-active', match);
+          });
+        }
+      },
+      { rootMargin: '-80px 0px -70% 0px' }
+    );
+
+    headings.forEach((h) => observer.observe(h));
+  }
+
+  document.addEventListener('astro:page-load', setupDocReader);
+</script>

@@ -1,0 +1,177 @@
+---
+// src/components/features/cagp/CagpCentralOverview.astro — Visão Geral do Eixo 5 (O CAGP)
+import { asset, route } from '../../../lib/paths';
+---
+
+<div class="cagp-central-overview space-y-6 select-none text-[#0A0A0A]">
+  {/* Apresentação do CAGP */}
+  <div class="p-4 sm:p-5 bg-[#F7F5F0] border border-[#DFDBD2] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
+    <div class="flex items-start gap-3.5">
+      <span class="w-11 h-11 rounded-lg bg-[#8B1E2D] text-white flex items-center justify-center text-xl shrink-0 mt-0.5 shadow-[2px_2px_0px_#0A0A0A]">
+        <i class="bi bi-people-fill" aria-hidden="true" />
+      </span>
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="text-[11px] font-['Oswald'] uppercase font-bold tracking-wider text-[#8B1E2D]">
+            Entidade Oficial de Representação Discente
+          </span>
+          <span class="text-gray-300">•</span>
+          <span class="text-xs text-gray-500 font-mono">FAFICH / UFMG</span>
+        </div>
+        <h2 class="font-['Oswald'] text-lg sm:text-xl font-bold uppercase text-[#0A0A0A] leading-tight m-0">
+          Centro Acadêmico de Gestão Pública (CAGP)
+        </h2>
+        <p class="text-xs text-gray-600 mt-1 max-w-3xl leading-relaxed m-0">
+          Entidade autônoma fundada nos princípios da legalidade, moralidade e eficiência pública. Defesa intransigente do ensino noturno e da valorização do gestor público.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  {/* Bento Grid das 3 Dimensões */}
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    {/* Card 1: Princípios & História */}
+    <div class="cagp-card p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col justify-between h-full shadow-xs hover:border-[#0A0A0A] transition-all">
+      <div>
+        <div class="flex items-center justify-between gap-2 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-9 h-9 rounded-lg bg-[#8B1E2D]/10 text-[#8B1E2D] flex items-center justify-center text-lg border border-[#8B1E2D]/20">
+              <i class="bi bi-bank" aria-hidden="true" />
+            </span>
+            <div>
+              <h3 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A] leading-tight m-0">
+                Princípios & História
+              </h3>
+              <span class="text-[11px] text-gray-500 font-mono">Os Candangos FAFICH</span>
+            </div>
+          </div>
+          <span class="px-2 py-0.5 rounded font-['Oswald'] text-[11px] font-bold bg-[#8B1E2D] text-white">
+            Origem
+          </span>
+        </div>
+        <p class="text-xs text-gray-700 leading-relaxed mb-3">
+          A história da criação do curso, o espírito candango de construção coletiva e a aplicação prática do Art. 37 da Constituição Federal.
+        </p>
+      </div>
+
+      <a
+        href="#principios"
+        class="min-h-[44px] px-3 py-2 bg-[#0A0A0A] hover:bg-[#8B1E2D] text-white rounded-lg font-['Oswald'] text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all no-underline shadow-[2px_2px_0px_#0A0A0A]"
+      >
+        <span>Conhecer Princípios</span>
+        <i class="bi bi-arrow-right" aria-hidden="true" />
+      </a>
+    </div>
+
+    {/* Card 2: Governança & Estatuto */}
+    <div class="cagp-card p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col justify-between h-full shadow-xs hover:border-[#0A0A0A] transition-all">
+      <div>
+        <div class="flex items-center justify-between gap-2 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-9 h-9 rounded-lg bg-[#0A0A0A]/10 text-[#0A0A0A] flex items-center justify-center text-lg border border-[#0A0A0A]/20">
+              <i class="bi bi-diagram-3-fill" aria-hidden="true" />
+            </span>
+            <div>
+              <h3 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A] leading-tight m-0">
+                Governança & Estatuto
+              </h3>
+              <span class="text-[11px] text-gray-500 font-mono">Regimento de 14/10/2024</span>
+            </div>
+          </div>
+          <span class="px-2 py-0.5 rounded font-['Oswald'] text-[11px] font-bold bg-[#0A0A0A] text-white">
+            Estatuto
+          </span>
+        </div>
+        <p class="text-xs text-gray-700 leading-relaxed mb-3">
+          Assembleia Geral soberana, Conselho de Representantes de Turma e rito democrático de eleições diretas.
+        </p>
+      </div>
+
+      <a
+        href="#governanca"
+        class="min-h-[44px] px-3 py-2 bg-[#0A0A0A] hover:bg-[#8B1E2D] text-white rounded-lg font-['Oswald'] text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all no-underline shadow-[2px_2px_0px_#0A0A0A]"
+      >
+        <span>Ver Governança</span>
+        <i class="bi bi-arrow-right" aria-hidden="true" />
+      </a>
+    </div>
+
+    {/* Card 3: Gestão & Transparência */}
+    <div class="cagp-card p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col justify-between h-full shadow-xs hover:border-[#0A0A0A] transition-all">
+      <div>
+        <div class="flex items-center justify-between gap-2 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-9 h-9 rounded-lg bg-[#15803D]/10 text-[#15803D] flex items-center justify-center text-lg border border-[#15803D]/20">
+              <i class="bi bi-people" aria-hidden="true" />
+            </span>
+            <div>
+              <h3 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A] leading-tight m-0">
+                Processo Eleitoral & Diretorias
+              </h3>
+              <span class="text-[11px] text-gray-500 font-mono">7 Diretorias Estatutárias</span>
+            </div>
+          </div>
+          <span class="px-2 py-0.5 rounded font-['Oswald'] text-[11px] font-bold bg-[#8B1E2D] text-white">
+            Eleições
+          </span>
+        </div>
+        <p class="text-xs text-gray-700 leading-relaxed mb-3">
+          Organograma regimental das 7 diretorias executivas, atribuições estatutárias e acompanhamento do processo eleitoral.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-2 pt-2 border-t border-[#DFDBD2]">
+        <a
+          href="#diretorias"
+          class="flex-1 min-h-[44px] px-3 py-2 bg-[#0A0A0A] hover:bg-[#8B1E2D] text-white rounded-lg font-['Oswald'] text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-1.5 transition-all no-underline shadow-[2px_2px_0px_#0A0A0A]"
+        >
+          <span>Ver Diretorias</span>
+          <i class="bi bi-arrow-right" aria-hidden="true" />
+        </a>
+        <a
+          href={route('/gestao')}
+          class="min-h-[44px] px-3 py-2 bg-[#F7F5F0] hover:bg-[#EAE6DE] text-[#0A0A0A] border border-[#DFDBD2] rounded-lg text-xs font-['Oswald'] uppercase font-bold flex items-center justify-center transition-all no-underline"
+          title="Ver página de prestação de contas da gestão"
+        >
+          <span>Prestação</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  {/* Banner para Download dos Regimentos Interno e Geral */}
+  <div class="p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-xs">
+    <div class="flex items-center gap-3">
+      <span class="w-10 h-10 rounded-lg bg-[#0A0A0A] text-white flex items-center justify-center text-lg shrink-0">
+        <i class="bi bi-file-earmark-pdf-fill" aria-hidden="true" />
+      </span>
+      <div>
+        <h3 class="font-['Oswald'] text-sm uppercase font-bold text-[#0A0A0A] leading-tight m-0">
+          Regimento Interno do CAGP & Regimento Geral da UFMG
+        </h3>
+        <p class="text-xs text-gray-600 mt-0.5 m-0">
+          Estatuto formal aprovado pela Assembleia Geral dos Estudantes de Gestão Pública e normas institucionais da UFMG.
+        </p>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-2 shrink-0">
+      <a
+        href={asset('/documentos/regimento-interno-cagp-ufmg.pdf')}
+        download
+        class="min-h-[44px] px-4 py-2 bg-[#8B1E2D] hover:bg-[#0A0A0A] text-white rounded-lg text-xs font-['Oswald'] uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all no-underline shadow-[2px_2px_0px_#0A0A0A]"
+      >
+        <i class="bi bi-download" aria-hidden="true" />
+        <span>Regimento CAGP (PDF)</span>
+      </a>
+      <a
+        href={asset('/documentos/regimento-geral-ufmg.pdf')}
+        download
+        class="min-h-[44px] px-4 py-2 bg-[#0A0A0A] hover:bg-[#8B1E2D] text-white rounded-lg text-xs font-['Oswald'] uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all no-underline shadow-[2px_2px_0px_#0A0A0A]"
+      >
+        <i class="bi bi-building" aria-hidden="true" />
+        <span>Regimento Geral UFMG</span>
+      </a>
+    </div>
+  </div>
+</div>

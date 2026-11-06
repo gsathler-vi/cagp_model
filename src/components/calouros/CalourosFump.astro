@@ -1,0 +1,157 @@
+---
+// CalourosFump.astro - Sub-view 4: Assistência Estudantil FUMP & PRAE
+import { asset } from '../../lib/paths';
+
+const docsPrae = [
+  { titulo: 'Portaria PRAE nº 1.286/2026', desc: 'Política de Permanência Estudantil, critérios socioeconômicos e regras de RU.', file: 'portaria-prae-1286-2026-permanencia-estudantil.pdf' },
+  { titulo: 'Resolução nº 07/2025 (Contra o Assédio)', desc: 'Política institucional de enfrentamento e prevenção a violências.', file: 'resolucao-ufmg-07-2025-contra-o-assedio.pdf' },
+  { titulo: 'Resolução PRAE nº 09/2015 (Nome Social)', desc: 'Garantia institucional de uso do nome social em registros e carteirinha.', file: 'resolucao-prae-09-2015-nome-social.pdf' },
+];
+---
+
+<div class="space-y-4 text-[#0A0A0A]">
+  <div class="cagp-tool-box p-4 space-y-3">
+    <div class="border-b border-[#DFDBD2] pb-2.5 flex items-center justify-between flex-wrap gap-2">
+      <div>
+        <div class="flex items-center gap-2">
+          <i class="bi bi-shield-heart-fill text-[#8B1E2D] text-lg" aria-hidden="true"></i>
+          <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A]">
+            Permanência e Assistência Estudantil (FUMP & PRAE)
+          </h3>
+        </div>
+        <p class="text-xs text-gray-600 mt-0.5">Programas de apoio financeiro, nutricional e psicossocial na UFMG (Portaria PRAE nº 1.286/2026):</p>
+      </div>
+      <span class="cagp-badge cagp-badge-green font-mono">
+        <i class="bi bi-heart-fill" aria-hidden="true"></i> Assistência Discente
+      </span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+      <div class="cagp-card p-3.5 bg-white flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <div class="w-8 h-8 rounded-[4px] bg-[#8B1E2D]/10 text-[#8B1E2D] border border-[#8B1E2D]/30 flex items-center justify-center shrink-0">
+              <i class="bi bi-award-fill text-base" aria-hidden="true"></i>
+            </div>
+            <span class="font-['Oswald'] font-bold uppercase text-xs text-[#8B1E2D]">
+              Níveis de Vulnerabilidade (I, II e III)
+            </span>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed">
+            Após análise socioeconômica na FUMP, os estudantes recebem posicionamento: <strong>Nível I</strong> (isenção total de alimentação e prioridade máxima em bolsas), <strong>Nível II</strong> (subsídio ampliado) e <strong>Nível III</strong> (subsídio parcial). Estudantes em geral pagam o valor padrão discente.
+          </p>
+        </div>
+      </div>
+
+      <div class="cagp-card p-3.5 bg-white flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <div class="w-8 h-8 rounded-[4px] bg-[#0A0A0A]/10 text-[#0A0A0A] border border-[#0A0A0A]/30 flex items-center justify-center shrink-0">
+              <i class="bi bi-wallet2 text-base" aria-hidden="true"></i>
+            </div>
+            <span class="font-['Oswald'] font-bold uppercase text-xs text-[#0A0A0A]">
+              Auxílios Permanência & Transporte
+            </span>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed">
+            Subsídio financeiro mensal para despesas de transporte metropolitano e aquisição de material didático acadêmico, condicionado à classificação socioeconômica.
+          </p>
+        </div>
+      </div>
+
+      <div class="cagp-card p-3.5 bg-white flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <div class="w-8 h-8 rounded-[4px] bg-[#15803D]/10 text-[#15803D] border border-[#15803D]/30 flex items-center justify-center shrink-0">
+              <i class="bi bi-heart-pulse-fill text-base" aria-hidden="true"></i>
+            </div>
+            <span class="font-['Oswald'] font-bold uppercase text-xs text-[#15803D]">
+              Assistência Médica & DAST
+            </span>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed">
+            Consultas clínicas gratuitas na sede da FUMP no campus Pampulha, tratamentos odontológicos, ginecológicos, oftalmológicos e fornecimento de óculos.
+          </p>
+        </div>
+      </div>
+
+      <div class="cagp-card p-3.5 bg-white flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <div class="w-8 h-8 rounded-[4px] bg-[#005A9C]/10 text-[#005A9C] border border-[#005A9C]/30 flex items-center justify-center shrink-0">
+              <i class="bi bi-emoji-smile-fill text-base" aria-hidden="true"></i>
+            </div>
+            <span class="font-['Oswald'] font-bold uppercase text-xs text-[#005A9C]">
+              Saúde Mental & DASE/PRAE
+            </span>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed">
+            Espaço de Escuta e Acolhimento Psicológico com profissionais vinculados à PRAE para suporte à adaptação universitária e ansiedade (<span class="font-mono text-[#8B1E2D]">dase@prae.ufmg.br</span>).
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contatos e Acesso -->
+    <div class="pt-2 flex flex-wrap gap-2">
+      <a href="https://www.fump.ufmg.br" target="_blank" rel="noopener noreferrer" class="cagp-btn-primary text-xs py-1.5 px-3 no-underline inline-flex items-center gap-1.5">
+        <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> Acessar Portal da FUMP &rarr;
+      </a>
+      <a href="https://wa.me/5531975370115" target="_blank" rel="noopener noreferrer" class="cagp-btn-secondary text-xs py-1.5 px-3 no-underline inline-flex items-center gap-1.5">
+        <i class="bi bi-whatsapp text-[#15803D]" aria-hidden="true"></i> WhatsApp FUMP BH (31 97537-0115) &rarr;
+      </a>
+    </div>
+
+    <!-- Infográfico Passo a Passo Assistência FUMP -->
+    <div class="mt-4 pt-4 border-t border-[#DFDBD2] space-y-2">
+      <div class="flex items-center justify-between gap-2 flex-wrap">
+        <div>
+          <div class="flex items-center gap-2">
+            <i class="bi bi-card-checklist text-[#8B1E2D]" aria-hidden="true"></i>
+            <h4 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A]">
+              Passo a Passo da Assistência Estudantil FUMP
+            </h4>
+          </div>
+          <p class="text-xs text-gray-600 mt-0.5">Fluxo oficial de cadastro socioeconômico e submissão documental:</p>
+        </div>
+        <a
+          href={asset('/imagens/passo-a-passo-assistencia-fump.jpg')}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cagp-btn-secondary text-xs py-1 px-2.5 no-underline shrink-0 flex items-center gap-1"
+        >
+          <i class="bi bi-arrows-fullscreen"></i> Ver Completo
+        </a>
+      </div>
+
+      <div class="rounded-[6px] border-2 border-[#0A0A0A] shadow-[2px_2px_0px_#0A0A0A] overflow-hidden bg-white">
+        <img
+          src={asset('/imagens/passo-a-passo-assistencia-fump.jpg')}
+          alt="Infográfico oficial da FUMP com o passo a passo de acesso ao Questionário Socioeconômico na Área do Aluno"
+          class="w-full h-auto max-h-[500px] object-contain"
+          loading="lazy"
+        />
+      </div>
+    </div>
+
+    <!-- Anexos de Documentos PRAE / FUMP -->
+    <div class="mt-4 pt-4 border-t border-[#DFDBD2] space-y-2">
+      <span class="font-['Oswald'] font-bold uppercase text-xs text-[#0A0A0A] block">
+        Documentos e Resoluções Oficiais de Permanência:
+      </span>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+        {docsPrae.map((d) => (
+          <div class="p-2.5 bg-[#F7F5F0] border border-[#DFDBD2] rounded flex flex-col justify-between">
+            <div>
+              <span class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">{d.titulo}</span>
+              <p class="text-[11px] text-gray-600 m-0">{d.desc}</p>
+            </div>
+            <a href={asset(`/documentos/${d.file}`)} download class="cagp-btn-primary text-[11px] py-1 px-2 mt-2 inline-flex items-center justify-center gap-1 no-underline">
+              <i class="bi bi-download" aria-hidden="true"></i> Baixar PDF
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>

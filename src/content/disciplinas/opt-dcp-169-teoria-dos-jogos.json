@@ -1,0 +1,9 @@
+{
+  "codigo": "DCP 169",
+  "nome": "TEORIA DOS JOGOS",
+  "natureza": "optativa",
+  "ch": 60,
+  "ementa": "Efeitos de agregação e consequências não intencionais de ações intencionais. Escolha racional. Ação paramétrica e interação estratégica. Teoria da decisão. Otimização. Teoria dos jogos: representação de jogos em forma estratégica, dominância estrita e dominância fraca, equilíbrio de Nash, estratégias mistas, teorema de Nash, melhor resposta jogos de n jogadores, jogos de soma zero, jogos em forma extensiva, indução retrospectiva, equilíbrio perfeito de subjogos, indução prospectiva, jogos bayesianos, equilíbrio bayesiano, equilíbrio bayesiano perfeito e equilíbrio sequencial, sinalizações, reiterações. Bens públicos, ação coletiva e soluções descentralizadas. Escolha social. Escolha pública. Dinâmica institucional. Formação e falsificação de preferências. Teoria dos jogos evolucionária. Não-linearidades, retroalimentações, sistemas complexos, simulações.",
+  "preRequisitos": [],
+  "modulo": "Optativa"
+}

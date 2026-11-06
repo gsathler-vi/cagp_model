@@ -1,0 +1,10 @@
+{
+  "codigo": "ECN 190",
+  "nome": "Econometria I",
+  "natureza": "obrigatoria",
+  "periodo": 5,
+  "ch": 60,
+  "ementa": "O modelo de regressão linear entre duas variáveis e regressão linear múltipla. Introdução aos modelos de equações simultâneas. Análise de problemas econométricos. Modelos econométricos. Exemplos aplicados a Econometria.",
+  "preRequisitos": [],
+  "modulo": "Complementar"
+}

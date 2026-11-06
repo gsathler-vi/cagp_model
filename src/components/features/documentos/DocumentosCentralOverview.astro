@@ -1,0 +1,132 @@
+---
+// src/components/features/documentos/DocumentosCentralOverview.astro — Visão Geral do Acervo de Documentos
+import { asset } from '../../../lib/paths';
+---
+
+<div class="cagp-documentos-central-overview space-y-6 select-none text-[#0A0A0A]">
+  {/* Apresentação do Acervo */}
+  <div class="p-4 sm:p-5 bg-[#F7F5F0] border border-[#DFDBD2] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
+    <div class="flex items-start gap-3.5">
+      <span class="w-11 h-11 rounded-lg bg-[#8B1E2D] text-white flex items-center justify-center text-xl shrink-0 mt-0.5 shadow-[2px_2px_0px_#0A0A0A]">
+        <i class="bi bi-folder2-open" aria-hidden="true" />
+      </span>
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="text-[11px] font-['Oswald'] uppercase font-bold tracking-wider text-[#8B1E2D]">
+            Acervo Documental & Normativo
+          </span>
+          <span class="text-gray-300">•</span>
+          <span class="text-xs text-gray-500 font-mono">100% Autêntico</span>
+        </div>
+        <h2 class="font-['Oswald'] text-lg sm:text-xl font-bold uppercase text-[#0A0A0A] leading-tight m-0">
+          Cofre de Atos Normativos, Formulários e Processos DRCA
+        </h2>
+        <p class="text-xs text-gray-600 mt-1 max-w-3xl leading-relaxed m-0">
+          Repositório integral de regulamentos, minutas editáveis, requerimentos do Colegiado e resoluções do CEPE/UFMG disponíveis para consulta offline e download.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  {/* Bento Grid das 3 Seções */}
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    {/* Card 1: Atos Normativos */}
+    <div class="cagp-card p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col justify-between h-full shadow-xs hover:border-[#0A0A0A] transition-all">
+      <div>
+        <div class="flex items-center justify-between gap-2 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-9 h-9 rounded-lg bg-[#8B1E2D]/10 text-[#8B1E2D] flex items-center justify-center text-lg border border-[#8B1E2D]/20">
+              <i class="bi bi-file-earmark-ruled-fill" aria-hidden="true" />
+            </span>
+            <div>
+              <h3 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A] leading-tight m-0">
+                Atos Normativos
+              </h3>
+              <span class="text-[11px] text-gray-500 font-mono">PPC, Regulamento & Estatuto</span>
+            </div>
+          </div>
+          <span class="px-2 py-0.5 rounded font-['Oswald'] text-[11px] font-bold bg-[#8B1E2D] text-white">
+            Leis
+          </span>
+        </div>
+        <p class="text-xs text-gray-700 leading-relaxed mb-3">
+          PPC 2020 de 3.000h, Regulamento N-20229, Regimento Interno do CAGP de 14/10/2024 e matrizes dos 3 percursos.
+        </p>
+      </div>
+
+      <a
+        href="#atos"
+        class="min-h-[44px] px-3 py-2 bg-[#0A0A0A] hover:bg-[#8B1E2D] text-white rounded-lg font-['Oswald'] text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all no-underline shadow-[2px_2px_0px_#0A0A0A]"
+      >
+        <span>Consultar Atos</span>
+        <i class="bi bi-arrow-right" aria-hidden="true" />
+      </a>
+    </div>
+
+    {/* Card 2: Formulários Oficiais */}
+    <div class="cagp-card p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col justify-between h-full shadow-xs hover:border-[#0A0A0A] transition-all">
+      <div>
+        <div class="flex items-center justify-between gap-2 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-9 h-9 rounded-lg bg-[#15803D]/10 text-[#15803D] flex items-center justify-center text-lg border border-[#15803D]/20">
+              <i class="bi bi-journal-check" aria-hidden="true" />
+            </span>
+            <div>
+              <h3 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A] leading-tight m-0">
+                Formulários & Modelos
+              </h3>
+              <span class="text-[11px] text-gray-500 font-mono">AAC, Estágio & TCC</span>
+            </div>
+          </div>
+          <span class="px-2 py-0.5 rounded font-['Oswald'] text-[11px] font-bold bg-[#15803D] text-white">
+            Modelos
+          </span>
+        </div>
+        <p class="text-xs text-gray-700 leading-relaxed mb-3">
+          Requerimento oficial de AAC N-20229, Termos de Compromisso de Estágio, Termo de Aceite de TCC e dispensa Art. 41.
+        </p>
+      </div>
+
+      <a
+        href="#formularios"
+        class="min-h-[44px] px-3 py-2 bg-[#0A0A0A] hover:bg-[#15803D] text-white rounded-lg font-['Oswald'] text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all no-underline shadow-[2px_2px_0px_#0A0A0A]"
+      >
+        <span>Ver Formulários</span>
+        <i class="bi bi-arrow-right" aria-hidden="true" />
+      </a>
+    </div>
+
+    {/* Card 3: Processos DRCA */}
+    <div class="cagp-card p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col justify-between h-full shadow-xs hover:border-[#0A0A0A] transition-all">
+      <div>
+        <div class="flex items-center justify-between gap-2 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-9 h-9 rounded-lg bg-[#0A0A0A]/10 text-[#0A0A0A] flex items-center justify-center text-lg border border-[#0A0A0A]/20">
+              <i class="bi bi-archive-fill" aria-hidden="true" />
+            </span>
+            <div>
+              <h3 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A] leading-tight m-0">
+                DRCA & Prazos
+              </h3>
+              <span class="text-[11px] text-gray-500 font-mono">Trancamento & Res. 06/2019</span>
+            </div>
+          </div>
+          <span class="px-2 py-0.5 rounded font-['Oswald'] text-[11px] font-bold bg-[#0A0A0A] text-white">
+            UFMG
+          </span>
+        </div>
+        <p class="text-xs text-gray-700 leading-relaxed mb-3">
+          Requerimentos de trancamento parcial e total, regime especial de graduação (RAEP) e aproveitamento de estudos.
+        </p>
+      </div>
+
+      <a
+        href="#drca"
+        class="min-h-[44px] px-3 py-2 bg-[#0A0A0A] hover:bg-[#8B1E2D] text-white rounded-lg font-['Oswald'] text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all no-underline shadow-[2px_2px_0px_#0A0A0A]"
+      >
+        <span>Processos DRCA</span>
+        <i class="bi bi-arrow-right" aria-hidden="true" />
+      </a>
+    </div>
+  </div>
+</div>

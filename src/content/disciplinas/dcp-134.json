@@ -1,0 +1,10 @@
+{
+  "codigo": "DCP 134",
+  "nome": "Avaliação De Políticas Públicas B",
+  "natureza": "obrigatoria",
+  "periodo": 6,
+  "ch": 60,
+  "ementa": "Avaliação de políticas públicas: principais conceitos, especificidades da avaliação, tipos de avaliação, metodologia da avaliação. Linguagem dos projetos. Modelos para a avaliação de impactos. Conceitos de indicadores sociais. Aplicação de técnicas econométricas e bancos de dados na avaliação de políticas públicas. Técnicas de regressão: modelo de regressão simples análise de regressão múltipla (estimação e inferência) análise de regressão múltipla com informações qualitativas heteroscedasticidade e problemas adicionais de especificação e de dados.",
+  "preRequisitos": [],
+  "modulo": "Complementar"
+}

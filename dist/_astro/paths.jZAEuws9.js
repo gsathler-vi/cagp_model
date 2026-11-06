@@ -1,0 +1,1 @@
+function e(e){return`${`/`.replace(/\/$/,``)}${e.startsWith(`/`)?e:`/${e}`}`}function t(e){let t=`/`.replace(/\/$/,``),n=e.startsWith(`/`)?e:`/${e}`;return n===`/`?t?`${t}/`:`/`:`${t}${n}`}export{t as n,e as t};

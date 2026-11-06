@@ -1,0 +1,106 @@
+---
+// GestaoContas.astro - Sub-view 3: Transparência ativa e prestação de contas
+import { route, asset } from '../../lib/paths';
+---
+
+<div class="space-y-4 text-[#0A0A0A]">
+  <!-- Mecanismos de Transparência Ativa -->
+  <div class="cagp-tool-box p-4 space-y-3">
+    <div class="border-b border-[#DFDBD2] pb-2.5 flex items-center justify-between flex-wrap gap-2">
+      <div>
+        <div class="flex items-center gap-2">
+          <i class="bi bi-cash-coin text-[#8B1E2D] text-lg" aria-hidden="true"></i>
+          <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A]">
+            Transparência Ativa & Prestação de Contas
+          </h3>
+        </div>
+        <p class="text-xs text-gray-600 mt-0.5">
+          Instrumentos de fiscalização contábil previstos no Regimento Interno (Arts. 8º, 15, 29 e 30):
+        </p>
+      </div>
+      <span class="cagp-badge cagp-badge-green font-mono">
+        Publicidade Irrevogável
+      </span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <div class="cagp-card p-3.5 bg-white flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 text-[#8B1E2D] mb-2">
+            <div class="w-8 h-8 rounded-[4px] bg-[#8B1E2D]/10 text-[#8B1E2D] border border-[#8B1E2D]/20 flex items-center justify-center shrink-0 shadow-[1px_1px_0_#0A0A0A]">
+              <i class="bi bi-file-earmark-spreadsheet-fill text-base" aria-hidden="true"></i>
+            </div>
+            <h4 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A]">RREO Mensal</h4>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed mb-2">
+            Elaboração e publicação periódica do <strong>Relatório Resumido de Execução Orçamentária</strong> pela DIFI, discriminando todas as receitas e despesas executadas.
+          </p>
+        </div>
+        <span class="cagp-badge cagp-badge-red text-xs font-mono w-fit">
+          Art. 30, Inciso V
+        </span>
+      </div>
+
+      <div class="cagp-card p-3.5 bg-white flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 text-[#0A0A0A] mb-2">
+            <div class="w-8 h-8 rounded-[4px] bg-[#0A0A0A]/10 text-[#0A0A0A] border border-[#0A0A0A]/20 flex items-center justify-center shrink-0 shadow-[1px_1px_0_#0A0A0A]">
+              <i class="bi bi-journal-text text-base" aria-hidden="true"></i>
+            </div>
+            <h4 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A]">Livro de Atas</h4>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed mb-2">
+            Registro sistemático de todas as deliberações das reuniões de diretoria e Assembleias Gerais, arquivadas sob tutela da DIJUR e acessíveis no Drive institucional do CAGP.
+          </p>
+        </div>
+        <span class="cagp-badge cagp-badge-dark text-xs font-mono w-fit">
+          Art. 29, Inciso VII
+        </span>
+      </div>
+
+      <div class="cagp-card p-3.5 bg-white flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 text-[#15803D] mb-2">
+            <div class="w-8 h-8 rounded-[4px] bg-[#15803D]/10 text-[#15803D] border border-[#15803D]/20 flex items-center justify-center shrink-0 shadow-[1px_1px_0_#0A0A0A]">
+              <i class="bi bi-clock-history text-base" aria-hidden="true"></i>
+            </div>
+            <h4 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A]">Acesso em 3 Dias</h4>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed mb-2">
+            Qualquer discente regularmente matriculado tem o direito estatutário de solicitar extratos bancários, notas fiscais e relatórios contábeis, com envio em <strong>até 3 dias úteis</strong>.
+          </p>
+        </div>
+        <span class="cagp-badge cagp-badge-green text-xs font-mono w-fit">
+          Art. 15, Inciso V
+        </span>
+      </div>
+    </div>
+
+    <!-- Canal de Acesso à Informação Discente -->
+    <div class="cagp-card p-3.5 bg-[#F7F5F0] space-y-2 mt-2">
+      <div class="flex items-center justify-between flex-wrap gap-2">
+        <div class="flex items-center gap-2">
+          <i class="bi bi-envelope-open-fill text-[#8B1E2D]" aria-hidden="true"></i>
+          <h4 class="font-['Oswald'] text-xs font-bold uppercase text-[#0A0A0A]">
+            Solicitação de Acesso a Documentos ou Balancetes
+          </h4>
+        </div>
+        <span class="cagp-badge text-xs font-mono">Lei de Acesso à Informação Discente</span>
+      </div>
+      <p class="text-xs text-gray-600 leading-relaxed">
+        Para requerer vistas de extratos contábeis, atas ou pareceres regimentais, basta enviar um e-mail com nome e número de matrícula para nossa ouvidoria financeira e jurídica. O prazo de resposta regimental é de até 72 horas úteis.
+      </p>
+      <div class="flex flex-wrap gap-2 pt-1">
+        <a href="mailto:cagp@fafich.ufmg.br?subject=Requerimento%20de%20Acesso%20a%20Contas%20-%20Art.%2015" class="cagp-btn-primary inline-flex items-center gap-1.5 text-xs py-1.5 px-3 no-underline">
+          <i class="bi bi-envelope" aria-hidden="true"></i> Solicitar Acesso às Contas (cagp@fafich.ufmg.br)
+        </a>
+        <a href={route('/documentos/regimento-interno-cagp-ufmg')} class="cagp-btn-secondary inline-flex items-center gap-1.5 text-xs py-1.5 px-3 no-underline">
+          <i class="bi bi-eye" aria-hidden="true"></i> Ler Regimento Transcrito
+        </a>
+        <a href={asset('/documentos/regimento-interno-cagp-ufmg.pdf')} download class="cagp-btn-secondary inline-flex items-center gap-1.5 text-xs py-1.5 px-3 no-underline">
+          <i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> Regimento 2024 (PDF)
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

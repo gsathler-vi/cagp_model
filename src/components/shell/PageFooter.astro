@@ -1,0 +1,46 @@
+---
+// PageFooter.astro - Rodapé Institucional com Governança e Transparência
+import { asset, route } from '../../lib/paths';
+---
+
+<footer class="w-full bg-white border-t border-[#DFDBD2] mt-12 py-8 px-4 sm:px-6 select-none text-xs text-gray-600 pb-24 sm:pb-8">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+    <div class="space-y-1.5 max-w-lg">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-[4px] bg-white flex items-center justify-center p-0.5 border border-[#0A0A0A] shadow-[1.5px_1.5px_0px_#0A0A0A] shrink-0">
+          <img src={asset('/logos/cagp/10_simbolo_transparente_positivo.svg')} alt="Emblema Candangos CAGP" class="w-full h-full object-contain" />
+        </div>
+        <span class="font-['Oswald'] font-bold text-sm tracking-wide uppercase text-[#0A0A0A]">
+          Centro Acadêmico de Gestão Pública (CAGP)
+        </span>
+      </div>
+      <p class="text-[11px] text-gray-500 leading-relaxed m-0">
+        FAFICH • Universidade Federal de Minas Gerais (UFMG)<br />
+        Av. Pres. Antônio Carlos, 6627 — Pampulha, Belo Horizonte - MG • CEP 31270-901<br />
+        Secretaria Sala F-2039 • Atendimento: Seg-Sex 08h às 20h • <span class="font-mono text-[#8B1E2D]">coordgestaopublica@gmail.com</span>
+      </p>
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 text-[11px]">
+      <div class="flex flex-wrap gap-3 font-semibold text-[#0A0A0A] items-center">
+        <a href={route('/mapa-do-site')} class="hover:text-[#8B1E2D] hover:underline">Mapa do Site</a>
+        <span>•</span>
+        <a href={route('/faq')} class="hover:text-[#8B1E2D] hover:underline">Dúvidas Frequentes</a>
+        <span>•</span>
+        <button
+          type="button"
+          onclick="window.dispatchEvent(new CustomEvent('cagp:open-settings'))"
+          class="hover:text-[#8B1E2D] hover:underline cursor-pointer bg-transparent border-0 p-0 text-[11px] font-semibold text-[#0A0A0A]"
+          aria-label="Abrir painel de configurações"
+        >
+          Configurações
+        </button>
+        <span>•</span>
+        <a href={route('/documentos')} class="hover:text-[#8B1E2D] hover:underline">Regimentos & PDFs</a>
+      </div>
+      <div class="text-[10px] text-gray-400 font-mono">
+        Astro 7 • PWA Offline • GPLv3
+      </div>
+    </div>
+  </div>
+</footer>

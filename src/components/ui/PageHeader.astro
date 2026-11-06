@@ -1,0 +1,97 @@
+---
+// PageHeader.astro - Cabeçalho Canônico Padronizado com Barra de Pílulas Apple HIG, Badges e 1ª Dobra
+import AxisNavBar from '../shell/AxisNavBar.astro';
+import type { AxisId } from '../../lib/navigationRegistry';
+
+interface Badge {
+  label: string;
+  variant?: 'red' | 'dark' | 'blue' | 'green' | 'gold';
+  icon?: string;
+}
+
+interface Breadcrumb {
+  label: string;
+  href?: string;
+}
+
+interface AxisPill {
+  axisName: string;
+  axisIcon: string;
+  parentLabel: string;
+  parentHref: string;
+  currentLabel: string;
+}
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  eyebrow?: string;
+  badges?: Badge[];
+  breadcrumbs?: Breadcrumb[];
+  axisPill?: AxisPill;
+  axisId?: AxisId;
+  activeId?: string;
+  showAxisNav?: boolean;
+}
+
+const {
+  title,
+  subtitle,
+  eyebrow,
+  badges = [],
+  breadcrumbs = [],
+  axisPill,
+  axisId,
+  activeId,
+  showAxisNav = true,
+} = Astro.props;
+
+const badgeClasses: Record<string, string> = {
+  red: 'cagp-badge-red',
+  dark: 'cagp-badge-dark',
+  blue: 'cagp-badge-blue',
+  green: 'cagp-badge-green',
+  gold: 'cagp-badge-gold',
+};
+
+// Se estiver na Home ('/'), não precisa de barra de eixo superior por padrão
+const isHome = Astro.url.pathname === '/' || Astro.url.pathname === '/index.html';
+const shouldRenderAxisNav = showAxisNav && !isHome;
+---
+
+<header class="mb-2 sm:mb-4 select-none">
+  <!-- Barra de Pílulas do Eixo Apple HIG (Substitui Breadcrumbs & AxisPill) -->
+  {shouldRenderAxisNav && (
+    <AxisNavBar axisId={axisId} activeId={activeId} />
+  )}
+
+  <!-- Badges & Eyebrow Row -->
+  <div class="flex flex-wrap items-center justify-between gap-1.5 mb-1">
+    {eyebrow ? (
+      <span class="text-xs font-['Oswald'] uppercase tracking-wider text-[#8B1E2D] font-bold">
+        {eyebrow}
+      </span>
+    ) : <div />}
+
+    {badges.length > 0 && (
+      <div class="flex flex-wrap items-center gap-1">
+        {badges.map((b, idx) => (
+          <span class={`cagp-badge ${badgeClasses[b.variant || 'dark']} ${idx >= 2 ? 'hidden sm:inline-flex' : 'inline-flex'}`}>
+            {b.icon && <i class={`bi ${b.icon}`} aria-hidden="true" />}
+            <span>{b.label}</span>
+          </span>
+        ))}
+      </div>
+    )}
+  </div>
+
+  <!-- Page Title & Subtitle -->
+  <h1 class="font-['Oswald'] text-xl sm:text-3xl font-black uppercase text-[#0A0A0A] leading-tight">
+    {title}
+  </h1>
+  {subtitle && (
+    <p class="text-xs sm:text-sm text-gray-600 mt-0.5 sm:mt-1 max-w-4xl leading-relaxed line-clamp-2 sm:line-clamp-none">
+      {subtitle}
+    </p>
+  )}
+</header>

@@ -1,0 +1,34 @@
+---
+// optativas.astro - Redirecionamento canônico para a Central Curricular em /percurso#optativas
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { route } from '../lib/paths';
+
+const targetUrl = route('/percurso#optativas');
+---
+
+<BaseLayout
+  title="Redirecionando para Central Curricular..."
+  description="O Catálogo de 68 Optativas e Formação Livre agora faz parte da Central Curricular unificada em /percurso."
+>
+  <div class="py-16 text-center space-y-4 max-w-lg mx-auto">
+    <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#8B1E2D]/10 text-[#8B1E2D] border-2 border-[#8B1E2D] text-2xl">
+      <i class="bi bi-collection-fill" aria-hidden="true"></i>
+    </div>
+    <h1 class="font-['Oswald'] text-2xl uppercase font-bold text-[#0A0A0A] m-0">
+      Catálogo Integrado à Central Curricular
+    </h1>
+    <p class="text-sm text-gray-600 leading-relaxed">
+      As 68 disciplinas optativas, regras de 120h de Formação Livre e a Minha Grade agora estão unificadas na <strong>Central Curricular</strong> em <code>/percurso</code>.
+    </p>
+    <div class="pt-2">
+      <a href={targetUrl} class="cagp-btn-primary inline-flex items-center gap-2 text-sm px-4 py-2 min-h-[44px]">
+        <span>Acessar Central Curricular</span>
+        <i class="bi bi-arrow-right" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+
+  <script is:inline define:vars={{ targetUrl }}>
+    window.location.replace(targetUrl);
+  </script>
+</BaseLayout>

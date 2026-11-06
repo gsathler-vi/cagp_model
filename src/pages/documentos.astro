@@ -1,0 +1,77 @@
+---
+// documentos.astro — Central de Acervo de Documentos Oficiais (Eixo 4)
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/ui/PageHeader.astro';
+import SegmentedControl from '../components/ui/SegmentedControl.astro';
+import JourneyNav from '../components/ui/JourneyNav.astro';
+import DocumentosCentralOverview from '../components/features/documentos/DocumentosCentralOverview.astro';
+import DocumentosAtosRegulamentares from '../components/features/documentos/atos/DocumentosAtosRegulamentares.astro';
+import DocumentosFormulariosOficiais from '../components/features/documentos/formularios/DocumentosFormulariosOficiais.astro';
+import DocumentosDrcaPrazos from '../components/features/documentos/drca/DocumentosDrcaPrazos.astro';
+
+const tabs = [
+  { id: 'v0', shortLabel: 'Geral', fullLabel: 'Visão Geral do Acervo', hash: '#visao-geral' },
+  { id: 'v1', shortLabel: 'Atos', fullLabel: '1. Atos Normativos', hash: '#atos' },
+  { id: 'v2', shortLabel: 'Formulários', fullLabel: '2. Formulários & Requerimentos', hash: '#formularios' },
+  { id: 'v3', shortLabel: 'DRCA', fullLabel: '3. Processos DRCA & Prazos', hash: '#drca' },
+];
+
+const badges = [
+  { label: '80 Arquivos (73 PDFs • 7 DOCXs)', variant: 'red' as const, icon: 'bi-folder2-open' },
+  { label: 'Formulários Colegiado N-20229', variant: 'dark' as const, icon: 'bi-journal-check' },
+  { label: 'Processos DRCA / UFMG', variant: 'blue' as const, icon: 'bi-archive-fill' },
+  { label: 'Offline & Custo Zero', variant: 'gold' as const, icon: 'bi-cloud-check-fill' },
+];
+---
+
+<BaseLayout
+  title="Acervo de Documentos Oficiais"
+  description="Atos normativos, requerimentos acadêmicos, termos de estágio e processos do DRCA do curso de Gestão Pública UFMG."
+>
+  <PageHeader
+    eyebrow="Eixo 4 · Repositório & Documentos Oficiais"
+    title="Acervo de Documentos & Modelos"
+    subtitle="Cofre offline de atos normativos, matrizes curriculares e formulários oficiais da FAFICH/UFMG em PDF com integridade factual preservada."
+    badges={badges}
+  />
+
+  <SegmentedControl tabs={tabs} defaultTab="v0" />
+
+  <!-- Sub-view 0: Visão Geral do Eixo 4 (Acervo) -->
+  <section id="ws-panel-v0" class="cagp-workspace-view" data-ws-panel="v0">
+    <div id="visao-geral" class="cagp-anchor-target scroll-mt-24"></div>
+    <DocumentosCentralOverview />
+  </section>
+
+  <!-- Sub-view 1: Atos Normativos -->
+  <section id="ws-panel-v1" class="cagp-workspace-view" data-ws-panel="v1" hidden>
+    <div id="atos" class="cagp-anchor-target scroll-mt-24"></div>
+    <DocumentosAtosRegulamentares />
+  </section>
+
+  <!-- Sub-view 2: Formulários Oficiais -->
+  <section id="ws-panel-v2" class="cagp-workspace-view" data-ws-panel="v2" hidden>
+    <div id="formularios" class="cagp-anchor-target scroll-mt-24"></div>
+    <DocumentosFormulariosOficiais />
+  </section>
+
+  <!-- Sub-view 3: Processos DRCA & Prazos -->
+  <section id="ws-panel-v3" class="cagp-workspace-view" data-ws-panel="v3" hidden>
+    <div id="drca" class="cagp-anchor-target scroll-mt-24"></div>
+    <DocumentosDrcaPrazos />
+  </section>
+
+  <!-- Journey Navigation Trail -->
+  <JourneyNav
+    prev={{
+      title: 'Trabalho de Conclusão de Curso (180h)',
+      href: '/tcc',
+      desc: 'Modalidades regimentais, termo de aceite e normas de defesa.',
+    }}
+    next={{
+      title: 'O Centro Acadêmico (CAGP)',
+      href: '/sobre',
+      desc: 'História dos Candangos, regimento interno e representação discente.',
+    }}
+  />
+</BaseLayout>

@@ -1,0 +1,77 @@
+---
+// CursoEgressos.astro - Sub-view 2: Inserção no Mercado de Trabalho e Egressos
+import { asset } from '../../lib/paths';
+---
+
+<div class="space-y-4 text-[#0A0A0A]">
+  <!-- Estatísticas de Egressos Bento -->
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+    <div class="cagp-card p-3.5 bg-white flex flex-col justify-between">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-mono font-bold text-[#8B1E2D] uppercase">Inserção Pública</span>
+        <i class="bi bi-building-check text-[#8B1E2D] text-lg" aria-hidden="true"></i>
+      </div>
+      <span class="font-['Oswald'] text-2xl font-bold text-[#8B1E2D] my-1">65%</span>
+      <span class="text-xs text-gray-500">Atuando diretamente no setor público</span>
+    </div>
+    <div class="cagp-card p-3.5 bg-white flex flex-col justify-between">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-mono font-bold text-[#15803D] uppercase">Faixa Salarial</span>
+        <i class="bi bi-cash-stack text-[#15803D] text-lg" aria-hidden="true"></i>
+      </div>
+      <span class="font-['Oswald'] text-2xl font-bold text-[#15803D] my-1">&gt; R$ 5.000</span>
+      <span class="text-xs text-gray-500">55% dos egressos formados</span>
+    </div>
+    <div class="cagp-card p-3.5 bg-white flex flex-col justify-between">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-mono font-bold text-[#005A9C] uppercase">Alta Renda</span>
+        <i class="bi bi-graph-up-arrow text-[#005A9C] text-lg" aria-hidden="true"></i>
+      </div>
+      <span class="font-['Oswald'] text-2xl font-bold text-[#005A9C] my-1">&gt; R$ 10.000</span>
+      <span class="text-xs text-gray-500">20% em carreiras públicas de estado</span>
+    </div>
+  </div>
+
+  <!-- Carreiras Típicas -->
+  <div class="cagp-tool-box p-4 space-y-3">
+    <div class="flex items-center gap-2 border-b border-[#DFDBD2] pb-2">
+      <i class="bi bi-briefcase-fill text-[#8B1E2D] text-lg" aria-hidden="true"></i>
+      <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A]">
+        Principais Carreiras Governamentais
+      </h3>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+      <div class="cagp-card p-3.5 bg-white flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 mb-1.5">
+            <i class="bi bi-shield-check text-[#8B1E2D] text-base" aria-hidden="true"></i>
+            <span class="font-['Oswald'] font-bold uppercase text-xs text-[#8B1E2D]">
+              Carreiras de Estado (EPPGG / APO)
+            </span>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed">
+            Especialistas em Políticas Públicas e Gestão Governamental em Minas Gerais (SEPLAG) e no Governo Federal (MGI), além de Analistas de Planejamento e Orçamento (MPO).
+          </p>
+        </div>
+      </div>
+      <div class="cagp-card p-3.5 bg-white flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 mb-1.5">
+            <i class="bi bi-bank text-[#0A0A0A] text-base" aria-hidden="true"></i>
+            <span class="font-['Oswald'] font-bold uppercase text-xs text-[#0A0A0A]">
+              Poder Legislativo & Consultoria
+            </span>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed">
+            Assessores e analistas na Assembleia Legislativa de Minas Gerais (ALMG) e Câmara Municipal de Belo Horizonte (CMBH), além de consultores na ATLAS Jr.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="pt-2">
+      <a href={asset('/documentos/depoimentos-de-egressos.pdf')} download class="cagp-btn-primary inline-flex items-center gap-1.5 text-xs py-1.5 px-3 no-underline">
+        <i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> Baixar Relatório Oficial de Egressos (PDF) &rarr;
+      </a>
+    </div>
+  </div>
+</div>

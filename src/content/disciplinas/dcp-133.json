@@ -1,0 +1,10 @@
+{
+  "codigo": "DCP 133",
+  "nome": "Formulação E Implementação De Programas E Projetos",
+  "natureza": "obrigatoria",
+  "periodo": 5,
+  "ch": 60,
+  "ementa": "Conceituação: políticas, programas e projetos. Conceito, objetivos e tipos de projeto, elementos básicos de um projeto. Ciclo de vida e fases da elaboração de um programa / projeto: diagnóstico, estudo de viabilidade, atores, participação social, elaboração, monitoramento e prestação de contas. Metodologias para concepção, desenho, execução e avaliação de programas e projetos. Cenário da elaboração e implementação de programas e projetos: incertezas tensões, ambiguidades e conflitos. Tipos de programas e projetos e consequências para a gestão. Estratégias de implementação e fatores que afetam a implementação.",
+  "preRequisitos": [],
+  "modulo": "Complementar"
+}

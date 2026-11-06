@@ -1,0 +1,102 @@
+---
+// AcgTutorialPrint.astro - Visual anotado do Requerimento oficial de AAC (N-20229)
+import { asset } from '../../lib/paths';
+---
+
+<div class="cagp-tool-box p-4 space-y-3 text-[#0A0A0A]">
+  <div class="border-b border-[#DFDBD2] pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+    <div>
+      <div class="flex items-center gap-2">
+        <i class="bi bi-file-earmark-check-fill text-[#8B1E2D] text-lg" aria-hidden="true"></i>
+        <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A]">
+          Tutorial Visual: Requerimento de AAC Oficial (N-20229)
+        </h3>
+      </div>
+      <p class="text-xs text-gray-600 mt-0.5">
+        Preencha um formulário para cada certificado a ser integralizado em optativas (Art. 15 do Regulamento):
+      </p>
+    </div>
+    <div class="flex items-center gap-2">
+      <span class="cagp-badge cagp-badge-red font-mono">
+        Passo a Passo
+      </span>
+      <a
+        href={asset('/documentos/requerimento-atividade-integralizadora-credito-v20229.pdf')}
+        download
+        class="cagp-btn-primary text-xs py-1.5 px-3 whitespace-nowrap no-underline inline-flex items-center gap-1.5 shrink-0"
+      >
+        <i class="bi bi-download" aria-hidden="true"></i> Baixar Requerimento AAC (PDF)
+      </a>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-start pt-1">
+    <!-- Visual Anotado com Print e Pins Recalibrados -->
+    <div class="cagp-doc-preview-wrapper" role="region" aria-label="Visualização anotada do Requerimento de AAC">
+      <img
+        src={asset('/imagens/tutoriais/print-requerimento-aac-1.png')}
+        alt="Formulário oficial de Requerimento de Atividade Integralizadora de Crédito AAC do Colegiado de Gestão Pública com marcações numeradas"
+        class="cagp-doc-preview-img"
+        loading="lazy"
+      />
+
+      <!-- Box 1 & Pin 1: Identificação -->
+      <div class="cagp-doc-box" style="top: 15.7%; left: 13.5%; width: 76.8%; height: 6%;" aria-hidden="true"></div>
+      <div class="cagp-doc-pin" style="top: 15.7%; left: 13.5%;" aria-label="Ponto 1: Identificação do Requerente">1</div>
+
+      <!-- Box 2 & Pin 2: Dados da Atividade -->
+      <div class="cagp-doc-box" style="top: 23.9%; left: 13.5%; width: 76.8%; height: 22.5%;" aria-hidden="true"></div>
+      <div class="cagp-doc-pin" style="top: 23.9%; left: 13.5%;" aria-label="Ponto 2: Dados da Atividade e Créditos Requeridos">2</div>
+
+      <!-- Box 3 & Pin 3: Documentos e Assinatura -->
+      <div class="cagp-doc-box" style="top: 49%; left: 13.5%; width: 76.8%; height: 21.2%;" aria-hidden="true"></div>
+      <div class="cagp-doc-pin" style="top: 49%; left: 13.5%;" aria-label="Ponto 3: Comprovação e Assinatura do Requerente">3</div>
+    </div>
+
+    <!-- Passos Explicativos e Fluxo de Entrega -->
+    <div class="space-y-2.5 text-xs">
+      <div class="cagp-card p-3 bg-white space-y-1">
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-[4px] bg-[#8B1E2D] text-white flex items-center justify-center font-['Oswald'] font-bold text-xs shrink-0 shadow-[1px_1px_0_#0A0A0A]">1</span>
+          <i class="bi bi-person-badge text-[#8B1E2D] text-base" aria-hidden="true"></i>
+          <h4 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A]">1. Identificação do(a) Estudante</h4>
+        </div>
+        <p class="text-xs text-gray-600 leading-relaxed pl-8">
+          Preencha seu nome completo, <strong>Nº de Matrícula</strong>, telefone e e-mail institucional <code>@ufmg.br</code>. Certifique-se de que sua versão curricular indicada é a <strong>N-20229</strong>.
+        </p>
+      </div>
+
+      <div class="cagp-card p-3 bg-white space-y-1">
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-[4px] bg-[#8B1E2D] text-white flex items-center justify-center font-['Oswald'] font-bold text-xs shrink-0 shadow-[1px_1px_0_#0A0A0A]">2</span>
+          <i class="bi bi-journal-check text-[#8B1E2D] text-base" aria-hidden="true"></i>
+          <h4 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A]">2. Classificação da Atividade & Créditos</h4>
+        </div>
+        <p class="text-xs text-gray-600 leading-relaxed pl-8">
+          Indique o <strong>Tipo (Modalidades I a IX)</strong>, período de realização (início e término), entidade promotora e créditos solicitados (<em>1 crédito = 15h comprovadas</em>), respeitando o teto de cada modalidade.
+        </p>
+      </div>
+
+      <div class="cagp-card p-3 bg-white space-y-1">
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-[4px] bg-[#8B1E2D] text-white flex items-center justify-center font-['Oswald'] font-bold text-xs shrink-0 shadow-[1px_1px_0_#0A0A0A]">3</span>
+          <i class="bi bi-paperclip text-[#8B1E2D] text-base" aria-hidden="true"></i>
+          <h4 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A]">3. Anexos, Assinatura e Prazos</h4>
+        </div>
+        <p class="text-xs text-gray-600 leading-relaxed pl-8">
+          Anexe o certificado comprobatório com autenticidade verificável. Lembre-se: eventos como ouvinte (Mod. III) e anais (Mod. VII) têm <strong>prazo decadencial fatal de 120 dias corridos</strong> da emissão.
+        </p>
+      </div>
+
+      <div class="cagp-card p-3 bg-[#DCFCE7] border-2 border-[#15803D] space-y-1">
+        <div class="flex items-center gap-2">
+          <i class="bi bi-envelope-check-fill text-[#15803D] shrink-0 text-base"></i>
+          <h4 class="font-['Oswald'] font-bold text-xs uppercase text-[#15803D]">Entrega: Secretaria ou E-mail</h4>
+        </div>
+        <p class="text-xs text-gray-700 leading-relaxed pl-6">
+          Entregue pessoalmente na Secretaria Sala F-2039 com Norma Guedes ou envie via e-mail oficial: <em>coordgestaopublica@gmail.com</em> para validação e lançamento definitivo no SIGA.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

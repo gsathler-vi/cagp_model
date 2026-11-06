@@ -1,0 +1,105 @@
+---
+// src/components/features/tcc/termo/TccTermoAceiteCore.astro — Termo de Aceite e Regras de Orientação
+import { asset } from '../../../../lib/paths';
+
+const docs = [
+  {
+    titulo: 'Termo de Aceite de Orientação (PDF)',
+    desc: 'Documento obrigatório para matrícula em DCP 089',
+    link: '/documentos/termo-aceite-orientador-tcc.pdf',
+    ext: 'PDF',
+  },
+  {
+    titulo: 'Regulamento do Curso (Art. 18 a 22 • TCC)',
+    desc: 'Regras de banca, prazos e modalidades no Regulamento N-20229',
+    link: '/documentos/regulamento-gestao-publica-ufmg.pdf',
+    ext: 'PDF',
+  },
+  {
+    titulo: 'Resolução Congregação nº 02/2018 (Prêmio TCC)',
+    desc: 'Regulamento de premiação de melhores trabalhos da FAFICH',
+    link: '/documentos/resolucao-congrega-02-2018-concurso-tcc.pdf',
+    ext: 'PDF',
+  },
+];
+---
+
+<div class="cagp-tcc-termo-aceite space-y-6 select-none text-[#0A0A0A]">
+  {/* Card Destaque: Termo de Aceite */}
+  <div class="p-4 sm:p-5 bg-white border-2 border-[#8B1E2D] rounded-xl shadow-[2px_2px_0px_#0A0A0A] space-y-4">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#DFDBD2] pb-3">
+      <div>
+        <span class="cagp-badge cagp-badge-red font-mono text-[10px] uppercase">
+          Requisito Obrigatório para Matrícula em DCP 089
+        </span>
+        <div class="flex items-center gap-2 mt-1">
+          <i class="bi bi-file-earmark-check-fill text-[#8B1E2D] text-lg" aria-hidden="true" />
+          <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A] m-0">
+            Termo de Aceite de Orientador(a) de TCC
+          </h3>
+        </div>
+      </div>
+
+      <a
+        href={asset('/documentos/termo-aceite-orientador-tcc.pdf')}
+        download
+        class="min-h-[44px] px-4 py-2 bg-[#8B1E2D] hover:bg-[#0A0A0A] text-white rounded-lg text-xs font-['Oswald'] uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all no-underline shrink-0 shadow-[2px_2px_0px_#0A0A0A]"
+      >
+        <i class="bi bi-download" aria-hidden="true" />
+        <span>Baixar Termo Oficial (PDF)</span>
+      </a>
+    </div>
+
+    <p class="text-xs text-gray-700 leading-relaxed m-0">
+      Nenhum discente pode se matricular na disciplina de Projeto de TCC (DCP 089) no 9º período sem antes colher a assinatura de um(a) professor(a) credenciado(a). Entregue o formulário assinado na Secretaria do Colegiado (Sala F-2039 com Norma Guedes) antes do início do semestre letivo.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+      <div class="p-3 bg-[#F7F5F0] border border-[#DFDBD2] rounded-lg">
+        <strong class="text-xs text-[#0A0A0A] block mb-1">Quem pode orientar?</strong>
+        <p class="text-[11px] text-gray-600 m-0">Docentes do DCP/UFMG ou de outros departamentos da UFMG homologados pelo Colegiado.</p>
+      </div>
+      <div class="p-3 bg-[#F7F5F0] border border-[#DFDBD2] rounded-lg">
+        <strong class="text-xs text-[#0A0A0A] block mb-1">Qual o prazo de entrega?</strong>
+        <p class="text-[11px] text-gray-600 m-0">Durante a fase de acerto de matrícula no SIGA anterior ao início das aulas do 9º período.</p>
+      </div>
+      <div class="p-3 bg-[#F7F5F0] border border-[#DFDBD2] rounded-lg">
+        <strong class="text-xs text-[#0A0A0A] block mb-1">Limite de Vagas:</strong>
+        <p class="text-[11px] text-gray-600 m-0">Cada docente pode orientar no máximo 4 estudantes simultaneamente por semestre letivo.</p>
+      </div>
+    </div>
+  </div>
+
+  {/* Acervo de Minutas e Manuais */}
+  <div class="p-4 bg-[#F7F5F0] border border-[#DFDBD2] rounded-xl space-y-3 shadow-xs">
+    <div class="flex items-center justify-between border-b border-[#DFDBD2] pb-2">
+      <h4 class="font-['Oswald'] text-sm font-bold uppercase text-[#0A0A0A] m-0 flex items-center gap-2">
+        <i class="bi bi-folder-symlink text-[#8B1E2D]" aria-hidden="true" />
+        <span>Modelos e Manuais de TCC para Download</span>
+      </h4>
+      <span class="text-xs text-gray-500 font-mono">Downloads Oficiais</span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      {docs.map((d) => (
+        <a
+          href={asset(d.link)}
+          download
+          class="p-3 bg-white hover:bg-[#FBF8F3] border border-[#DFDBD2] hover:border-[#0A0A0A] rounded-lg flex items-center justify-between gap-3 transition-all no-underline text-[#0A0A0A] shadow-xs"
+        >
+          <div class="min-w-0">
+            <div class="font-['Oswald'] text-xs font-bold uppercase text-[#0A0A0A] truncate">
+              {d.titulo}
+            </div>
+            <div class="text-[11px] text-gray-500 truncate mt-0.5">
+              {d.desc}
+            </div>
+          </div>
+          <span class="px-2 py-1 rounded bg-[#0A0A0A] text-white font-mono text-[10px] font-bold shrink-0">
+            {d.ext}
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</div>

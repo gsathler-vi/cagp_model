@@ -1,0 +1,117 @@
+---
+// src/components/features/documentos/atos/DocumentosAtosRegulamentares.astro — Atos Normativos e Regulamentares Oficiais
+import { asset, route } from '../../../../lib/paths';
+
+interface AtoDoc {
+  title: string;
+  file: string;
+  readerSlug?: string;
+  desc: string;
+  badge: string;
+}
+
+const atos: AtoDoc[] = [
+  // 1. Documentos Mestres & PPC
+  { title: 'Projeto Pedagógico do Curso (PPC 2020)', file: 'ppc-gestao-publica-ufmg.pdf', readerSlug: 'ppc-gestao-publica-ufmg', desc: 'Estrutura completa de 3.000h, competências, eixos e perfil de formação.', badge: 'PPC 2020' },
+  { title: 'Regulamento do Curso Versão N-20229', file: 'regulamento-gestao-publica-ufmg.pdf', readerSlug: 'regulamento-gestao-publica-ufmg', desc: 'Normas de integralização, AAC, estágio obrigatório e culminância de TCC.', badge: 'Regulamento N-20229' },
+  { title: 'Regimento Interno do CAGP (14/10/2024)', file: 'regimento-interno-cagp-ufmg.pdf', readerSlug: 'regimento-interno-cagp-ufmg', desc: 'Estatuto soberano aprovado pela Assembleia Geral Discente.', badge: 'Estatuto CAGP' },
+  { title: 'Regimento Geral da UFMG', file: 'regimento-geral-ufmg.pdf', desc: 'Norma institucional superior que rege os colegiados, órgãos e representação na UFMG.', badge: 'UFMG' },
+  
+  // 2. Matrizes dos 3 Percursos
+  { title: 'Matriz Percurso 01-01 (Bacharelado Geral)', file: 'percurso-bacharelado-nucleo-geral.pdf', readerSlug: 'percurso-bacharelado-nucleo-geral', desc: '1.020h em optativas com máxima flexibilidade curricular.', badge: 'Percurso 01-01' },
+  { title: 'Matriz Percurso 01-02 (Núcleo Complementar)', file: 'percurso-bacharelado-nucleo-complementar.pdf', readerSlug: 'percurso-bacharelado-nucleo-complementar', desc: '300h em Formação Transversal ou Aberta (FCA).', badge: 'Percurso 01-02' },
+  { title: 'Matriz Percurso 01-03 (Núcleo Avançado Pós)', file: 'percurso-bacharelado-nucleo-avancado.pdf', readerSlug: 'percurso-bacharelado-nucleo-avancado', desc: '45h a 120h em disciplinas de mestrado/doutorado no PPGCP/FAFICH.', badge: 'Percurso 01-03' },
+  { title: 'Ementário Oficial do Curso de Gestão Pública', file: 'ementario-gestao-publica-ufmg.pdf', readerSlug: 'ementario-gestao-publica-ufmg', desc: 'Ementas, pré-requisitos e créditos das 27 obrigatórias e 68 optativas.', badge: 'Ementário Geral' },
+  
+  // 3. Acolhimento & Recepção
+  { title: 'Transcrição Recepção Ingressantes 2024/2', file: 'recepcao-ingressantes-2024-2.pdf', readerSlug: 'transcricao-recepcao-ingressantes-2024-2', desc: 'Apresentação pedagógica oficial de acolhimento discente pela Coordenação.', badge: 'Acolhimento 2024/2' },
+  { title: 'Recepção de Calouros 2023/2', file: 'recepcao-calouros-2023-2.pdf', desc: 'Material orientativo de ambientação universitária da turma ingressante 2023/2.', badge: 'Acolhimento 2023/2' },
+  
+  // 4. Resoluções Específicas do Curso
+  { title: 'Resolução 01/2019 (Estágio Curricular)', file: 'resolucao-01-2019-estagio-curricular.pdf', desc: 'Regras de orientação, seguro de estágio e celebração de convênios concedentes.', badge: 'Estágio Colegiado' },
+  { title: 'Resolução 01/2020 (Atividades Complementares AAC)', file: 'resolucao-01-2020-atividades-integralizadoras-credito.pdf', desc: 'Tabela de pontuação e critérios de deferimento das 300h de AAC.', badge: 'AAC Colegiado' },
+  { title: 'Resolução Congregação 02/2018 (Concurso de TCC)', file: 'resolucao-congrega-02-2018-concurso-tcc.pdf', desc: 'Premiação e normas do concurso anual de monografias e TCCs da FAFICH.', badge: 'TCC Congregação' },
+  { title: 'Resolução 03/2016 (Modalidade EaD)', file: 'resolucao-03-2016-modalidade-ead.pdf', desc: 'Regras para oferta de até 20% da carga horária em formato a distância.', badge: 'EaD Colegiado' },
+  { title: 'Resolução 05/2016 (Mobilidade Estudantil)', file: 'resolucao-05-2016-mobilidade-estudantil.pdf', desc: 'Critérios para intercâmbio acadêmico internacional e nacional ANDIFES.', badge: 'Mobilidade' },
+  { title: 'Resolução 07/2016 (Planejamento de Horários)', file: 'resolucao-07-2016-planejamento-horario.pdf', desc: 'Planejamento e alocação de salas e horários noturnos na FAFICH.', badge: 'Horários FAFICH' },
+  { title: 'Resolução 08/2016 (Vagas Remanescentes)', file: 'resolucao-08-2016-distribuicao-vagas-remanescentes.pdf', desc: 'Critérios de distribuição de vagas remanescentes nas fases de matrícula.', badge: 'Matrícula SIGA' },
+  { title: 'Resolução 01/2016 (Formação Aberta FCA)', file: 'resolucao-01-2016-formacao-complementar-aberta.pdf', desc: 'Criação da Formação Complementar Aberta de 300h na FAFICH.', badge: 'FCA Congregação' },
+  { title: 'Resolução 01/2018 (Altera FCA)', file: 'resolucao-01-2018-altera-formacao-complementar-aberta.pdf', desc: 'Atualização das normas e procedimentos de aproveitamento de FCA.', badge: 'FCA Congregação' },
+
+  // 5. Resoluções Gerais da UFMG / CEPE & PRAE
+  { title: 'Resolução CEPE 01/2018 (Normas Gerais de Graduação)', file: 'resolucao-cepe-01-2018-normas-gerais-graduacao.pdf', desc: 'Regulamento superior de ensino de graduação da Universidade Federal de Minas Gerais.', badge: 'CEPE / UFMG' },
+  { title: 'Resolução CEPE 11/2018 (Regras de Transição)', file: 'resolucao-cepe-11-2018-regras-transicao-graduacao.pdf', desc: 'Normas de transição curricular entre versões de planos pedagógicos.', badge: 'CEPE / UFMG' },
+  { title: 'Resolução CEPE 06/2019 (Aproveitamento de Estudos)', file: 'resolucao-cepe-06-2019-aproveitamento-estudos.pdf', desc: 'Prazo decadencial estrito até o final do 2º período letivo.', badge: 'CEPE / UFMG' },
+  { title: 'Resolução CEPE 02/2009 (Estágio na UFMG)', file: 'resolucao-cepe-02-2009-estagio-ufmg.pdf', desc: 'Regulamentação institucional de estágios curriculares da UFMG.', badge: 'CEPE / UFMG' },
+  { title: 'Resolução CEPE 19/2014 (Formação Transversal)', file: 'resolucao-cepe-19-2014-formacao-transversal.pdf', desc: 'Regulamentação das formações transversais interdisciplinares da PROGRAD.', badge: 'CEPE / UFMG' },
+  { title: 'Portaria PRAE 1.286/2026 (Permanência Estudantil)', file: 'portaria-prae-1286-2026-permanencia-estudantil.pdf', desc: 'Estruturação dos Níveis I a III, horários do Restaurante Universitário e bolsas.', badge: 'PRAE 2026' },
+  { title: 'Resolução PRAE 09/2015 (Nome Social)', file: 'resolucao-prae-09-2015-nome-social.pdf', desc: 'Direito ao uso do nome social em todos os registros e chamadas da UFMG.', badge: 'PRAE / Direitos' },
+  { title: 'Resolução UFMG 07/2025 (Combate ao Assédio)', file: 'resolucao-ufmg-07-2025-contra-o-assedio.pdf', desc: 'Política institucional e canais de acolhimento e denúncia contra assédio.', badge: 'UFMG 2025' },
+
+  // 6. Diretrizes Curriculares Nacionais (CNE)
+  { title: 'CNE - DCN Educação Ambiental (2012)', file: 'cne-dcn-educacao-ambiental-2012.pdf', desc: 'Diretrizes Curriculares Nacionais para a Educação Ambiental.', badge: 'CNE / MEC' },
+  { title: 'CNE - DCN Direitos Humanos (2012)', file: 'cne-dcn-educacao-direitos-humanos-2012.pdf', desc: 'Diretrizes Curriculares Nacionais para a Educação em Direitos Humanos.', badge: 'CNE / MEC' },
+  { title: 'CNE - DCN Relações Étnico-Raciais (2004)', file: 'cne-dcn-relacoes-etnico-raciais-2004.pdf', desc: 'Diretrizes Curriculares Nacionais para a Educação das Relações Étnico-Raciais.', badge: 'CNE / MEC' },
+  { title: 'CNE - Parecer 003/2004 (Relações Étnico-Raciais)', file: 'cne-parecer-003-2004-relacoes-etnico-raciais.pdf', desc: 'Parecer homologado do Conselho Pleno sobre História e Cultura Afro-Brasileira.', badge: 'CNE / MEC' },
+];
+---
+
+<div class="cagp-documentos-atos space-y-4 select-none text-[#0A0A0A]">
+  <div class="p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
+    <div>
+      <span class="text-[11px] font-['Oswald'] uppercase font-bold tracking-wider text-[#8B1E2D]">
+        Atos Normativos, Legislação e Regulamentos
+      </span>
+      <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A] m-0">
+        Legislação, PPC 2020, Resoluções CEPE & Diretrizes CNE
+      </h3>
+      <p class="text-xs text-gray-600 mt-0.5 m-0">
+        Acervo canônico completo de atos normativos que regem a estrutura curricular e os direitos acadêmicos.
+      </p>
+    </div>
+    <span class="px-2.5 py-1 rounded bg-[#0A0A0A] text-white font-mono text-xs font-bold shrink-0">
+      {atos.length} Atos Normativos
+    </span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+    {atos.map((doc) => (
+      <div class="cagp-card p-4 bg-white border border-[#DFDBD2] hover:border-[#0A0A0A] rounded-xl flex items-center justify-between gap-3 transition-all shadow-xs">
+        <div class="flex items-start gap-3 min-w-0">
+          <div class="w-9 h-9 rounded-lg bg-[#8B1E2D]/10 text-[#8B1E2D] border border-[#8B1E2D]/20 flex items-center justify-center shrink-0 mt-0.5">
+            <i class="bi bi-file-earmark-ruled-fill text-base" aria-hidden="true" />
+          </div>
+          <div class="min-w-0">
+            <div class="flex items-center gap-1.5 mb-1 flex-wrap">
+              <span class="cagp-badge cagp-badge-red text-[10px] font-mono">{doc.badge}</span>
+              <h4 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] truncate m-0">{doc.title}</h4>
+            </div>
+            <p class="text-xs text-gray-600 leading-tight m-0">{doc.desc}</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-1.5 shrink-0">
+          {doc.readerSlug && (
+            <a
+              href={route(`/documentos/${doc.readerSlug}`)}
+              class="min-h-[40px] px-2.5 py-1.5 bg-[#F7F5F0] hover:bg-[#EAE6DE] text-[#0A0A0A] border border-[#DFDBD2] rounded-lg text-xs font-['Oswald'] uppercase font-bold flex items-center gap-1 transition-all no-underline"
+              title="Abrir leitor integrado"
+            >
+              <i class="bi bi-book-half" aria-hidden="true" />
+              <span class="hidden sm:inline">Ler</span>
+            </a>
+          )}
+          <a
+            href={asset(`/documentos/${doc.file}`)}
+            download
+            class="min-h-[40px] min-w-[40px] px-2.5 py-1.5 bg-[#0A0A0A] hover:bg-[#8B1E2D] text-white rounded-lg flex items-center justify-center transition-all no-underline shadow-[1px_1px_0px_#0A0A0A]"
+            title={`Baixar ${doc.title}`}
+            aria-label={`Baixar ${doc.title}`}
+          >
+            <i class="bi bi-download" aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

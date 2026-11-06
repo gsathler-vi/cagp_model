@@ -1,0 +1,240 @@
+---
+// src/components/features/documentos/formularios/DocumentosFormulariosOficiais.astro — Formulários Oficiais e Modelos de Requerimento
+import { asset } from '../../../../lib/paths';
+
+interface FormularioItem {
+  title: string;
+  pdf: string;
+  docx?: string;
+  desc: string;
+  badge: string;
+  category: 'estagio' | 'aac' | 'tcc' | 'curriculo' | 'guia';
+}
+
+const formularios: FormularioItem[] = [
+  // 1. Estágio Supervisionado (Formatos Duplos PDF + DOCX)
+  {
+    title: 'Termo de Compromisso de Estágio com Convênio',
+    pdf: 'estagio-modelo-termo-de-compromisso-com-convenio.pdf',
+    docx: 'estagio-modelo-termo-de-compromisso-com-convenio.docx',
+    desc: 'Minuta obrigatória tripartite para órgãos e instituições formalmente conveniados com a UFMG.',
+    badge: 'TCE Obrigatório',
+    category: 'estagio',
+  },
+  {
+    title: 'Termo de Compromisso de Estágio sem Vínculo Direto',
+    pdf: 'estagio-modelo-termo-de-compromisso-sem-vinculo.pdf',
+    docx: 'estagio-modelo-termo-de-compromisso-sem-vinculo.docx',
+    desc: 'Minuta para concessão de estágio operacionalizada através de agentes integradores (CIEE, IEL, etc.).',
+    badge: 'TCE Agente',
+    category: 'estagio',
+  },
+  {
+    title: 'Plano de Atividades de Estágio Supervisionado',
+    pdf: 'estagio-modelo-plano-de-atividades.pdf',
+    docx: 'estagio-modelo-plano-de-atividades.docx',
+    desc: 'Cronograma detalhado de atribuições assinado pelo supervisor institucional e orientador docente.',
+    badge: 'Plano de Estágio',
+    category: 'estagio',
+  },
+  {
+    title: 'Relatório Semestral de Atividades de Estágio',
+    pdf: 'estagio-modelo-relatorio-semestral.pdf',
+    docx: 'estagio-modelo-relatorio-semestral.docx',
+    desc: 'Comprovação periódica do cumprimento do plano de estágio a cada 6 meses letivos.',
+    badge: 'Relatório Parcial',
+    category: 'estagio',
+  },
+  {
+    title: 'Relatório Final de Conclusão do Estágio',
+    pdf: 'estagio-modelo-relatorio-final.pdf',
+    docx: 'estagio-modelo-relatorio-final.docx',
+    desc: 'Avaliação de desempenho final e síntese de aprendizagem para integralização de DCP 135 ou DCP 136.',
+    badge: 'Integralização 150h/300h',
+    category: 'estagio',
+  },
+  {
+    title: 'Dispensa Art. 41 (Requerimento por Vínculo Profissional)',
+    pdf: 'estagio-requerimento-integralizacao-experiencia-profissional.pdf',
+    docx: 'estagio-requerimento-integralizacao-experiencia-profissional.docx',
+    desc: 'Solicitação formal de dispensa de estágio para servidores públicos efetivos, contratados ou terceiro setor.',
+    badge: 'Art. 41 Regulamento',
+    category: 'estagio',
+  },
+  {
+    title: 'Dispensa Art. 41 (Relatório de Atividades Profissionais)',
+    pdf: 'estagio-relatorio-atividades-experiencia-profissional.pdf',
+    docx: 'estagio-relatorio-atividades-experiencia-profissional.docx',
+    desc: 'Relatório avaliativo circunstanciado de atribuições do cargo para validação das 300h de estágio.',
+    badge: 'Art. 41 Regulamento',
+    category: 'estagio',
+  },
+  {
+    title: 'Manual de Orientações de Estágio da FAFICH',
+    pdf: 'estagio-manual-orientacoes-fafich.pdf',
+    desc: 'Manual completo da Diretoria da FAFICH com diretrizes de seguro, tramitação SEI e convênios.',
+    badge: 'Manual FAFICH',
+    category: 'estagio',
+  },
+
+  // 2. Atividades Complementares (AAC)
+  {
+    title: 'Requerimento de AAC / Horas Complementares (N-20229)',
+    pdf: 'requerimento-atividade-integralizadora-credito-v20229.pdf',
+    desc: 'Protocolo das 300h nas 9 categorias do Art. 15 da Versão Curricular vigente.',
+    badge: 'Versão N-20229',
+    category: 'aac',
+  },
+  {
+    title: 'Requerimento de AAC / Horas Complementares (N-20152)',
+    pdf: 'requerimento-atividade-integralizadora-credito-v20152.pdf',
+    desc: 'Formulário para discentes vinculados à versão curricular legada 2015/2.',
+    badge: 'Versão N-20152',
+    category: 'aac',
+  },
+  {
+    title: 'Declaração de Realização de Atividade Avaliativa',
+    pdf: 'declaracao-atividade-avaliativa.pdf',
+    desc: 'Comprovante oficial emitido por docente para justificar atividades de extensão ou pesquisa.',
+    badge: 'Comprovação',
+    category: 'aac',
+  },
+
+  // 3. TCC
+  {
+    title: 'Termo de Aceite de Orientador de TCC',
+    pdf: 'termo-aceite-orientador-tcc.pdf',
+    desc: 'Documento assinado pelo orientador credenciado obrigatório para matrícula em TCC A (DCP 089).',
+    badge: 'TCC 9ºP',
+    category: 'tcc',
+  },
+
+  // 4. Formação Curricular e Modalidades
+  {
+    title: 'Guia da Formação Complementar Aberta (FCA)',
+    pdf: 'fca-formacao-complementar-aberta.pdf',
+    desc: 'Manual de instruções para elaboração do plano de estudos interdisciplinar de 300h.',
+    badge: 'Guia FCA',
+    category: 'curriculo',
+  },
+  {
+    title: 'Requerimento de Formação Complementar Aberta (FCA)',
+    pdf: 'requerimento-formacao-complementar-aberta-fca.pdf',
+    desc: 'Formulário de submissão do plano de estudos ao Colegiado para adesão ao Percurso 01-02.',
+    badge: 'Percurso 01-02',
+    category: 'curriculo',
+  },
+  {
+    title: 'Requerimento de Matrícula em Formação Livre (120h)',
+    pdf: 'requerimento-matricula-formacao-livre.pdf',
+    desc: 'Solicitação de acerto de matrícula em matérias eletivas de outras unidades da UFMG.',
+    badge: '120h Livre',
+    category: 'curriculo',
+  },
+  {
+    title: 'Requerimento de Matrícula na Pós-Graduação (PPGCP)',
+    pdf: 'requerimento-matricula-pos-graduacao.pdf',
+    desc: 'Autorização especial para discentes cursarem créditos no Mestrado/Doutorado em Ciência Política.',
+    badge: 'Percurso 01-03',
+    category: 'curriculo',
+  },
+
+  // 5. Guias e Tutoriais Discentes
+  {
+    title: 'Roteiro de Comprovação de Conhecimentos',
+    pdf: 'roteiro-comprovacao-conhecimentos-estudante.pdf',
+    desc: 'Passo a passo discente para requerer banca especial de adiantamento por extraordinário aproveitamento.',
+    badge: 'Art. 51',
+    category: 'guia',
+  },
+  {
+    title: 'Roteiro de Regime Especial de Graduação (RAEP)',
+    pdf: 'roteiro-regime-especial-raep-estudante.pdf',
+    desc: 'Orientações práticas para estudantes em tratamento de saúde prolongado ou licença maternidade.',
+    badge: 'RAEP',
+    category: 'guia',
+  },
+  {
+    title: 'Manual do Aplicativo SIGA UFMG Mobile',
+    pdf: 'manual-aplicativo-siga-ufmg.pdf',
+    desc: 'Guia ilustrado de navegação no app oficial da UFMG para notas, horários e frequência.',
+    badge: 'SIGA Mobile',
+    category: 'guia',
+  },
+  {
+    title: 'Guia DTI: Criação de Conta Office 365 UFMG',
+    pdf: 'dti-office365-criacao-conta.pdf',
+    desc: 'Tutorial da DTI para ativação da licença institucional Microsoft 365 gratuita para alunos.',
+    badge: 'DTI / UFMG',
+    category: 'guia',
+  },
+  {
+    title: 'Compilado de Depoimentos de Egressos',
+    pdf: 'depoimentos-de-egressos.pdf',
+    desc: 'Trajetórias profissionais de egressos do curso no setor público, consultoria e academia.',
+    badge: 'Egressos',
+    category: 'guia',
+  },
+];
+---
+
+<div class="cagp-documentos-formularios space-y-6 select-none text-[#0A0A0A]">
+  <div class="p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
+    <div>
+      <span class="text-[11px] font-['Oswald'] uppercase font-bold tracking-wider text-[#15803D]">
+        Modelos Padronizados & Minutas Editáveis
+      </span>
+      <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A] m-0">
+        Formulários Oficiais, Modelos de Estágio e Roteiros
+      </h3>
+      <p class="text-xs text-gray-600 mt-0.5 m-0">
+        Requerimentos para protocolo no Colegiado e os 7 modelos de estágio em formato duplo (PDF e DOCX editável).
+      </p>
+    </div>
+    <span class="px-2.5 py-1 rounded bg-[#15803D] text-white font-mono text-xs font-bold shrink-0">
+      {formularios.length} Modelos Catalogados
+    </span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+    {formularios.map((doc) => (
+      <div class="cagp-card p-4 bg-white border border-[#DFDBD2] hover:border-[#0A0A0A] rounded-xl flex flex-col justify-between gap-3 transition-all shadow-xs">
+        <div class="flex items-start gap-3 min-w-0">
+          <div class="w-9 h-9 rounded-lg bg-[#15803D]/10 text-[#15803D] border border-[#15803D]/20 flex items-center justify-center shrink-0 mt-0.5">
+            <i class="bi bi-file-earmark-check-fill text-base" aria-hidden="true" />
+          </div>
+          <div class="min-w-0 flex-1">
+            <div class="flex items-center gap-1.5 mb-1 flex-wrap">
+              <span class="cagp-badge cagp-badge-dark text-[10px] font-mono">{doc.badge}</span>
+              <h4 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] leading-snug m-0">{doc.title}</h4>
+            </div>
+            <p class="text-xs text-gray-600 leading-relaxed m-0">{doc.desc}</p>
+          </div>
+        </div>
+
+        <div class="pt-2 border-t border-[#DFDBD2] flex items-center justify-end gap-2 flex-wrap">
+          <a
+            href={asset(`/documentos/${doc.pdf}`)}
+            download
+            class="min-h-[36px] px-3 py-1.5 bg-[#8B1E2D] hover:bg-[#0A0A0A] text-white rounded-lg text-xs font-mono font-bold inline-flex items-center gap-1.5 transition-colors no-underline shadow-xs"
+            title={`Baixar PDF: ${doc.title}`}
+          >
+            <i class="bi bi-file-earmark-pdf" aria-hidden="true" />
+            <span>Baixar PDF</span>
+          </a>
+          {doc.docx && (
+            <a
+              href={asset(`/documentos/${doc.docx}`)}
+              download
+              class="min-h-[36px] px-3 py-1.5 bg-[#005A9C] hover:bg-[#0A0A0A] text-white rounded-lg text-xs font-mono font-bold inline-flex items-center gap-1.5 transition-colors no-underline shadow-xs"
+              title={`Baixar DOCX editável: ${doc.title}`}
+            >
+              <i class="bi bi-file-earmark-word" aria-hidden="true" />
+              <span>DOCX Editável</span>
+            </a>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

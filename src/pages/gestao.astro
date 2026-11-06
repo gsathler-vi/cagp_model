@@ -1,0 +1,67 @@
+---
+// gestao.astro - A4 Guia: 3 sub-views (Organograma · Equipe · Contas)
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/ui/PageHeader.astro';
+import SegmentedControl from '../components/ui/SegmentedControl.astro';
+import JourneyNav from '../components/ui/JourneyNav.astro';
+import GestaoOrganograma from '../components/gestao/GestaoOrganograma.astro';
+import GestaoEquipe from '../components/gestao/GestaoEquipe.astro';
+import GestaoContas from '../components/gestao/GestaoContas.astro';
+
+const tabs = [
+  { id: 'v1', shortLabel: 'Organograma', fullLabel: '1. Organograma da Gestão', hash: '#organograma' },
+  { id: 'v2', shortLabel: 'Equipe', fullLabel: '2. Diretoria Executiva', hash: '#equipe' },
+  { id: 'v3', shortLabel: 'Contas', fullLabel: '3. Prestação de Contas', hash: '#contas' },
+];
+
+const badges = [
+  { label: 'Processo Eleitoral 2025/2026', variant: 'red' as const, icon: 'bi-calendar-event' },
+  { label: '7 Diretorias Executivas', variant: 'dark' as const, icon: 'bi-diagram-3-fill' },
+  { label: 'Transparência e RREO', variant: 'green' as const, icon: 'bi-cash-coin' },
+  { label: 'Art. 8º Regimento Interno', variant: 'blue' as const, icon: 'bi-bank' },
+];
+
+---
+
+<BaseLayout title="Processo Eleitoral & Diretorias" description="Processo eleitoral, organograma regimental das 7 diretorias e prestação de contas do Centro Acadêmico de Gestão Pública FAFICH/UFMG.">
+  <PageHeader
+    eyebrow="Eixo 5 · Processo Eleitoral & Governança"
+    title="Processo Eleitoral & Diretorias do CAGP"
+    subtitle="O CAGP encontra-se em período eleitoral. Conheça o organograma regimental das 7 diretorias executivas (Art. 8º do Regimento Interno), suas atribuições estatutárias e os mecanismos de prestação de contas."
+    badges={badges}
+  />
+
+  <SegmentedControl tabs={tabs} defaultTab="v1" />
+
+  <!-- Sub-view 1: Organograma Funcional -->
+  <section id="ws-panel-v1" class="cagp-workspace-view" data-ws-panel="v1">
+    <div id="organograma" class="cagp-anchor-target scroll-mt-24"></div>
+    <GestaoOrganograma />
+  </section>
+
+  <!-- Sub-view 2: Equipe por Diretoria -->
+  <section id="ws-panel-v2" class="cagp-workspace-view" data-ws-panel="v2" hidden>
+    <div id="equipe" class="cagp-anchor-target scroll-mt-24"></div>
+    <GestaoEquipe />
+  </section>
+
+  <!-- Sub-view 3: Prestação de Contas & RREO -->
+  <section id="ws-panel-v3" class="cagp-workspace-view" data-ws-panel="v3" hidden>
+    <div id="contas" class="cagp-anchor-target scroll-mt-24"></div>
+    <GestaoContas />
+  </section>
+
+  <!-- Journey Navigation Trail -->
+  <JourneyNav
+    prev={{
+      title: 'O Centro Acadêmico (CAGP)',
+      href: '/sobre',
+      desc: 'História, governança, estatuto interno e esferas de representação.',
+    }}
+    next={{
+      title: 'Mapa Panorâmico do Super App',
+      href: '/mapa-do-site',
+      desc: 'Visão panorâmica e taxonômica de todas as 14 rotas ativas do portal discente.',
+    }}
+  />
+</BaseLayout>

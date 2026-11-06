@@ -1,0 +1,404 @@
+---
+// HomeBussola.astro - Sub-view 1: Bússola por Momento, Meus Atalhos Discentes, Bento 5 Eixos e Métricas (Port Neo-Brutalista Quarto + Apple HIG)
+import { SHORTCUTS_CATALOG, DEFAULT_SHORTCUT_IDS, resolveShortcuts } from '../../lib/shortcutsCatalog';
+import { route } from '../../lib/paths';
+
+const initialShortcuts = resolveShortcuts(DEFAULT_SHORTCUT_IDS);
+---
+
+<div class="space-y-4">
+  <!-- Meus Atalhos Discentes Personalizáveis (.cagp-tool-box) -->
+  <div class="cagp-tool-box" id="cagp-home-shortcuts-box" data-catalog={JSON.stringify(SHORTCUTS_CATALOG)}>
+    <div class="cagp-tool-header flex items-center justify-between gap-2">
+      <div>
+        <div class="flex items-center gap-2 mb-1">
+          <span class="cagp-badge cagp-badge-red">Personalizável</span>
+          <span class="text-xs font-mono text-gray-500 hidden sm:inline">Cofre Local</span>
+        </div>
+        <h2 class="font-['Oswald'] text-sm font-bold uppercase text-[#0A0A0A] m-0 flex items-center gap-1.5">
+          <i class="bi bi-stars text-[#8B1E2D]" aria-hidden="true"></i>
+          <span>Meus Atalhos Discentes</span>
+        </h2>
+        <p class="text-xs text-gray-500 mt-0.5 mb-0">
+          Acesso direto às ferramentas essenciais do seu percurso acadêmico. Personalize conforme seu momento no curso:
+        </p>
+      </div>
+
+      <button
+        type="button"
+        id="cagp-home-shortcuts-edit-btn"
+        class="px-2.5 py-1.5 bg-white hover:bg-[#F7F5F0] text-[#0A0A0A] font-['Oswald'] text-xs font-bold uppercase rounded-[4px] border-2 border-[#0A0A0A] shadow-[1.5px_1.5px_0_#0A0A0A] flex items-center gap-1.5 transition-all cursor-pointer active:scale-95 shrink-0"
+        title="Personalizar atalhos rápidos"
+      >
+        <i class="bi bi-sliders2 text-sm text-[#8B1E2D]" aria-hidden="true"></i>
+        <span>Personalizar</span>
+      </button>
+    </div>
+
+    <!-- Grid Dinâmico de Atalhos Ativos -->
+    <div id="cagp-home-shortcuts-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
+      {initialShortcuts.map((item) => (
+        <a
+          href={item.href}
+          data-shortcut-id={item.id}
+          data-action={item.isAction ? item.actionEvent : undefined}
+          class="cagp-card p-3 no-underline flex flex-col justify-between hover:border-[#0A0A0A] transition-all group"
+        >
+          <div class="text-2xl mb-2 flex items-center justify-between" style={{ color: item.color }}>
+            <i class={`bi ${item.icon}`} aria-hidden="true"></i>
+            <span class="text-[10px] font-mono uppercase bg-gray-100 text-gray-600 px-1 py-0.2 rounded border border-gray-200 group-hover:border-[#0A0A0A]/40 transition-colors">
+              {item.category}
+            </span>
+          </div>
+          <div>
+            <span class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block group-hover:text-[#8B1E2D] transition-colors truncate">
+              {item.label}
+            </span>
+            <span class="text-[11px] text-gray-500 line-clamp-1">
+              {item.description}
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- Gaveta Expansível: Mapa Estrutural Completo dos 5 Eixos Canônicos (PPC 2020) -->
+    <details class="cagp-normative-details mt-3 border border-[#DFDBD2] rounded-[4px] bg-[#F7F5F0]/60 p-2.5">
+      <summary class="font-['Oswald'] text-xs font-bold uppercase text-[#0A0A0A] cursor-pointer flex items-center justify-between select-none min-h-[44px] py-2.5 px-2">
+        <span class="flex items-center gap-2">
+          <i class="bi bi-diagram-3-fill text-[#8B1E2D]" aria-hidden="true"></i>
+          <span>Ver Mapa Estrutural dos 5 Eixos Canônicos (PPC 2020)</span>
+        </span>
+        <span class="text-[11px] font-mono text-gray-500 font-normal">15 Rotas &darr;</span>
+      </summary>
+      <div class="pt-3 border-t border-[#DFDBD2] mt-2">
+        <p class="text-xs text-gray-600 mb-2 leading-relaxed">
+          Estrutura canônica de navegação curricular do Bacharelado em Gestão Pública (PPC 2020), distribuída nos 5 eixos institucionais simétricos:
+        </p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
+          <a href={route('/')} class="cagp-card p-3 no-underline flex flex-col justify-between">
+            <div class="text-[#8B1E2D] text-2xl mb-2"><i class="bi bi-compass" aria-hidden="true"></i></div>
+            <div>
+              <span class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">1. Hoje</span>
+              <span class="text-xs text-gray-500">Campus, RU & Bússola</span>
+            </div>
+          </a>
+          <a href={route('/curso')} class="cagp-card p-3 no-underline flex flex-col justify-between">
+            <div class="text-[#005A9C] text-2xl mb-2"><i class="bi bi-mortarboard" aria-hidden="true"></i></div>
+            <div>
+              <span class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">2. Curso</span>
+              <span class="text-xs text-gray-500">PPC, Calouros & DCP</span>
+            </div>
+          </a>
+          <a href={route('/percurso')} class="cagp-card p-3 no-underline flex flex-col justify-between">
+            <div class="text-[#15803D] text-2xl mb-2"><i class="bi bi-diagram-3" aria-hidden="true"></i></div>
+            <div>
+              <span class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">3. Currículo</span>
+              <span class="text-xs text-gray-500">Grade, 600h & Estágio</span>
+            </div>
+          </a>
+          <a href={route('/documentos')} class="cagp-card p-3 no-underline flex flex-col justify-between">
+            <div class="text-[#B45309] text-2xl mb-2"><i class="bi bi-folder2-open" aria-hidden="true"></i></div>
+            <div>
+              <span class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">4. Acervo</span>
+              <span class="text-xs text-gray-500">PDFs Offline & Atos</span>
+            </div>
+          </a>
+          <a href={route('/sobre')} class="cagp-card p-3 no-underline flex flex-col justify-between">
+            <div class="text-[#0A0A0A] text-2xl mb-2"><i class="bi bi-people" aria-hidden="true"></i></div>
+            <div>
+              <span class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">5. O CAGP</span>
+              <span class="text-xs text-gray-500">Gestão & Estatuto</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Bússola Interativa por Momento (.cagp-tool-box) -->
+  <div class="cagp-tool-box">
+    <div class="cagp-tool-header">
+      <div>
+        <span class="cagp-badge cagp-badge-red mb-1">Navegação Guiada por Momento</span>
+        <h2 class="font-['Oswald'] text-sm font-bold uppercase text-[#0A0A0A] m-0">
+          O Que Você Precisa Resolver Hoje?
+        </h2>
+        <p class="text-xs text-gray-500 mt-0.5 mb-0">Selecione seu perfil discente atual para ver atalhos, prazos e orientações:</p>
+      </div>
+    </div>
+
+    <!-- Moment Tabs -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3" role="tablist">
+      <button type="button" class="bussola-tab p-2 text-left rounded-[4px] border-2 border-[#0A0A0A] bg-[#F7F5F0] text-xs font-['Oswald'] uppercase font-bold cursor-pointer transition-all shadow-[1.5px_1.5px_0_#0A0A0A]" data-target="m-calouro">
+        <span class="block text-[#8B1E2D] flex items-center gap-1">
+          <i class="bi bi-backpack text-sm" aria-hidden="true"></i> 1. Calouro (1º P)
+        </span>
+        <span class="text-xs font-normal text-gray-500 normal-case">Primeiros 30 dias</span>
+      </button>
+      <button type="button" class="bussola-tab p-2 text-left rounded-[4px] border-2 border-[#DFDBD2] bg-white text-xs font-['Oswald'] uppercase font-bold text-gray-600 cursor-pointer transition-all" data-target="m-meio">
+        <span class="block text-[#0A0A0A] flex items-center gap-1">
+          <i class="bi bi-diagram-3 text-sm" aria-hidden="true"></i> 2. Meio de Curso
+        </span>
+        <span class="text-xs font-normal text-gray-500 normal-case">2º–6ºP · 600h</span>
+      </button>
+      <button type="button" class="bussola-tab p-2 text-left rounded-[4px] border-2 border-[#DFDBD2] bg-white text-xs font-['Oswald'] uppercase font-bold text-gray-600 cursor-pointer transition-all" data-target="m-reta">
+        <span class="block text-[#0A0A0A] flex items-center gap-1">
+          <i class="bi bi-mortarboard text-sm" aria-hidden="true"></i> 3. Reta Final
+        </span>
+        <span class="text-xs font-normal text-gray-500 normal-case">7º–10ºP · Estágio</span>
+      </button>
+      <button type="button" class="bussola-tab p-2 text-left rounded-[4px] border-2 border-[#DFDBD2] bg-white text-xs font-['Oswald'] uppercase font-bold text-gray-600 cursor-pointer transition-all" data-target="m-ingresso">
+        <span class="block text-[#0A0A0A] flex items-center gap-1">
+          <i class="bi bi-door-open text-sm" aria-hidden="true"></i> 4. Ingressar
+        </span>
+        <span class="text-xs font-normal text-gray-500 normal-case">SiSU & Noturno</span>
+      </button>
+    </div>
+
+    <!-- Panel 1: Calouro -->
+    <div id="m-calouro" class="bussola-panel grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
+      <a href="/calouros#checklist" class="cagp-action-tile">
+        <div>
+          <span class="cagp-badge cagp-badge-red mb-1.5">Interativo</span>
+          <h3 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">Checklist de 30 Dias</h3>
+          <p class="text-xs text-gray-600 mt-1 mb-2">Carteirinha, Wi-Fi eduroam, MinhaUFMG e assistência estudantil da FUMP.</p>
+        </div>
+        <span class="text-xs font-bold text-[#8B1E2D] flex items-center gap-1 font-mono">Abrir Checklist &rarr;</span>
+      </a>
+      <a href="/calouros#rotina-noturna" class="cagp-action-tile">
+        <div>
+          <span class="cagp-badge cagp-badge-dark mb-1.5">19h00 às 22h30</span>
+          <h3 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">Rotina do Noturno</h3>
+          <p class="text-xs text-gray-600 mt-1 mb-2">Jantar no RU II até 19h30, linhas de circular gratuitas até 22h45 e atendimento CEAG.</p>
+        </div>
+        <span class="text-xs font-bold text-[#8B1E2D] flex items-center gap-1 font-mono">Ver Guia da Noite &rarr;</span>
+      </a>
+      <a href="/faq#aproveitamento" class="cagp-action-tile">
+        <div>
+          <span class="cagp-badge cagp-badge-blue mb-1.5">Res. CEPE 06/19</span>
+          <h3 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">Dispensa de Matérias</h3>
+          <p class="text-xs text-gray-600 mt-1 mb-2">Prazo fatal para aproveitamento de estudos de outra graduação encerra no 2º período!</p>
+        </div>
+        <span class="text-xs font-bold text-[#8B1E2D] flex items-center gap-1 font-mono">Ver Regras no FAQ &rarr;</span>
+      </a>
+    </div>
+
+    <!-- Panel 2: Meio de Curso -->
+    <div id="m-meio" class="bussola-panel grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1 hidden">
+      <a href="/acg#calculadora" class="cagp-action-tile">
+        <div>
+          <span class="cagp-badge cagp-badge-green mb-1.5">Simulador 600h</span>
+          <h3 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">Extensão & AAC</h3>
+          <p class="text-xs text-gray-600 mt-1 mb-2">Some suas 300h de Extensão e 300h de AAC com monitoramento de tetos oficiais.</p>
+        </div>
+        <span class="text-xs font-bold text-[#15803D] flex items-center gap-1 font-mono">Abrir Calculadora &rarr;</span>
+      </a>
+      <a href="/percurso#obrigatorias" class="cagp-action-tile">
+        <div>
+          <span class="cagp-badge cagp-badge-red mb-1.5">5º ou 7º Período</span>
+          <h3 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">Os 3 Percursos</h3>
+          <p class="text-xs text-gray-600 mt-1 mb-2">Compare Geral (01-01), Setorial (01-02) e Métodos Quantitativos (01-03).</p>
+        </div>
+        <span class="text-xs font-bold text-[#8B1E2D] flex items-center gap-1 font-mono">Ver Percursos &rarr;</span>
+      </a>
+      <a href="/percurso#optativas" class="cagp-action-tile">
+        <div>
+          <span class="cagp-badge cagp-badge-dark mb-1.5">68 Disciplinas</span>
+          <h3 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">Optativas & Livre</h3>
+          <p class="text-xs text-gray-600 mt-1 mb-2">Filtre por departamento temático e cumpra as 120h de Formação Livre.</p>
+        </div>
+        <span class="text-xs font-bold text-[#0A0A0A] flex items-center gap-1 font-mono">Explorar Catálogo &rarr;</span>
+      </a>
+    </div>
+
+    <!-- Panel 3: Reta Final -->
+    <div id="m-reta" class="bussola-panel grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1 hidden">
+      <a href="/estagio#art41" class="cagp-action-tile">
+        <div>
+          <span class="cagp-badge cagp-badge-red mb-1.5">Art. 41 Regulamento</span>
+          <h3 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">Dispensa de Estágio</h3>
+          <p class="text-xs text-gray-600 mt-1 mb-2">Abata as 300h de Estágio A e B por atuação profissional comprovada no setor público.</p>
+        </div>
+        <span class="text-xs font-bold text-[#8B1E2D] flex items-center gap-1 font-mono">Simular Dispensa &rarr;</span>
+      </a>
+      <a href="/tcc#modalidades" class="cagp-action-tile">
+        <div>
+          <span class="cagp-badge cagp-badge-dark mb-1.5">9º e 10º Períodos</span>
+          <h3 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">TCC (180 Horas)</h3>
+          <p class="text-xs text-gray-600 mt-1 mb-2">DCP 089 (60h) + DCP 137 (120h), 4 modalidades oficiais e termo de aceite.</p>
+        </div>
+        <span class="text-xs font-bold text-[#0A0A0A] flex items-center gap-1 font-mono">Ver Normas do TCC &rarr;</span>
+      </a>
+      <a href="/documentos#formularios" class="cagp-action-tile">
+        <div>
+          <span class="cagp-badge cagp-badge-blue mb-1.5">Formatura</span>
+          <h3 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">Colação de Grau</h3>
+          <p class="text-xs text-gray-600 mt-1 mb-2">Requerimentos oficiais, emissão de nada consta e prazos de encerramento acadêmico.</p>
+        </div>
+        <span class="text-xs font-bold text-[#005A9C] flex items-center gap-1 font-mono">Acessar Documentos &rarr;</span>
+      </a>
+    </div>
+
+    <!-- Panel 4: Ingressar -->
+    <div id="m-ingresso" class="bussola-panel grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1 hidden">
+      <a href="/curso#historia" class="cagp-action-tile">
+        <div>
+          <span class="cagp-badge cagp-badge-red mb-1.5">Nota 4 MEC</span>
+          <h3 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">O Que Faz o Gestor?</h3>
+          <p class="text-xs text-gray-600 mt-1 mb-2">65% dos egressos atuam no setor público; 55% com salários superiores a R$ 5 mil.</p>
+        </div>
+        <span class="text-xs font-bold text-[#8B1E2D] flex items-center gap-1 font-mono">Conhecer o Curso &rarr;</span>
+      </a>
+      <a href={route('/curso') + '#ingresso'} class="cagp-action-tile">
+        <div>
+          <span class="cagp-badge cagp-badge-blue mb-1.5">SiSU & DRCA</span>
+          <h3 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">Formas de Entrada</h3>
+          <p class="text-xs text-gray-600 mt-1 mb-2">Ingresso anual via ENEM, Obtenção de Novo Título, Reopção e Transferência.</p>
+        </div>
+        <span class="text-xs font-bold text-[#005A9C] flex items-center gap-1 font-mono">Tirar Dúvidas &rarr;</span>
+      </a>
+      <a href={route('/calouros') + '#rotina-noturna'} class="cagp-action-tile">
+        <div>
+          <span class="cagp-badge cagp-badge-dark mb-1.5">Turno Noturno</span>
+          <h3 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">Trabalho e Estudo</h3>
+          <p class="text-xs text-gray-600 mt-1 mb-2">Estrutura presencial projetada para permitir estágio ou trabalho durante o dia.</p>
+        </div>
+        <span class="text-xs font-bold text-[#0A0A0A] flex items-center gap-1 font-mono">Ver Rotina Noturna &rarr;</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Métricas Oficiais (.cagp-card com 6px) -->
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+    <div class="cagp-card p-3">
+      <span class="cagp-badge cagp-badge-red mb-1">PPC 2020</span>
+      <span class="font-['Oswald'] text-2xl font-bold text-[#8B1E2D] block">3.000h</span>
+      <span class="text-xs text-gray-500">2.880h Específico + 120h Livre</span>
+    </div>
+    <div class="cagp-card p-3">
+      <span class="cagp-badge cagp-badge-dark mb-1">Turno Noturno</span>
+      <span class="font-['Oswald'] text-2xl font-bold text-[#0A0A0A] block">10 Períodos</span>
+      <span class="text-xs text-gray-500">5 anos (Mín. 8 / Máx. 15 sem.)</span>
+    </div>
+    <div class="cagp-card p-3">
+      <span class="cagp-badge cagp-badge-green mb-1">Res. CEPE 10/19</span>
+      <span class="font-['Oswald'] text-2xl font-bold text-[#15803D] block">300h</span>
+      <span class="text-xs text-gray-500">Extensão (10% curricular)</span>
+    </div>
+    <div class="cagp-card p-3">
+      <span class="cagp-badge cagp-badge-blue mb-1">DCP 135 & 136</span>
+      <span class="font-['Oswald'] text-2xl font-bold text-[#005A9C] block">300h</span>
+      <span class="text-xs text-gray-500">Estágio Supervisionado</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  function setupBussola() {
+    // 1. Alternância de Momentos da Bússola
+    const tabs = document.querySelectorAll<HTMLButtonElement>('.bussola-tab');
+    const panels = document.querySelectorAll<HTMLElement>('.bussola-panel');
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const targetId = tab.getAttribute('data-target');
+        tabs.forEach((t) => {
+          t.classList.remove('bg-[#F7F5F0]', 'border-[#0A0A0A]', 'shadow-[1.5px_1.5px_0_#0A0A0A]');
+          t.classList.add('bg-white', 'border-[#DFDBD2]');
+        });
+        tab.classList.remove('bg-white', 'border-[#DFDBD2]');
+        tab.classList.add('bg-[#F7F5F0]', 'border-[#0A0A0A]', 'shadow-[1.5px_1.5px_0_#0A0A0A]');
+
+        panels.forEach((p) => {
+          if (p.id === targetId) {
+            p.classList.remove('hidden');
+            p.classList.add('cagp-animate-ws-enter');
+          } else {
+            p.classList.add('hidden');
+            p.classList.remove('cagp-animate-ws-enter');
+          }
+        });
+      });
+    });
+
+    // 2. Personalização de Meus Atalhos Discentes na Home
+    const box = document.getElementById('cagp-home-shortcuts-box');
+    const grid = document.getElementById('cagp-home-shortcuts-grid');
+    const editBtn = document.getElementById('cagp-home-shortcuts-edit-btn');
+
+    editBtn?.addEventListener('click', () => {
+      window.dispatchEvent(new CustomEvent('cagp:open-shortcuts'));
+    });
+
+    if (box && grid) {
+      const catalogRaw = box.getAttribute('data-catalog');
+      if (catalogRaw) {
+        try {
+          const catalog: any[] = JSON.parse(catalogRaw);
+          const map = new Map(catalog.map((c) => [c.id, c]));
+
+          const renderGrid = () => {
+            const rawStored = localStorage.getItem('cagp_discente_shortcuts_v1');
+            if (!rawStored) return;
+            const ids: string[] = JSON.parse(rawStored);
+            if (!Array.isArray(ids) || ids.length === 0) return;
+
+            grid.innerHTML = ids
+              .map((id) => {
+                const item = map.get(id) || catalog[0];
+                const isAction = Boolean(item.isAction && item.actionEvent);
+                return `
+                  <a
+                    href="${item.href}"
+                    data-shortcut-id="${item.id}"
+                    ${isAction ? `data-action="${item.actionEvent}"` : ''}
+                    class="cagp-card p-3 no-underline flex flex-col justify-between hover:border-[#0A0A0A] transition-all group"
+                  >
+                    <div class="text-2xl mb-2 flex items-center justify-between" style="color: ${item.color}">
+                      <i class="bi ${item.icon}" aria-hidden="true"></i>
+                      <span class="text-[10px] font-mono uppercase bg-gray-100 text-gray-600 px-1 py-0.2 rounded border border-gray-200 group-hover:border-[#0A0A0A]/40 transition-colors">
+                        ${item.category}
+                      </span>
+                    </div>
+                    <div>
+                      <span class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block group-hover:text-[#8B1E2D] transition-colors truncate">
+                        ${item.label}
+                      </span>
+                      <span class="text-[11px] text-gray-500 line-clamp-1">
+                        ${item.description}
+                      </span>
+                    </div>
+                  </a>
+                `;
+              })
+              .join('');
+
+            // Delegated click on grid handles actions for all items
+          };
+
+          // Delegated action click on shortcuts grid (works for initial SSR & updated grid)
+          grid.addEventListener('click', (e) => {
+            const link = (e.target as HTMLElement).closest<HTMLAnchorElement>('[data-action]');
+            if (link) {
+              e.preventDefault();
+              const act = link.getAttribute('data-action');
+              if (act) window.dispatchEvent(new CustomEvent(act));
+            }
+          });
+
+          renderGrid();
+
+          window.addEventListener('cagp:vault-updated', (e: Event) => {
+            const custom = e as CustomEvent<{ key: string }>;
+            if (!custom.detail || custom.detail.key === 'cagp_discente_shortcuts_v1') {
+              renderGrid();
+            }
+          });
+        } catch {}
+      }
+    }
+  }
+
+  document.addEventListener('astro:page-load', setupBussola);
+</script>
+

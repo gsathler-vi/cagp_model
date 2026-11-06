@@ -1,0 +1,87 @@
+---
+// calouros.astro — Central de Acolhimento & Guia de Sobrevivência do Calouro (1º Período)
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/ui/PageHeader.astro';
+import SegmentedControl from '../components/ui/SegmentedControl.astro';
+import JourneyNav from '../components/ui/JourneyNav.astro';
+import CalouroCentralOverview from '../components/features/calouros/CalouroCentralOverview.astro';
+import { CalouroChecklistCore } from '../components/features/calouros/checklist/CalouroChecklistCore';
+import CalourosVideos from '../components/calouros/CalourosVideos.astro';
+import CalouroNoturnoCore from '../components/features/calouros/noturno/CalouroNoturnoCore.astro';
+import CalouroEspacosCore from '../components/features/calouros/espacos/CalouroEspacosCore.astro';
+import CalouroFumpCore from '../components/features/calouros/fump/CalouroFumpCore.astro';
+
+const tabs = [
+  { id: 'v0', shortLabel: 'Geral', fullLabel: 'Visão Geral do Acolhimento', hash: '#visao-geral' },
+  { id: 'v1', shortLabel: 'Checklist', fullLabel: '1. Checklist 30d & Tutoriais', hash: '#checklist' },
+  { id: 'v2', shortLabel: 'Rotina RU', fullLabel: '2. Rotina Noturna & RU', hash: '#rotina-noturna' },
+  { id: 'v3', shortLabel: 'Espaços', fullLabel: '3. FAFICH, Sec & CEAG', hash: '#espacos' },
+  { id: 'v4', shortLabel: 'FUMP', fullLabel: '4. FUMP & Assistência', hash: '#fump' },
+];
+
+const badges = [
+  { label: 'Turno Noturno 19h–22h30', variant: 'red' as const, icon: 'bi-moon-stars-fill' },
+  { label: 'Jantar RU II 17h30–19h00', variant: 'dark' as const, icon: 'bi-cup-hot-fill' },
+  { label: 'Circulares até 22h45', variant: 'green' as const, icon: 'bi-bus-front' },
+  { label: 'CEAG FAFICH 08h–22h', variant: 'blue' as const, icon: 'bi-building' },
+];
+---
+
+<BaseLayout
+  title="Guia de Sobrevivência do Calouro"
+  description="Checklist interativo dos primeiros 30 dias na UFMG, rotina noturna, jantar no RU II às 18h15, circulares gratuitos, secretaria Sala F-2039 e suporte FUMP."
+>
+  <PageHeader
+    eyebrow="Eixo 2 · Guia de Sobrevivência"
+    title="Guia de Sobrevivência do Calouro"
+    subtitle="Checklist interativo dos primeiros 30 dias, rotina noturna, jantar no RU II, circulares gratuitos, secretaria Sala F-2039 e suporte FUMP."
+    badges={badges}
+  />
+
+  <SegmentedControl tabs={tabs} defaultTab="v0" />
+
+  <!-- Sub-view 0: Visão Geral do Calouro -->
+  <section id="ws-panel-v0" class="cagp-workspace-view" data-ws-panel="v0">
+    <div id="visao-geral" class="cagp-anchor-target scroll-mt-24"></div>
+    <CalouroCentralOverview />
+  </section>
+
+  <!-- Sub-view 1: Checklist & Tutoriais em Vídeo -->
+  <section id="ws-panel-v1" class="cagp-workspace-view space-y-4" data-ws-panel="v1" hidden>
+    <div id="checklist" class="cagp-anchor-target scroll-mt-24"></div>
+    <CalouroChecklistCore client:load />
+    <CalourosVideos />
+  </section>
+
+  <!-- Sub-view 2: Rotina Noturna -->
+  <section id="ws-panel-v2" class="cagp-workspace-view" data-ws-panel="v2" hidden>
+    <div id="rotina-noturna" class="cagp-anchor-target scroll-mt-24"></div>
+    <CalouroNoturnoCore />
+  </section>
+
+  <!-- Sub-view 3: Espaços FAFICH -->
+  <section id="ws-panel-v3" class="cagp-workspace-view" data-ws-panel="v3" hidden>
+    <div id="espacos" class="cagp-anchor-target scroll-mt-24"></div>
+    <CalouroEspacosCore />
+  </section>
+
+  <!-- Sub-view 4: FUMP & Assistência -->
+  <section id="ws-panel-v4" class="cagp-workspace-view" data-ws-panel="v4" hidden>
+    <div id="fump" class="cagp-anchor-target scroll-mt-24"></div>
+    <CalouroFumpCore />
+  </section>
+
+  <!-- Journey Navigation Trail -->
+  <JourneyNav
+    prev={{
+      title: 'O Bacharelado em Gestão Pública',
+      href: '/curso',
+      desc: 'História, colegiado, secretaria Sala F-2039 e formas de ingresso.',
+    }}
+    next={{
+      title: 'Percurso Curricular & Ementas (10P)',
+      href: '/percurso',
+      desc: 'Explore as 27 obrigatórias, 68 optativas e o grafo dinâmico de pré-requisitos.',
+    }}
+  />
+</BaseLayout>

@@ -1,0 +1,60 @@
+---
+// src/components/widgets/OverviewFaqWidget.astro — Widget de FAQ e Busca Rápida (Eixo 4: Acervo)
+import { route } from '../../lib/paths';
+
+const topFaqs = [
+  { label: 'Trancamento de Matrícula (Mín. 180h)', icon: 'bi-clock-history' },
+  { label: 'Aproveitamento de Estudos (Até 2ºP)', icon: 'bi-mortarboard' },
+  { label: 'Quebra de Pré-requisito no Colegiado', icon: 'bi-signpost-split' },
+];
+---
+
+<div class="cagp-card p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col justify-between h-full shadow-sm hover:border-[#0A0A0A] transition-all">
+  <div>
+    <!-- Header do Widget -->
+    <div class="flex items-center justify-between gap-2 mb-3">
+      <div className="flex items-center gap-2">
+        <span class="w-9 h-9 rounded-lg bg-[#B45309]/10 text-[#B45309] flex items-center justify-center text-lg border border-[#B45309]/20">
+          <i class="bi bi-question-circle" aria-hidden="true"></i>
+        </span>
+        <div>
+          <h3 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A] leading-tight">
+            FAQ da Graduação
+          </h3>
+          <span class="text-[11px] text-gray-500 font-mono">22 Respostas Regimentais</span>
+        </div>
+      </div>
+      <span class="px-2 py-0.5 rounded font-['Oswald'] text-xs font-bold bg-[#B45309] text-white">
+        22 dúvidas
+      </span>
+    </div>
+
+    <!-- Dúvidas Mais Consultadas -->
+    <div class="space-y-2 mb-4">
+      <p class="text-xs text-gray-700 leading-relaxed">
+        Respostas fundamentadas no Regulamento N-20229 e Resoluções CEPE/UFMG sobre a vida acadêmica.
+      </p>
+
+      <div class="space-y-1.5">
+        <span class="text-[11px] font-['Oswald'] uppercase tracking-wider text-gray-500 font-bold">
+          Dúvidas Frequentes:
+        </span>
+        {topFaqs.map((f) => (
+          <div class="p-2 bg-[#F7F5F0] border border-[#DFDBD2] rounded-md text-xs flex items-center gap-2 text-gray-800">
+            <i class={`bi ${f.icon} text-[#8B1E2D]`} aria-hidden="true" />
+            <span class="font-medium truncate">{f.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Ação Apple HIG -->
+  <a
+    href={route('/faq')}
+    class="min-h-[44px] px-3 py-2 bg-[#0A0A0A] text-white hover:bg-[#B45309] rounded-lg font-['Oswald'] text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all no-underline mt-2 shadow-[2px_2px_0px_#0A0A0A]"
+  >
+    <span>Explorar Todas as 22 Dúvidas</span>
+    <i class="bi bi-arrow-right" aria-hidden="true"></i>
+  </a>
+</div>

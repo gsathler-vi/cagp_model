@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "titulo": {
+      "type": "string"
+    },
+    "orgao": {
+      "type": "string"
+    },
+    "ano": {
+      "type": "number"
+    },
+    "resumo": {
+      "type": "string"
+    },
+    "arquivo": {
+      "type": "string"
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "titulo",
+    "orgao",
+    "ano",
+    "resumo"
+  ]
+}

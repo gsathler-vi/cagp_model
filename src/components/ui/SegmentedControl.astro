@@ -1,0 +1,251 @@
+---
+// SegmentedControl.astro - Controle Segmentado por N (Contrato 5.1)
+interface TabItem {
+  id: string;
+  shortLabel: string;
+  fullLabel: string;
+  hash: string;
+}
+
+interface Props {
+  tabs: TabItem[];
+  defaultTab?: string;
+}
+
+const { tabs, defaultTab = tabs[0]?.id } = Astro.props;
+---
+
+<nav class="cagp-workspace-bar" aria-label="Abas operacionais da página">
+  <div class="cagp-workspace-tabs flex-1 min-w-0 overflow-x-auto scrollbar-none snap-x snap-proximity" role="tablist" data-tab-count={tabs.length}>
+    {tabs.map((tab) => {
+      const isSelected = tab.id === defaultTab;
+      return (
+        <button
+          type="button"
+          class={`cagp-workspace-tab snap-start ${isSelected ? 'is-active' : ''}`}
+          role="tab"
+          id={`ws-tab-${tab.id}`}
+          aria-controls={`ws-panel-${tab.id}`}
+          aria-selected={isSelected ? 'true' : 'false'}
+          tabindex={isSelected ? 0 : -1}
+          data-ws-tab={tab.id}
+          data-ws-hash={tab.hash}
+        >
+          <span class="cagp-tab-label-full">{tab.fullLabel}</span>
+          <span class="cagp-tab-label-short" aria-hidden="true">{tab.shortLabel}</span>
+        </button>
+      );
+    })}
+  </div>
+  <button
+    type="button"
+    class="cagp-workspace-viewall shrink-0"
+    aria-pressed="false"
+    aria-label="Ver todas as abas"
+    data-ws-tab="__all__"
+    data-ws-hash="#visao-completa"
+  >
+    <i class="bi bi-layout-text-sidebar" aria-hidden="true"></i>
+  </button>
+</nav>
+
+<script>
+  function setupWorkspaceTabs() {
+    const bars = document.querySelectorAll('.cagp-workspace-bar');
+    bars.forEach((bar) => {
+      if ((bar as any).__cagp_ws_initialized) return;
+      (bar as any).__cagp_ws_initialized = true;
+
+      const tabs = bar.querySelectorAll<HTMLButtonElement>('.cagp-workspace-tab');
+      const viewAllBtn = bar.querySelector<HTMLButtonElement>('.cagp-workspace-viewall');
+      const panels = document.querySelectorAll<HTMLElement>('.cagp-workspace-view');
+
+      function activate(tabId: string, updateHash = true) {
+        if (tabId === '__all__') {
+          tabs.forEach((t) => {
+            t.classList.remove('is-active');
+            t.setAttribute('aria-selected', 'false');
+            t.tabIndex = -1;
+          });
+          viewAllBtn?.setAttribute('aria-pressed', 'true');
+          viewAllBtn?.classList.add('is-active');
+          panels.forEach((p) => p.removeAttribute('hidden'));
+          if (updateHash) history.replaceState(null, '', '#visao-completa');
+          return;
+        }
+
+        viewAllBtn?.setAttribute('aria-pressed', 'false');
+        viewAllBtn?.classList.remove('is-active');
+
+        tabs.forEach((t) => {
+          const isMatch = t.getAttribute('data-ws-tab') === tabId;
+          t.classList.toggle('is-active', isMatch);
+          t.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+          t.tabIndex = isMatch ? 0 : -1;
+          if (isMatch) {
+            t.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            if (updateHash) {
+              const h = t.getAttribute('data-ws-hash');
+              if (h) history.replaceState(null, '', h);
+            }
+          }
+        });
+
+        panels.forEach((p) => {
+          const panelId = p.getAttribute('data-ws-panel') || p.id.replace('ws-panel-', '');
+          if (panelId === tabId) {
+            p.removeAttribute('hidden');
+            p.classList.remove('cagp-animate-ws-enter');
+            void p.offsetWidth;
+            p.classList.add('cagp-animate-ws-enter');
+          } else {
+            p.setAttribute('hidden', '');
+            p.classList.remove('cagp-animate-ws-enter');
+          }
+        });
+      }
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => {
+          const id = tab.getAttribute('data-ws-tab');
+          if (id) activate(id);
+        });
+
+        // Keyboard navigation (ArrowLeft / ArrowRight) with roving tabindex
+        tab.addEventListener('keydown', (e) => {
+          let nextIndex = index;
+          if (e.key === 'ArrowRight') {
+            nextIndex = (index + 1) % tabs.length;
+          } else if (e.key === 'ArrowLeft') {
+            nextIndex = (index - 1 + tabs.length) % tabs.length;
+          } else {
+            return;
+          }
+          e.preventDefault();
+          tabs[nextIndex].focus();
+          const nextId = tabs[nextIndex].getAttribute('data-ws-tab');
+          if (nextId) activate(nextId);
+        });
+      });
+
+      viewAllBtn?.addEventListener('click', () => {
+        const isPressed = viewAllBtn.getAttribute('aria-pressed') === 'true';
+        if (isPressed) {
+          const firstTab = tabs[0]?.getAttribute('data-ws-tab');
+          if (firstTab) activate(firstTab);
+        } else {
+          activate('__all__');
+        }
+      });
+
+      // Delegated click listener to catch in-page anchor links referencing tabs or tab panels
+      const handleGlobalAnchorClick = (e: MouseEvent) => {
+        const anchor = (e.target as HTMLElement).closest('a');
+        if (!anchor) return;
+        const href = anchor.getAttribute('href');
+        if (!href) return;
+
+        // Check if link is same-page with a hash
+        let hash = '';
+        if (href.startsWith('#')) {
+          hash = href;
+        } else if (href.includes('#')) {
+          try {
+            const url = new URL(anchor.href, window.location.href);
+            if (url.origin === window.location.origin && url.pathname.replace(/\/$/, '') === window.location.pathname.replace(/\/$/, '')) {
+              hash = url.hash;
+            }
+          } catch {}
+        }
+
+        if (!hash) return;
+
+        // Check if hash matches one of the tabs
+        const matchingTab = Array.from(tabs).find((t) => t.getAttribute('data-ws-hash') === hash);
+        if (matchingTab) {
+          e.preventDefault();
+          const id = matchingTab.getAttribute('data-ws-tab');
+          if (id) {
+            activate(id, true);
+            setTimeout(() => {
+              const targetEl = document.querySelector(hash) || document.getElementById('ws-panel-' + id);
+              if (targetEl) {
+                targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }, 50);
+          }
+          return;
+        }
+
+        // Check if hash matches an element inside one of the panels
+        try {
+          const targetEl = document.querySelector(hash);
+          if (targetEl) {
+            const parentPanel = targetEl.closest('.cagp-workspace-view');
+            if (parentPanel) {
+              const panelId = parentPanel.getAttribute('data-ws-panel') || parentPanel.id.replace('ws-panel-', '');
+              const tabForPanel = Array.from(tabs).find((t) => t.getAttribute('data-ws-tab') === panelId);
+              if (tabForPanel) {
+                e.preventDefault();
+                activate(panelId, true);
+                setTimeout(() => {
+                  targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  if (targetEl.tagName === 'DETAILS') {
+                    (targetEl as HTMLDetailsElement).open = true;
+                  }
+                }, 50);
+              }
+            }
+          }
+        } catch {}
+      };
+
+      document.addEventListener('click', handleGlobalAnchorClick);
+
+      // Match current window location hash on load
+      const applyHash = () => {
+        const hash = window.location.hash;
+        if (hash === '#visao-completa') {
+          activate('__all__', false);
+        } else if (hash) {
+          let matchingTab = Array.from(tabs).find((t) => t.getAttribute('data-ws-hash') === hash);
+          let targetEl: HTMLElement | null = null;
+
+          if (!matchingTab && hash.length > 1) {
+            try {
+              targetEl = document.querySelector(hash);
+              if (targetEl) {
+                const parentPanel = targetEl.closest('.cagp-workspace-view');
+                if (parentPanel) {
+                  const panelId = parentPanel.getAttribute('data-ws-panel') || parentPanel.id.replace('ws-panel-', '');
+                  matchingTab = Array.from(tabs).find((t) => t.getAttribute('data-ws-tab') === panelId);
+                }
+              }
+            } catch (e) {}
+          }
+
+          if (matchingTab) {
+            const id = matchingTab.getAttribute('data-ws-tab');
+            if (id) {
+              activate(id, false);
+              setTimeout(() => {
+                const el = targetEl || document.querySelector(hash) || document.getElementById('ws-panel-' + id);
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  if (el.tagName === 'DETAILS') {
+                    (el as HTMLDetailsElement).open = true;
+                  }
+                }
+              }, 120);
+            }
+          }
+        }
+      };
+
+      applyHash();
+      window.addEventListener('hashchange', applyHash);
+    });
+  }
+
+  document.addEventListener('astro:page-load', setupWorkspaceTabs);
+</script>

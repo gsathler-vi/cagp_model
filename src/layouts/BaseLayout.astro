@@ -1,0 +1,306 @@
+---
+// BaseLayout.astro - Casca Global Astro 7, View Transitions Direcionais & Progress Bar
+import { ClientRouter } from 'astro:transitions';
+import CampaignBanner from '../components/shell/CampaignBanner.astro';
+import SuperAppHeader from '../components/shell/SuperAppHeader.astro';
+import PageFooter from '../components/shell/PageFooter.astro';
+import BackToTop from '../components/shell/BackToTop.astro';
+import DynamicToast from '../components/shell/DynamicToast.astro';
+import MobileDrawer from '../components/shell/MobileDrawer.astro';
+import BottomNav from '../components/shell/BottomNav.astro';
+import { DesktopFloatingDock } from '../components/shell/DesktopFloatingDock';
+import { GlobalSheets } from '../components/shell/GlobalSheets';
+import { SuperAppWelcomeModal } from '../components/shell/SuperAppWelcomeModal';
+import { asset } from '../lib/paths';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'Portal Institucional & Super App Discente — Centro Acadêmico de Gestão Pública (CAGP FAFICH/UFMG)',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="pt-BR" data-base-url={import.meta.env.BASE_URL}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#8B1E2D" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href={asset('/logos/cagp/10_simbolo_transparente_positivo.svg')} />
+    <link rel="manifest" href={asset('/manifest.webmanifest')} />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+    <title>{title} — CAGP UFMG</title>
+    <ClientRouter />
+
+    <!-- Anti-FOUC Acessibilidade & Drawer Global -->
+    <script is:inline>
+      (function() {
+        // Drawer Global Síncrono (Resolução 100% à Prova de Falhas para Home e Sub-rotas)
+        window.__cagp_open_drawer = function() {
+          var d = document.getElementById('cagp-mobile-drawer');
+          if (d) {
+            d.classList.add('is-open');
+            document.body.style.overflow = 'hidden';
+            document.body.classList.add('cagp-drawer-open');
+          }
+        };
+        window.__cagp_close_drawer = function() {
+          var d = document.getElementById('cagp-mobile-drawer');
+          if (d) {
+            d.classList.remove('is-open');
+            document.body.style.overflow = '';
+            document.body.classList.remove('cagp-drawer-open');
+          }
+        };
+        window.__cagp_toggle_drawer = function() {
+          var d = document.getElementById('cagp-mobile-drawer');
+          if (d) {
+            if (d.classList.contains('is-open')) {
+              window.__cagp_close_drawer();
+            } else {
+              window.__cagp_open_drawer();
+            }
+          }
+        };
+
+        function syncThemeAndA11y() {
+          try {
+            var raw = localStorage.getItem('cagp_a11y_prefs_v2');
+            var el = document.documentElement;
+            var p = raw ? JSON.parse(raw) : {};
+            el.setAttribute('data-a11y-font', p.font || 'md');
+            el.setAttribute('data-a11y-contrast', p.contrast || 'normal');
+            el.setAttribute('data-a11y-dyslexia', p.dyslexia ? 'true' : 'false');
+            el.setAttribute('data-a11y-motion', p.motion || 'normal');
+            el.setAttribute('data-a11y-ruler', p.ruler ? 'true' : 'false');
+            el.removeAttribute('data-theme');
+            el.setAttribute('data-desktop-dock', p.showDesktopDock ? 'true' : 'false');
+          } catch (e) {}
+        }
+
+        syncThemeAndA11y();
+
+        // Reset seguro do estado do drawer e re-sincronização de tema em transições de página Astro
+        document.addEventListener('astro:after-swap', function() {
+          document.body.style.overflow = '';
+          document.body.classList.remove('cagp-drawer-open');
+          if (window.__cagp_close_drawer) {
+            window.__cagp_close_drawer();
+          }
+          syncThemeAndA11y();
+        });
+      })();
+    </script>
+
+    <noscript>
+      <style>
+        .cagp-workspace-view[hidden] {
+          display: block !important;
+        }
+      </style>
+    </noscript>
+  </head>
+  <body class="bg-[#F7F5F0] text-[#0A0A0A] font-['Inter'] antialiased min-h-[100dvh] flex flex-col">
+    <!-- Cápsula Tátil Flutuante (Dynamic Island Toast) -->
+    <DynamicToast />
+
+    <!-- Régua Visual de Leitura e Foco A11y -->
+    <div id="cagp-reading-ruler" class="cagp-reading-ruler" aria-hidden="true"></div>
+
+    <!-- Barra Superior de Carregamento de Rota -->
+    <div id="cagp-route-progress-bar" class="cagp-route-progress-bar" aria-hidden="true">
+      <div class="cagp-route-progress-fill"></div>
+    </div>
+
+    <!-- Faixa Permanente de Campanha & Transparência -->
+    <CampaignBanner />
+
+    <!-- Header com navegação adaptativa desktop e ferramentas -->
+    <SuperAppHeader />
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="flex-1 w-full max-w-5xl lg:max-w-6xl mx-auto px-3 sm:px-6 py-4 sm:py-6 focus:outline-none">
+      <slot />
+    </main>
+
+    <!-- Rodapé Institucional -->
+    <PageFooter />
+
+    <!-- Botão Flutuante Voltar ao Topo -->
+    <BackToTop />
+
+    <!-- Menu Lateral Off-Canvas Mobile/Tablet -->
+    <MobileDrawer />
+
+    <!-- Bottom Navigation (Mobile & Tablet) -->
+    <BottomNav />
+
+    <!-- Dock Flutuante de Atalhos Rápidos (Desktop Apple HIG) -->
+    <DesktopFloatingDock client:load />
+
+    <!-- Global React Sheets & Spotlight Command Palette -->
+    <GlobalSheets client:load />
+
+    <!-- Welcome Onboarding Tour (Apple HIG) -->
+    <SuperAppWelcomeModal client:load />
+
+    <!-- Directional Navigation & Progress Bar Controller -->
+    <script is:inline>
+      (function() {
+        const ROUTE_META = {
+          '/': { group: 1, depth: 0 },
+          '/curso': { group: 2, depth: 0 },
+          '/calouros': { group: 2, depth: 1 },
+          '/pesquisa': { group: 2, depth: 1 },
+          '/percurso': { group: 3, depth: 0 },
+          '/optativas': { group: 3, depth: 1 },
+          '/acg': { group: 3, depth: 1 },
+          '/estagio': { group: 3, depth: 1 },
+          '/tcc': { group: 3, depth: 1 },
+          '/estagio-tcc': { group: 3, depth: 1 },
+          '/documentos': { group: 4, depth: 0 },
+          '/faq': { group: 4, depth: 1 },
+          '/mapa-do-site': { group: 4, depth: 1 },
+          '/sobre': { group: 5, depth: 0 },
+          '/gestao': { group: 5, depth: 1 }
+        };
+
+        const baseUrl = document.documentElement.dataset.baseUrl || '/';
+        const cleanBase = baseUrl.replace(/\/$/, '');
+
+        function normalizePath(p) {
+          const raw = p.replace(/\/$/, '') || '/';
+          if (cleanBase && raw.startsWith(cleanBase)) {
+            return raw.slice(cleanBase.length) || '/';
+          }
+          return raw;
+        }
+
+        function computeNavDir(fromPath, toPath) {
+          const cleanFrom = normalizePath(fromPath);
+          const cleanTo = normalizePath(toPath);
+          const fm = ROUTE_META[cleanFrom] || { group: 1, depth: 0 };
+          const tm = ROUTE_META[cleanTo] || { group: 1, depth: 0 };
+
+          if (fm.group === tm.group && fm.depth !== tm.depth) {
+            return tm.depth > fm.depth ? 'drill-in' : 'drill-out';
+          }
+          if (cleanFrom === '/' && tm.depth > 0) return 'drill-in';
+          if (fm.depth > 0 && cleanTo === '/') return 'drill-out';
+          if (tm.group > fm.group) return 'forward';
+          if (tm.group < fm.group) return 'backward';
+          return 'forward';
+        }
+
+        function fixLinks(root = document) {
+          if (!cleanBase) return;
+          const prefix = cleanBase.endsWith('/') ? cleanBase : cleanBase + '/';
+          root.querySelectorAll('a[href^="/"]').forEach(a => {
+            const href = a.getAttribute('href');
+            if (href && !href.startsWith(prefix) && href !== cleanBase && !href.startsWith('//')) {
+              a.setAttribute('href', cleanBase + (href.startsWith('/') ? href : '/' + href));
+            }
+          });
+          root.querySelectorAll('img[src^="/"]').forEach(img => {
+            const src = img.getAttribute('src');
+            if (src && !src.startsWith(prefix) && !src.startsWith('//')) {
+              img.setAttribute('src', cleanBase + (src.startsWith('/') ? src : '/' + src));
+            }
+          });
+        }
+
+        document.addEventListener('astro:before-preparation', function(event) {
+          const fromPath = event.from.pathname;
+          let toPath = event.to.pathname;
+
+          if (cleanBase && toPath.startsWith('/') && !toPath.startsWith(cleanBase)) {
+            event.to.pathname = cleanBase + toPath;
+            toPath = event.to.pathname;
+          }
+
+          const dir = computeNavDir(fromPath, toPath);
+          document.documentElement.setAttribute('data-nav-dir', dir);
+
+          const bar = document.getElementById('cagp-route-progress-bar');
+          const fill = bar ? bar.querySelector('.cagp-route-progress-fill') : null;
+          if (bar && fill) {
+            bar.classList.add('is-active');
+            fill.style.width = '25%';
+            requestAnimationFrame(() => {
+              fill.style.width = '75%';
+            });
+          }
+        });
+
+        document.addEventListener('astro:page-load', function() {
+          fixLinks();
+
+          const bar = document.getElementById('cagp-route-progress-bar');
+          const fill = bar ? bar.querySelector('.cagp-route-progress-fill') : null;
+          if (bar && fill) {
+            fill.style.width = '100%';
+            setTimeout(() => {
+              bar.classList.remove('is-active');
+              fill.style.width = '0%';
+            }, 200);
+          }
+
+          if (window.location.search.includes('openSettings=true')) {
+            window.history.replaceState(null, '', window.location.pathname);
+            setTimeout(() => window.dispatchEvent(new CustomEvent('cagp:open-settings')), 150);
+          }
+        });
+
+        if ('serviceWorker' in navigator) {
+          if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname === '0.0.0.0') {
+            // Em ambiente local, desregistra qualquer SW prévio e limpa caches para visualização 100% atualizada
+            navigator.serviceWorker.getRegistrations().then((regs) => {
+              for (const r of regs) r.unregister();
+            });
+            if ('caches' in window) {
+              caches.keys().then((keys) => {
+                for (const k of keys) caches.delete(k);
+              });
+            }
+          } else if (window.location.protocol === 'https:') {
+            window.addEventListener('load', () => {
+              const swPath = `${cleanBase}/sw.js`;
+              navigator.serviceWorker.register(swPath).catch((err) => {
+                console.warn('[PWA] Service Worker registration failed:', err);
+              });
+            });
+            navigator.serviceWorker.addEventListener('controllerchange', () => {
+              window.location.reload();
+            });
+          }
+        }
+
+        window.addEventListener('pointermove', function(e) {
+          if (document.documentElement.getAttribute('data-a11y-ruler') === 'true') {
+            const ruler = document.getElementById('cagp-reading-ruler');
+            if (ruler) {
+              ruler.style.top = e.clientY + 'px';
+            }
+          }
+        }, { passive: true });
+      })();
+    </script>
+  </body>
+</html>

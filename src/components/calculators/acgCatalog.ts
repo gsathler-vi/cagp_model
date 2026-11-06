@@ -1,0 +1,358 @@
+// acgCatalog.ts - Catálogo Oficial de Atividades de Extensão (300h) e AAC (300h) com Regras Fatuais
+// PPC 2020 Quadros 7 e 8 • Regulamento N-20229 Art. 13 e 15 • Resolução CEPE 10/2019
+
+export interface AcgItemDef {
+  key: string;
+  aliases?: string[];
+  group: 'ext' | 'aac';
+  code: string;
+  label: string;
+  desc: string;
+  step: number;
+  max: number;
+  creditsLabel: string;
+  icon: string;
+  has120dDeadline?: boolean;
+  accepted: string[];
+  rejected: string[];
+  alertNote?: string;
+}
+
+export const EXTENSION_ITEMS: AcgItemDef[] = [
+  {
+    key: 'ext_lab_a',
+    group: 'ext',
+    code: 'DCP 195',
+    label: 'Laboratório de Gestão e Políticas Públicas A',
+    desc: 'Disciplina prática obrigatória do 7º período • 90h (6 créditos)',
+    step: 90,
+    max: 90,
+    creditsLabel: '6 créditos',
+    icon: 'bi-flask',
+    accepted: [
+      'Aprovação formal na disciplina prática DCP 195 no 7º período letivo;',
+      'Desenvolvimento de diagnósticos de gestão e matrizes aplicadas a órgãos parceiros;',
+      'Integralização direta de 90h de extensão no SIGA pela nota final.',
+    ],
+    rejected: [
+      'Não é passível de dispensa por estágio supervisionado ou vivência profissional;',
+      'Disciplinas teóricas comuns de outros departamentos sem componente extensionista;',
+      'Reprovações exigem nova matrícula no semestre seguinte.',
+    ],
+  },
+  {
+    key: 'ext_lab_b',
+    group: 'ext',
+    code: 'DCP 196',
+    label: 'Laboratório de Gestão e Políticas Públicas B',
+    desc: 'Disciplina prática obrigatória do 8º período • 90h (6 créditos)',
+    step: 90,
+    max: 90,
+    creditsLabel: '6 créditos',
+    icon: 'bi-flask-fill',
+    accepted: [
+      'Aprovação formal na disciplina prática DCP 196 no 8º período letivo;',
+      'Execução do plano de intervenção governamental elaborado no ciclo A;',
+      'Integralização direta de mais 90h de extensão no SIGA pela nota final.',
+    ],
+    rejected: [
+      'Não pode ser cursada sem ter concluído o Laboratório A (requisito pedagógico);',
+      'Atividades de TCC ou pesquisa bibliográfica não contam como Laboratório B;',
+      'Não permite aproveitamento retroativo de empregos anteriores.',
+    ],
+  },
+  {
+    key: 'ext_ensino_inter',
+    aliases: ['ext_inter', 'ext_cursos'],
+    group: 'ext',
+    code: 'DCP 176/177',
+    label: 'Atividades Interinstitucionais de Ensino (Escolas de Governo)',
+    desc: 'Cursos certificados em IES públicas e Escolas de Governo • Teto: até 120h (8 cr)',
+    step: 15,
+    max: 120,
+    creditsLabel: 'Até 8 créditos',
+    icon: 'bi-mortarboard-fill',
+    accepted: [
+      'Cursos de extensão e oficinas em outras Instituições Públicas de Ensino Superior (IES);',
+      'Cursos certificados por Escolas de Governo reconhecidas (ENAP, Fundação João Pinheiro, ILB, etc.);',
+      'Conteúdo com estrita aderência ao campo de Gestão e Políticas Públicas.',
+    ],
+    rejected: [
+      'Cursos livres de plataformas comerciais privadas (Udemy, Coursera etc.) sem convalidação pública;',
+      'Cursos que apenas reproduzam matérias obrigatórias já constantes no percurso;',
+      'Cursos sem prova de carga horária, ementa oficial e autenticação digital.',
+    ],
+  },
+  {
+    key: 'ext_eventos_ii',
+    aliases: ['ext_eventos'],
+    group: 'ext',
+    code: 'DCP 120',
+    label: 'Organização / Debatedor de Eventos Extensionistas (II)',
+    desc: 'Comissão organizadora ou moderador • Teto: até 30h (2 créditos)',
+    step: 15,
+    max: 30,
+    creditsLabel: 'Até 2 créditos',
+    icon: 'bi-calendar2-event-fill',
+    accepted: [
+      'Participação em comissão organizadora ou comitê executivo de congressos da área;',
+      'Atuação como moderador, debatedor ou coordenador de mesa-redonda ou grupo de trabalho (GT);',
+      'Certificado formal emitido pela comissão do evento atestando o papel exercido.',
+    ],
+    rejected: [
+      'Participar apenas sentado na plateia como ouvinte (isto é AAC Modalidade III);',
+      'Organização de calouradas, churrascos ou eventos sem caráter técnico-científico;',
+      'Apresentação de trabalho (isto é Trabalho em Anais / AAC Modalidade VII).',
+    ],
+  },
+  {
+    key: 'ext_ufmg',
+    aliases: ['ext_proex', 'ext_siex_proj'],
+    group: 'ext',
+    code: 'SIEX / PROEX',
+    label: 'Atividades de Extensão na UFMG (Projetos / Ações)',
+    desc: 'Bolsista ou voluntário registrado no SIEX/PROEX • Teto: até 90h (6 créditos)',
+    step: 15,
+    max: 90,
+    creditsLabel: 'Até 6 créditos',
+    icon: 'bi-diagram-3-fill',
+    accepted: [
+      'Participação como bolsista ou voluntário em projetos registrados no SIEX/PROEX;',
+      'Certificado formal emitido pela Pró-Reitoria de Extensão (PROEX/UFMG);',
+      'Projetos interdepartamentais que tenham interface com o setor público ou movimentos sociais.',
+    ],
+    rejected: [
+      'Ações de extensão sem registro oficial prévio no sistema SIEX;',
+      'Iniciação Científica (pertence à AAC Modalidade V, não à Extensão PROEX);',
+      'Declarações informais de docentes sem chancela oficial da PROEX.',
+    ],
+  },
+  {
+    key: 'ext_inter_equalitas',
+    aliases: ['ext_equalitas'],
+    group: 'ext',
+    code: 'ATLAS Jr.',
+    label: 'ATLAS Consultoria Jr. (antiga Equalitas)',
+    desc: 'Empresa Júnior de Gestão Pública da UFMG • Teto: até 90h (6 créditos)',
+    step: 15,
+    max: 90,
+    creditsLabel: 'Até 6 créditos',
+    icon: 'bi-building-check',
+    accepted: [
+      'Atuação efetiva em projetos de consultoria técnica em Gestão Pública;',
+      'Cargos de diretoria executiva, gerência e atuação como trainee na ATLAS Jr.;',
+      'Declaração emitida pela Diretoria-Executiva da Empresa Júnior com discriminação de horas.',
+    ],
+    rejected: [
+      'Participação em processos seletivos sem ingresso formal ou desistência no treinamento;',
+      'Horas que ultrapassem o teto de 90h (6 créditos) fixado no regulamento;',
+      'Atividades puramente festivas ou comissões de formatura.',
+    ],
+  },
+];
+
+export const AAC_ITEMS: AcgItemDef[] = [
+  {
+    key: 'aac_pesquisa_inter',
+    aliases: ['aac_1'],
+    group: 'aac',
+    code: 'Mod. I',
+    label: 'I. Pesquisa Interinstitucional',
+    desc: 'Pesquisa científica em outras IES e institutos públicos • Teto: até 75h (5 cr)',
+    step: 15,
+    max: 75,
+    creditsLabel: 'Até 5 créditos',
+    icon: 'bi-globe',
+    accepted: [
+      'Pesquisas em outras IES públicas ou institutos estatais reconhecidos (IPEA, FJP, etc.);',
+      'Plano de trabalho acadêmico supervisionado por pesquisador externo qualificado;',
+      'Relatório final com parecer formal avaliativo assinado pelo orientador.',
+    ],
+    rejected: [
+      'Pesquisas desenvolvidas internamente na UFMG (pertencem à Modalidade V);',
+      'Atividades sem comprovação acadêmica ou sem relatório avaliativo de desempenho;',
+      'Horas que ultrapassem o teto de 75h (5 créditos).',
+    ],
+  },
+  {
+    key: 'aac_monitoria',
+    aliases: ['aac_2'],
+    group: 'aac',
+    code: 'Mod. II',
+    label: 'II. Monitoria Acadêmica em Gestão Pública',
+    desc: 'Monitoria em disciplinas vinculadas ao curso de Gestão Pública • Teto: até 45h (3 cr)',
+    step: 15,
+    max: 45,
+    creditsLabel: 'Até 3 créditos',
+    icon: 'bi-person-video3',
+    accepted: [
+      'Monitoria formal (bolsista ou voluntária) em disciplinas vinculadas ao curso de Gestão Pública;',
+      'Disciplinas de Ciência Política (DCP), Sociologia (SOA), Economia (FACE) ou Estatística (ICEx);',
+      'Relatório final com termo de encerramento assinado junto ao docente responsável.',
+    ],
+    rejected: [
+      'Aulas particulares informais ou cursinhos externos;',
+      'Monitoria exercida sem processo seletivo ou sem cadastro no departamento da UFMG;',
+      'Carga horária além do limite de 45h (3 créditos).',
+    ],
+  },
+  {
+    key: 'aac_eventos_i',
+    aliases: ['aac_3', 'aac_eventos'],
+    group: 'aac',
+    code: 'Mod. III',
+    label: 'III. Participação em Eventos I — Ouvinte (120 dias)',
+    desc: 'Congressos, conferências e seminários • Prazo legal de 120 dias! • Teto: até 60h (4 cr)',
+    step: 15,
+    max: 60,
+    creditsLabel: 'Até 4 créditos',
+    icon: 'bi-calendar2-week-fill',
+    has120dDeadline: true,
+    accepted: [
+      'Participação como ouvinte em congressos, seminários, conferências e semanas acadêmicas;',
+      'Eventos promovidos por universidades, associações científicas (ex.: ABCP, ENEAP) ou órgãos públicos;',
+      'Certificados com carga horária expressa (converte 1 crédito a cada 15h comprovadas).',
+    ],
+    rejected: [
+      'Certificados protocolados após 120 dias corridos do evento são sumariamente indeferidos! (Art. 15, § 4º);',
+      'Certificados sem indicação explícita da carga horária cumprida;',
+      'Eventos puramente corporativos, comerciais ou sem relação com Gestão Pública.',
+    ],
+    alertNote: 'Atenção ao Prazo Fatal de 120 Dias: O Colegiado indefere sumariamente requerimentos de eventos submetidos após 120 dias corridos do término do evento (Art. 15, § 4º)!',
+  },
+  {
+    key: 'aac_grupos_estudo',
+    aliases: ['aac_4'],
+    group: 'aac',
+    code: 'Mod. IV',
+    label: 'IV. Participação em Grupos de Estudo',
+    desc: 'Grupos de pesquisa e estudos temáticos cadastrados • Teto: até 30h (2 cr)',
+    step: 15,
+    max: 30,
+    creditsLabel: 'Até 2 créditos',
+    icon: 'bi-people-fill',
+    accepted: [
+      'Participação regular em grupos de estudo cadastrados na UFMG sob tutoria docente;',
+      'Estudos sistemáticos de textos teóricos e metodológicos da área pública;',
+      'Relatório de frequência e parecer formal atestado pelo docente coordenador.',
+    ],
+    rejected: [
+      'Grupos de estudo autônomos sem chancela docente oficial no departamento;',
+      'Reaproveitamento de tarefas de disciplinas regulares ou do TCC;',
+      'Carga horária excedente ao limite de 30h (2 créditos).',
+    ],
+  },
+  {
+    key: 'aac_pesquisa_ufmg',
+    aliases: ['aac_5', 'aac_ic'],
+    group: 'aac',
+    code: 'Mod. V',
+    label: 'V. Iniciação Científica na UFMG (PIBIC / Voluntário)',
+    desc: 'Bolsista ou voluntário registrado na PRPq/UFMG • Teto: até 90h (6 cr)',
+    step: 15,
+    max: 90,
+    creditsLabel: 'Até 6 créditos',
+    icon: 'bi-lightbulb-fill',
+    accepted: [
+      'Atuação como bolsista ou voluntário registrado na PRPq/UFMG (PIBIC, PIBITI, etc.);',
+      'Pesquisa vinculada a núcleos do DCP (ex.: Rede Femjusp, PUBLICUS, INCT/IDDC, MARGEM, CEL) ou da FAFICH;',
+      'Relatório final atestado pelo docente orientador no DCP/UFMG.',
+    ],
+    rejected: [
+      'Pesquisas sem registro oficial no sistema da Pró-Reitoria de Pesquisa (PRPq);',
+      'Atividades meramente operacionais sem plano metodológico de investigação científica;',
+      'Pesquisas executadas fora da UFMG (pertencem à Modalidade I).',
+    ],
+  },
+  {
+    key: 'aac_pesquisa_bib',
+    aliases: ['aac_6'],
+    group: 'aac',
+    code: 'Mod. VI',
+    label: 'VI. Pesquisa Bibliográfica Orientada',
+    desc: 'Aprofundamento teórico temático sob orientação docente • Teto: até 30h (2 cr)',
+    step: 15,
+    max: 30,
+    creditsLabel: 'Até 2 créditos',
+    icon: 'bi-book-fill',
+    accepted: [
+      'Pesquisa bibliográfica de aprofundamento teórico orientada por professor da área;',
+      'Apresentação de texto científico original avaliado pelo orientador docente;',
+      'Tema com estrita conexão aos eixos de formação do curso.',
+    ],
+    rejected: [
+      'Reaproveitamento de trabalhos de conclusão de curso (TCC) ou relatórios de estágio;',
+      'Textos sem parecer formal avaliativo do orientador docente;',
+      'Carga horária excedente ao teto de 30h (2 créditos).',
+    ],
+  },
+  {
+    key: 'aac_anais',
+    aliases: ['aac_7'],
+    group: 'aac',
+    code: 'Mod. VII',
+    label: 'VII. Trabalho Apresentado / Publicado em Anais (120 dias)',
+    desc: 'Pôster ou comunicação oral em evento científico • Prazo: 120 dias! • Teto: até 30h (2 cr)',
+    step: 15,
+    max: 30,
+    creditsLabel: 'Até 2 créditos',
+    icon: 'bi-file-earmark-ruled-fill',
+    has120dDeadline: true,
+    accepted: [
+      'Apresentação de pôster ou comunicação oral em evento científico (ex.: Semana do Conhecimento UFMG, ENEAP, EnANPAD, ABCP);',
+      'Trabalho publicado nos anais oficiais com resumo e discriminação de autoria;',
+      'Comprovante formal de apresentação emitido pela comissão organizadora.',
+    ],
+    rejected: [
+      'Assistir como ouvinte não conta como Anais (pertence à Modalidade III - Eventos I);',
+      'Certificados de Anais entregues após 120 dias corridos do evento são indeferidos! (Art. 15, § 4º, VII);',
+      'Trabalhos avaliativos internos de disciplinas sem apresentação em congresso.',
+    ],
+    alertNote: 'Atenção ao Prazo Fatal de 120 Dias: O certificado de apresentação em anais precisa ser protocolado no Colegiado em até 120 dias corridos após o encerramento do congresso (Art. 15, § 4º, VII)!',
+  },
+  {
+    key: 'aac_periodico',
+    aliases: ['aac_8', 'aac_publicacoes'],
+    group: 'aac',
+    code: 'Mod. VIII',
+    label: 'VIII. Artigo Publicado em Periódico Científico',
+    desc: 'Publicação de artigo em revista indexada com Qualis • Teto: até 60h (4 cr)',
+    step: 15,
+    max: 60,
+    creditsLabel: 'Até 4 créditos',
+    icon: 'bi-file-earmark-richtext-fill',
+    accepted: [
+      'Artigo completo publicado ou carta oficial de aceite definitivo em revista indexada com Qualis/CAPES reconhecido;',
+      'Autoria ou coautoria discente com menção formal ao vínculo com a UFMG;',
+      'Exemplar do artigo publicado contendo identificador ISSN/DOI.',
+    ],
+    rejected: [
+      'Textos em blogs, redes sociais, cartas de opinião ou veículos sem corpo editorial científico;',
+      'Artigos submetidos mas ainda sem parecer formal de aceite;',
+      'Publicações sem aderência às áreas de Ciências Sociais Aplicadas ou Humanas.',
+    ],
+  },
+  {
+    key: 'aac_vivencia',
+    aliases: ['aac_9'],
+    group: 'aac',
+    code: 'Mod. IX',
+    label: 'IX. Vivência Profissional / Estágio Não-Obrigatório',
+    desc: 'Treinamento prático em órgãos públicos ou ONGs de públicas • Teto: até 60h (4 cr)',
+    step: 15,
+    max: 60,
+    creditsLabel: 'Até 4 créditos',
+    icon: 'bi-briefcase-fill',
+    accepted: [
+      'Estágio não-obrigatório em órgãos públicos (prefeituras, secretarias estaduais, ministérios, tribunais) ou ONGs do campo de públicas;',
+      'Termo de Compromisso de Estágio (TCE) regularizado e relatório final assinado pelo supervisor do órgão;',
+      'Atuação prática em processos de gestão, análise orçamentária ou políticas públicas.',
+    ],
+    rejected: [
+      'Horas do Estágio Curricular Obrigatório não podem ser duplicadas como AAC! (pertencem a DCP 135 / DCP 136);',
+      'Estágios em empresas privadas comerciais sem interface governamental comprovada;',
+      'Funções operacionais sem relação com a formação em Gestão Pública;',
+      'Carga horária excedente ao teto de 60h (4 créditos).',
+    ],
+  },
+];

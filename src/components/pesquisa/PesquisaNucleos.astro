@@ -1,0 +1,162 @@
+---
+// PesquisaNucleos.astro - Sub-view 1: Os 11 Núcleos de Pesquisa do DCP/FAFICH
+const nucleos = [
+  {
+    eixo: 'Eixo 1: Gestão Governamental, Burocracia & Políticas Públicas',
+    icon: 'bi-building-gear',
+    items: [
+      {
+        sigla: 'PUBLICUS',
+        nome: 'Núcleo de Estudos em Gestão e Políticas Públicas',
+        lider: 'Profa. Dra. Telma Maria Gonçalves Menicucci',
+        tema: 'Referência em políticas sociais, Sistema Único de Saúde (SUS), reformas do Estado e arranjos federativos.',
+        tags: ['Políticas Sociais', 'SUS & Saúde', 'Capacidades Estatais', 'Avaliação'],
+      },
+      {
+        sigla: 'CEPPI',
+        nome: 'Centro de Pesquisas em Política e Internet',
+        lider: 'Profa. Dra. Isabele Batista Mitozo',
+        tema: 'Governo digital, transparência ativa, e-Gov, mídias sociais no setor público e enfrentamento à desinformação.',
+        tags: ['Governo Aberto', 'Transparência', 'Deliberação Digital', 'Mídias Sociais'],
+      },
+      {
+        sigla: 'NESTH',
+        nome: 'Núcleo de Estudos Sobre o Trabalho Humano',
+        lider: 'Prof. Carlos Roberto Horta e Profa. Flávia Alves',
+        tema: 'Relações de trabalho na burocracia do Estado, ergonomia funcional e precarização de vínculos.',
+        tags: ['Burocracia Pública', 'Gestão de Pessoas', 'Carreiras de Estado'],
+      },
+    ]
+  },
+  {
+    eixo: 'Eixo 2: Legislativo, Justiça & Relações Internacionais',
+    icon: 'bi-bank',
+    items: [
+      {
+        sigla: 'CEL',
+        nome: 'Centro de Estudos Legislativos',
+        lider: 'Profa. Dra. Magna Maria Inácio',
+        tema: 'Processo decisório no Congresso Nacional e assembleias estaduais, coalizões de governo e relações Executivo-Legislativo.',
+        tags: ['Presidencialismo de Coalizão', 'Processo Legislativo', 'Orçamento'],
+      },
+      {
+        sigla: 'FEMJUSP',
+        nome: 'Feminismos, Justiça e Segurança Pública',
+        lider: 'Profa. Dra. Ludmila Ribeiro',
+        tema: 'Sistema de justiça criminal, violência de gênero, atuação policial e políticas penitenciárias.',
+        tags: ['Segurança Pública', 'Justiça Criminal', 'Gênero & Violência'],
+      },
+      {
+        sigla: 'MARGEM & OJB',
+        nome: 'Democracia, Justiça e Observatório da Justiça Brasileira',
+        lider: 'Prof. Dr. Leonardo Avritzer',
+        tema: 'Instituições judiciais, ativismo do STF, transições democráticas e controle de constitucionalidade.',
+        tags: ['Judiciário & Política', 'Democracia', 'STF'],
+      },
+      {
+        sigla: 'RIPPERP',
+        nome: 'Rede de Pesquisa em Política Externa e Relações Internacionais',
+        lider: 'Prof. Dr. Dawisson Belém Lopes',
+        tema: 'Cooperação sul-sul, diplomacia pública federativa de estados e municípios, e paradiplomacia.',
+        tags: ['Política Externa', 'Diplomacia Federativa', 'Comércio Internacional'],
+      },
+    ]
+  },
+  {
+    eixo: 'Eixo 3: Democracia Participativa, Gênero & Opinião Pública',
+    icon: 'bi-people',
+    items: [
+      {
+        sigla: 'PRODEP',
+        nome: 'Projeto Democracia Participativa',
+        lider: 'Prof. Dr. Leonardo Avritzer',
+        tema: 'Orçamento participativo, conselhos gestores de políticas públicas e conferências nacionais.',
+        tags: ['Orçamento Participativo', 'Conselhos de Políticas', 'Participação'],
+      },
+      {
+        sigla: 'INCT / IDDC',
+        nome: 'Instituto da Democracia e Democratização da Comunicação',
+        lider: 'Rede Nacional sediada no DCP/UFMG',
+        tema: 'Pesquisa eleitoral comparada, confiança nas instituições republicanas e integridade do debate público.',
+        tags: ['Opinião Pública', 'Comunicação Pública', 'Integridade Institucional'],
+      },
+      {
+        sigla: 'NEPEM',
+        nome: 'Núcleo de Estudos e Pesquisas sobre a Mulher',
+        lider: 'Profa. Dra. Marlise Matos',
+        tema: 'Representação política feminina, transversalidade de gênero em planos plurianuais e direitos humanos.',
+        tags: ['Mulheres na Política', 'Políticas de Gênero', 'Interseccionalidade'],
+      },
+      {
+        sigla: 'CECOMP',
+        nome: 'Centro de Estudos do Comportamento Político',
+        lider: 'Prof. Dr. Mario Fuks',
+        tema: 'Cultura política, comportamento eleitoral, engajamento cívico juvenil e socialização democrática.',
+        tags: ['Cultura Política', 'Comportamento Eleitoral', 'Juventude'],
+      },
+    ]
+  }
+];
+---
+
+<div class="space-y-4 text-[#0A0A0A]">
+  <div class="cagp-tool-box p-4 space-y-3">
+    <div class="border-b border-[#DFDBD2] pb-2.5 flex items-center justify-between flex-wrap gap-2">
+      <div>
+        <div class="flex items-center gap-2">
+          <i class="bi bi-diagram-3-fill text-[#8B1E2D] text-lg" aria-hidden="true"></i>
+          <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A]">
+            Os 11 Núcleos de Pesquisa do DCP (Conceito 7 CAPES)
+          </h3>
+        </div>
+        <p class="text-xs text-gray-600 mt-0.5">
+          Projetos de iniciação científica e extensão com inserção prática na gestão pública:
+        </p>
+      </div>
+      <span class="cagp-badge cagp-badge-red font-mono">
+        Até 90h AAC
+      </span>
+    </div>
+
+    {nucleos.map((eixoGroup) => (
+      <div class="space-y-2 pt-2">
+        <div class="flex items-center gap-2">
+          <i class={`bi ${eixoGroup.icon} text-[#8B1E2D] text-base`} aria-hidden="true"></i>
+          <span class="font-['Oswald'] text-xs font-bold uppercase text-[#8B1E2D] tracking-wide">
+            {eixoGroup.eixo}
+          </span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5">
+          {eixoGroup.items.map((item) => (
+            <div class="cagp-card p-3.5 bg-white flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-1.5">
+                  <span class="font-['Oswald'] font-bold text-xs uppercase text-[#8B1E2D]">
+                    {item.sigla}
+                  </span>
+                  <span class="cagp-badge text-xs font-mono">DCP/UFMG</span>
+                </div>
+                <h4 class="font-bold text-xs text-[#0A0A0A] leading-tight mb-1">
+                  {item.nome}
+                </h4>
+                <p class="text-xs text-gray-500 mb-1">
+                  <strong>Coordenação:</strong> {item.lider}
+                </p>
+                <p class="text-xs text-gray-600 leading-relaxed mb-2">
+                  {item.tema}
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-1 pt-1.5 border-t border-[#DFDBD2]">
+                {item.tags.map((t) => (
+                  <span class="cagp-badge">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

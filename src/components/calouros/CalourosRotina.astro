@@ -1,0 +1,132 @@
+---
+// CalourosRotina.astro - Sub-view 2: Linha do Tempo da Noite & Transporte
+import { asset } from '../../lib/paths';
+---
+
+<div class="space-y-4 text-[#0A0A0A]">
+  <!-- Linha do Tempo Noturna -->
+  <div class="cagp-tool-box p-4 space-y-3">
+    <div class="border-b border-[#DFDBD2] pb-2.5 flex items-center justify-between flex-wrap gap-2">
+      <div>
+        <div class="flex items-center gap-2">
+          <i class="bi bi-clock-history text-[#8B1E2D] text-lg" aria-hidden="true"></i>
+          <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A]">
+            Cronograma da Rotina Noturna (17h10 às 22h45)
+          </h3>
+        </div>
+        <p class="text-xs text-gray-600 mt-0.5">Horários operacionais oficiais conforme a Portaria PRAE nº 1.286/2026:</p>
+      </div>
+      <span class="cagp-badge cagp-badge-dark font-mono">
+        <i class="bi bi-moon-stars" aria-hidden="true"></i> Turno Noturno
+      </span>
+    </div>
+
+    <div class="space-y-2 text-xs">
+      <div class="cagp-card flex items-start gap-3 p-3 bg-white">
+        <div class="w-8 h-8 rounded-[4px] bg-[#F7F5F0] border border-[#DFDBD2] flex items-center justify-center text-[#8B1E2D] shrink-0 shadow-[1px_1px_0_#0A0A0A]">
+          <i class="bi bi-cup-hot-fill text-base" aria-hidden="true"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2">
+            <span class="font-mono font-bold text-xs text-[#8B1E2D]">17h10</span>
+            <span class="font-['Oswald'] font-bold uppercase text-[#0A0A0A]">Abertura do RU II Setorial</span>
+          </div>
+          <p class="text-xs text-gray-600 mt-0.5">Início do jantar subsidiado aos fundos da FAFICH (próximo à FACE, ICB e ECI), funcionando até as 19h30.</p>
+        </div>
+      </div>
+
+      <div class="cagp-card flex items-start gap-3 p-3 bg-[#FDF8F8] border-2 border-[#8B1E2D] shadow-[2px_2px_0_#8B1E2D]">
+        <div class="w-8 h-8 rounded-[4px] bg-[#8B1E2D] text-white flex items-center justify-center shrink-0 shadow-[1px_1px_0_#0A0A0A]">
+          <i class="bi bi-star-fill text-sm" aria-hidden="true"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="font-mono font-bold text-xs text-[#8B1E2D]">18h00 – 18h25</span>
+            <span class="font-['Oswald'] font-bold uppercase text-[#8B1E2D]">Horário de Ouro para Jantar</span>
+            <span class="cagp-badge cagp-badge-red text-xs">Dica Veterana</span>
+          </div>
+          <p class="text-xs text-gray-700 mt-0.5">Chegar entre 18h00 e 18h25 evita filas longas e garante retorno pontual à FAFICH antes do sinal de 19h.</p>
+        </div>
+      </div>
+
+      <div class="cagp-card flex items-start gap-3 p-3 bg-white">
+        <div class="w-8 h-8 rounded-[4px] bg-[#F7F5F0] border border-[#DFDBD2] flex items-center justify-center text-[#0A0A0A] shrink-0 shadow-[1px_1px_0_#0A0A0A]">
+          <i class="bi bi-book-half text-base" aria-hidden="true"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2">
+            <span class="font-mono font-bold text-xs text-[#0A0A0A]">19h00</span>
+            <span class="font-['Oswald'] font-bold uppercase text-[#0A0A0A]">Início das Aulas (Bloco 1)</span>
+          </div>
+          <p class="text-xs text-gray-600 mt-0.5">Início pontual das disciplinas obrigatórias e optativas no 2º e 3º andares da FAFICH.</p>
+        </div>
+      </div>
+
+      <div class="cagp-card flex items-start gap-3 p-3 bg-white">
+        <div class="w-8 h-8 rounded-[4px] bg-[#F7F5F0] border border-[#DFDBD2] flex items-center justify-center text-[#0A0A0A] shrink-0 shadow-[1px_1px_0_#0A0A0A]">
+          <i class="bi bi-chat-dots-fill text-base" aria-hidden="true"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2">
+            <span class="font-mono font-bold text-xs text-[#0A0A0A]">20h40</span>
+            <span class="font-['Oswald'] font-bold uppercase text-[#0A0A0A]">Intervalo Acadêmico (20 min)</span>
+          </div>
+          <p class="text-xs text-gray-600 mt-0.5">Convivência no Vão da FAFICH, Diretório Acadêmico e atendimento noturno no CEAG (aberto até 22h).</p>
+        </div>
+      </div>
+
+      <div class="cagp-card flex items-start gap-3 p-3 bg-white">
+        <div class="w-8 h-8 rounded-[4px] bg-[#F7F5F0] border border-[#DFDBD2] flex items-center justify-center text-[#0A0A0A] shrink-0 shadow-[1px_1px_0_#0A0A0A]">
+          <i class="bi bi-laptop text-base" aria-hidden="true"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2">
+            <span class="font-mono font-bold text-xs text-[#0A0A0A]">21h00</span>
+            <span class="font-['Oswald'] font-bold uppercase text-[#0A0A0A]">Bloco 2 de Aulas</span>
+          </div>
+          <p class="text-xs text-gray-600 mt-0.5">Continuidade dos seminários teóricos e oficinas práticas em laboratório.</p>
+        </div>
+      </div>
+
+      <div class="cagp-card flex items-start gap-3 p-3 bg-[#FEF2F2] border-2 border-[#DC2626] shadow-[2px_2px_0_#DC2626]">
+        <div class="w-8 h-8 rounded-[4px] bg-[#DC2626] text-white flex items-center justify-center shrink-0 shadow-[1px_1px_0_#0A0A0A]">
+          <i class="bi bi-bus-front-fill text-base" aria-hidden="true"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="font-mono font-bold text-xs text-[#DC2626]">22h45</span>
+            <span class="font-['Oswald'] font-bold uppercase text-[#DC2626]">Última Saída do Circular Interno</span>
+            <span class="cagp-badge cagp-badge-red text-xs">Atenção Crítica</span>
+          </div>
+          <p class="text-xs text-gray-700 mt-0.5">Último ônibus gratuito saindo do ponto da FAFICH em direção à Portaria Carlos Luz e Estação Pampulha.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transporte Externo & Circulares -->
+  <div class="cagp-tool-box p-4 space-y-3 text-xs">
+    <div class="flex items-center gap-2 border-b border-[#DFDBD2] pb-2">
+      <i class="bi bi-signpost-2-fill text-[#8B1E2D] text-base" aria-hidden="true"></i>
+      <h3 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A]">
+        Circulares Internos e Linhas de Ônibus Externas
+      </h3>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-700">
+      <div class="cagp-card p-3 bg-white flex items-start gap-2.5">
+        <i class="bi bi-bus-front text-[#8B1E2D] text-lg shrink-0 mt-0.5" aria-hidden="true"></i>
+        <div>
+          <strong class="font-['Oswald'] uppercase text-xs block text-[#0A0A0A]">Circulares 3 e 4 (Reforço Noturno)</strong>
+          <p class="text-xs text-gray-600 mt-0.5">Saídas programadas para o RU II entre 16h20 e 19h05, ligando FAFICH, Setorial II e portarias.</p>
+        </div>
+      </div>
+      <div class="cagp-card p-3 bg-white flex items-start gap-2.5">
+        <i class="bi bi-train-front text-[#0A0A0A] text-lg shrink-0 mt-0.5" aria-hidden="true"></i>
+        <div>
+          <strong class="font-['Oswald'] uppercase text-xs block text-[#0A0A0A]">Estação Pampulha (MOVE) & 5102</strong>
+          <p class="text-xs text-gray-600 mt-0.5">Integração rápida com as linhas troncais da Av. Antônio Carlos e linha 5102 (Savassi/Centro).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

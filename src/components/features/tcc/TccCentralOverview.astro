@@ -1,0 +1,74 @@
+---
+// src/components/features/tcc/TccCentralOverview.astro — Visão Geral do Trabalho de Conclusão de Curso (180h)
+import TccModalidadesWidget from './modalidades/TccModalidadesWidget.astro';
+import TccCronogramaWidget from './cronograma/TccCronogramaWidget.astro';
+import TccTermoAceiteWidget from './termo/TccTermoAceiteWidget.astro';
+import { asset } from '../../../lib/paths';
+---
+
+<div class="cagp-tcc-central-overview space-y-6 select-none text-[#0A0A0A]">
+  {/* Apresentação da Central de TCC */}
+  <div class="p-4 sm:p-5 bg-[#F7F5F0] border border-[#DFDBD2] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
+    <div class="flex items-start gap-3.5">
+      <span class="w-11 h-11 rounded-lg bg-[#8B1E2D] text-white flex items-center justify-center text-xl shrink-0 mt-0.5 shadow-[2px_2px_0px_#0A0A0A]">
+        <i class="bi bi-mortarboard-fill" aria-hidden="true" />
+      </span>
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="text-[11px] font-['Oswald'] uppercase font-bold tracking-wider text-[#8B1E2D]">
+            Trabalho de Conclusão de Curso
+          </span>
+          <span class="text-gray-300">•</span>
+          <span class="text-xs text-gray-500 font-mono">180 horas regimentais</span>
+        </div>
+        <h2 class="font-['Oswald'] text-lg sm:text-xl font-bold uppercase text-[#0A0A0A] leading-tight m-0">
+          As 4 Modalidades do Art. 19, Cronograma 9º/10ºP e Termo de Aceite
+        </h2>
+        <p class="text-xs text-gray-600 mt-1 max-w-3xl leading-relaxed m-0">
+          Planeje sua formatura no curso noturno: escolha sua modalidade de TCC, formalize a orientação com o docente do DCP e confira o rito de banca examinadora.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  {/* Bento Grid dos Widgets de TCC */}
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <TccModalidadesWidget />
+    <TccCronogramaWidget />
+    <TccTermoAceiteWidget />
+  </div>
+
+  {/* Banner Informativo sobre o Termo de Aceite */}
+  <div class="p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-xs">
+    <div class="flex items-center gap-3">
+      <span class="w-10 h-10 rounded-lg bg-[#0A0A0A] text-white flex items-center justify-center text-lg shrink-0">
+        <i class="bi bi-file-earmark-check-fill" aria-hidden="true" />
+      </span>
+      <div>
+        <h3 class="font-['Oswald'] text-sm uppercase font-bold text-[#0A0A0A] leading-tight m-0">
+          Termo de Aceite de Orientação (PDF Oficial)
+        </h3>
+        <p class="text-xs text-gray-600 mt-0.5 m-0">
+          Exigência regimental para efetivar a matrícula em DCP 089 (Projeto de TCC).
+        </p>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2 w-full sm:w-auto">
+      <a
+        href={asset('/documentos/termo-aceite-orientador-tcc.pdf')}
+        download
+        class="min-h-[44px] flex-1 sm:flex-none px-4 py-2 bg-[#8B1E2D] hover:bg-[#0A0A0A] text-white rounded-lg text-xs font-['Oswald'] uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all no-underline shadow-[2px_2px_0px_#0A0A0A]"
+      >
+        <i class="bi bi-download" aria-hidden="true" />
+        <span>Baixar Termo (PDF)</span>
+      </a>
+      <a
+        href="#termo-aceite"
+        class="min-h-[44px] px-3 py-2 bg-[#F7F5F0] hover:bg-[#EAE6DE] text-[#0A0A0A] border border-[#DFDBD2] rounded-lg text-xs font-['Oswald'] uppercase font-bold flex items-center justify-center transition-all no-underline"
+      >
+        <span>Ver Regras</span>
+      </a>
+    </div>
+  </div>
+</div>

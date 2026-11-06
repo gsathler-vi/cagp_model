@@ -1,0 +1,122 @@
+---
+// src/components/features/curriculum/timeline/MandatoryTimelineExplorer.astro — Linha do Tempo das 27 Obrigatórias
+import { getCollection } from 'astro:content';
+import { asset } from '../../../../lib/paths';
+
+const allDisciplinas = await getCollection('disciplinas');
+const mandatoryList = allDisciplinas
+  .filter((d) => d.data.natureza === 'obrigatoria')
+  .sort((a, b) => (a.data.periodo || 0) - (b.data.periodo || 0));
+
+// Agrupar por período (1 a 10)
+const periodsMap = new Map<number, typeof mandatoryList>();
+for (let p = 1; p <= 10; p++) {
+  periodsMap.set(p, []);
+}
+mandatoryList.forEach((d) => {
+  const p = d.data.periodo || 1;
+  const list = periodsMap.get(p) || [];
+  list.push(d);
+  periodsMap.set(p, list);
+});
+---
+
+<div class="cagp-mandatory-timeline space-y-6 select-none text-[#0A0A0A]">
+  <div class="p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
+    <div>
+      <span class="text-[11px] font-['Oswald'] uppercase font-bold tracking-wider text-[#8B1E2D]">
+        Núcleo Específico Obrigatório
+      </span>
+      <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A] m-0">
+        As 27 Disciplinas Obrigatórias (1.860h)
+      </h3>
+      <p class="text-xs text-gray-600 mt-0.5 m-0">
+        Estrutura curricular sequencial dos 10 períodos letivos do turno noturno da FAFICH/UFMG.
+      </p>
+    </div>
+    <div class="flex flex-wrap items-center gap-2">
+      <a
+        href={asset('/documentos/ementario-gestao-publica-ufmg.pdf')}
+        download
+        class="px-3 py-1.5 rounded-lg bg-[#8B1E2D] hover:bg-[#0A0A0A] text-white font-mono text-xs font-bold transition-colors inline-flex items-center gap-1.5 no-underline shadow-xs"
+      >
+        <i class="bi bi-file-earmark-pdf" aria-hidden="true" />
+        <span>Baixar Ementário Oficial (PDF)</span>
+      </a>
+      <span class="px-2.5 py-1.5 rounded-lg bg-[#0A0A0A] text-white font-mono text-xs font-bold shrink-0">
+        27 Matérias • 124 Créditos
+      </span>
+    </div>
+  </div>
+
+  <div class="space-y-6">
+    {Array.from(periodsMap.entries()).map(([period, courses]) => (
+      <div class="p-4 bg-[#F7F5F0] border border-[#DFDBD2] rounded-xl space-y-3 shadow-xs">
+        <div class="flex items-center justify-between border-b border-[#DFDBD2] pb-2">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-md bg-[#8B1E2D] text-white flex items-center justify-center font-['Oswald'] text-sm font-bold shadow-[1px_1px_0px_#0A0A0A]">
+              {period}º
+            </span>
+            <h4 class="font-['Oswald'] text-sm font-bold uppercase text-[#0A0A0A] m-0">
+              {period}º Período Letivo
+            </h4>
+          </div>
+          <span class="text-xs font-mono font-bold text-gray-600">
+            {courses.reduce((acc, c) => acc + c.data.ch, 0)}h ({courses.length} disciplinas)
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          {courses.map((c) => (
+            <div class="cagp-card p-3.5 bg-white border border-[#DFDBD2] rounded-lg flex flex-col justify-between shadow-xs">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-1.5">
+                  <span class="font-mono text-xs font-bold text-[#8B1E2D] px-1.5 py-0.5 rounded bg-[#F7F5F0] border border-[#DFDBD2]">
+                    {c.data.codigo}
+                  </span>
+                  <span class="text-[11px] font-mono text-gray-500 font-bold">
+                    {c.data.ch}h ({Math.round(c.data.ch / 15)} cr)
+                  </span>
+                </div>
+
+                <h5 class="font-['Oswald'] text-xs font-bold uppercase text-[#0A0A0A] leading-snug m-0 mb-1">
+                  {c.data.nome}
+                </h5>
+
+                {c.data.preRequisitos && c.data.preRequisitos.length > 0 && (
+                  <div class="mb-2">
+                    <span class="text-[10px] font-['Oswald'] uppercase font-bold text-[#DC2626] block">
+                      Trava SIGA (Pré-requisito):
+                    </span>
+                    <span class="text-[11px] font-mono font-semibold text-gray-700">
+                      {c.data.preRequisitos.join(', ')}
+                    </span>
+                  </div>
+                )}
+
+                <!-- Ementa Oficial Completa e Expansível -->
+                <div class="mt-2 pt-1.5 border-t border-[#DFDBD2]">
+                  <details class="cagp-ementa-details group">
+                    <summary class="text-[11px] font-['Oswald'] uppercase font-bold text-[#8B1E2D] hover:text-[#0A0A0A] cursor-pointer flex items-center justify-between select-none min-h-[44px] py-2 px-1">
+                      <span>Ementa Oficial (PPC / DCP)</span>
+                      <span class="text-[10px] font-mono text-gray-500 group-open:hidden">Ler completa ▼</span>
+                      <span class="text-[10px] font-mono text-gray-500 hidden group-open:inline">Recolher ▲</span>
+                    </summary>
+                    <p class="text-xs text-gray-700 leading-relaxed mt-1.5 mb-0 select-text">
+                      {c.data.ementa}
+                    </p>
+                  </details>
+                </div>
+              </div>
+
+              <div class="pt-2 mt-2 border-t border-[#DFDBD2] flex items-center justify-between text-[10px] text-gray-500">
+                <span>{c.data.modulo || 'DCP'}</span>
+                <span class="font-bold text-[#15803D]">Obrigatória</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

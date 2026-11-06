@@ -1,0 +1,167 @@
+---
+// GestaoOrganograma.astro - Sub-view 1: Fluxo deliberativo e organograma institucional
+import { asset } from '../../lib/paths';
+---
+
+<div class="space-y-4 text-[#0A0A0A]">
+  <!-- Hero institucional -->
+  <div class="cagp-tool-box p-4 space-y-3">
+    <div class="flex items-center justify-between border-b border-[#DFDBD2] pb-2.5 flex-wrap gap-2">
+      <div class="flex items-center gap-2">
+        <i class="bi bi-people-fill text-[#8B1E2D] text-lg" aria-hidden="true"></i>
+        <span class="text-base font-['Oswald'] font-bold uppercase text-[#0A0A0A]">
+          Compromisso com a Comunidade Discente
+        </span>
+        <span class="cagp-badge cagp-badge-red font-mono">
+          Mandato Vigente
+        </span>
+      </div>
+      <a href="https://www.instagram.com/cagp.ufmg" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-[#8B1E2D] hover:underline flex items-center gap-1">
+        <i class="bi bi-instagram" aria-hidden="true"></i> @cagp.ufmg
+      </a>
+    </div>
+
+    <p class="text-xs text-gray-700 leading-relaxed">
+      A gestão do Centro Acadêmico orienta-se pela <strong>escuta discente, impessoalidade e descentralização</strong>. Os membros da diretoria exercem seus mandatos de forma voluntária e democrática, dedicando suas horas extracurriculares à melhoria das condições de ensino, ampliação de oportunidades de estágio e pesquisa, e mediação de demandas com o Colegiado e os departamentos parceiros.
+    </p>
+
+    <div class="flex flex-wrap gap-2 pt-1">
+      <a href="mailto:cagp@fafich.ufmg.br" class="cagp-btn-primary inline-flex items-center gap-1.5 text-xs py-1.5 px-3 no-underline">
+        <i class="bi bi-envelope" aria-hidden="true"></i> Enviar Demanda (cagp@fafich.ufmg.br)
+      </a>
+      <a href="https://www.instagram.com/cagp.ufmg" target="_blank" rel="noopener noreferrer" class="cagp-btn-secondary inline-flex items-center gap-1.5 text-xs py-1.5 px-3 no-underline">
+        <i class="bi bi-camera-reels" aria-hidden="true"></i> Vídeos & Comunicados
+      </a>
+      <a href={asset('/documentos/regimento-interno-cagp-ufmg.pdf')} download class="cagp-btn-secondary inline-flex items-center gap-1.5 text-xs py-1.5 px-3 no-underline">
+        <i class="bi bi-file-earmark-pdf text-[#8B1E2D]" aria-hidden="true"></i> Regimento CAGP (PDF)
+      </a>
+      <a href={asset('/documentos/regimento-geral-ufmg.pdf')} download class="cagp-btn-secondary inline-flex items-center gap-1.5 text-xs py-1.5 px-3 no-underline">
+        <i class="bi bi-building text-[#0A0A0A]" aria-hidden="true"></i> Regimento Geral UFMG (PDF)
+      </a>
+    </div>
+  </div>
+
+  <!-- Organograma Estrutural Interativo -->
+  <div class="cagp-tool-box p-4 space-y-4">
+    <div class="border-b border-[#DFDBD2] pb-2.5 flex items-center justify-between flex-wrap gap-2">
+      <div>
+        <div class="flex items-center gap-2">
+          <i class="bi bi-diagram-2-fill text-[#8B1E2D] text-lg" aria-hidden="true"></i>
+          <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A]">
+            Organograma Funcional (Regimento de 14/10/2024)
+          </h3>
+        </div>
+        <p class="text-xs text-gray-600 mt-0.5">
+          Sistema de freios e contrapesos fixado nos Arts. 20 a 40 do Regimento Interno:
+        </p>
+      </div>
+      <span class="cagp-badge cagp-badge-dark font-mono">
+        Arts. 20 a 40
+      </span>
+    </div>
+
+    <!-- Nível 1: Soberana Assembleia Geral -->
+    <div class="flex flex-col items-center">
+      <div class="w-full max-w-md p-3.5 rounded-[6px] bg-[#8B1E2D] text-white text-center shadow-[2px_2px_0px_#0A0A0A] border-2 border-[#0A0A0A]">
+        <div class="flex items-center justify-center gap-1.5 mb-1">
+          <i class="bi bi-people-fill text-sm" aria-hidden="true"></i>
+          <span class="text-xs font-mono uppercase bg-white/20 px-2 py-0.5 rounded-[3px] font-bold inline-block">
+            Instância Máxima Soberana
+          </span>
+        </div>
+        <h4 class="font-['Oswald'] text-sm uppercase font-bold tracking-wide">
+          Soberana Assembleia Geral
+        </h4>
+        <p class="text-xs text-white/90 mt-0.5">
+          Totalidade dos estudantes matriculados em Gestão Pública (Arts. 35 a 40)
+        </p>
+      </div>
+
+      <!-- Conector vertical -->
+      <div class="w-0.5 h-6 bg-[#0A0A0A]"></div>
+
+      <!-- Nível 2: Junta Eleitoral e Presidência -->
+      <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl">
+        <div class="cagp-card p-3 bg-white text-center">
+          <div class="flex items-center justify-center gap-1.5 mb-1">
+            <i class="bi bi-shield-check text-gray-700" aria-hidden="true"></i>
+            <span class="text-xs font-mono uppercase bg-gray-200 text-gray-800 px-2 py-0.5 rounded-[3px] font-bold inline-block">
+              Fiscalização Plebiscitária
+            </span>
+          </div>
+          <h5 class="font-['Oswald'] text-xs font-bold uppercase text-[#0A0A0A]">
+            Junta Eleitoral Permanente
+          </h5>
+          <p class="text-xs text-gray-600 mt-0.5">
+            Controle de lisura eleitoral independente da gestão (Arts. 20 a 23)
+          </p>
+        </div>
+
+        <div class="p-3 rounded-[6px] bg-[#0A0A0A] text-white text-center shadow-[2px_2px_0px_#8B1E2D] border-2 border-[#0A0A0A]">
+          <div class="flex items-center justify-center gap-1.5 mb-1">
+            <i class="bi bi-bank text-amber-400" aria-hidden="true"></i>
+            <span class="text-xs font-mono uppercase bg-amber-400 text-black px-2 py-0.5 rounded-[3px] font-bold inline-block">
+              Poder Executivo
+            </span>
+          </div>
+          <h5 class="font-['Oswald'] text-xs font-bold uppercase text-white">
+            Diretoria da Presidência (DIPRE)
+          </h5>
+          <p class="text-xs text-gray-300 mt-0.5">
+            Presidente • Vice-Presidente • Assessoria Geral (Art. 28)
+          </p>
+        </div>
+      </div>
+
+      <!-- Conector vertical -->
+      <div class="w-0.5 h-6 bg-[#0A0A0A]"></div>
+
+      <!-- Nível 3: As 6 Diretorias Executivas Subordinadas -->
+      <div class="w-full">
+        <div class="text-center mb-2">
+          <span class="text-xs font-mono uppercase text-gray-600 font-bold">
+            6 Diretorias Executivas Setoriais (Arts. 24 a 34)
+          </span>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs">
+          <div class="cagp-card p-3 bg-white text-center">
+            <i class="bi bi-shield-check text-[#8B1E2D] text-base block mb-1" aria-hidden="true"></i>
+            <span class="font-mono font-bold text-[#8B1E2D] block text-xs">DIJUR</span>
+            <span class="text-xs font-bold text-[#0A0A0A] block">Assuntos Jurídicos</span>
+            <span class="text-xs text-gray-500">Atas, Legalidade & LAI</span>
+          </div>
+          <div class="cagp-card p-3 bg-white text-center">
+            <i class="bi bi-cash-coin text-[#8B1E2D] text-base block mb-1" aria-hidden="true"></i>
+            <span class="font-mono font-bold text-[#8B1E2D] block text-xs">DIFI</span>
+            <span class="text-xs font-bold text-[#0A0A0A] block">Finanças & RREO</span>
+            <span class="text-xs text-gray-500">CNPJ, Caixa & Produtos</span>
+          </div>
+          <div class="cagp-card p-3 bg-white text-center">
+            <i class="bi bi-mortarboard text-[#8B1E2D] text-base block mb-1" aria-hidden="true"></i>
+            <span class="font-mono font-bold text-[#8B1E2D] block text-xs">DIAC</span>
+            <span class="text-xs font-bold text-[#0A0A0A] block">Ensino & Pesquisa</span>
+            <span class="text-xs text-gray-500">ACG, PPC & Colegiado</span>
+          </div>
+          <div class="cagp-card p-3 bg-white text-center">
+            <i class="bi bi-diagram-3 text-[#8B1E2D] text-base block mb-1" aria-hidden="true"></i>
+            <span class="font-mono font-bold text-[#8B1E2D] block text-xs">DIAP</span>
+            <span class="text-xs font-bold text-[#0A0A0A] block">Articulação Política</span>
+            <span class="text-xs text-gray-500">DA FAFICH, DCE & Fóruns</span>
+          </div>
+          <div class="cagp-card p-3 bg-white text-center">
+            <i class="bi bi-palette text-[#8B1E2D] text-base block mb-1" aria-hidden="true"></i>
+            <span class="font-mono font-bold text-[#8B1E2D] block text-xs">DICULT</span>
+            <span class="text-xs font-bold text-[#0A0A0A] block">Cultura & Lazer</span>
+            <span class="text-xs text-gray-500">Calouradas & Cineclube</span>
+          </div>
+          <div class="cagp-card p-3 bg-white text-center">
+            <i class="bi bi-broadcast-pin text-[#8B1E2D] text-base block mb-1" aria-hidden="true"></i>
+            <span class="font-mono font-bold text-[#8B1E2D] block text-xs">DIMAC</span>
+            <span class="text-xs font-bold text-[#0A0A0A] block">Marketing & Mídias</span>
+            <span class="text-xs text-gray-500">Portal, Murais & Redes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

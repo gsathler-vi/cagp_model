@@ -1,0 +1,301 @@
+/* animations.css - Cinética, Transições e Mecânica Brite Apple HIG + M3 Expressive */
+
+:root {
+  --cagp-spring: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-spring-snappy: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-natural: cubic-bezier(0.16, 1, 0.3, 1);
+  --cagp-m3-spatial-fast: var(--ease-spring-snappy);
+  --cagp-m3-spatial-default: var(--ease-out-natural);
+  --cagp-m3-effects-fast: cubic-bezier(0.31, 0.94, 0.34, 1.00);
+  --cagp-m3-effects-default: cubic-bezier(0.34, 0.80, 0.34, 1.00);
+}
+
+/* 1. Barra Superior de Carregamento de Rota */
+.cagp-route-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  background-color: transparent;
+  transition: opacity 0.15s var(--cagp-m3-effects-fast);
+}
+
+.cagp-route-progress-bar.is-active {
+  opacity: 1;
+}
+
+.cagp-route-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #8B1E2D 0%, #9E2424 50%, #E8A317 100%);
+  border-bottom: 1px solid #0A0A0A;
+  transition: width 0.22s var(--ease-out-natural);
+}
+
+/* 2. Transições Direcionais de View Transitions */
+@keyframes cagpVtOutForward {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(-18px); }
+}
+@keyframes cagpVtInForward {
+  from { opacity: 0; transform: translateX(18px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes cagpVtOutBackward {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(18px); }
+}
+@keyframes cagpVtInBackward {
+  from { opacity: 0; transform: translateX(-18px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes cagpVtOutDrillIn {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(1.02); }
+}
+@keyframes cagpVtInDrillIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes cagpVtOutDrillOut {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.98); }
+}
+@keyframes cagpVtInDrillOut {
+  from { opacity: 0; transform: scale(1.02); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+html[data-nav-dir="forward"]::view-transition-old(root) {
+  animation: cagpVtOutForward 180ms var(--cagp-m3-effects-fast) both;
+}
+html[data-nav-dir="forward"]::view-transition-new(root) {
+  animation: cagpVtInForward 220ms var(--ease-out-natural) both;
+}
+html[data-nav-dir="backward"]::view-transition-old(root) {
+  animation: cagpVtOutBackward 180ms var(--cagp-m3-effects-fast) both;
+}
+html[data-nav-dir="backward"]::view-transition-new(root) {
+  animation: cagpVtInBackward 220ms var(--ease-out-natural) both;
+}
+html[data-nav-dir="drill-in"]::view-transition-old(root) {
+  animation: cagpVtOutDrillIn 180ms var(--cagp-m3-effects-fast) both;
+}
+html[data-nav-dir="drill-in"]::view-transition-new(root) {
+  animation: cagpVtInDrillIn 240ms var(--ease-out-natural) both;
+}
+html[data-nav-dir="drill-out"]::view-transition-old(root) {
+  animation: cagpVtOutDrillOut 180ms var(--cagp-m3-effects-fast) both;
+}
+html[data-nav-dir="drill-out"]::view-transition-new(root) {
+  animation: cagpVtInDrillOut 240ms var(--ease-out-natural) both;
+}
+
+/* 3. Transição de Sub-Views (Abas de Workspace) */
+@keyframes cagpWsEnterForward {
+  from { opacity: 0; transform: translateX(12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes cagpWsEnterBackward {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.cagp-animate-ws-enter {
+  animation: cagpWsEnterForward 0.22s var(--ease-out-natural) both;
+}
+
+/* 4. Entrada Escalonada de Cards (Staggered Entrance) */
+@keyframes cagpStaggerReveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.cagp-stagger-enter {
+  animation: cagpStaggerReveal 0.25s var(--ease-out-natural) both;
+  animation-delay: calc(var(--stagger-index, 0) * 35ms);
+}
+
+/* 5. Fluxo Direcional Animado do Grafo Curricular (cagpLinkFlow) */
+@keyframes cagpLinkFlow {
+  from {
+    stroke-dashoffset: 12;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.cagp-link-flow {
+  animation: cagpLinkFlow 0.8s linear infinite;
+}
+
+/* 6. Carimbo Mecânico Burocrático / Selo de Homologação (cagpStampImpact) */
+@keyframes cagpStampImpact {
+  0% {
+    opacity: 0;
+    transform: scale(1.25) rotate(-6deg);
+    box-shadow: 1px 1px 0 #0A0A0A;
+  }
+  65% {
+    opacity: 1;
+    transform: scale(0.98) rotate(-2deg);
+    box-shadow: 3.5px 3.5px 0 #0A0A0A;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-2.5deg);
+    box-shadow: 2.5px 2.5px 0 #0A0A0A;
+  }
+}
+.cagp-stamp-impact {
+  animation: cagpStampImpact 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 7. Desbloqueio e Homologação de Marco / Selo (cagpSealUnlock) */
+@keyframes cagpSealUnlock {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+    box-shadow: 1px 1px 0 #0A0A0A;
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 4px 4px 0 #0A0A0A;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    box-shadow: 3px 3px 0 #0A0A0A;
+  }
+}
+.cagp-seal-unlock {
+  animation: cagpSealUnlock 0.32s var(--ease-out-natural) both;
+}
+
+/* 8. Feedback Tátil ao Toque (Apple HIG micro-tap spring) */
+@keyframes cagpTapMorph {
+  0% { transform: scale(1); }
+  40% { transform: scale(0.94); }
+  100% { transform: scale(1); }
+}
+.is-tapped,
+.cagp-touch-spring:active {
+  animation: cagpTapMorph 0.18s var(--cagp-m3-spatial-fast);
+}
+
+/* 9. Pulso de Conclusão / Meta 100% */
+@keyframes cagpProgressPulse100 {
+  0% { transform: scaleY(1); filter: brightness(1); }
+  45% { transform: scaleY(1.22); filter: brightness(1.2); }
+  100% { transform: scaleY(1); filter: brightness(1); }
+}
+.is-pulse-100 {
+  animation: cagpProgressPulse100 0.52s var(--cagp-m3-spatial-fast);
+}
+
+/* 10. Pulso Tátil de Confirmação de Cópia */
+@keyframes cagpCopyPulse {
+  0% { transform: scale(0.94); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+.is-copied {
+  animation: cagpCopyPulse 0.25s var(--ease-out-natural);
+}
+
+/* 11. Entrada do Emblema Oficial (Prensa dos Candangos) */
+@keyframes cagpEmblemStamp {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px);
+    box-shadow: 1px 1px 0 #0A0A0A;
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(0);
+    box-shadow: 4px 4px 0 #0A0A0A;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    box-shadow: 3px 3px 0 #0A0A0A;
+  }
+}
+.cagp-emblem-stamp {
+  animation: cagpEmblemStamp 0.35s var(--ease-out-natural) both;
+}
+
+/* 12. Shimmer Sweep Neo-Brutalista para Skeletons */
+@keyframes cagpBriteSweep {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.cagp-shimmer {
+  background: linear-gradient(
+    110deg,
+    #F4F1EA 25%,
+    #FFE082 48%,
+    #EAE5DC 68%,
+    #F4F1EA 90%
+  ) !important;
+  background-size: 220% 100% !important;
+  animation: cagpBriteSweep 1.35s linear infinite !important;
+}
+
+/* 13. Dropdowns e Indicadores Pulsantes */
+@keyframes cagpDropdownAppear {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes cagpPulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
+}
+.cagp-pulse-indicator {
+  animation: cagpPulseDot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Suporte Estrito a Redução de Movimento (WCAG AAA) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .cagp-shimmer {
+    animation: none !important;
+    background: #F4F1EA !important;
+  }
+  .grafo-link.is-active-req,
+  .grafo-link.is-active-next,
+  .grafo-link.link-formal.is-active-req,
+  .grafo-link.link-formal.is-active-next {
+    animation: none !important;
+  }
+}
+
+/* Suporte Dinâmico a Redução de Movimento A11y */
+html[data-a11y-motion="reduced"] *,
+html[data-a11y-motion="reduced"] *::before,
+html[data-a11y-motion="reduced"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+html[data-a11y-motion="reduced"] .cagp-shimmer {
+  animation: none !important;
+  background: #F4F1EA !important;
+}
+html[data-a11y-motion="reduced"] .grafo-link.is-active-req,
+html[data-a11y-motion="reduced"] .grafo-link.is-active-next,
+html[data-a11y-motion="reduced"] .grafo-link.link-formal.is-active-req,
+html[data-a11y-motion="reduced"] .grafo-link.link-formal.is-active-next {
+  animation: none !important;
+}
+
+

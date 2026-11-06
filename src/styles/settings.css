@@ -1,0 +1,112 @@
+/* settings.css - Grouped Lists e Cards de Configurações (Benchmark Inter App) */
+
+.cagp-settings-group {
+  background: transparent;
+}
+
+.cagp-settings-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #0A0A0A;
+}
+
+.cagp-settings-group-title {
+  font-family: var(--font-display, 'Oswald', sans-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #0A0A0A;
+  letter-spacing: 0.02em;
+}
+
+.cagp-settings-card {
+  background-color: #FFFFFF;
+  border: 1px solid #DFDBD2;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.cagp-settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid #F0EEE9;
+  gap: 16px;
+  min-height: 52px;
+}
+
+.cagp-settings-row:last-child {
+  border-bottom: none;
+}
+
+.cagp-settings-info {
+  flex: 1;
+}
+
+.cagp-settings-info strong {
+  font-size: 0.88rem;
+  color: #0A0A0A;
+  display: block;
+}
+
+.cagp-settings-info span {
+  font-size: 0.75rem;
+  color: #6C757D;
+  display: block;
+  margin-top: 2px;
+}
+
+/* Grouped List com Chevrons */
+.cagp-grouped-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.cagp-grouped-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid #F0EEE9;
+  text-decoration: none !important;
+  color: inherit;
+  transition: background-color 0.15s ease;
+  min-height: 52px;
+}
+
+.cagp-grouped-item:hover {
+  background-color: #FBF8F3;
+}
+
+.cagp-grouped-item-content {
+  flex: 1;
+}
+
+.cagp-grouped-item-title {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #0A0A0A;
+}
+
+.cagp-grouped-item-desc {
+  display: block;
+  font-size: 0.75rem;
+  color: #6C757D;
+  margin-top: 2px;
+}
+
+.cagp-grouped-chevron {
+  font-size: 0.95rem;
+  color: #8B1E2D;
+  margin-left: 12px;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+
+.cagp-grouped-item:hover .cagp-grouped-chevron {
+  transform: translateX(3px);
+}

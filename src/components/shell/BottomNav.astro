@@ -1,0 +1,289 @@
+---
+// BottomNav.astro - Dock Inferior Flutuante em Pílula (Mobile & Tablet) — Idêntico ao Desktop Dock
+import { SHORTCUTS_CATALOG, DEFAULT_SHORTCUT_IDS } from '../../lib/shortcutsCatalog';
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<nav
+  id="cagp-bottom-nav"
+  class="lg:hidden fixed left-1/2 -translate-x-1/2 z-[1040] select-none pointer-events-none max-w-[calc(100vw-1rem)] w-auto"
+  style="bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));"
+  aria-label="Navegação Principal do Super App"
+  data-catalog={JSON.stringify(SHORTCUTS_CATALOG)}
+  data-defaults={JSON.stringify(DEFAULT_SHORTCUT_IDS)}
+>
+  <div
+    id="cagp-bottom-nav-container"
+    class="pointer-events-auto bg-white/95 backdrop-blur-xl border border-black/15 shadow-sm rounded-full px-2 py-1 flex items-center justify-center gap-0.5 sm:gap-1 transition-all duration-300 max-w-full overflow-x-auto no-scrollbar"
+    aria-label="Atalhos discentes"
+  >
+    <!-- Renderizado Inicialmente no SSR com os 5 Atalhos Canônicos -->
+    {DEFAULT_SHORTCUT_IDS.map((id) => {
+      const item = SHORTCUTS_CATALOG.find((s) => s.id === id) || SHORTCUTS_CATALOG[0];
+      const isMatched = item.match?.some((pattern: string) => {
+        const regex = new RegExp(pattern);
+        return regex.test(currentPath) || (pattern === '^/$' && currentPath === '/');
+      });
+
+      return (
+        <a
+          href={item.href}
+          data-shortcut-id={item.id}
+          data-match={JSON.stringify(item.match)}
+          data-action={item.isAction ? item.actionEvent : undefined}
+          class={`cagp-nav-item relative flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-1 py-0.5 rounded-xl transition-all duration-200 no-underline cursor-pointer ${
+            isMatched ? 'is-active text-[#8B1E2D]' : 'text-gray-600 hover:text-[#8B1E2D]'
+          }`}
+          aria-current={isMatched ? 'page' : undefined}
+          aria-label={item.fullLabel}
+          title={item.fullLabel}
+        >
+          <div class="cagp-nav-icon-circle w-7 h-7 min-w-[28px] min-h-[28px] rounded-full flex items-center justify-center transition-all duration-200 relative text-gray-700">
+            <i class={`bi ${item.icon} text-base transition-transform duration-200`} aria-hidden="true" />
+            <span
+              class="cagp-nav-active-dot absolute -bottom-0.5 w-1.5 h-1.5 rounded-full bg-[#8B1E2D] ring-2 ring-white opacity-0 transition-opacity duration-200"
+              aria-hidden="true"
+            />
+          </div>
+          <span class="text-[11px] font-['Oswald'] uppercase font-bold tracking-tight leading-none mt-1 text-center">
+            {item.label}
+          </span>
+        </a>
+      );
+    })}
+
+    <!-- Divisor Sutil -->
+    <div class="h-5 w-[1.5px] bg-[#DFDBD2] mx-0.5" aria-hidden="true"></div>
+
+    <!-- Botão de Personalização de Atalhos -->
+    <button
+      type="button"
+      id="cagp-bottom-nav-customize-btn"
+      class="cagp-nav-item flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-1 py-0.5 rounded-xl text-gray-500 hover:text-[#8B1E2D] hover:bg-[#F7F5F0] transition-colors cursor-pointer border-none bg-transparent"
+      title="Personalizar atalhos da barra"
+      aria-label="Personalizar atalhos da barra inferior"
+    >
+      <div class="w-7 h-7 min-w-[28px] min-h-[28px] rounded-full flex items-center justify-center">
+        <i class="bi bi-sliders2 text-base" aria-hidden="true" />
+      </div>
+      <span class="text-[11px] font-['Oswald'] uppercase font-bold tracking-tight leading-none mt-1 text-center">
+        Ajustes
+      </span>
+    </button>
+  </div>
+</nav>
+
+<style>
+  .cagp-nav-item {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .cagp-nav-icon-circle {
+    background: transparent;
+    border: 1.5px solid transparent;
+    color: #4B5563;
+    transition: all 0.25s var(--ease-spring-snappy, cubic-bezier(0.25, 1, 0.5, 1));
+  }
+  .cagp-nav-item:hover .cagp-nav-icon-circle {
+    background: #F7F5F0;
+    color: #8B1E2D;
+    transform: scale(1.06);
+  }
+  .cagp-nav-item:active .cagp-nav-icon-circle {
+    transform: scale(0.92);
+  }
+
+  /* Estado Ativo: Apple HIG Spring */
+  .cagp-nav-item.is-active .cagp-nav-icon-circle {
+    background-color: #8B1E2D !important;
+    color: #FFFFFF !important;
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+    box-shadow: 0 2px 6px rgba(139, 30, 45, 0.35) !important;
+    transform: scale(1.06) translateY(-1px) !important;
+  }
+  .cagp-nav-item.is-active .cagp-nav-icon-circle i {
+    color: #FFFFFF !important;
+  }
+  .cagp-nav-item.is-active .cagp-nav-active-dot {
+    opacity: 1 !important;
+  }
+  .cagp-nav-item.is-active span {
+    color: #8B1E2D;
+  }
+
+
+</style>
+
+<script>
+  function setupBottomNav() {
+    const nav = document.getElementById('cagp-bottom-nav');
+    const container = document.getElementById('cagp-bottom-nav-container');
+    if (!nav || !container) return;
+
+    const catalogRaw = nav.getAttribute('data-catalog');
+    const defaultsRaw = nav.getAttribute('data-defaults');
+    if (!catalogRaw || !defaultsRaw) return;
+
+    let catalog: any[] = [];
+    let defaults: string[] = [];
+    try {
+      catalog = JSON.parse(catalogRaw);
+      defaults = JSON.parse(defaultsRaw);
+    } catch {
+      return;
+    }
+
+    const catalogMap = new Map(catalog.map((c) => [c.id, c]));
+
+    function getSelectedIds(): string[] {
+      try {
+        const raw = localStorage.getItem('cagp_discente_shortcuts_v1');
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed) && parsed.length >= 1) return parsed;
+        }
+      } catch {}
+      return defaults;
+    }
+
+    function syncActiveNav() {
+      if (!container) return;
+      const baseUrl = (document.documentElement.dataset.baseUrl || '/').replace(/\/$/, '');
+      let currentPath = window.location.pathname;
+      if (baseUrl && currentPath.startsWith(baseUrl)) {
+        currentPath = currentPath.slice(baseUrl.length) || '/';
+      }
+
+      const items = container.querySelectorAll<HTMLAnchorElement>('.cagp-nav-item[data-match]');
+      items.forEach((link) => {
+        const matchRaw = link.getAttribute('data-match');
+        if (!matchRaw) return;
+        try {
+          const patterns: string[] = JSON.parse(matchRaw);
+          const isMatched = patterns.some((p: string) => {
+            const reg = new RegExp(p);
+            return reg.test(currentPath) || (p === '^/$' && (currentPath === '' || currentPath === '/' || currentPath === '/index.html'));
+          });
+          link.classList.toggle('is-active', isMatched);
+          if (isMatched) link.setAttribute('aria-current', 'page');
+          else link.removeAttribute('aria-current');
+        } catch {}
+      });
+    }
+
+    function renderNav() {
+      if (!container) return;
+      const selectedIds = getSelectedIds();
+      const baseUrl = (document.documentElement.dataset.baseUrl || '/').replace(/\/$/, '');
+      let currentPath = window.location.pathname;
+      if (baseUrl && currentPath.startsWith(baseUrl)) {
+        currentPath = currentPath.slice(baseUrl.length) || '/';
+      }
+
+      const itemsHtml = selectedIds
+        .map((id) => {
+          const item = catalogMap.get(id) || catalog[0];
+          const isAction = Boolean(item.isAction && item.actionEvent);
+          const matchPatterns = item.match || [];
+          const isMatched = matchPatterns.some((pattern: string) => {
+            const regex = new RegExp(pattern);
+            return regex.test(currentPath) || (pattern === '^/$' && (currentPath === '' || currentPath === '/index.html'));
+          });
+
+          return `
+            <a
+              href="${item.href}"
+              data-shortcut-id="${item.id}"
+              data-match='${JSON.stringify(matchPatterns)}'
+              ${isAction ? `data-action="${item.actionEvent}"` : ''}
+              class="cagp-nav-item relative flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-1 py-0.5 rounded-xl transition-all duration-200 no-underline cursor-pointer ${isMatched ? 'is-active text-[#8B1E2D]' : 'text-gray-600 hover:text-[#8B1E2D]'}"
+              ${isMatched ? 'aria-current="page"' : ''}
+              aria-label="${item.fullLabel}"
+              title="${item.fullLabel}"
+            >
+              <div class="cagp-nav-icon-circle w-7 h-7 min-w-[28px] min-h-[28px] rounded-full flex items-center justify-center transition-all duration-200 relative text-gray-700">
+                <i class="bi ${item.icon} text-base transition-transform duration-200" aria-hidden="true"></i>
+                <span class="cagp-nav-active-dot absolute -bottom-0.5 w-1.5 h-1.5 rounded-full bg-[#8B1E2D] ring-2 ring-white opacity-0 transition-opacity duration-200" aria-hidden="true"></span>
+              </div>
+              <span class="text-[11px] font-['Oswald'] uppercase font-bold tracking-tight leading-none mt-1 text-center">
+                ${item.label}
+              </span>
+            </a>
+          `;
+        })
+        .join('');
+
+      const dividerHtml = `<div class="h-5 w-[1.5px] bg-[#DFDBD2] mx-0.5" aria-hidden="true"></div>`;
+
+      const editBtnHtml = `
+        <button
+          type="button"
+          id="cagp-bottom-nav-customize-btn"
+          class="cagp-nav-item flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-1 py-0.5 rounded-xl text-gray-500 hover:text-[#8B1E2D] hover:bg-[#F7F5F0] transition-colors cursor-pointer border-none bg-transparent"
+          title="Personalizar atalhos da barra"
+          aria-label="Personalizar atalhos da barra inferior"
+        >
+          <div class="w-7 h-7 min-w-[28px] min-h-[28px] rounded-full flex items-center justify-center">
+            <i class="bi bi-sliders2 text-base" aria-hidden="true"></i>
+          </div>
+          <span class="text-[11px] font-['Oswald'] uppercase font-bold tracking-tight leading-none mt-1 text-center">
+            Ajustes
+          </span>
+        </button>
+      `;
+
+      container.innerHTML = itemsHtml + dividerHtml + editBtnHtml;
+      bindEvents();
+    }
+
+    function bindEvents() {
+      if (!container) return;
+
+      const editBtn = container.querySelector('#cagp-bottom-nav-customize-btn');
+      editBtn?.addEventListener('click', () => {
+        window.dispatchEvent(new CustomEvent('cagp:open-shortcuts'));
+      });
+
+      const actionLinks = container.querySelectorAll('[data-action]');
+      actionLinks.forEach((link) => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const actionEvent = link.getAttribute('data-action');
+          if (actionEvent === 'cagp:toggle-drawer') {
+            if ((window as any).__cagp_toggle_drawer) {
+              (window as any).__cagp_toggle_drawer();
+            } else {
+              window.dispatchEvent(new CustomEvent('cagp:toggle-drawer'));
+            }
+          } else if (actionEvent) {
+            window.dispatchEvent(new CustomEvent(actionEvent));
+          }
+        });
+      });
+    }
+
+    // Se os itens renderizados coincidem exatamente com a seleção do cofre, sincronizamos o estado ativo
+    // sem recriar o DOM para permitir transições CSS fluidas; caso contrário, re-renderizamos
+    const renderedIds = Array.from(container.querySelectorAll<HTMLElement>('.cagp-nav-item[data-shortcut-id]'))
+      .map((el) => el.getAttribute('data-shortcut-id'));
+    const selectedIds = getSelectedIds();
+    const isSame = renderedIds.length === selectedIds.length && renderedIds.every((id, idx) => id === selectedIds[idx]);
+
+    if (isSame && renderedIds.length > 0) {
+      syncActiveNav();
+      bindEvents();
+    } else {
+      renderNav();
+    }
+  }
+
+  setupBottomNav();
+  document.addEventListener('astro:page-load', setupBottomNav);
+  window.addEventListener('cagp:vault-updated', (e: Event) => {
+    const custom = e as CustomEvent<{ key: string }>;
+    if (!custom.detail || custom.detail.key === 'cagp_discente_shortcuts_v1') {
+      setupBottomNav();
+    }
+  });
+</script>

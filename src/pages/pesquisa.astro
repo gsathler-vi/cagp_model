@@ -1,0 +1,67 @@
+---
+// pesquisa.astro - A4 Guia: 3 sub-views (Núcleos · Iniciação · Imersão)
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/ui/PageHeader.astro';
+import SegmentedControl from '../components/ui/SegmentedControl.astro';
+import JourneyNav from '../components/ui/JourneyNav.astro';
+import PesquisaNucleos from '../components/pesquisa/PesquisaNucleos.astro';
+import PesquisaIc from '../components/pesquisa/PesquisaIc.astro';
+import PesquisaImersao from '../components/pesquisa/PesquisaImersao.astro';
+
+const tabs = [
+  { id: 'v1', shortLabel: 'Núcleos', fullLabel: '1. Núcleos de Pesquisa (11)', hash: '#nucleos' },
+  { id: 'v2', shortLabel: 'Iniciação', fullLabel: '2. Iniciação Científica (IC)', hash: '#ic' },
+  { id: 'v3', shortLabel: 'Imersão', fullLabel: '3. Imersão & Extensão', hash: '#imersao' },
+];
+
+const badges = [
+  { label: '11 Núcleos de Pesquisa', variant: 'red' as const, icon: 'bi-search' },
+  { label: 'Até 90h de AAC (Grupo I)', variant: 'dark' as const, icon: 'bi-award-fill' },
+  { label: 'PIBIC / FAPEMIG / CNPq', variant: 'blue' as const, icon: 'bi-mortarboard-fill' },
+  { label: 'DCP • PPGCP Nota 7', variant: 'gold' as const, icon: 'bi-star-fill' },
+];
+
+---
+
+<BaseLayout title="Pesquisa & Extensão" description="Diretório dos 11 núcleos de pesquisa do DCP (Conceito 7 CAPES), Iniciação Científica (90h AAC) e Programa de Imersão.">
+  <PageHeader
+    eyebrow="Eixo 2 · Pesquisa, IC & Imersão"
+    title="Pesquisa, Iniciação Científica & Imersão"
+    subtitle="Diretório dos 11 núcleos de pesquisa do DCP (Conceito 7 CAPES), Iniciação Científica (até 90h AAC) e Programa de Imersão Docente."
+    badges={badges}
+  />
+
+  <SegmentedControl tabs={tabs} defaultTab="v1" />
+
+  <!-- Sub-view 1: 11 Núcleos -->
+  <section id="ws-panel-v1" class="cagp-workspace-view" data-ws-panel="v1">
+    <div id="nucleos" class="cagp-anchor-target scroll-mt-24"></div>
+    <PesquisaNucleos />
+  </section>
+
+  <!-- Sub-view 2: Iniciação Científica -->
+  <section id="ws-panel-v2" class="cagp-workspace-view" data-ws-panel="v2" hidden>
+    <div id="ic" class="cagp-anchor-target scroll-mt-24"></div>
+    <PesquisaIc />
+  </section>
+
+  <!-- Sub-view 3: Imersão & Extensão -->
+  <section id="ws-panel-v3" class="cagp-workspace-view" data-ws-panel="v3" hidden>
+    <div id="imersao" class="cagp-anchor-target scroll-mt-24"></div>
+    <PesquisaImersao />
+  </section>
+
+  <!-- Journey Navigation Trail -->
+  <JourneyNav
+    prev={{
+      title: 'O Bacharelado em Gestão Pública',
+      href: '/curso',
+      desc: 'História, colegiado, secretaria Sala F-2039 e formas de ingresso.',
+    }}
+    next={{
+      title: 'Percurso Curricular & 27 Obrigatórias',
+      href: '/percurso',
+      desc: 'Mapa interativo de pré-requisitos, 3 percursos e linha do tempo dos 10 semestres.',
+    }}
+  />
+</BaseLayout>

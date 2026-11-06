@@ -1,0 +1,74 @@
+---
+// src/components/features/estagio/EstagioCentralOverview.astro — Visão Geral do Estágio Supervisionado
+import { Art41Widget } from './art41/Art41Widget';
+import EstagioObrigatorioWidget from './obrigatorio/EstagioObrigatorioWidget.astro';
+import EstagioTceWidget from './tce/EstagioTceWidget.astro';
+import { asset } from '../../../lib/paths';
+---
+
+<div class="cagp-estagio-central-overview space-y-6 select-none text-[#0A0A0A]">
+  {/* Apresentação da Central de Estágio */}
+  <div class="p-4 sm:p-5 bg-[#F7F5F0] border border-[#DFDBD2] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
+    <div class="flex items-start gap-3.5">
+      <span class="w-11 h-11 rounded-lg bg-[#8B1E2D] text-white flex items-center justify-center text-xl shrink-0 mt-0.5 shadow-[2px_2px_0px_#0A0A0A]">
+        <i class="bi bi-briefcase-fill" aria-hidden="true" />
+      </span>
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="text-[11px] font-['Oswald'] uppercase font-bold tracking-wider text-[#8B1E2D]">
+            Estágio Supervisionado
+          </span>
+          <span class="text-gray-300">•</span>
+          <span class="text-xs text-gray-500 font-mono">300 horas obrigatórias</span>
+        </div>
+        <h2 class="font-['Oswald'] text-lg sm:text-xl font-bold uppercase text-[#0A0A0A] leading-tight m-0">
+          Estágio Curricular A & B, Dispensa Art. 41 e Termo de Compromisso (TCE)
+        </h2>
+        <p class="text-xs text-gray-600 mt-1 max-w-3xl leading-relaxed m-0">
+          Consulte as regras de integralização profissional, simule elegibilidade pelo Art. 41 para servidores e baixe modelos oficiais de convênio.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  {/* Bento Grid dos Widgets de Estágio */}
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <Art41Widget client:load />
+    <EstagioObrigatorioWidget />
+    <EstagioTceWidget />
+  </div>
+
+  {/* Banner Informativo sobre Convênios */}
+  <div class="p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-xs">
+    <div class="flex items-center gap-3">
+      <span class="w-10 h-10 rounded-lg bg-[#0A0A0A] text-white flex items-center justify-center text-lg shrink-0">
+        <i class="bi bi-file-earmark-check-fill" aria-hidden="true" />
+      </span>
+      <div>
+        <h3 class="font-['Oswald'] text-sm uppercase font-bold text-[#0A0A0A] leading-tight m-0">
+          Termo de Compromisso Oficial (TCE) com a UFMG
+        </h3>
+        <p class="text-xs text-gray-600 mt-0.5 m-0">
+          Minuta homologada pela Pro-Reitoria de Graduação com seguro contra acidentes pessoais.
+        </p>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2 w-full sm:w-auto">
+      <a
+        href={asset('/documentos/estagio-modelo-termo-de-compromisso-com-convenio.pdf')}
+        download
+        class="min-h-[44px] flex-1 sm:flex-none px-4 py-2 bg-[#8B1E2D] hover:bg-[#0A0A0A] text-white rounded-lg text-xs font-['Oswald'] uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all no-underline shadow-[2px_2px_0px_#0A0A0A]"
+      >
+        <i class="bi bi-download" aria-hidden="true" />
+        <span>Baixar TCE (PDF)</span>
+      </a>
+      <a
+        href="#tutorial"
+        class="min-h-[44px] px-3 py-2 bg-[#F7F5F0] hover:bg-[#EAE6DE] text-[#0A0A0A] border border-[#DFDBD2] rounded-lg text-xs font-['Oswald'] uppercase font-bold flex items-center justify-center transition-all no-underline"
+      >
+        <span>Ver Tutorial</span>
+      </a>
+    </div>
+  </div>
+</div>

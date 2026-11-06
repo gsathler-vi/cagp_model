@@ -1,0 +1,180 @@
+---
+// PercursoSimulador.astro - Sub-view 3: Os 3 percursos oficiais e o simulador vocacional
+import { PercursoQuiz } from './PercursoQuiz';
+
+const stats = [
+  { label: 'Tempo Padrão', value: '10 Semestres', sub: 'Mínimo 8 • Máximo 17', icon: 'bi-calendar-range' },
+  { label: 'Carga Horária Total', value: '3.000 h', sub: '2.880h NE + 120h Livre', icon: 'bi-clock-history' },
+  { label: 'Matrícula Mínima', value: '180 h / sem.', sub: '12 créditos por período', icon: 'bi-journal-check' },
+  { label: 'Opções Formais', value: '3 Percursos', sub: 'Geral, Complementar, Avançado', icon: 'bi-diagram-3-fill' },
+];
+
+const percursos = [
+  {
+    codigo: '01-01',
+    nome: 'Bacharelado com Núcleo Geral',
+    slug: 'percurso-bacharelado-nucleo-geral',
+    icon: 'bi-compass-fill',
+    badge: 'Vínculo Automático no 1ºP',
+    badgeVariant: 'green' as const,
+    desc: 'Percurso canônico da FAFICH/UFMG. Proporciona formação sólida e generalista em gestão pública, finanças e ciência política, com máxima autonomia na escolha de matérias optativas.',
+    obrig: '1.560h (25 disciplinas) + 300h Estágio (A + B)',
+    opt: '1.020h optativas (DCP/Extensão/AAC) + 120h Livre',
+    pdf: '/documentos/percurso-bacharelado-nucleo-geral.pdf',
+  },
+  {
+    codigo: '01-02',
+    nome: 'Núcleo Complementar (Transversal / Aberta)',
+    slug: 'percurso-bacharelado-nucleo-complementar',
+    icon: 'bi-diagram-3-fill',
+    badge: 'Opção no 4ºP (SIGA)',
+    badgeVariant: 'red' as const,
+    desc: 'Permite cursar 300 horas em Formação Transversal (Direitos Humanos, Relações Étnico-Raciais, Meio Ambiente) ou Formação Complementar Aberta (FCA) em outro departamento da UFMG.',
+    obrig: '300h dedicadas a área interdisciplinar certificada',
+    opt: 'Optativas DCP reduzidas de 1.020h para 720h (-300h)',
+    pdf: '/documentos/percurso-bacharelado-nucleo-complementar.pdf',
+  },
+  {
+    codigo: '01-03',
+    nome: 'Núcleo Avançado (Articulação com Pós-Graduação)',
+    slug: 'percurso-bacharelado-nucleo-avancado',
+    icon: 'bi-mortarboard-fill',
+    badge: 'Opção no 4ºP (SIGA)',
+    badgeVariant: 'blue' as const,
+    desc: 'Destinado a discentes com vocação para pesquisa e carreira acadêmica. Permite cursar entre 45h e 120h em disciplinas de Mestrado/Doutorado no PPGCP/FAFICH ainda na graduação.',
+    obrig: '45h a 120h com aproveitamento formal no mestrado',
+    opt: 'Optativas DCP de 900h a 975h + 120h Livre',
+    pdf: '/documentos/percurso-bacharelado-nucleo-avancado.pdf',
+  },
+];
+---
+
+<div class="space-y-4 text-[#0A0A0A]">
+  <!-- 4 Stat Cards Bento -->
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+    {stats.map((s) => (
+      <div class="cagp-card p-3 bg-white text-center flex flex-col justify-between">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-mono uppercase text-gray-500 font-bold">{s.label}</span>
+          <i class={`bi ${s.icon} text-[#8B1E2D] text-base`} aria-hidden="true" />
+        </div>
+        <span class="font-['Oswald'] font-black text-xl text-[#8B1E2D] my-1 block leading-none">{s.value}</span>
+        <span class="text-xs text-gray-500 leading-tight">{s.sub}</span>
+      </div>
+    ))}
+  </div>
+
+  <!-- Termômetro Vocacional & Quiz Interativo -->
+  <PercursoQuiz client:visible />
+
+  <!-- Cards dos 3 Percursos -->
+  <div class="space-y-3">
+    <div class="cagp-tool-box p-4 space-y-2">
+      <div class="border-b border-[#DFDBD2] pb-2.5 flex items-center justify-between flex-wrap gap-2">
+        <div>
+          <div class="flex items-center gap-2">
+            <i class="bi bi-diagram-3-fill text-[#8B1E2D] text-lg" aria-hidden="true"></i>
+            <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A]">
+              Os 3 Percursos Oficiais do Regulamento (Art. 3º)
+            </h3>
+          </div>
+          <p class="text-xs text-gray-600 mt-0.5">
+            Escolha como orientar sua flexibilidade curricular na UFMG:
+          </p>
+        </div>
+        <span class="cagp-badge cagp-badge-dark font-mono">
+          Regulamento N-20229
+        </span>
+      </div>
+
+      <div class="space-y-3 pt-1">
+        {percursos.map((p) => (
+          <div class="cagp-card p-3.5 bg-white space-y-2">
+            <div class="flex items-center justify-between flex-wrap gap-2">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-[4px] bg-[#0A0A0A] text-white flex items-center justify-center font-mono font-bold text-xs shrink-0 shadow-[1px_1px_0_#0A0A0A]">
+                  {p.codigo}
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class={`bi ${p.icon} text-[#8B1E2D] text-base`} aria-hidden="true" />
+                  <h4 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A]">{p.nome}</h4>
+                </div>
+              </div>
+              <span class={`cagp-badge ${
+                p.badgeVariant === 'green' ? 'cagp-badge-green' :
+                p.badgeVariant === 'red' ? 'cagp-badge-red' :
+                'cagp-badge-blue'
+              } text-xs font-mono`}>
+                {p.badge}
+              </span>
+            </div>
+            <p class="text-xs text-gray-700 leading-relaxed">{p.desc}</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1.5 border-t border-[#DFDBD2]">
+              <div>
+                <span class="font-bold text-gray-700 block">Diferencial:</span>
+                <span class="text-gray-600">{p.obrig}</span>
+              </div>
+              <div>
+                <span class="font-bold text-gray-700 block">Flexibilidade:</span>
+                <span class="text-gray-600">{p.opt}</span>
+              </div>
+            </div>
+            <div class="pt-1.5 flex flex-wrap gap-2">
+              <a href={`/documentos/${p.slug}`} class="cagp-btn-secondary inline-flex items-center gap-1.5 text-xs py-1.5 px-3 no-underline">
+                <i class="bi bi-eye" aria-hidden="true"></i> Ler Matriz Transcrita
+              </a>
+              <a href={p.pdf} download class="cagp-btn-primary inline-flex items-center gap-1.5 text-xs py-1.5 px-3 no-underline">
+                <i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> Baixar PDF
+              </a>
+              <a href="/documentos#formularios" class="cagp-btn-secondary inline-flex items-center gap-1.5 text-xs py-1.5 px-3 no-underline">
+                <i class="bi bi-pencil-square" aria-hidden="true"></i> Requerimento
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Quadro Comparativo Oficial -->
+  <div class="cagp-tool-box p-4 space-y-3">
+    <div class="border-b border-[#DFDBD2] pb-2 flex items-center gap-2">
+      <i class="bi bi-table text-[#8B1E2D] text-base" aria-hidden="true"></i>
+      <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A]">
+        Quadro Comparativo Consolidado
+      </h3>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-left text-xs border-collapse">
+        <thead>
+          <tr class="border-b-2 border-[#0A0A0A] bg-[#F7F5F0]">
+            <th class="p-2 font-['Oswald'] uppercase font-bold text-[#0A0A0A]">Percurso</th>
+            <th class="p-2 font-['Oswald'] uppercase font-bold text-[#0A0A0A]">Ingresso</th>
+            <th class="p-2 font-['Oswald'] uppercase font-bold text-[#0A0A0A]">Optativas DCP</th>
+            <th class="p-2 font-['Oswald'] uppercase font-bold text-[#0A0A0A]">Foco Estratégico</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-[#DFDBD2] text-xs">
+          <tr class="hover:bg-[#FBF8F3]">
+            <td class="p-2 font-mono font-bold text-[#8B1E2D]">01-01 Geral</td>
+            <td class="p-2 text-gray-700">1º período (automático)</td>
+            <td class="p-2 font-mono text-gray-700">1.020 horas</td>
+            <td class="p-2 text-gray-600">Formação ampla em Gestão, Ciência Política e Políticas Públicas</td>
+          </tr>
+          <tr class="hover:bg-[#FBF8F3]">
+            <td class="p-2 font-mono font-bold text-[#8B1E2D]">01-02 Complementar</td>
+            <td class="p-2 text-gray-700">A partir do 5º período</td>
+            <td class="p-2 font-mono text-gray-700">720 horas (-300h)</td>
+            <td class="p-2 text-gray-600">300h em Formação Transversal (DH, Étnico-Racial) ou Formação Aberta (FCA)</td>
+          </tr>
+          <tr class="hover:bg-[#FBF8F3]">
+            <td class="p-2 font-mono font-bold text-[#8B1E2D]">01-03 Avançado</td>
+            <td class="p-2 text-gray-700">A partir do 7º período</td>
+            <td class="p-2 font-mono text-gray-700">900h a 975h</td>
+            <td class="p-2 text-gray-600">45h a 120h de Mestrado/Doutorado no PPGCP/FAFICH com creditação futura</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

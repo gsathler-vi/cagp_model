@@ -1,0 +1,10 @@
+{
+  "codigo": "ECN 140",
+  "nome": "Introducao À Economia",
+  "natureza": "obrigatoria",
+  "periodo": 2,
+  "ch": 60,
+  "ementa": "Noções de microeconomia (oferta, demanda, equilíbrio de mercado teoria do consumidor, estruturas de mercado) noções de macroeconomia (produto, emprego e renda moeda, juros e política monetária setor externo, câmbio e balanço de pagamentos inflação e setor público estabilização e crescimento).",
+  "preRequisitos": [],
+  "modulo": "Geral"
+}

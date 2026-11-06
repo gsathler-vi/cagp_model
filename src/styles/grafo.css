@@ -1,0 +1,222 @@
+/* grafo.css - Estilos Vetoriais do Grafo Curricular Interativo (Apple HIG + Neo-Brutalismo Brite) */
+
+.cagp-grafo-viewport {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background: #FFFFFF;
+  border: 2px solid #0A0A0A;
+  border-radius: 6px;
+  box-shadow: 4px 4px 0px #0A0A0A;
+  padding: 1rem 0.5rem;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+}
+
+.cagp-grafo-svg {
+  display: block;
+  min-width: 1210px;
+  height: 600px;
+  user-select: none;
+}
+
+/* Colunas dos 10 Períodos */
+.grafo-col-bg {
+  fill: #F7F5F0;
+  stroke: #DFDBD2;
+  stroke-width: 1px;
+}
+
+.grafo-col-header {
+  font-family: var(--font-display, 'Oswald', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  fill: #6B7280;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Conexões Vetoriais (Links) */
+.grafo-link {
+  fill: none;
+  stroke: #9CA3AF;
+  stroke-width: 1.5px;
+  opacity: 0.55;
+  transition: all 0.2s ease;
+}
+
+.grafo-link.link-formal {
+  stroke: #DC2626;
+  stroke-width: 2px;
+  stroke-dasharray: 4 2;
+  opacity: 0.8;
+}
+
+.grafo-link.is-active-req {
+  stroke: #E8A317 !important;
+  stroke-width: 3px !important;
+  opacity: 1 !important;
+  stroke-dasharray: 6 3;
+  animation: cagpLinkFlow 0.8s linear infinite;
+}
+
+.grafo-link.is-active-next {
+  stroke: #15803D !important;
+  stroke-width: 3px !important;
+  opacity: 1 !important;
+  stroke-dasharray: 6 3;
+  animation: cagpLinkFlow 0.8s linear infinite;
+}
+
+/* Trava no SIGA (Formal) Ativa com Fluxo Mecânico Vermelho Intenso */
+.grafo-link.link-formal.is-active-req,
+.grafo-link.link-formal.is-active-next {
+  stroke: #DC2626 !important;
+  stroke-width: 3.5px !important;
+  stroke-dasharray: 8 4 !important;
+  animation: cagpLinkFlow 0.75s linear infinite !important;
+  opacity: 1 !important;
+}
+
+.grafo-link.is-dimmed {
+  opacity: 0.08 !important;
+}
+
+@keyframes cagpLinkFlow {
+  from {
+    stroke-dashoffset: 12;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Nós das Disciplinas */
+.grafo-node {
+  cursor: pointer;
+  transition: transform 0.12s ease, opacity 0.15s ease;
+  outline: none;
+}
+
+.grafo-node rect.node-card {
+  fill: #FFFFFF;
+  stroke: #0A0A0A;
+  stroke-width: 1.5px;
+  rx: 6px;
+  ry: 6px;
+  filter: drop-shadow(2px 2px 0px #0A0A0A);
+  transition: all 0.12s ease;
+}
+
+.grafo-node:hover:not(.is-dimmed) rect.node-card {
+  stroke: #8B1E2D;
+  filter: drop-shadow(3px 3px 0px #8B1E2D);
+  transform: translate(-1px, -1px);
+}
+
+.grafo-node:focus-visible rect.node-card {
+  stroke: #8B1E2D;
+  stroke-width: 2.5px;
+}
+
+.grafo-node.is-selected rect.node-card {
+  stroke: #8B1E2D;
+  stroke-width: 2.5px;
+  fill: #FEE2E2;
+  filter: drop-shadow(3.5px 3.5px 0px #8B1E2D);
+}
+
+.grafo-node.is-prereq rect.node-card {
+  stroke: #E8A317;
+  stroke-width: 2px;
+  fill: #FEF3C7;
+  filter: drop-shadow(3px 3px 0px #E8A317);
+}
+
+.grafo-node.is-unlocked rect.node-card {
+  stroke: #15803D;
+  stroke-width: 2px;
+  fill: #DCFCE7;
+  filter: drop-shadow(3px 3px 0px #15803D);
+}
+
+.grafo-node.is-dimmed {
+  opacity: 0.18;
+}
+
+.grafo-node.is-completed rect.node-card {
+  stroke: #15803D !important;
+  stroke-width: 2px !important;
+  fill: #F0FDF4 !important;
+}
+
+/* Tipografia dentro do nó */
+.grafo-node text.node-code {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 11px;
+  font-weight: 700;
+  fill: #0A0A0A;
+  letter-spacing: 0.02em;
+}
+
+.grafo-node text.node-name {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 9.5px;
+  font-weight: 600;
+  fill: #374151;
+}
+
+.grafo-node rect.node-badge {
+  rx: 3px;
+}
+
+.grafo-node text.node-badge-text {
+  font-family: var(--font-display, 'Oswald', sans-serif);
+  font-size: 7.5px;
+  font-weight: 700;
+  fill: #FFFFFF;
+  text-transform: uppercase;
+}
+
+.grafo-node rect.node-lock-badge {
+  fill: #DC2626;
+  rx: 3px;
+}
+
+.grafo-node text.node-lock-text {
+  font-family: var(--font-display, 'Oswald', sans-serif);
+  font-size: 7.5px;
+  font-weight: 700;
+  fill: #FFFFFF;
+  letter-spacing: 0.04em;
+}
+
+
+
+/* Modo Alto Contraste AAA */
+html[data-a11y-contrast="high"] .cagp-grafo-viewport {
+  background: #000000 !important;
+  border-color: #FFFF00 !important;
+  box-shadow: none !important;
+}
+
+html[data-a11y-contrast="high"] .grafo-col-bg {
+  fill: #000000 !important;
+  stroke: #FFFF00 !important;
+}
+
+html[data-a11y-contrast="high"] .grafo-col-header {
+  fill: #FFFF00 !important;
+}
+
+html[data-a11y-contrast="high"] .grafo-node rect.node-card {
+  fill: #000000 !important;
+  stroke: #FFFF00 !important;
+  box-shadow: none !important;
+}
+
+html[data-a11y-contrast="high"] .grafo-node text.node-code,
+html[data-a11y-contrast="high"] .grafo-node text.node-name {
+  fill: #FFFF00 !important;
+}

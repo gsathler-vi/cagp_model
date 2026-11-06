@@ -1,0 +1,117 @@
+---
+// TccBancaNormas.astro - Sub-view 2: Regras regimentais de orientação, banca examinadora e depósito final
+import { asset, route } from '../../lib/paths';
+
+const regras = [
+  {
+    num: '1',
+    titulo: 'Orientação Acadêmica',
+    art: 'Arts. 21 e 22',
+    icon: 'bi-person-check-fill',
+    desc: 'A orientação cabe a docentes da UFMG, prioritariamente vinculados ao Departamento de Ciência Política (DCP). Cada docente pode orientar até 4 estudantes por semestre letivo.',
+  },
+  {
+    num: '2',
+    titulo: 'Banca Examinadora & Defesa Pública',
+    art: 'Arts. 24 a 27',
+    icon: 'bi-people-fill',
+    desc: 'Composta por pelo menos 2 docentes, sendo um o orientador (Art. 24). Sessão pública protocolada na Secretaria (Art. 25). Requer ter concluído as obrigatórias e estar a partir do 7º período (Art. 26). Aprovação com nota mínima de 60 pontos em 100 na ata (Art. 27).',
+  },
+  {
+    num: '3',
+    titulo: 'Depósito Definitivo',
+    art: 'Art. 28',
+    icon: 'bi-cloud-arrow-up-fill',
+    desc: 'Após incorporar os ajustes solicitados pela banca, a versão final deve ser entregue em PDF à Secretaria do Colegiado (Sala F-2039) para homologação e arquivamento.',
+  },
+];
+---
+
+<div class="space-y-4 text-[#0A0A0A]">
+  <!-- Card de Destaque: Termo de Aceite -->
+  <div class="bg-white border-2 border-[#8B1E2D] rounded-[6px] p-4 shadow-[2px_2px_0px_#0A0A0A] space-y-3">
+    <div class="flex items-center justify-between flex-wrap gap-2 border-b border-[#DFDBD2] pb-2.5">
+      <div>
+        <span class="cagp-badge cagp-badge-red font-mono uppercase">
+          Requisito Obrigatório para Matrícula em DCP 089
+        </span>
+        <div class="flex items-center gap-2 mt-1">
+          <i class="bi bi-file-earmark-check-fill text-[#8B1E2D] text-lg" aria-hidden="true" />
+          <h3 class="font-['Oswald'] font-bold text-base uppercase text-[#0A0A0A]">
+            Termo de Aceite de Orientador(a) de TCC
+          </h3>
+        </div>
+      </div>
+      <a href={asset('/documentos/termo-aceite-orientador-tcc.pdf')} download class="cagp-btn-primary inline-flex items-center gap-1.5 text-xs py-2 px-3 no-underline">
+        <i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> Baixar Termo de Aceite (PDF)
+      </a>
+    </div>
+    <p class="text-xs text-gray-700 leading-relaxed">
+      Nenhum discente pode se matricular na disciplina de Projeto de TCC (DCP 089) no 9º período sem antes colher a assinatura de um(a) professor(a) credenciado(a). Entregue o formulário assinado na Secretaria do Colegiado antes do início das aulas.
+    </p>
+  </div>
+
+  <!-- As 3 Regras Regimentais Bento -->
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+    {regras.map((r) => (
+      <div class="cagp-card p-3.5 bg-white flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <span class="cagp-badge cagp-badge-red font-mono font-bold">{r.art}</span>
+            <div class="flex items-center gap-1.5">
+              <i class={`bi ${r.icon} text-[#8B1E2D] text-sm`} aria-hidden="true" />
+              <span class="w-5 h-5 rounded-[4px] bg-[#0A0A0A] text-white flex items-center justify-center font-bold text-xs shadow-[1px_1px_0_#0A0A0A]">
+                {r.num}
+              </span>
+            </div>
+          </div>
+          <h4 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] mb-1">{r.titulo}</h4>
+          <p class="text-xs text-gray-600 leading-relaxed">{r.desc}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- FAQ Rápido de Formandos -->
+  <div class="cagp-tool-box p-4 space-y-3">
+    <div class="border-b border-[#DFDBD2] pb-2 flex items-center gap-2">
+      <i class="bi bi-question-circle-fill text-[#8B1E2D] text-base" aria-hidden="true" />
+      <div>
+        <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A]">
+          Dúvidas Frequentes sobre a Conclusão do Curso
+        </h3>
+        <p class="text-xs text-gray-500 mt-0.5">Orientações do Colegiado para a reta final da graduação:</p>
+      </div>
+    </div>
+
+    <div class="space-y-2 text-xs text-gray-700">
+      <div class="cagp-card p-3 bg-white">
+        <strong class="text-[#0A0A0A] block mb-0.5">Onde encontro os temas de pesquisa dos professores do DCP?</strong>
+        <p class="text-xs text-gray-600">
+          Consulte o <a href={route('/pesquisa#nucleos')} class="text-[#8B1E2D] font-bold hover:underline">Diretório dos 11 Núcleos de Pesquisa</a> para ver as linhas temáticas de cada docente (SUS, Governo Digital, Políticas Setoriais, Finanças, Democracia).
+        </p>
+      </div>
+
+      <div class="cagp-card p-3 bg-white">
+        <strong class="text-[#0A0A0A] block mb-0.5">Posso utilizar dados do meu Estágio Supervisionado no TCC?</strong>
+        <p class="text-xs text-gray-600">
+          Sim! A modalidade <em>2. Projeto de Intervenção Governamental</em> foi desenhada pelo Colegiado especificamente para permitir que diagnósticos e planos elaborados no estágio ou trabalho sejam convertidos no seu TCC.
+        </p>
+      </div>
+
+      <!-- Resolução de Premiação e Normas Congregação -->
+      <div class="cagp-card p-3 bg-[#F7F5F0] border border-[#DFDBD2] flex flex-col sm:flex-row sm:items-center justify-between gap-2 mt-2">
+        <div>
+          <span class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">
+            Resolução Congregação FAFICH nº 02/2018 (Concurso de Melhores TCCs)
+          </span>
+          <p class="text-[11px] text-gray-500 m-0">Regulamentação oficial de indicação de monografias e artigos destacados para premiação acadêmica.</p>
+        </div>
+        <a href={asset('/documentos/resolucao-congrega-02-2018-concurso-tcc.pdf')} download class="cagp-btn-secondary text-xs py-1.5 px-2.5 no-underline shrink-0 inline-flex items-center gap-1">
+          <i class="bi bi-download" aria-hidden="true" />
+          <span>Baixar Resolução</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

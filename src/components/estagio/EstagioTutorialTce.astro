@@ -1,0 +1,194 @@
+---
+// EstagioTutorialTce.astro - Sub-view 2: Tutorial visual do Termo de Compromisso de Estágio (TCE)
+import { asset } from '../../lib/paths';
+
+const stats = [
+  { label: 'Estágio Curricular A', ch: '180 h', desc: 'DCP 135 • 7º Período (12 créditos)', icon: 'bi-briefcase-fill' },
+  { label: 'Estágio Curricular B', ch: '120 h', desc: 'DCP 136 • 8º Período (8 créditos)', icon: 'bi-clock-history' },
+  { label: 'Estágio Não-Obrigatório', ch: 'Até 60 h', desc: 'Modalidade IX • AAC (4 créditos)', icon: 'bi-shield-check' },
+];
+
+const etapasTCE = [
+  {
+    num: 1,
+    titulo: '1. Dados da Entidade Concedente',
+    icon: 'bi-building',
+    desc: 'Preencha a Razão Social completa, CNPJ, endereço oficial do órgão concedente (ministério, secretaria, fundação, ONG ou empresa conveniada) e os dados do representante legal signatário.',
+  },
+  {
+    num: 2,
+    titulo: '2. Identificação Acadêmica do Discente',
+    icon: 'bi-person-vcard',
+    desc: 'Insira seus dados cadastrais (CPF, RG, endereço) e declare expressamente o curso como Bacharelado em Gestão Pública, o turno Noturno e o número de registro de matrícula no SIGA.',
+  },
+  {
+    num: 3,
+    titulo: '3. Interveniência Institucional FAFICH/UFMG',
+    icon: 'bi-bank',
+    desc: 'Identifique a Faculdade de Filosofia e Ciências Humanas e o Colegiado de Gestão Pública. A assinatura é firmada pela Coordenação do Curso em conjunto com o docente orientador do DCP.',
+  },
+  {
+    num: 4,
+    titulo: '4. Plano de Atividades & Seguro Obrigatório',
+    icon: 'bi-shield-shaded',
+    desc: 'Anexe o Plano de Atividades com tarefas compatíveis com o perfil de Gestão Pública e informe a apólice do Seguro contra Acidentes Pessoais contratada pela concedente (Lei nº 11.788/2008).',
+  },
+];
+
+const docs = [
+  {
+    titulo: 'TCE com Convênio (PDF)',
+    desc: 'Para órgãos com convênio ativo na UFMG',
+    link: '/documentos/estagio-modelo-termo-de-compromisso-com-convenio.pdf',
+  },
+  {
+    titulo: 'TCE sem Vínculo (PDF)',
+    desc: 'Para estágios via agentes de integração',
+    link: '/documentos/estagio-modelo-termo-de-compromisso-sem-vinculo.pdf',
+  },
+  {
+    titulo: 'Plano de Atividades (PDF)',
+    desc: 'Cronograma descritivo das atribuições',
+    link: '/documentos/estagio-modelo-plano-de-atividades.pdf',
+  },
+  {
+    titulo: 'Relatório Final de Estágio (PDF)',
+    desc: 'Avaliação da concedente para o Colegiado',
+    link: '/documentos/estagio-modelo-relatorio-final.pdf',
+  },
+  {
+    titulo: 'Relatório Semestral (PDF)',
+    desc: 'Acompanhamento periódico de atividades',
+    link: '/documentos/estagio-modelo-relatorio-semestral.pdf',
+  },
+  {
+    titulo: 'Manual de Estágio FAFICH (PDF)',
+    desc: 'Orientações normativas completas do CEAG',
+    link: '/documentos/estagio-manual-orientacoes-fafich.pdf',
+  },
+];
+---
+
+<div class="space-y-4 text-[#0A0A0A]">
+  <!-- 3 Stat Cards de Carga Horária Bento -->
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+    {stats.map((s) => (
+      <div class="cagp-card p-3.5 bg-white text-center flex flex-col justify-between">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-mono uppercase text-gray-500 font-bold">{s.label}</span>
+          <i class={`bi ${s.icon} text-[#8B1E2D] text-base`} aria-hidden="true" />
+        </div>
+        <span class="font-['Oswald'] font-black text-2xl text-[#8B1E2D] my-1 block leading-none">{s.ch}</span>
+        <span class="text-xs text-gray-500 leading-tight">{s.desc}</span>
+      </div>
+    ))}
+  </div>
+
+  <!-- Tutorial Visual com Print Anotado do TCE -->
+  <div class="cagp-tool-box p-4 space-y-3">
+    <div class="border-b border-[#DFDBD2] pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+      <div>
+        <div class="flex items-center gap-2">
+          <i class="bi bi-file-earmark-ruled-fill text-[#8B1E2D] text-lg" aria-hidden="true" />
+          <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A]">
+            Tutorial Visual: Termo de Compromisso de Estágio (TCE)
+          </h3>
+        </div>
+        <p class="text-xs text-gray-600 mt-0.5">
+          Instruções e campos indispensáveis na primeira página do termo com interveniência da FAFICH/UFMG:
+        </p>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="cagp-badge cagp-badge-red font-mono">
+          Lei nº 11.788/2008
+        </span>
+        <a
+          href={asset('/documentos/estagio-modelo-termo-de-compromisso-com-convenio.pdf')}
+          download
+          class="cagp-btn-primary text-xs py-1.5 px-3 whitespace-nowrap no-underline inline-flex items-center gap-1.5 shrink-0"
+        >
+          <i class="bi bi-download" aria-hidden="true"></i> Baixar Modelo TCE (PDF)
+        </a>
+      </div>
+    </div>
+
+    <!-- As 4 Etapas Chave -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+      {etapasTCE.map((e) => (
+        <div class="cagp-card p-3.5 bg-white flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-1.5">
+              <span class="w-6 h-6 rounded-[4px] bg-[#8B1E2D] text-white flex items-center justify-center font-bold text-xs shadow-[1px_1px_0_#0A0A0A]">
+                {e.num}
+              </span>
+              <i class={`bi ${e.icon} text-[#8B1E2D] text-base`} aria-hidden="true" />
+              <h4 class="font-['Oswald'] font-bold uppercase text-xs text-[#0A0A0A]">
+                {e.titulo}
+              </h4>
+            </div>
+            <p class="text-xs text-gray-600 leading-relaxed">{e.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Print Anotado do TCE Real -->
+    <div class="mt-4 pt-4 border-t border-[#DFDBD2] space-y-2">
+      <div class="flex items-center justify-between gap-2 flex-wrap">
+        <div>
+          <div class="flex items-center gap-2">
+            <i class="bi bi-image text-[#8B1E2D]" aria-hidden="true" />
+            <h4 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A]">
+              Fac-símile Oficial do Termo de Estágio (TCE / FAFICH)
+            </h4>
+          </div>
+          <p class="text-xs text-gray-500">Visualização anotada do modelo padrão com os 4 blocos contratuais destacados:</p>
+        </div>
+        <a
+          href={asset('/imagens/termo-compromisso-estagio-anotado.jpg')}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cagp-btn-secondary text-xs py-1 px-2.5 no-underline shrink-0 flex items-center gap-1"
+        >
+          <i class="bi bi-arrows-fullscreen"></i> Ver Completo
+        </a>
+      </div>
+
+      <div class="rounded-[6px] border-2 border-[#0A0A0A] shadow-[2px_2px_0px_#0A0A0A] overflow-hidden bg-white">
+        <img
+          src={asset('/imagens/termo-compromisso-estagio-anotado.jpg')}
+          alt="Fac-símile oficial do Termo de Compromisso de Estágio (TCE) da UFMG anotado com os blocos de concedente, estagiário, interveniência e seguro"
+          class="w-full h-auto max-h-[500px] object-contain"
+          loading="lazy"
+        />
+      </div>
+      <p class="text-xs text-gray-500 italic text-center">
+        Fonte: Colegiado de Gestão Pública / CEAG FAFICH (Versão N-20229).
+      </p>
+    </div>
+
+    <!-- Grade de Downloads Oficiais -->
+    <div class="mt-4 pt-4 border-t border-[#DFDBD2]">
+      <h4 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A] mb-2">
+        Documentos Oficiais para Download Imediato
+      </h4>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5">
+        {docs.map((d) => (
+          <a
+            href={asset(d.link)}
+            download
+            class="cagp-card p-3 bg-white hover:bg-[#FBF8F3] transition-all no-underline block group"
+          >
+            <div class="flex items-center gap-2 mb-1">
+              <i class="bi bi-file-earmark-pdf-fill text-[#8B1E2D] text-base group-hover:scale-110 transition-transform" aria-hidden="true"></i>
+              <span class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] group-hover:text-[#8B1E2D]">
+                {d.titulo}
+              </span>
+            </div>
+            <p class="text-xs text-gray-500 leading-tight">{d.desc}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>

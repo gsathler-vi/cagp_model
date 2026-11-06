@@ -1,0 +1,52 @@
+---
+// DynamicToast.astro - Feedback Tátil & Notificações Flutuantes (Dynamic Island Toast)
+---
+
+<div id="cagp-toast" class="cagp-toast" role="status" aria-live="polite" hidden>
+  <i id="cagp-toast-icon" class="bi bi-check2-circle cagp-toast-icon" aria-hidden="true"></i>
+  <span id="cagp-toast-text" class="cagp-toast-text"></span>
+</div>
+
+<script>
+  function setupToastSystem() {
+    const toastEl = document.getElementById('cagp-toast');
+    const toastText = document.getElementById('cagp-toast-text');
+    const toastIcon = document.getElementById('cagp-toast-icon');
+    let timer: number | null = null;
+
+    (window as any).cagpToast = function (message: string, iconClass?: string, duration?: number) {
+      if (!toastEl || !toastText) return;
+      if (timer) clearTimeout(timer);
+
+      toastText.textContent = message;
+      if (toastIcon) {
+        toastIcon.className = `bi ${iconClass || 'bi-check2-circle'} cagp-toast-icon`;
+      }
+
+      toastEl.removeAttribute('hidden');
+      void toastEl.offsetWidth;
+      toastEl.classList.add('is-visible');
+
+      timer = window.setTimeout(() => {
+        toastEl.classList.remove('is-visible');
+        setTimeout(() => {
+          toastEl.setAttribute('hidden', '');
+        }, 300);
+      }, duration || 2400);
+    };
+
+    (window as any).cagpShowToast = (window as any).cagpToast;
+
+    if (!(window as any).__cagp_toast_events_bound) {
+      (window as any).__cagp_toast_events_bound = true;
+      window.addEventListener('online', () => {
+        (window as any).cagpToast?.('Conexão restabelecida.', 'bi-wifi', 2500);
+      });
+      window.addEventListener('offline', () => {
+        (window as any).cagpToast?.('Modo offline ativo: dados em cache local.', 'bi-wifi-off', 3500);
+      });
+    }
+  }
+
+  document.addEventListener('astro:page-load', setupToastSystem);
+</script>

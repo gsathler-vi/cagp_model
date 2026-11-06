@@ -1,0 +1,104 @@
+---
+// src/components/features/documentos/drca/DocumentosDrcaPrazos.astro — Processos e Requerimentos do DRCA / UFMG
+import { asset } from '../../../../lib/paths';
+import DocumentosTutorialDrca from '../../../documentos/DocumentosTutorialDrca.astro';
+
+interface DrcaDoc {
+  title: string;
+  file: string;
+  desc: string;
+  badge: string;
+}
+
+const drca: DrcaDoc[] = [
+  // 1. Trancamentos
+  { title: 'Requerimento de Trancamento Parcial de Matrícula', file: 'requerimento-trancamento-parcial-matricula.pdf', desc: 'Cancelamento pontual de disciplina mantendo a carga mínima de 180h.', badge: 'Trancamento' },
+  { title: 'Requerimento de Trancamento Total de Matrícula', file: 'requerimento-trancamento-total-matricula.pdf', desc: 'Suspensão integral das atividades do semestre com justificativa legal.', badge: 'Trancamento' },
+
+  // 2. Aproveitamento
+  { title: 'Requerimento de Aproveitamento de Estudos (Colegiado)', file: 'requerimento-aproveitamento-de-estudos-colegiado.pdf', desc: 'Submissão de ementas e histórico ao Colegiado (prazo até o 2º período).', badge: 'Convalidação' },
+  { title: 'Requerimento de Aproveitamento de Estudos (DRCA)', file: 'requerimento-aproveitamento-de-estudos-drca.pdf', desc: 'Registro formal da convalidacão junto ao controle acadêmico central.', badge: 'DRCA' },
+
+  // 3. Saúde e Regime Especial
+  { title: 'Requerimento de Regime Especial de Graduação (RAEP)', file: 'requerimento-regime-especial-graduacao.pdf', desc: 'Amparo didático domiciliar para tratamento de saúde e licença parental.', badge: 'RAEP' },
+  { title: 'Requerimento de Avaliação Médica Pericial', file: 'requerimento-avaliacao-medica.pdf', desc: 'Solicitação de perícia médica oficial no DAST/UFMG.', badge: 'Perícia Médica' },
+
+  // 4. Exames
+  { title: 'Requerimento de Inscrição em Exame Especial', file: 'requerimento-inscricao-exame-especial.pdf', desc: 'Avaliação suplementar para notas entre 40 e 59 pontos com frequência mínima.', badge: '2ª Época' },
+
+  // 5. Conclusão e Diploma
+  { title: 'Requerimento de Inscrição na Colação de Grau (Colegiado)', file: 'requerimento-inscricao-colacao-de-grau-colegiado.pdf', desc: 'Inscrição na cerimônia oficial de formatura do curso.', badge: 'Formatura' },
+  { title: 'Requerimento de Inscrição na Colação de Grau (DRCA)', file: 'requerimento-inscricao-colacao-de-grau-drca.pdf', desc: 'Abertura formal de processo de conclusão perante a Reitoria.', badge: 'Formatura' },
+  { title: 'Requerimento de Prioridade no Registro de Diploma', file: 'requerimento-prioridade-registro-diploma.pdf', desc: 'Antecipação de emissão para posse em concurso ou pós-graduação.', badge: 'Diploma' },
+
+  // 6. Matrícula, Turno e Transferência
+  { title: 'Requerimento de Mudança de Turno', file: 'requerimento-mudanca-de-turno.pdf', desc: 'Solicitação de transferência entre turnos conforme edital e vagas.', badge: 'Turno' },
+  { title: 'Requerimento de Matrícula em Disciplina Isolada', file: 'requerimento-matricula-disciplina-isolada.pdf', desc: 'Inscrição em disciplinas avulsas para estudantes externos ou formados.', badge: 'Isolada' },
+  { title: 'Requerimento de Transferência para Outra IES', file: 'requerimento-transferencia-outra-ies.pdf', desc: 'Expedição de guia de transferência e histórico escolar oficial.', badge: 'Transferência' },
+  { title: 'Forma de Ingresso: SISU / ENEM', file: 'forma-ingresso-sisu.pdf', desc: 'Documentação institucional e normas de matrícula pelo SISU.', badge: 'Ingresso' },
+  { title: 'Forma de Ingresso: Reopção de Curso', file: 'forma-ingresso-reopcao.pdf', desc: 'Transferência interna de discentes da UFMG para Gestão Pública.', badge: 'Ingresso' },
+  { title: 'Forma de Ingresso: Obtenção de Novo Título', file: 'forma-ingresso-obtencao-novo-titulo.pdf', desc: 'Processo seletivo para portadores de diploma de curso superior.', badge: 'Ingresso' },
+
+  // 7. Percurso Curricular
+  { title: 'Requerimento de Mudança de Percurso Curricular (DRCA)', file: 'requerimento-mudanca-percurso-curricular-drca.pdf', desc: 'Migração entre o Percurso 01-01, 01-02 ou 01-03 no 4º período.', badge: 'Percurso' },
+  { title: 'Requerimento de Mudança de Modalidade / Ênfase', file: 'requerimento-mudanca-percurso-modalidade-habilitacao-enfase.pdf', desc: 'Formulário complementar do DRCA para habilitação e ênfase curricular.', badge: 'Percurso' },
+
+  // 8. Desligamento e Defesa
+  { title: 'Revisão de Desligamento: Plano de Estudos (Colegiado)', file: 'requerimento-revisao-desligamento-plano-estudos-colegiado.pdf', desc: 'Recurso com cronograma de recuperação acadêmica para evitar jubilamento.', badge: 'Defesa' },
+  { title: 'Revisão de Desligamento: Plano de Integralização (DRCA)', file: 'requerimento-revisao-desligamento-plano-integralizacao-drca.pdf', desc: 'Petição ao Conselho de Ensino, Pesquisa e Extensão para dilação de prazo.', badge: 'Defesa' },
+
+  // 9. Direitos
+  { title: 'Requerimento de Inclusão de Nome Social', file: 'requerimento-inclusao-nome-social.pdf', desc: 'Garantia institucional de uso do nome social nos diários de classe e SIGA.', badge: 'Direitos' },
+];
+---
+
+<div class="cagp-documentos-drca space-y-6 select-none text-[#0A0A0A]">
+  <div class="p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
+    <div>
+      <span class="text-[11px] font-['Oswald'] uppercase font-bold tracking-wider text-[#8B1E2D]">
+        Departamento de Registro e Controle Acadêmico (DRCA)
+      </span>
+      <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A] m-0">
+        Processos Administrativos, Trancamentos e Requerimentos DRCA
+      </h3>
+      <p class="text-xs text-gray-600 mt-0.5 m-0">
+        Formulários homologados para solicitações perante o DRCA, Colegiado e Reitoria da UFMG.
+      </p>
+    </div>
+    <span class="px-2.5 py-1 rounded bg-[#0A0A0A] text-white font-mono text-xs font-bold shrink-0">
+      {drca.length} Requerimentos DRCA
+    </span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+    {drca.map((doc) => (
+      <div class="cagp-card p-4 bg-white border border-[#DFDBD2] hover:border-[#0A0A0A] rounded-xl flex items-center justify-between gap-3 transition-all shadow-xs">
+        <div class="flex items-start gap-3 min-w-0">
+          <div class="w-9 h-9 rounded-lg bg-[#0A0A0A]/10 text-[#0A0A0A] border border-[#0A0A0A]/20 flex items-center justify-center shrink-0 mt-0.5">
+            <i class="bi bi-archive-fill text-base" aria-hidden="true" />
+          </div>
+          <div class="min-w-0">
+            <div class="flex items-center gap-1.5 mb-1 flex-wrap">
+              <span class="cagp-badge cagp-badge-dark text-[10px] font-mono">{doc.badge}</span>
+              <h4 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] truncate m-0">{doc.title}</h4>
+            </div>
+            <p class="text-xs text-gray-600 leading-tight m-0">{doc.desc}</p>
+          </div>
+        </div>
+
+        <a
+          href={asset(`/documentos/${doc.file}`)}
+          download
+          class="min-h-[40px] px-3 py-1.5 bg-[#0A0A0A] hover:bg-[#8B1E2D] text-white rounded-lg text-xs font-['Oswald'] uppercase font-bold tracking-wider flex items-center gap-1.5 transition-all no-underline shrink-0 shadow-[1px_1px_0px_#0A0A0A]"
+          title={`Baixar ${doc.title}`}
+        >
+          <i class="bi bi-download" aria-hidden="true" />
+          <span>Baixar</span>
+        </a>
+      </div>
+    ))}
+  </div>
+
+  {/* Tutorial de Tramitação DRCA */}
+  <DocumentosTutorialDrca />
+</div>

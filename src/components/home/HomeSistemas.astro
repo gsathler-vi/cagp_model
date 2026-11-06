@@ -1,0 +1,241 @@
+---
+// HomeSistemas.astro - Sub-view 2: Central de Sistemas UFMG & Micro-Apps CAGP (Port Neo-Brutalista Quarto + Apple HIG)
+import { asset } from '../../lib/paths';
+---
+
+<div class="space-y-4">
+  <!-- Central de Sistemas UFMG (.cagp-tool-box) -->
+  <div class="cagp-tool-box">
+    <div class="cagp-tool-header">
+      <div>
+        <span class="cagp-badge cagp-badge-red mb-1">Ecossistema Digital</span>
+        <h2 class="font-['Oswald'] text-sm font-bold uppercase text-[#0A0A0A] m-0 flex items-center gap-1.5">
+          <i class="bi bi-grid-3x3-gap text-[#8B1E2D]" aria-hidden="true"></i>
+          <span>Central de Sistemas & Aplicativos Oficiais da UFMG</span>
+        </h2>
+        <p class="text-xs text-gray-500 mt-0.5 mb-0">Acesso direto aos portais acadêmicos, carteirinha, circulares e assistência:</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+      <!-- 1. SIGA UFMG -->
+      <div class="cagp-card p-3 bg-white flex flex-col justify-between">
+        <div>
+          <div class="flex items-start gap-2.5 mb-1.5">
+            <img src={asset('/logos/siga/siga-ufmg-fundo-azul.webp')} alt="Logo SIGA UFMG" class="w-9 h-9 object-contain rounded-[4px] shrink-0 border border-[#DFDBD2] bg-white p-0.5" />
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center justify-between gap-1">
+                <span class="font-['Oswald'] font-bold text-xs uppercase text-[#8B1E2D] truncate">SIGA UFMG</span>
+                <span class="cagp-badge cagp-badge-red text-[11px] px-1 py-0.2 shrink-0">Acadêmico</span>
+              </div>
+              <p class="text-xs text-gray-600 mt-0.5 leading-snug">Matrícula, diário de classe, notas, salas e histórico oficial.</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-1.5 pt-1.5 border-t border-[#DFDBD2] font-mono text-xs">
+          <a href="https://sistemas.ufmg.br" target="_blank" rel="noopener noreferrer" class="font-bold text-[#8B1E2D] hover:underline">
+            Web &rarr;
+          </a>
+          <span class="text-gray-300">·</span>
+          <a href="https://play.google.com/store/apps/details?id=br.ufmg.ddp.cecom.academico.sigaufmg" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:underline">
+            Android
+          </a>
+          <span class="text-gray-300">·</span>
+          <a href="https://apps.apple.com/br/app/siga-ufmg/id1456022680" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:underline">
+            iOS
+          </a>
+          <span class="text-gray-300">·</span>
+          <a href={asset('/documentos/manual-aplicativo-siga-ufmg.pdf')} target="_blank" class="text-gray-600 hover:underline">
+            Manual PDF
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. MinhaUFMG -->
+      <div class="cagp-card p-3 bg-white flex flex-col justify-between">
+        <div>
+          <div class="flex items-start gap-2.5 mb-1.5">
+            <img src={asset('/logos/minhaufmg/logo-minha-ufmg.png')} alt="Logo MinhaUFMG" class="w-9 h-9 object-contain rounded-[4px] shrink-0 border border-[#DFDBD2] bg-white p-0.5" />
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center justify-between gap-1">
+                <span class="font-['Oswald'] font-bold text-xs uppercase text-[#005A9C] truncate">MinhaUFMG</span>
+                <span class="cagp-badge cagp-badge-blue text-[11px] px-1 py-0.2 shrink-0">Login Único</span>
+              </div>
+              <p class="text-xs text-gray-600 mt-0.5 leading-snug">Portal integrador: primeiro cadastro NIPs, e-mail institucional e Moodle.</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-1.5 pt-1.5 border-t border-[#DFDBD2] font-mono text-xs">
+          <a href="https://sistemas.ufmg.br" target="_blank" rel="noopener noreferrer" class="font-bold text-[#005A9C] hover:underline">
+            Acessar Portal &rarr;
+          </a>
+          <span class="text-gray-300">·</span>
+          <a href="https://sistemas.ufmg.br/nips/home.seam" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:underline">
+            Folha NIPs
+          </a>
+        </div>
+      </div>
+
+      <!-- 3. FUMP Assistência -->
+      <div class="cagp-card p-3 bg-white flex flex-col justify-between">
+        <div>
+          <div class="flex items-start gap-2.5 mb-1.5">
+            <img src={asset('/logos/fump/02-fump-logo-branco-fundo-colorido.png')} alt="Logo FUMP" class="w-9 h-9 object-contain rounded-[4px] shrink-0 border border-[#DFDBD2] bg-white p-0.5" />
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center justify-between gap-1">
+                <span class="font-['Oswald'] font-bold text-xs uppercase text-[#15803D] truncate">FUMP</span>
+                <span class="cagp-badge cagp-badge-green text-[11px] px-1 py-0.2 shrink-0">Permanência</span>
+              </div>
+              <p class="text-xs text-gray-600 mt-0.5 leading-snug">Questionário socioeconômico, bolsas, auxílio moradia e cardápio RU.</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-1.5 pt-1.5 border-t border-[#DFDBD2] font-mono text-xs">
+          <a href="https://www.fump.ufmg.br/" target="_blank" rel="noopener noreferrer" class="font-bold text-[#15803D] hover:underline">
+            Área do Aluno &rarr;
+          </a>
+          <span class="text-gray-300">·</span>
+          <a href="https://wa.me/5531975370115" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:underline">
+            WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- 4. Interno Rotas -->
+      <div class="cagp-card p-3 bg-white flex flex-col justify-between">
+        <div>
+          <div class="flex items-start gap-2.5 mb-1.5">
+            <img src={asset('/logos/interno-rotas/icone.svg')} alt="Logo Interno Rotas" class="w-9 h-9 object-contain rounded-[4px] shrink-0 border border-[#DFDBD2] bg-white p-0.5" />
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center justify-between gap-1">
+                <span class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] truncate">Interno Rotas</span>
+                <span class="cagp-badge cagp-badge-dark text-[11px] px-1 py-0.2 shrink-0">GPS Ônibus</span>
+              </div>
+              <p class="text-xs text-gray-600 mt-0.5 leading-snug">Rastreamento colaborativo em tempo real dos ônibus circulares gratuitos.</p>
+            </div>
+          </div>
+        </div>
+        <div class="pt-1.5 border-t border-[#DFDBD2] font-mono text-xs">
+          <a href="https://internorotas.com/" target="_blank" rel="noopener noreferrer" class="font-bold text-[#0A0A0A] hover:underline">
+            Abrir Mapa ao Vivo &rarr;
+          </a>
+        </div>
+      </div>
+
+      <!-- 5. CEAG FAFICH -->
+      <div class="cagp-card p-3 bg-white flex flex-col justify-between">
+        <div>
+          <div class="flex items-start gap-2.5 mb-1.5">
+            <div class="w-9 h-9 rounded-[4px] shrink-0 bg-[#0A0A0A] text-white flex items-center justify-center font-['Oswald'] font-black text-xs border border-[#DFDBD2] shadow-[1px_1px_0px_#0A0A0A]">CEAG</div>
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center justify-between gap-1">
+                <span class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] truncate">CEAG FAFICH</span>
+                <span class="cagp-badge cagp-badge-dark text-[11px] px-1 py-0.2 shrink-0">08h às 22h</span>
+              </div>
+              <p class="text-xs text-gray-600 mt-0.5 leading-snug">Atendimento ininterrupto no térreo para protocolos, chaves e suporte.</p>
+            </div>
+          </div>
+        </div>
+        <div class="pt-1.5 border-t border-[#DFDBD2] font-mono text-xs">
+          <a href="/calouros#espacos" class="font-bold text-[#0A0A0A] hover:underline">
+            Guichês & Horários &rarr;
+          </a>
+        </div>
+      </div>
+
+      <!-- 6. Biblioteca FAFICH -->
+      <div class="cagp-card p-3 bg-white flex flex-col justify-between">
+        <div>
+          <div class="flex items-start gap-2.5 mb-1.5">
+            <div class="w-9 h-9 rounded-[4px] shrink-0 bg-[#5B2C6F] text-white flex items-center justify-center font-['Oswald'] font-black text-sm border border-[#DFDBD2] shadow-[1px_1px_0px_#0A0A0A]"><i class="bi bi-book"></i></div>
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center justify-between gap-1">
+                <span class="font-['Oswald'] font-bold text-xs uppercase text-[#5B2C6F] truncate">Baeta Neves</span>
+                <span class="cagp-badge cagp-badge-dark text-[11px] px-1 py-0.2 shrink-0">1º Andar</span>
+              </div>
+              <p class="text-xs text-gray-600 mt-0.5 leading-snug">Acervo de Humanas, salas de estudo, empréstimos e Pergamum.</p>
+            </div>
+          </div>
+        </div>
+        <div class="pt-1.5 border-t border-[#DFDBD2] font-mono text-xs">
+          <a href="https://catalogobiblioteca.ufmg.br/pergamum/biblioteca/index.php" target="_blank" rel="noopener noreferrer" class="font-bold text-[#5B2C6F] hover:underline">
+            Catálogo Online &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Micro-Apps CAGP (.cagp-tool-box) -->
+  <div class="cagp-tool-box">
+    <div class="cagp-tool-header">
+      <div>
+        <span class="cagp-badge cagp-badge-red mb-1">Ferramentas Autônomas</span>
+        <h2 class="font-['Oswald'] text-sm font-bold uppercase text-[#0A0A0A] m-0 flex items-center gap-1.5">
+          <i class="bi bi-cpu text-[#8B1E2D]" aria-hidden="true"></i>
+          <span>Catálogo dos 8 Micro-Apps Interativos do CAGP</span>
+        </h2>
+        <p class="text-xs text-gray-500 mt-0.5 mb-0">Ferramentas projetadas especificamente para o percurso curricular de Gestão Pública:</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+      <a href="/acg#calculadora" class="cagp-card p-2.5 no-underline flex flex-col justify-between">
+        <div>
+          <i class="bi bi-calculator text-[#8B1E2D] text-lg block mb-1" aria-hidden="true"></i>
+          <span class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">Calculadora 600h</span>
+        </div>
+        <span class="text-xs text-gray-500 font-mono mt-1">Extensão & AAC</span>
+      </a>
+      <a href="/acg#guardiao-120-dias" class="cagp-card p-2.5 no-underline flex flex-col justify-between">
+        <div>
+          <i class="bi bi-shield-check text-[#15803D] text-lg block mb-1" aria-hidden="true"></i>
+          <span class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">Guardião 120d</span>
+        </div>
+        <span class="text-xs text-gray-500 font-mono mt-1">Prazo de certificados</span>
+      </a>
+      <a href="/estagio#art41" class="cagp-card p-2.5 no-underline flex flex-col justify-between">
+        <div>
+          <i class="bi bi-briefcase text-[#B45309] text-lg block mb-1" aria-hidden="true"></i>
+          <span class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">Dispensa Art. 41</span>
+        </div>
+        <span class="text-xs text-gray-500 font-mono mt-1">Experiência profissional</span>
+      </a>
+      <a href="/percurso#grafo" class="cagp-card p-2.5 no-underline flex flex-col justify-between">
+        <div>
+          <i class="bi bi-diagram-3 text-[#005A9C] text-lg block mb-1" aria-hidden="true"></i>
+          <span class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">Grafo de Matérias</span>
+        </div>
+        <span class="text-xs text-gray-500 font-mono mt-1">27 obrigatórias</span>
+      </a>
+      <a href="/percurso#optativas" class="cagp-card p-2.5 no-underline flex flex-col justify-between">
+        <div>
+          <i class="bi bi-collection text-[#5B2C6F] text-lg block mb-1" aria-hidden="true"></i>
+          <span class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">68 Optativas</span>
+        </div>
+        <span class="text-xs text-gray-500 font-mono mt-1">Filtro por depto</span>
+      </a>
+      <a href="/calouros#checklist" class="cagp-card p-2.5 no-underline flex flex-col justify-between">
+        <div>
+          <i class="bi bi-check2-circle text-[#15803D] text-lg block mb-1" aria-hidden="true"></i>
+          <span class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">Checklist Calouro</span>
+        </div>
+        <span class="text-xs text-gray-500 font-mono mt-1">30 primeiros dias</span>
+      </a>
+      <a href="/documentos" class="cagp-card p-2.5 no-underline flex flex-col justify-between">
+        <div>
+          <i class="bi bi-file-earmark-pdf text-[#DC2626] text-lg block mb-1" aria-hidden="true"></i>
+          <span class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">Acervo de Atos</span>
+        </div>
+        <span class="text-xs text-gray-500 font-mono mt-1">PDFs e requerimentos</span>
+      </a>
+      <a href="/pesquisa#nucleos" class="cagp-card p-2.5 no-underline flex flex-col justify-between">
+        <div>
+          <i class="bi bi-mortarboard text-[#0A0A0A] text-lg block mb-1" aria-hidden="true"></i>
+          <span class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">11 Núcleos IC</span>
+        </div>
+        <span class="text-xs text-gray-500 font-mono mt-1">Pesquisa e bolsas</span>
+      </a>
+    </div>
+  </div>
+</div>

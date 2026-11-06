@@ -1,0 +1,130 @@
+---
+// CalourosVideos.astro - Galeria de tutoriais oficiais em vídeo da UFMG
+const videos = [
+  {
+    id: 'JpBGj59NPqs',
+    title: 'Conheça o SIGA UFMG',
+    desc: 'Tutorial completo do sistema acadêmico: matrícula, notas, comprovantes e histórico escolar.',
+    source: 'Portal UFMG / CECOM',
+  },
+  {
+    id: 'gZI42d0rrfk',
+    title: 'MinhaUFMG ou App SIGA?',
+    desc: 'Entenda as diferenças entre o portal web corporativo e o app móvel discente.',
+    source: 'DTI UFMG',
+  },
+  {
+    id: 'g8979vI6M-s',
+    title: 'Carteira da UFMG & Bibliotecas',
+    desc: 'Emissão da carteirinha de estudante, acesso aos restaurantes universitários e ao Sistema Pergamum.',
+    source: 'Sistema de Bibliotecas BU/UFMG',
+  },
+  {
+    id: '4DonihIQXSM',
+    title: 'Acessibilidade & Inclusão (NAI)',
+    desc: 'Recursos pedagógicos, adaptações e suporte do Núcleo de Acessibilidade e Inclusão.',
+    source: 'NAI / Prograd UFMG',
+  },
+  {
+    id: 'LzVLJ_zE8uM',
+    title: 'Saúde Mental & Acolhimento',
+    desc: 'Rede de apoio psicológico e assistência da DASE/PRAE para estudantes.',
+    source: 'DASE / PRAE UFMG',
+  },
+  {
+    id: 'dg8hXD2Qbp4',
+    title: 'UFMG Contra o Assédio (Res. 07/25)',
+    desc: 'Canais de acolhimento, Ouvidoria e a nova Resolução de Enfrentamento ao Assédio na UFMG.',
+    source: 'Ouvidoria Geral UFMG',
+  },
+];
+---
+
+<div class="cagp-tool-box p-4 space-y-3 text-[#0A0A0A]">
+  <div class="border-b border-[#DFDBD2] pb-2.5 flex items-center justify-between flex-wrap gap-2">
+    <div>
+      <div class="flex items-center gap-2">
+        <i class="bi bi-youtube text-[#DC2626] text-lg" aria-hidden="true" />
+        <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A]">
+          Tutoriais Oficiais em Vídeo (UFMG & Sistemas)
+        </h3>
+      </div>
+      <p class="text-xs text-gray-600 mt-0.5">
+        Orientações institucionais em formato audiovisual para apoiar sua chegada à universidade:
+      </p>
+    </div>
+    <span class="cagp-badge cagp-badge-red font-mono">
+      6 Vídeos
+    </span>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+    {videos.map((v) => (
+      <article class="cagp-card cagp-video-card overflow-hidden flex flex-col justify-between">
+        <div
+          class="cagp-video-thumb-wrap video-trigger"
+          data-video-id={v.id}
+          data-video-title={v.title}
+          role="button"
+          tabindex="0"
+          aria-label={`Reproduzir vídeo: ${v.title}`}
+        >
+          <img
+            src={`https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`}
+            alt={`Miniatura do tutorial oficial ${v.title}`}
+            class="cagp-video-thumb"
+            loading="lazy"
+          />
+          <div class="cagp-video-play-btn" aria-hidden="true">
+            <i class="bi bi-play-fill"></i>
+          </div>
+        </div>
+        <div class="p-3 flex flex-col flex-1 justify-between bg-white">
+          <div>
+            <h4 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] line-clamp-1 mb-1">
+              {v.title}
+            </h4>
+            <p class="text-xs text-gray-600 line-clamp-2 leading-snug">
+              {v.desc}
+            </p>
+          </div>
+          <span class="text-xs font-mono text-gray-400 mt-2 block">
+            {v.source}
+          </span>
+        </div>
+      </article>
+    ))}
+  </div>
+</div>
+
+<script>
+  function setupVideoPlayers() {
+    const triggers = document.querySelectorAll<HTMLElement>('.video-trigger');
+    triggers.forEach((trigger) => {
+      const play = () => {
+        const id = trigger.getAttribute('data-video-id');
+        const title = trigger.getAttribute('data-video-title') || 'Vídeo';
+        if (!id) return;
+        trigger.innerHTML = `
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1"
+            title="${title}"
+            style="width: 100%; height: 100%; border: 0;"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        `;
+      };
+
+      trigger.addEventListener('click', play, { once: true });
+      trigger.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          play();
+        }
+      }, { once: true });
+    });
+  }
+
+  document.addEventListener('astro:page-load', setupVideoPlayers);
+</script>

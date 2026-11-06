@@ -1,0 +1,29 @@
+---
+// src/components/features/cagp/gestao/CagpGestaoDiretoria.astro — As 7 Diretorias Executivas e Prestação de Contas
+import GestaoOrganograma from '../../../gestao/GestaoOrganograma.astro';
+import GestaoEquipe from '../../../gestao/GestaoEquipe.astro';
+import GestaoContas from '../../../gestao/GestaoContas.astro';
+---
+
+<div class="cagp-gestao-diretoria space-y-6 select-none text-[#0A0A0A]">
+  <div class="p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
+    <div>
+      <span class="text-[11px] font-['Oswald'] uppercase font-bold tracking-wider text-[#8B1E2D]">
+        Processo Eleitoral & Diretorias do CAGP
+      </span>
+      <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A] m-0">
+        As 7 Diretorias Estatutárias e Transparência
+      </h3>
+      <p class="text-xs text-gray-600 mt-0.5 m-0">
+        Organograma regimental, diretorias estatutárias e transição do processo eleitoral.
+      </p>
+    </div>
+    <span class="px-2.5 py-1 rounded bg-[#0A0A0A] text-white font-mono text-xs font-bold shrink-0">
+      7 Diretorias
+    </span>
+  </div>
+
+  <GestaoOrganograma />
+  <GestaoEquipe />
+  <GestaoContas />
+</div>

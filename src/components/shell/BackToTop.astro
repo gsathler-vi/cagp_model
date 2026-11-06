@@ -1,0 +1,39 @@
+---
+// BackToTop.astro - Botão Flutuante de Retorno ao Topo com Física Tátil
+---
+
+<button
+  type="button"
+  id="cagp-back-to-top"
+  class="fixed bottom-[calc(5.25rem+env(safe-area-inset-bottom,0px))] sm:bottom-6 right-4 sm:right-6 z-[1030] w-11 h-11 min-w-[44px] min-h-[44px] sm:w-auto sm:h-auto p-0 sm:px-3 sm:py-2.5 bg-white/95 backdrop-blur-md text-[#0A0A0A] border border-black/15 rounded-full shadow-sm hover:shadow-md hover:bg-[#F7F5F0] active:scale-95 transition-all duration-150 opacity-0 pointer-events-none flex items-center justify-center gap-1.5 font-['Oswald'] text-xs font-bold uppercase tracking-wider cursor-pointer"
+  aria-label="Voltar ao início da página"
+  title="Voltar ao Topo"
+>
+  <i class="bi bi-arrow-up text-sm text-[#8B1E2D]" aria-hidden="true"></i>
+  <span class="hidden sm:inline">Topo</span>
+</button>
+
+<script>
+  function setupBackToTop() {
+    const btn = document.getElementById('cagp-back-to-top');
+    if (!btn) return;
+
+    const toggle = () => {
+      if (window.scrollY > 280) {
+        btn.classList.remove('opacity-0', 'pointer-events-none');
+        btn.classList.add('opacity-100', 'pointer-events-auto');
+      } else {
+        btn.classList.add('opacity-0', 'pointer-events-none');
+        btn.classList.remove('opacity-100', 'pointer-events-auto');
+      }
+    };
+
+    window.addEventListener('scroll', toggle, { passive: true });
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    toggle();
+  }
+
+  document.addEventListener('astro:page-load', setupBackToTop);
+</script>

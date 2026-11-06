@@ -1,0 +1,99 @@
+---
+// src/components/features/estagio/obrigatorio/EstagioObrigatorioCore.astro — Regras do Estágio Supervisionado (300h)
+import { asset } from '../../../../lib/paths';
+
+const stats = [
+  { label: 'Estágio Curricular A', ch: '180 h', desc: 'DCP 135 • 7º Período (12 créditos)', icon: 'bi-briefcase-fill' },
+  { label: 'Estágio Curricular B', ch: '120 h', desc: 'DCP 136 • 8º Período (8 créditos)', icon: 'bi-clock-history' },
+  { label: 'Estágio Não-Obrigatório', ch: 'Até 60 h', desc: 'Modalidade IX • AAC (4 créditos)', icon: 'bi-shield-check' },
+];
+---
+
+<div class="cagp-estagio-obrigatorio space-y-6 select-none text-[#0A0A0A]">
+  {/* Cabeçalho */}
+  <div class="p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
+    <div>
+      <span class="text-[11px] font-['Oswald'] uppercase font-bold tracking-wider text-[#8B1E2D]">
+        Componente Curricular Obrigatório
+      </span>
+      <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A] m-0">
+        Estágio Supervisionado A e B (300h)
+      </h3>
+      <p class="text-xs text-gray-600 mt-0.5 m-0">
+        Regulamento do Curso — Capítulo VII (Art. 29 a 41) e Lei Federal nº 11.788/2008.
+      </p>
+    </div>
+    <span class="px-2.5 py-1 rounded bg-[#0A0A0A] text-white font-mono text-xs font-bold shrink-0">
+      300h • 20 Créditos
+    </span>
+  </div>
+
+  {/* Cards de Carga Horária */}
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+    {stats.map((s) => (
+      <div class="cagp-card p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col justify-between shadow-xs">
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-8 h-8 rounded-lg bg-[#8B1E2D]/10 text-[#8B1E2D] flex items-center justify-center text-sm border border-[#8B1E2D]/20">
+              <i class={`bi ${s.icon}`} aria-hidden="true" />
+            </span>
+            <span class="font-['Oswald'] text-xs font-bold uppercase text-[#0A0A0A]">{s.label}</span>
+          </div>
+          <div class="text-2xl font-mono font-bold text-[#8B1E2D] mb-1">{s.ch}</div>
+        </div>
+        <span class="text-[11px] text-gray-500 font-medium">{s.desc}</span>
+      </div>
+    ))}
+  </div>
+
+  {/* Duas Colunas: Estágio Obrigatório vs Não-Obrigatório */}
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="cagp-tool-box p-4 bg-white border border-[#DFDBD2] rounded-xl space-y-3 shadow-xs">
+      <div class="flex items-center justify-between border-b border-[#DFDBD2] pb-2">
+        <h4 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A] m-0 flex items-center gap-2">
+          <i class="bi bi-mortarboard-fill text-[#8B1E2D]" aria-hidden="true" />
+          <span>Estágio Obrigatório (300h)</span>
+        </h4>
+        <span class="cagp-badge cagp-badge-red text-[10px]">7º e 8º Períodos</span>
+      </div>
+      <ul class="text-xs text-gray-700 space-y-2 list-disc pl-4 m-0 leading-relaxed">
+        <li>
+          <strong>DCP 135 — Estágio Curricular A (7º período):</strong> 180 horas (12 créditos), com elaboração de plano de trabalho e supervisão docente.
+        </li>
+        <li>
+          <strong>DCP 136 — Estágio Curricular B (8º período):</strong> 120 horas (8 créditos), com relatório final de estágio e avaliação do supervisor de campo.
+        </li>
+        <li>
+          <strong>Teto Legal:</strong> Máximo de 6 horas diárias e 30 horas semanais conforme a Lei Federal nº 11.788/2008.
+        </li>
+        <li>
+          <strong>Estágio nas Férias (Art. 31):</strong> É permitido cumprir horas durante o recesso escolar para viabilizar a jornada dos discentes trabalhadores do noturno.
+        </li>
+      </ul>
+    </div>
+
+    <div class="cagp-tool-box p-4 bg-white border border-[#DFDBD2] rounded-xl space-y-3 shadow-xs">
+      <div class="flex items-center justify-between border-b border-[#DFDBD2] pb-2">
+        <h4 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A] m-0 flex items-center gap-2">
+          <i class="bi bi-briefcase text-[#15803D]" aria-hidden="true" />
+          <span>Estágio Não-Obrigatório (AAC)</span>
+        </h4>
+        <span class="cagp-badge cagp-badge-green text-[10px]">Até 60h AAC</span>
+      </div>
+      <ul class="text-xs text-gray-700 space-y-2 list-disc pl-4 m-0 leading-relaxed">
+        <li>
+          Atividade extracurricular remunerada (bolsa estágio + auxílio-transporte).
+        </li>
+        <li>
+          Pode ser iniciado desde os primeiros períodos letivos para aquisição de experiência prática em órgãos públicos e ONGs.
+        </li>
+        <li>
+          <strong>Aproveitamento em AAC (Modalidade IX):</strong> As horas comprovadas em estágio não-obrigatório na área pública podem ser aproveitadas em até 60 horas (4 créditos) de optativas.
+        </li>
+        <li>
+          Exige Termo de Compromisso firmado com interveniência obrigatória da FAFICH/UFMG.
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

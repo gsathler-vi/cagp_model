@@ -1,0 +1,88 @@
+---
+// acg.astro — Central de Horas & Certificados (600h): Extensão & AAC
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/ui/PageHeader.astro';
+import SegmentedControl from '../components/ui/SegmentedControl.astro';
+import JourneyNav from '../components/ui/JourneyNav.astro';
+import FactCheckBanner from '../components/ui/FactCheckBanner.astro';
+import AcgCentralOverview from '../components/features/acg/AcgCentralOverview.astro';
+import { AcgCalculatorCore } from '../components/features/acg/calculator/AcgCalculatorCore';
+import { AcgGuardianCore } from '../components/features/acg/guardian/AcgGuardianCore';
+import AcgTramitacaoCore from '../components/features/acg/tramitacao/AcgTramitacaoCore.astro';
+
+const tabs = [
+  { id: 'v0', shortLabel: 'Geral', fullLabel: 'Visão Geral das 600h', hash: '#visao-geral' },
+  { id: 'v1', shortLabel: 'Calculadora', fullLabel: '1. Calculadora Extensão & AAC', hash: '#calculadora' },
+  { id: 'v2', shortLabel: '120 Dias', fullLabel: '2. Guardião 120 Dias', hash: '#guardiao-120-dias' },
+  { id: 'v3', shortLabel: 'Protocolo', fullLabel: '3. Protocolo Colegiado N-20229', hash: '#protocolo-colegiado' },
+];
+
+const badges = [
+  { label: '300h Extensão (CEPE 10/19)', variant: 'red' as const, icon: 'bi-people-fill' },
+  { label: 'Até 300h AAC (Art. 15)', variant: 'dark' as const, icon: 'bi-award-fill' },
+  { label: 'Prazo Fatal 120 Dias', variant: 'gold' as const, icon: 'bi-alarm-fill' },
+  { label: 'PPC N-20229', variant: 'blue' as const, icon: 'bi-shield-check' },
+];
+---
+
+<BaseLayout
+  title="Central de Horas & Certificados (600h)"
+  description="Calculadora interativa de 300h de Extensão Obrigatória e 300h de AAC com monitoramento do prazo legal de 120 dias e protocolo do Colegiado N-20229."
+>
+  <PageHeader
+    eyebrow="Eixo 3 · Horas & Certificados (600h)"
+    title="Central de Horas & Certificados (600h)"
+    subtitle="Simulador interativo de 300h de Extensão e 300h de AAC, monitor de prescrição de 120 dias corridos e roteiro de tramitação oficial do Colegiado de Gestão Pública."
+    badges={badges}
+  />
+
+  <SegmentedControl tabs={tabs} defaultTab="v0" />
+
+  <!-- Sub-view 0: Visão Geral da Central de Horas -->
+  <section id="ws-panel-v0" class="cagp-workspace-view" data-ws-panel="v0">
+    <div id="visao-geral" class="cagp-anchor-target scroll-mt-24"></div>
+    <AcgCentralOverview />
+  </section>
+
+  <!-- Sub-view 1: Calculadora 600h Core -->
+  <section id="ws-panel-v1" class="cagp-workspace-view" data-ws-panel="v1" hidden>
+    <div id="calculadora" class="cagp-anchor-target scroll-mt-24"></div>
+    <AcgCalculatorCore client:load />
+  </section>
+
+  <!-- Sub-view 2: Guardião 120 Dias Core -->
+  <section id="ws-panel-v2" class="cagp-workspace-view space-y-4" data-ws-panel="v2" hidden>
+    <div id="guardiao-120-dias" class="cagp-anchor-target scroll-mt-24"></div>
+    <FactCheckBanner
+      claim="Posso acumular todos os meus certificados de palestras e cursos e protocolar tudo junto no último semestre antes de colar grau?"
+      verdict="atencao"
+      stampText="120 DIAS CORRIDOS"
+      normativeSource="Art. 15, § 4º do Regulamento do Curso Versão N-20229"
+      explanation="ALERTA MÁXIMO • INDEFERIMENTO AUTOMÁTICO. O Regulamento estabelece o prazo peremptório de exatamente 120 dias corridos a contar da data de emissão do certificado ou encerramento da atividade para requerer o aproveitamento perante o Colegiado. Certificados fora do prazo são sumariamente indeferidos, mesmo que autênticos."
+      officialRuleExcerpt={`Regulamento do Curso de Graduação em Gestão Pública — Versão N-20229:
+Art. 15, § 4º — O discente terá o prazo máximo de 120 (cento e vinte) dias corridos, contados a partir da data de encerramento da atividade ou emissão do respectivo certificado, para requerer o aproveitamento de carga horária em Atividades Acadêmicas Complementares (AAC).
+§ 5º — Expirado o prazo previsto no § 4º, o requerimento não será apreciado pela Comissão de Acompanhamento.`}
+    />
+    <AcgGuardianCore client:load />
+  </section>
+
+  <!-- Sub-view 3: Guia & Protocolo Colegiado N-20229 Core -->
+  <section id="ws-panel-v3" class="cagp-workspace-view" data-ws-panel="v3" hidden>
+    <div id="protocolo-colegiado" class="cagp-anchor-target scroll-mt-24"></div>
+    <AcgTramitacaoCore />
+  </section>
+
+  <!-- Journey Navigation Trail -->
+  <JourneyNav
+    prev={{
+      title: 'Trajetória Curricular & Grafo 10P',
+      href: '/percurso',
+      desc: 'Explore as 27 obrigatórias, simule optativas e consulte travas do SIGA.',
+    }}
+    next={{
+      title: 'Estágio Supervisionado (300h)',
+      href: '/estagio',
+      desc: 'Simulador do Art. 41 para servidores e modelo oficial de Termo de Compromisso.',
+    }}
+  />
+</BaseLayout>

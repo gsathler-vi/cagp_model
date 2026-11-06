@@ -1,0 +1,63 @@
+meta:
+  name: "Centro Acadêmico de Gestão Pública"
+  link: "https://cagp-ufmg.github.io"
+
+logo:
+  small: "logos/cagp/10_simbolo_transparente_positivo.svg"
+  medium: "logos/cagp/06_horizontal_transparente_positivo.svg"
+  large: "logos/cagp/02_vertical_transparente_positivo.svg"
+
+color:
+  palette:
+    cagp-red: "#9E2424"
+    cagp-wine-inst: "#8B1E2D"
+    cagp-gold: "#E8A317"
+    cagp-warning: "#B45309"
+    cagp-success: "#15803D"
+    cagp-paper: "#FBF8F3"
+    cagp-surface-low: "#F4F1EA"
+    cagp-surface-high: "#EAE5DC"
+    cagp-border: "#DFDBD2"
+    cagp-dark: "#0A0A0A"
+    cagp-white: "#FFFFFF"
+    cagp-gray-100: "#F8F9FA"
+    cagp-gray-200: "#E9ECEF"
+    cagp-gray-800: "#212529"
+    ufmg-siga: "#9E2424"
+    ufmg-minha: "#005A9C"
+    ufmg-moodle: "#D9531E"
+    ufmg-sei: "#15803D"
+    ufmg-bu: "#5B2C6F"
+  foreground: cagp-dark
+  background: cagp-paper
+  primary: cagp-wine-inst
+  secondary: cagp-dark
+  warning: cagp-warning
+  success: cagp-success
+  info: ufmg-minha
+  light: cagp-paper
+  dark: cagp-dark
+
+typography:
+  fonts:
+    - family: Oswald
+      source: google
+      weight: [500, 600, 700]
+    - family: Inter
+      source: google
+      weight: [400, 500, 600, 700]
+    - family: JetBrains Mono
+      source: google
+      weight: [500, 600, 700]
+  base:
+    family: Inter
+    weight: 400
+    size: 1rem
+    line-height: 1.6
+  headings:
+    family: Oswald
+    weight: 700
+  monospace:
+    family: JetBrains Mono
+    weight: 500
+    size: 0.9em

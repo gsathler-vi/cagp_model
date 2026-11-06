@@ -1,0 +1,106 @@
+---
+// src/components/features/tcc/modalidades/TccModalidadesExplorer.astro — Matriz das 4 Modalidades Oficiais de TCC
+const modalidades = [
+  {
+    num: 1,
+    nome: 'Monografia Científica Tradicional',
+    icon: 'bi-journal-richtext',
+    badge: 'Perfil Acadêmico',
+    badgeColor: 'bg-[#0A0A0A]',
+    foco: 'Domínio teórico-analítico e revisão exaustiva da literatura especializada.',
+    estrutura: 'Texto monográfico completo com problema de pesquisa, metodologia e análise empírica/documental detalhada.',
+    sinergia: 'Indicada para discentes que visam ingresso em programas de Pós-Graduação (PPGCP/UFMG) e carreira docente.',
+  },
+  {
+    num: 2,
+    nome: 'Projeto de Intervenção Governamental',
+    icon: 'bi-kanban-fill',
+    badge: 'Perfil Aplicado',
+    badgeColor: 'bg-[#8B1E2D]',
+    foco: 'Resolução aplicada de problema real em órgão público, política pública ou OSC.',
+    estrutura: 'Diagnóstico situacional estruturado + Plano executivo de melhoria, modernização institucional ou intervenção.',
+    sinergia: 'Aproveitamento direto de diagnósticos e vivências do Estágio Obrigatório (DCP 135/136) ou atuação no setor público.',
+  },
+  {
+    num: 3,
+    nome: 'Artigo Científico para Publicação',
+    icon: 'bi-file-earmark-text-fill',
+    badge: 'Perfil Periódico',
+    badgeColor: 'bg-[#15803D]',
+    foco: 'Teste objetivo de hipóteses no formato de periódicos científicos indexados (Qualis/CAPES).',
+    estrutura: 'Artigo autoral inédito formatado segundo normas de periódicos acadêmicos da área de Gestão Pública/Ciência Política.',
+    sinergia: 'Excelente para bolsistas e pesquisadores dos 11 Núcleos de Pesquisa do DCP que visam publicação científica.',
+  },
+  {
+    num: 4,
+    nome: 'Projeto de Iniciação Científica Avançado',
+    icon: 'bi-search',
+    badge: 'Perfil Pesquisa',
+    badgeColor: 'bg-[#B45309]',
+    foco: 'Desenho metodológico avançado para investigação futura de fôlego.',
+    estrutura: 'Projeto completo contendo justificativa, estado da arte, hipóteses e matriz operacional de coleta de dados.',
+    sinergia: 'Recomendado para discentes com planos de editais de fomento científico ou anteprojeto de seleção de mestrado.',
+  },
+];
+---
+
+<div class="cagp-tcc-modalidades space-y-6 select-none text-[#0A0A0A]">
+  {/* Cabeçalho */}
+  <div class="p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
+    <div>
+      <span class="text-[11px] font-['Oswald'] uppercase font-bold tracking-wider text-[#8B1E2D]">
+        Regulamento do Curso • Artigo 19
+      </span>
+      <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A] m-0">
+        As 4 Modalidades Oficiais de TCC no CAGP
+      </h3>
+      <p class="text-xs text-gray-600 mt-0.5 m-0">
+        Escolha o formato que melhor se alinha à sua trajetória acadêmica ou profissional.
+      </p>
+    </div>
+    <span class="px-2.5 py-1 rounded bg-[#0A0A0A] text-white font-mono text-xs font-bold shrink-0">
+      4 Opções Regimentais
+    </span>
+  </div>
+
+  {/* Grid das 4 Modalidades */}
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    {modalidades.map((m) => (
+      <div class="cagp-card p-4 bg-white border border-[#DFDBD2] hover:border-[#0A0A0A] rounded-xl flex flex-col justify-between shadow-xs transition-all">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <div class="flex items-center gap-2">
+              <span class="w-8 h-8 rounded-lg bg-[#8B1E2D]/10 text-[#8B1E2D] flex items-center justify-center text-sm border border-[#8B1E2D]/20">
+                <i class={`bi ${m.icon}`} aria-hidden="true" />
+              </span>
+              <span class="font-mono text-xs font-bold text-gray-500">Opção {m.num}</span>
+            </div>
+            <span class={`px-2 py-0.5 rounded text-[11px] font-['Oswald'] uppercase font-bold text-white ${m.badgeColor}`}>
+              {m.badge}
+            </span>
+          </div>
+
+          <h4 class="font-['Oswald'] text-sm font-bold uppercase text-[#0A0A0A] leading-snug mb-2 m-0">
+            {m.nome}
+          </h4>
+
+          <div class="space-y-2 text-xs text-gray-700">
+            <div>
+              <strong class="text-[#0A0A0A] block">Foco Analítico:</strong>
+              <span class="text-gray-600">{m.foco}</span>
+            </div>
+            <div>
+              <strong class="text-[#0A0A0A] block">Estrutura Esperada:</strong>
+              <span class="text-gray-600">{m.estrutura}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-3 mt-3 border-t border-[#DFDBD2] text-[11px] bg-[#F7F5F0] p-2.5 rounded-lg">
+          <strong class="text-[#8B1E2D] block mb-0.5">Sinergia Recomendada:</strong>
+          <span class="text-gray-600">{m.sinergia}</span>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

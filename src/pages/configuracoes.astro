@@ -1,0 +1,28 @@
+---
+// configuracoes.astro - Painel Completo de Configurações, Acessibilidade e Cofre Discente
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/ui/PageHeader.astro';
+import { SettingsInteractive } from '../components/settings/SettingsInteractive';
+
+const badges = [
+  { label: 'Preferências Locais', variant: 'blue' as const, icon: 'bi-sliders' },
+  { label: 'Acessibilidade WCAG AAA', variant: 'gold' as const, icon: 'bi-universal-access' },
+  { label: 'Cofre 100% no Aparelho', variant: 'green' as const, icon: 'bi-shield-check' },
+];
+---
+
+<BaseLayout
+  title="Configurações & Acessibilidade Discente"
+  description="Central de configurações do Super App CAGP: tema visual, tipografia dinâmica, contraste, notificações de sobrevivência e backup do cofre."
+>
+  <PageHeader
+    eyebrow="Ajustes & Sistema"
+    title="Configurações do Super App Discente"
+    subtitle="Personalize sua experiência de uso, tipografia, contraste e gerencie o cofre de dados criptografado localmente no seu navegador."
+    badges={badges}
+  />
+
+  <div class="max-w-4xl mx-auto py-4">
+    <SettingsInteractive client:load />
+  </div>
+</BaseLayout>

@@ -1,0 +1,77 @@
+---
+// tcc.astro — Central de Trabalho de Conclusão de Curso (180h)
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/ui/PageHeader.astro';
+import SegmentedControl from '../components/ui/SegmentedControl.astro';
+import JourneyNav from '../components/ui/JourneyNav.astro';
+import TccCentralOverview from '../components/features/tcc/TccCentralOverview.astro';
+import TccModalidadesExplorer from '../components/features/tcc/modalidades/TccModalidadesExplorer.astro';
+import TccCronogramaTimeline from '../components/features/tcc/cronograma/TccCronogramaTimeline.astro';
+import TccTermoAceiteCore from '../components/features/tcc/termo/TccTermoAceiteCore.astro';
+
+const tabs = [
+  { id: 'v0', shortLabel: 'Geral', fullLabel: 'Visão Geral do TCC', hash: '#visao-geral' },
+  { id: 'v1', shortLabel: 'Modalidades', fullLabel: '1. Modalidades de TCC (Art. 19)', hash: '#modalidades' },
+  { id: 'v2', shortLabel: 'Cronograma', fullLabel: '2. Cronograma 9º/10ºP & Bancas', hash: '#cronograma' },
+  { id: 'v3', shortLabel: 'Termo Aceite', fullLabel: '3. Termo de Aceite & Modelos', hash: '#termo-aceite' },
+];
+
+const badges = [
+  { label: '180h (DCP 089 + DCP 137)', variant: 'red' as const, icon: 'bi-mortarboard-fill' },
+  { label: '4 Modalidades (Art. 19)', variant: 'dark' as const, icon: 'bi-grid-fill' },
+  { label: '9º e 10º Períodos', variant: 'blue' as const, icon: 'bi-calendar-check' },
+  { label: 'Termo de Aceite Obrigatório', variant: 'gold' as const, icon: 'bi-file-earmark-check-fill' },
+];
+---
+
+<BaseLayout
+  title="Trabalho de Conclusão de Curso (180h)"
+  description="Regulamento oficial do TCC de Gestão Pública da UFMG (180h: DCP 089 e DCP 137), 4 modalidades do Art. 19, regras de banca e download do Termo de Aceite."
+>
+  <PageHeader
+    eyebrow="Eixo 3 · Trabalho de Conclusão de Curso"
+    title="Trabalho de Conclusão de Curso (180h)"
+    subtitle="Matriz das 4 modalidades oficiais aceitas pelo Colegiado (Art. 19), projeto em DCP 089 (60h), defesa em DCP 137 (120h) e termo de aceite orientador."
+    badges={badges}
+  />
+
+  <SegmentedControl tabs={tabs} defaultTab="v0" />
+
+  <!-- Sub-view 0: Visão Geral da Central de TCC -->
+  <section id="ws-panel-v0" class="cagp-workspace-view" data-ws-panel="v0">
+    <div id="visao-geral" class="cagp-anchor-target scroll-mt-24"></div>
+    <TccCentralOverview />
+  </section>
+
+  <!-- Sub-view 1: Modalidades de TCC -->
+  <section id="ws-panel-v1" class="cagp-workspace-view" data-ws-panel="v1" hidden>
+    <div id="modalidades" class="cagp-anchor-target scroll-mt-24"></div>
+    <TccModalidadesExplorer />
+  </section>
+
+  <!-- Sub-view 2: Cronograma e Bancas -->
+  <section id="ws-panel-v2" class="cagp-workspace-view" data-ws-panel="v2" hidden>
+    <div id="cronograma" class="cagp-anchor-target scroll-mt-24"></div>
+    <TccCronogramaTimeline />
+  </section>
+
+  <!-- Sub-view 3: Termo de Aceite & Modelos -->
+  <section id="ws-panel-v3" class="cagp-workspace-view" data-ws-panel="v3" hidden>
+    <div id="termo-aceite" class="cagp-anchor-target scroll-mt-24"></div>
+    <TccTermoAceiteCore />
+  </section>
+
+  <!-- Journey Navigation Trail -->
+  <JourneyNav
+    prev={{
+      title: 'Estágio Supervisionado (300h) & Art. 41',
+      href: '/estagio',
+      desc: 'Simulador de dispensa por experiência profissional e tutorial do TCE.',
+    }}
+    next={{
+      title: 'Acervo de Documentos & Formulários Oficiais',
+      href: '/documentos',
+      desc: 'Acesse o acervo completo de documentos oficiais, formulários e modelos em PDF.',
+    }}
+  />
+</BaseLayout>

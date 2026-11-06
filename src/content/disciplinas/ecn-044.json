@@ -1,0 +1,12 @@
+{
+  "codigo": "ECN 044",
+  "nome": "Economia Do Bem Estar",
+  "natureza": "obrigatoria",
+  "periodo": 3,
+  "ch": 60,
+  "ementa": "Função de Bem Estar. Equidade e Eficiência. Análise Custo-Benefício. O financiamento do Setor Público. Sistemas de Tributação. Políticas Sociais: Sistemas de Seguridade, Sistemas de Saúde e Sistemas de educação.",
+  "preRequisitos": [
+    "ECN 140"
+  ],
+  "modulo": "Geral"
+}

@@ -1,0 +1,290 @@
+---
+// CalourosChecklist.astro - Sub-view 1: Checklist de 30 Dias, Ativação de Sistemas & Documentos de Entrada
+import { asset } from '../../lib/paths';
+
+const checklistItems = [
+  {
+    id: 'chk_minhaufmg',
+    title: '1. Ativar MinhaUFMG e App SIGA UFMG',
+    icon: 'bi-laptop',
+    desc: 'Cadastre sua senha inicial no portal sistemas.ufmg.br utilizando a folha NIPs entregue no registro acadêmico do DRCA.',
+    links: [
+      { label: 'Portal MinhaUFMG', url: 'https://sistemas.ufmg.br', ext: true, icon: 'bi-box-arrow-up-right' },
+      { label: 'Manual SIGA (PDF)', url: '/documentos/manual-aplicativo-siga-ufmg.pdf', ext: false, icon: 'bi-file-earmark-pdf' },
+    ]
+  },
+  {
+    id: 'chk_eduroam',
+    title: '2. Conectar à Rede Wi-Fi eduroam & Office 365',
+    icon: 'bi-wifi',
+    desc: 'Conecte celular e computador à rede mundial acadêmica eduroam usando seu login institucional completo (seulogin@ufmg.br) e ative a conta Office 365.',
+    links: [
+      { label: 'Guia Office 365 & DTI (PDF)', url: '/documentos/dti-office365-criacao-conta.pdf', ext: false, icon: 'bi-file-earmark-pdf' }
+    ]
+  },
+  {
+    id: 'chk_carteirinha',
+    title: '3. Emitir Carteirinha de Estudante & Nome Social',
+    icon: 'bi-person-badge',
+    desc: 'Necessária para acesso às catracas do RU II Setorial e empréstimo de livros na Biblioteca Baeta Neves (1º andar da FAFICH). Inclusão de nome social garantida pela Resolução PRAE 09/2015.',
+    links: [
+      { label: 'Requerimento Nome Social (PDF)', url: '/documentos/requerimento-inclusao-nome-social.pdf', ext: false, icon: 'bi-file-earmark-pdf' }
+    ]
+  },
+  {
+    id: 'chk_fump',
+    title: '4. Questionário Socioeconômico da FUMP',
+    icon: 'bi-shield-heart',
+    desc: 'Estudantes que demandam assistência devem preencher o cadastro para classificação nos níveis I a III (Portaria PRAE nº 1.286/2026) para isenção no RU e auxílios.',
+    links: [
+      { label: 'Área do Aluno FUMP', url: 'https://www.fump.ufmg.br/', ext: true, icon: 'bi-box-arrow-up-right' },
+      { label: 'Portaria PRAE 1.286 (PDF)', url: '/documentos/portaria-prae-1286-2026-permanencia-estudantil.pdf', ext: false, icon: 'bi-file-earmark-pdf' }
+    ]
+  },
+  {
+    id: 'chk_secretaria',
+    title: '5. Conhecer a Secretaria F-2039 & CEAG Noturno',
+    icon: 'bi-door-open',
+    desc: 'Localize a secretaria do Colegiado na Sala F-2039 para atendimento com a secretária Norma Guedes às quartas-feiras (13h às 19h). Para demandas noturnas até 22h, dirija-se ao CEAG no 2º andar.',
+    links: []
+  },
+  {
+    id: 'chk_matricula',
+    title: '6. Entender a Matrícula Automática & Avaliação de Conhecimento',
+    icon: 'bi-journal-check',
+    desc: 'No 1º período letivo, sua matrícula é realizada automaticamente em 300h obrigatórias: DCP 124, DCP 032, SOA 048, DCP 123 e DCP 033. Casos de amparo médico seguem o roteiro RAEP.',
+    links: [
+      { label: 'Ver 27 Obrigatórias', url: '/percurso', ext: false, icon: 'bi-diagram-3' },
+      { label: 'Roteiro RAEP Médico (PDF)', url: '/documentos/roteiro-regime-especial-raep-estudante.pdf', ext: false, icon: 'bi-file-earmark-pdf' },
+      { label: 'Comprovação de Conhecimentos (PDF)', url: '/documentos/roteiro-comprovacao-conhecimentos-estudante.pdf', ext: false, icon: 'bi-file-earmark-pdf' }
+    ]
+  }
+];
+
+const docsAcolhimento = [
+  { titulo: 'Apresentação Ingressantes 2024/2', sub: 'Slides oficiais de acolhimento discente', file: 'recepcao-ingressantes-2024-2.pdf' },
+  { titulo: 'Recepção de Calouros 2023/2', sub: 'Edição de acolhimento curricular', file: 'recepcao-calouros-2023-2.pdf' },
+  { titulo: 'Manual do Aplicativo SIGA UFMG', sub: 'Guia oficial DTI para Android e iOS', file: 'manual-aplicativo-siga-ufmg.pdf' },
+  { titulo: 'Criação de Conta Office 365 UFMG', sub: 'Tutorial de e-mail institucional e nuvem', file: 'dti-office365-criacao-conta.pdf' },
+];
+---
+
+<div class="space-y-4 text-[#0A0A0A]">
+  <!-- Card Destaque: Transcrição da Palestra de Recepção com Mascote Yaku -->
+  <div class="bg-white border-2 border-[#8B1E2D] rounded-[6px] p-4 shadow-[2px_2px_0_#0A0A0A] flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="flex items-start gap-3.5 min-w-0">
+      <div class="w-16 h-16 rounded-xl border border-[#DFDBD2] bg-[#F7F5F0] overflow-hidden shrink-0 hidden sm:flex items-center justify-center p-1">
+        <img
+          src={asset('/imagens/yaku-932x1024.png')}
+          alt="Mascote Yaku de acolhimento aos calouros de Gestão Pública"
+          class="w-full h-full object-contain"
+          loading="lazy"
+        />
+      </div>
+      <div class="space-y-1 min-w-0">
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="cagp-badge cagp-badge-red font-mono text-xs uppercase inline-flex items-center gap-1">
+            <i class="bi bi-mortarboard-fill" aria-hidden="true"></i> Apresentação Oficial 2024/2
+          </span>
+          <span class="font-mono text-xs text-gray-500">Coordenação • Profª Ana Paula Karruz</span>
+        </div>
+        <h4 class="font-['Oswald'] font-bold text-sm sm:text-base uppercase text-[#0A0A0A] m-0">
+          Palestra de Acolhimento e Orientação aos Ingressantes
+        </h4>
+        <p class="text-xs text-gray-600 leading-snug m-0">
+          Consulte a transcrição integral dos 49 slides com diretrizes de matrícula, canais de atendimento, regras regimentais e rotina acadêmica.
+        </p>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2 shrink-0 self-stretch sm:self-auto justify-end">
+      <a
+        href="/documentos/transcricao-recepcao-ingressantes-2024-2"
+        class="cagp-btn-primary text-xs py-2 px-3 no-underline inline-flex items-center gap-1.5 whitespace-nowrap shadow-[2px_2px_0_#0A0A0A]"
+      >
+        <i class="bi bi-eye" aria-hidden="true"></i> Ler Transcrição
+      </a>
+      <a
+        href={asset('/documentos/recepcao-ingressantes-2024-2.pdf')}
+        download
+        class="cagp-btn-secondary text-xs py-2 px-2.5 no-underline inline-flex items-center gap-1 whitespace-nowrap"
+        title="Baixar slides em PDF"
+      >
+        <i class="bi bi-download" aria-hidden="true"></i> PDF
+      </a>
+    </div>
+  </div>
+
+  <!-- Checklist dos Primeiros 30 Dias -->
+  <div class="cagp-tool-box p-4 space-y-3">
+    <div class="border-b border-[#DFDBD2] pb-2.5 flex items-center justify-between flex-wrap gap-2">
+      <div>
+        <div class="flex items-center gap-2">
+          <i class="bi bi-calendar-check-fill text-[#8B1E2D] text-lg" aria-hidden="true"></i>
+          <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A]">
+            Checklist dos Primeiros 30 Dias
+          </h3>
+        </div>
+        <p class="text-xs text-gray-600 mt-0.5">
+          Marque cada etapa cumprida para acompanhar sua ambientação na UFMG:
+        </p>
+      </div>
+      <span class="cagp-badge cagp-badge-green font-mono">
+        <i class="bi bi-hdd-network" aria-hidden="true"></i> Salvo no Aparelho
+      </span>
+    </div>
+
+    <div class="space-y-2.5">
+      {checklistItems.map((item) => (
+        <label class="cagp-card p-3 flex items-start gap-3 cursor-pointer select-none bg-white transition-all">
+          <input
+            type="checkbox"
+            data-check-id={item.id}
+            class="calouro-check-box mt-1 w-4 h-4 text-[#8B1E2D] rounded-[4px] border-[#DFDBD2] focus:ring-[#8B1E2D] accent-[#8B1E2D]"
+          />
+          <div class="w-8 h-8 rounded-[4px] bg-[#F7F5F0] border border-[#DFDBD2] flex items-center justify-center text-[#8B1E2D] shrink-0 mt-0.5 shadow-[1px_1px_0_#0A0A0A]">
+            <i class={`bi ${item.icon} text-base`} aria-hidden="true" />
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between gap-2">
+              <span class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">
+                {item.title}
+              </span>
+              <span class="calouro-check-stamp hidden cagp-stamp-badge is-feito text-[10px] py-0.5 px-2 shadow-[1px_1px_0_#15803D] shrink-0">
+                <i class="bi bi-check-lg" aria-hidden="true"></i> FEITO
+              </span>
+            </div>
+            <p class="text-xs text-gray-600 mt-0.5 leading-relaxed">
+              {item.desc}
+            </p>
+            {item.links.length > 0 && (
+              <div class="flex flex-wrap gap-2 mt-2 pt-1.5 border-t border-[#DFDBD2]">
+                {item.links.map((link) => (
+                  <a
+                    href={asset(link.url)}
+                    target={link.ext ? '_blank' : undefined}
+                    rel={link.ext ? 'noopener noreferrer' : undefined}
+                    class="text-xs font-bold text-[#8B1E2D] hover:underline inline-flex items-center gap-1"
+                  >
+                    <i class={`bi ${link.icon}`} aria-hidden="true" />
+                    <span>{link.label}</span>
+                    <span aria-hidden="true">&rarr;</span>
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </label>
+      ))}
+    </div>
+
+    <!-- Banner de Celebração e Carimbo Burocrático -->
+    <div id="calouro-celebration" class="p-4 rounded-[6px] bg-[#DCFCE7] border-2 border-[#15803D] shadow-[2px_2px_0_#0A0A0A] hidden flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+      <div>
+        <div class="flex items-center gap-2 justify-center sm:justify-start">
+          <span class="cagp-stamp-badge is-homologado">★ HOMOLOGADO</span>
+          <span class="font-['Oswald'] font-bold text-sm uppercase text-[#15803D]">30 Dias Concluídos!</span>
+        </div>
+        <p class="text-xs text-gray-700 mt-1">Parabéns! Todos os sistemas iniciais da UFMG foram ativados com sucesso.</p>
+      </div>
+      <div class="cagp-big-stamp scale-90 sm:scale-100">
+        <span class="cagp-big-stamp-title">★ CALOURO INTEGRALIZADO</span>
+        <span class="cagp-big-stamp-sub">FAFICH / UFMG</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Acervo Anexo: Guias Oficiais de Acolhimento -->
+  <div class="cagp-tool-box p-4 space-y-3">
+    <div class="flex items-center justify-between border-b border-[#DFDBD2] pb-2 flex-wrap gap-2">
+      <div>
+        <h4 class="font-['Oswald'] text-sm font-bold uppercase text-[#0A0A0A] m-0 flex items-center gap-2">
+          <i class="bi bi-folder-symlink-fill text-[#8B1E2D]" aria-hidden="true" />
+          <span>Guias e Manuais de Entrada para Download</span>
+        </h4>
+        <p class="text-xs text-gray-600 mt-0.5 m-0">Documentos em PDF para consulta offline no seu dispositivo:</p>
+      </div>
+      <span class="text-xs text-gray-500 font-mono">Downloads Oficiais</span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+      {docsAcolhimento.map((d) => (
+        <div class="p-3 bg-white border border-[#DFDBD2] rounded-lg flex flex-col justify-between">
+          <div>
+            <h5 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] m-0 mb-1">{d.titulo}</h5>
+            <p class="text-[11px] text-gray-500 leading-snug m-0">{d.sub}</p>
+          </div>
+          <a
+            href={asset(`/documentos/${d.file}`)}
+            download
+            class="cagp-btn-secondary text-xs py-1.5 px-2 mt-2.5 flex items-center justify-center gap-1.5 no-underline"
+          >
+            <i class="bi bi-download" aria-hidden="true" />
+            <span>Baixar PDF</span>
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script>
+  function setupCalouroChecklist() {
+    const raw = localStorage.getItem('cagp_calouro_checklist_v1');
+    const state = raw ? JSON.parse(raw) : {};
+    const boxes = document.querySelectorAll<HTMLInputElement>('.calouro-check-box');
+    const celebration = document.getElementById('calouro-celebration');
+
+    function checkCompletion() {
+      const total = boxes.length;
+      const checked = Array.from(boxes).filter((b) => b.checked).length;
+      if (celebration) {
+        if (checked === total && total > 0) {
+          celebration.classList.remove('hidden');
+          celebration.classList.add('flex');
+        } else {
+          celebration.classList.add('hidden');
+          celebration.classList.remove('flex');
+        }
+      }
+    }
+
+    function updateItemVisual(box: HTMLInputElement) {
+      const label = box.closest('label');
+      const stamp = label?.querySelector('.calouro-check-stamp');
+      if (box.checked) {
+        label?.classList.add('bg-[#F0FDF4]', 'border-[#15803D]');
+        label?.classList.remove('bg-white');
+        stamp?.classList.remove('hidden');
+        stamp?.classList.add('inline-flex');
+      } else {
+        label?.classList.remove('bg-[#F0FDF4]', 'border-[#15803D]');
+        label?.classList.add('bg-white');
+        stamp?.classList.add('hidden');
+        stamp?.classList.remove('inline-flex');
+      }
+    }
+
+    boxes.forEach((box) => {
+      const id = box.getAttribute('data-check-id');
+      if (id && state[id]) {
+        box.checked = true;
+      }
+      updateItemVisual(box);
+
+      box.addEventListener('change', () => {
+        if (!id) return;
+        state[id] = box.checked;
+        localStorage.setItem('cagp_calouro_checklist_v1', JSON.stringify(state));
+        updateItemVisual(box);
+        checkCompletion();
+        if (box.checked && typeof navigator !== 'undefined' && navigator.vibrate) {
+          navigator.vibrate(15);
+        }
+      });
+    });
+
+    checkCompletion();
+  }
+  document.addEventListener('astro:page-load', setupCalouroChecklist);
+</script>

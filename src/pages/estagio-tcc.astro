@@ -1,0 +1,38 @@
+---
+// estagio-tcc.astro - Redirecionamento canônico para Estágio Supervisionado (/estagio)
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { route } from '../lib/paths';
+
+const targetUrl = route('/estagio');
+---
+
+<BaseLayout
+  title="Redirecionando para Estágio Supervisionado..."
+  description="A página legada de Estágio e TCC foi reorganizada. Redirecionando para o portal especializado de Estágio Supervisionado."
+>
+  <div class="py-16 text-center space-y-4 max-w-lg mx-auto">
+    <div class="inline-flex items-center justify-center w-14 h-14 rounded-[6px] bg-[#15803D]/10 text-[#15803D] border-2 border-[#15803D] shadow-[2px_2px_0_#0A0A0A] text-2xl">
+      <i class="bi bi-briefcase-fill" aria-hidden="true"></i>
+    </div>
+    <h1 class="font-['Oswald'] text-2xl uppercase font-bold text-[#0A0A0A] m-0">
+      Estágio e TCC Especializados
+    </h1>
+    <p class="text-sm text-gray-600 leading-relaxed">
+      Para maior clareza pedagógica e conformidade regimental, o conteúdo foi desmembrado em portais autônomos para <strong>Estágio (300h)</strong> e <strong>TCC (180h)</strong>.
+    </p>
+    <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+      <a href={route('/estagio')} class="cagp-btn-primary inline-flex items-center gap-2 text-sm px-4 py-2 min-h-[44px]">
+        <span>Ir para Estágio (300h)</span>
+        <i class="bi bi-arrow-right" aria-hidden="true"></i>
+      </a>
+      <a href={route('/tcc')} class="cagp-btn-secondary inline-flex items-center gap-2 text-sm px-4 py-2 min-h-[44px]">
+        <span>Ir para TCC (180h)</span>
+        <i class="bi bi-arrow-right" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+
+  <script is:inline define:vars={{ targetUrl }}>
+    window.location.replace(targetUrl);
+  </script>
+</BaseLayout>

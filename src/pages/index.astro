@@ -1,0 +1,66 @@
+---
+// index.astro - A1 Hub Discente Oficial
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/ui/PageHeader.astro';
+import SegmentedControl from '../components/ui/SegmentedControl.astro';
+import JourneyNav from '../components/ui/JourneyNav.astro';
+import HomeBussola from '../components/home/HomeBussola.astro';
+import HomeSistemas from '../components/home/HomeSistemas.astro';
+import HomeCagp from '../components/home/HomeCagp.astro';
+import { HomeHeroHub } from '../components/home/HomeHeroHub';
+
+const tabs = [
+  { id: 'v1', shortLabel: 'Hoje', fullLabel: '1. Bússola & Hoje', hash: '#hoje' },
+  { id: 'v2', shortLabel: 'Apps', fullLabel: '2. Sistemas & Apps', hash: '#apps' },
+  { id: 'v3', shortLabel: 'CAGP', fullLabel: '3. Módulos & CAGP', hash: '#cagp' },
+];
+
+const badges = [
+  { label: 'Turno Noturno', variant: 'red' as const, icon: 'bi-moon-stars-fill' },
+  { label: 'FAFICH / UFMG', variant: 'blue' as const, icon: 'bi-bank' },
+  { label: 'PPC 2020 • 3.000h', variant: 'gold' as const, icon: 'bi-shield-check' },
+];
+---
+
+<BaseLayout title="Super App Discente" description="Portal Institucional e Super App Discente do Centro Acadêmico de Gestão Pública (CAGP FAFICH/UFMG).">
+  <!-- 1st Fold Header Compacto (360x640: y <= 200px) -->
+  <PageHeader
+    eyebrow="Eixo 1 · Bússola & Rotina Discente"
+    title="Centro Acadêmico de Gestão Pública"
+    subtitle="Entidade legítima de representação discente da FAFICH/UFMG • Bacharelado em Gestão Pública"
+    badges={badges}
+  />
+
+  <!-- Super Módulo Hero Discente (Passaporte & UFMG no Agora com Pílulas Apple HIG) -->
+  <HomeHeroHub client:load />
+
+  <!-- Segmented Control (Sub-views da Home) -->
+  <SegmentedControl tabs={tabs} defaultTab="v1" />
+
+  <!-- Sub-view 1: Bússola & Hoje -->
+  <section id="ws-panel-v1" class="cagp-workspace-view space-y-4" data-ws-panel="v1">
+    <div id="hoje" class="cagp-anchor-target scroll-mt-24"></div>
+    <HomeBussola />
+  </section>
+
+  <!-- Sub-view 2: Sistemas & Apps -->
+  <section id="ws-panel-v2" class="cagp-workspace-view" data-ws-panel="v2" hidden>
+    <div id="apps" class="cagp-anchor-target scroll-mt-24"></div>
+    <HomeSistemas />
+  </section>
+
+  <!-- Sub-view 3: Módulos & CAGP -->
+  <section id="ws-panel-v3" class="cagp-workspace-view" data-ws-panel="v3" hidden>
+    <div id="cagp" class="cagp-anchor-target scroll-mt-24"></div>
+    <HomeCagp />
+  </section>
+
+  <!-- Journey Navigation Trail -->
+  <JourneyNav
+    next={{
+      title: 'Guia de Sobrevivência do Calouro',
+      href: '/calouros',
+      desc: 'Checklist interativo dos primeiros 30 dias, rotina noturna, jantar no RU e atendimento na FAFICH.',
+    }}
+  />
+</BaseLayout>

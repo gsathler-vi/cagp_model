@@ -1,0 +1,84 @@
+---
+// HomeCampusTicker.astro - Plantão Discente & Status do Campus em Tempo Real (Estilo Editorial "Fato ou Checado")
+---
+
+<div class="cagp-campus-ticker bg-white border-2 border-[#0A0A0A] rounded-md p-3 shadow-[3px_3px_0px_#0A0A0A] mb-3">
+  <!-- Live Header -->
+  <div class="flex items-center justify-between border-b border-[#DFDBD2] pb-2 mb-2">
+    <div class="flex items-center gap-2">
+      <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#15803D]/10 border border-[#15803D]/30 text-[#15803D] font-mono font-bold text-xs uppercase">
+        <span class="w-2 h-2 rounded-full bg-[#15803D] cagp-pulse-indicator"></span>
+        Plantão Noturno
+      </span>
+      <span class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] tracking-wider hidden sm:inline">
+        Status Operacional FAFICH & Campus Pampulha
+      </span>
+    </div>
+
+    <!-- Quick Open Campus Sheet Button -->
+    <button
+      type="button"
+      id="open-campus-from-ticker"
+      class="cagp-touch-spring inline-flex items-center gap-1 text-xs font-mono font-bold text-[#8B1E2D] hover:underline cursor-pointer"
+      aria-label="Abrir detalhes operacionais do Campus"
+    >
+      <span>Ver Horários & Ônibus</span>
+      <i class="bi bi-chevron-right text-xs" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <!-- Operational Status Grid (2x2 on Mobile, 4x1 on Tablet/Desktop) -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 text-xs">
+    <!-- RU II Setorial -->
+    <div class="flex items-start gap-2 p-2 rounded-[4px] bg-[#F7F5F0] border border-[#DFDBD2]">
+      <i class="bi bi-cup-hot-fill text-[#8B1E2D] text-base mt-0.5" aria-hidden="true"></i>
+      <div>
+        <span class="font-['Oswald'] font-bold uppercase text-[#0A0A0A] block">RU II Setorial</span>
+        <span class="text-gray-600 block">Jantar: <strong>17h30 às 19h45</strong></span>
+        <span class="font-mono text-gray-500 text-[11px]">Bandejão: R$ 5,60</span>
+      </div>
+    </div>
+
+    <!-- Circular Noturno -->
+    <div class="flex items-start gap-2 p-2 rounded-[4px] bg-[#F7F5F0] border border-[#DFDBD2]">
+      <i class="bi bi-bus-front-fill text-[#005A9C] text-base mt-0.5" aria-hidden="true"></i>
+      <div>
+        <span class="font-['Oswald'] font-bold uppercase text-[#0A0A0A] block">Circular Noturno</span>
+        <span class="text-gray-600 block">Últimas saídas: <strong>22h15 / 22h35</strong></span>
+        <span class="font-mono text-gray-500 text-[11px]">Praça de Serviços</span>
+      </div>
+    </div>
+
+    <!-- Secretaria & CEAG -->
+    <div class="flex items-start gap-2 p-2 rounded-[4px] bg-[#F7F5F0] border border-[#DFDBD2]">
+      <i class="bi bi-building text-[#15803D] text-base mt-0.5" aria-hidden="true"></i>
+      <div>
+        <span class="font-['Oswald'] font-bold uppercase text-[#0A0A0A] block">Secretaria Sala F-2039</span>
+        <span class="text-gray-600 block">Norma Guedes · Colegiado</span>
+        <span class="font-mono text-gray-500 text-[11px]">CEAG FAFICH: 08h às 22h</span>
+      </div>
+    </div>
+
+    <!-- Calendário & Guardião 120D -->
+    <div class="flex items-start gap-2 p-2 rounded-[4px] bg-[#F7F5F0] border border-[#DFDBD2]">
+      <i class="bi bi-shield-check text-[#B45309] text-base mt-0.5" aria-hidden="true"></i>
+      <div>
+        <span class="font-['Oswald'] font-bold uppercase text-[#0A0A0A] block">Prazos Regimentais</span>
+        <span class="text-gray-600 block">Certificados AAC: <strong>120 dias</strong></span>
+        <span class="font-mono text-gray-500 text-[11px]">Art. 15, § 4º do Regulamento</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function setupTicker() {
+    const btn = document.getElementById('open-campus-from-ticker');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      window.dispatchEvent(new CustomEvent('cagp:open-campus-sheet'));
+    });
+  }
+
+  document.addEventListener('astro:page-load', setupTicker);
+</script>

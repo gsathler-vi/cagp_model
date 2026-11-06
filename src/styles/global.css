@@ -1,0 +1,804 @@
+@import "tailwindcss";
+@import "./animations.css";
+@import "./components.css";
+@import "./stamps.css";
+@import "./passport.css";
+@import "./settings.css";
+@import "./drawer.css";
+@import "./navbar.css";
+@import "./grafo.css";
+
+@theme {
+  --color-cagp-burgundy: #8B1E2D;
+  --color-cagp-red: #9E2424;
+  --color-cagp-black: #0A0A0A;
+  --color-cagp-cream: #F7F5F0;
+  --color-cagp-surface: #FFFFFF;
+  --color-cagp-border: #DFDBD2;
+  --color-cagp-success: #15803D;
+  --color-cagp-warning: #B45309;
+  --color-cagp-danger: #DC2626;
+  --color-cagp-gold: #E8A317;
+  --color-cagp-blue: #1E3F66;
+
+  --color-ufmg-siga: #9E2424;
+  --color-ufmg-minha: #005A9C;
+  --color-ufmg-moodle: #D9531E;
+  --color-ufmg-sei: #15803D;
+  --color-ufmg-bu: #5B2C6F;
+
+  --font-display: 'Oswald', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --shadow-cagp-hard: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-cagp-hard-lg: 0 4px 14px rgba(0, 0, 0, 0.1);
+
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 20px;
+}
+
+/* Base typography & ergonomics (Apple HIG) */
+html {
+  font-family: var(--font-body);
+  background-color: var(--color-cagp-cream);
+  color: var(--color-cagp-black);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+  touch-action: pan-x pan-y;
+}
+
+body {
+  font-synthesis: none;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Balanço tipográfico de títulos (Apple HIG Editorial) */
+h1, h2, h3, h4, h5, h6,
+.font-display,
+[class*="font-['Oswald']"],
+[class*='font-["Oswald"]'] {
+  text-wrap: balance;
+}
+
+p, .prose p {
+  text-wrap: pretty;
+}
+
+/* GPU Composite Layer Isolation & Fluid Glass Optics (Apple HIG & Impeccable) */
+[class*="backdrop-blur"],
+.cagp-glass-surface {
+  isolation: isolate;
+  transform: translateZ(0);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+}
+
+/* Transição Neo-Brutalismo -> Apple HIG Purity (V-17) */
+[class*="shadow-["][class*="#0A0A0A]"],
+[class*="shadow-["][class*="0A0A0A]"] {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+}
+
+[class*="border-2"][class*="border-[#0A0A0A]"],
+[class*="border-2"][class*="border-black"] {
+  border-width: 1px !important;
+  border-color: rgba(10, 10, 10, 0.15) !important;
+}
+
+/* Preserva bordas sólidas e alto contraste estrito no modo AAA */
+html[data-a11y-contrast="high"] [class*="border-2"][class*="border-[#0A0A0A]"],
+html[data-a11y-contrast="high"] [class*="border-2"][class*="border-black"] {
+  border-width: 2px !important;
+  border-color: #FFFF00 !important;
+}
+
+/* Dynamic Type Real (Escalonamento flexível de raiz) */
+html[data-a11y-font="sm"] { font-size: 93.75%; } /* 15px */
+html[data-a11y-font="md"] { font-size: 100%; }   /* 16px */
+html[data-a11y-font="lg"] { font-size: 112.5%; } /* 18px */
+html[data-a11y-font="xl"] { font-size: 125%; }   /* 20px */
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+@media (min-width: 1024px) {
+  body {
+    padding-bottom: 2rem;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  body {
+    padding-bottom: 3.5rem;
+  }
+}
+
+/* Anel de Foco Global Apple HIG */
+:focus-visible {
+  outline: 2.5px solid var(--color-cagp-gold) !important;
+  outline-offset: 2px !important;
+}
+
+/* Anti auto-zoom on iOS Safari (16px base on mobile inputs) */
+input, select, textarea, button {
+  font-size: 16px;
+  touch-action: manipulation;
+}
+
+/* Pisos táteis Apple HIG com proteção para slide dots (.cagp-dot-btn) */
+button:not(.cagp-dot-btn), a, input, select, summary {
+  min-height: 44px;
+}
+
+details > summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+/* V-13: UI micro-text floor: ensure text labels don't drop below 11px */
+.text-\[10px\],
+[class*="text-[10px]"],
+.text-\[9px\],
+[class*="text-[9px]"],
+.text-\[8px\],
+[class*="text-[8px]"] {
+  font-size: 11px !important;
+}
+
+/* Segmented Control - Sub-views bar */
+.cagp-workspace-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #FFFFFF;
+  border: 1.5px solid var(--color-cagp-border);
+  border-radius: 6px;
+  padding: 0.25rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+.cagp-workspace-tabs {
+  display: flex;
+  flex: 1;
+  gap: 0.25rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.cagp-workspace-tabs::-webkit-scrollbar {
+  display: none;
+}
+.cagp-workspace-tabs[data-tab-count="2"] .cagp-workspace-tab,
+.cagp-workspace-tabs[data-tab-count="3"] .cagp-workspace-tab {
+  flex: 1 1 0;
+}
+@media (max-width: 767px) {
+  .cagp-workspace-tabs[data-tab-count="4"],
+  .cagp-workspace-tabs[data-tab-count="5"] {
+    scroll-snap-type: x mandatory;
+  }
+  .cagp-workspace-tabs[data-tab-count="4"] .cagp-workspace-tab,
+  .cagp-workspace-tabs[data-tab-count="5"] .cagp-workspace-tab {
+    flex: 0 0 auto;
+    min-width: max-content;
+    padding: 0.5rem 0.65rem;
+    font-size: 0.8rem;
+    scroll-snap-align: start;
+  }
+}
+@media (min-width: 768px) {
+  .cagp-workspace-tabs {
+    display: grid;
+    overflow-x: visible;
+  }
+  .cagp-workspace-tabs[data-tab-count="2"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cagp-workspace-tabs[data-tab-count="3"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cagp-workspace-tabs[data-tab-count="4"] { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .cagp-workspace-tabs[data-tab-count="5"] { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+
+.cagp-workspace-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 44px;
+  padding: 0.55rem 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  border: 1.5px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: #555555;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  touch-action: manipulation;
+}
+.cagp-workspace-tab:hover {
+  background-color: var(--color-cagp-cream);
+  color: var(--color-cagp-black);
+}
+.cagp-workspace-tab.is-active {
+  background-color: var(--color-cagp-cream);
+  color: var(--color-cagp-black);
+  border: 2px solid var(--color-cagp-black);
+  box-shadow: var(--shadow-cagp-hard);
+}
+
+.cagp-tab-label-short { display: inline; }
+.cagp-tab-label-full { display: none; }
+@media (min-width: 768px) {
+  .cagp-tab-label-short { display: none; }
+  .cagp-tab-label-full { display: inline; }
+}
+
+.cagp-workspace-viewall {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--color-cagp-border);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--color-cagp-black);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+.cagp-workspace-viewall[aria-pressed="true"] {
+  background-color: var(--color-cagp-black);
+  color: #FFFFFF;
+}
+
+/* High Contrast AAA (BUG-11 fix: element-preserving specificity) */
+html[data-a11y-contrast="high"] {
+  background-color: #000000 !important;
+  color: #FFFF00 !important;
+}
+html[data-a11y-contrast="high"] * {
+  background-color: #000000 !important;
+  color: #FFFF00 !important;
+  border-color: #FFFF00 !important;
+  box-shadow: none !important;
+}
+html[data-a11y-contrast="high"] .is-active,
+html[data-a11y-contrast="high"] [aria-selected="true"],
+html[data-a11y-contrast="high"] [aria-current="page"] {
+  background-color: #FFFF00 !important;
+  color: #000000 !important;
+  border-color: #FFFF00 !important;
+}
+html[data-a11y-contrast="high"] .is-active *,
+html[data-a11y-contrast="high"] [aria-selected="true"] *,
+html[data-a11y-contrast="high"] [aria-current="page"] * {
+  background-color: transparent !important;
+  color: #000000 !important;
+}
+html[data-a11y-contrast="high"] .cagp-route-progress-fill {
+  background: #FFFF00 !important;
+}
+html[data-a11y-contrast="high"] .cagp-pulse-indicator {
+  background-color: #FFFF00 !important;
+  outline: 1.5px solid #000000 !important;
+}
+html[data-a11y-contrast="high"] .cagp-reading-ruler {
+  background-color: rgba(255, 255, 0, 0.25) !important;
+  border-color: #FFFF00 !important;
+}
+
+
+
+
+/* Dyslexia mode */
+html[data-a11y-dyslexia="true"] body {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  letter-spacing: 0.05em;
+  word-spacing: 0.1em;
+}
+
+/* Reduced motion fallback */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Document Annotated Preview (Brite Neo-brutalist) */
+.cagp-doc-preview-wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+  border: 2px solid var(--color-cagp-black);
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.cagp-doc-preview-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.cagp-doc-pin {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--color-cagp-burgundy);
+  color: #ffffff;
+  border: 2px solid var(--color-cagp-black);
+  box-shadow: 2px 2px 0px var(--color-cagp-black);
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  transition: transform 0.15s ease;
+}
+
+.cagp-doc-pin:hover {
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+.cagp-doc-box {
+  position: absolute;
+  border: 2px dashed var(--color-cagp-burgundy);
+  background-color: rgba(139, 30, 45, 0.08);
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* Video Cards & Embeds */
+.cagp-video-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: 2px solid var(--color-cagp-black);
+  border-radius: 8px;
+  box-shadow: 2px 2px 0px var(--color-cagp-black);
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cagp-video-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0px var(--color-cagp-black);
+}
+
+.cagp-video-thumb-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #0a0a0a;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.cagp-video-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.cagp-video-card:hover .cagp-video-thumb {
+  transform: scale(1.02);
+  opacity: 0.92;
+}
+
+.cagp-video-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  background-color: var(--color-cagp-burgundy);
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  pointer-events: none;
+  transition: transform 0.15s ease;
+}
+
+.cagp-video-card:hover .cagp-video-play-btn {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* ==========================================================================
+   Calculadora 600h: Dashboard Financeiro de Horas (Estilo Quarto / Nubank)
+   ========================================================================== */
+
+.cagp-hours-bank-card {
+  background-color: #ffffff;
+  border: 2px solid #0a0a0a;
+  border-radius: 6px;
+  box-shadow: 3px 3px 0px #0a0a0a;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+
+.cagp-hours-bank-top {
+  background-color: #8b1e2d;
+  color: #ffffff;
+  border-bottom: 2px solid #0a0a0a;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cagp-hours-bank-slots {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  background-color: #f7f5f0;
+  border-bottom: 2px solid #0a0a0a;
+}
+
+.cagp-hours-bank-slot {
+  padding: 0.9rem 1.1rem;
+  border-right: 1.5px solid #0a0a0a;
+}
+
+.cagp-hours-bank-slot:last-child {
+  border-right: 0;
+}
+
+@media (max-width: 767.98px) {
+  .cagp-hours-bank-slots {
+    grid-template-columns: 1fr;
+  }
+  .cagp-hours-bank-slot {
+    border-right: 0;
+    border-bottom: 1.5px solid #0a0a0a;
+  }
+  .cagp-hours-bank-slot:last-child {
+    border-bottom: 0;
+  }
+}
+
+/* Anel Métrico Conic Gradient (.cagp-metric-ring) */
+.cagp-metric-ring {
+  --ring-pct: 0;
+  --ring-color: #9e2424;
+  --ring-size: 64px;
+  width: var(--ring-size);
+  height: var(--ring-size);
+  border-radius: 50%;
+  border: 2.5px solid #0a0a0a;
+  box-shadow: 2px 2px 0px #0a0a0a;
+  background: conic-gradient(
+    var(--ring-color) calc(var(--ring-pct) * 1%),
+    #eae5dc 0
+  );
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.cagp-metric-ring.is-complete {
+  --ring-color: #15803d;
+}
+
+.cagp-metric-ring-inner {
+  width: calc(var(--ring-size) - 16px);
+  height: calc(var(--ring-size) - 16px);
+  border-radius: 50%;
+  border: 2px solid #0a0a0a;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 1;
+  color: #0a0a0a;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Banner de Celebração e Status */
+.cagp-calc-celebration-box {
+  background-color: #f7f5f0;
+  border: 2px solid #0a0a0a;
+  box-shadow: 2px 2px 0 #0a0a0a;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.cagp-calc-celebration-box.is-all-complete {
+  background-color: #ffffff;
+  border: 2.5px solid #0a0a0a;
+  box-shadow: 4px 4px 0 #0a0a0a;
+}
+
+.cagp-calc-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.2rem 0.55rem;
+  background-color: #0a0a0a;
+  color: #ffffff;
+  border-radius: 3px;
+}
+
+.cagp-calc-celebration-box.is-all-complete .cagp-calc-status-badge {
+  background-color: #b45309;
+  color: #ffffff;
+}
+
+/* Mini-track individual de cada linha */
+.cagp-calc-mini-track {
+  width: 100%;
+  height: 6px;
+  background-color: #eae5dc;
+  border: 1px solid #0a0a0a;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 0.35rem;
+}
+
+.cagp-calc-mini-fill {
+  height: 100%;
+  background-color: #9e2424;
+  transition: width 0.2s ease;
+}
+
+.cagp-calc-mini-fill.is-maxed {
+  background-color: #15803d;
+}
+
+/* Botões de Passo (+ / -) Neo-brutalistas com Apple HIG Ergonomics (min 44x44px) */
+.cagp-step-btn {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  background-color: #ffffff;
+  color: #0a0a0a;
+  border: 2px solid #0a0a0a;
+  border-radius: 4px;
+  box-shadow: 2px 2px 0px #0a0a0a;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  transition: background-color 0.1s ease, transform 0.08s ease;
+}
+
+.cagp-step-btn:hover:not(:disabled) {
+  background-color: #9e2424;
+  color: #ffffff;
+}
+
+.cagp-step-btn:active:not(:disabled) {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #0a0a0a;
+}
+
+.cagp-step-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.cagp-calc-readout {
+  min-width: 84px;
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+/* Gaveta "O que conta nisso?" */
+.cagp-calc-drawer-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background-color: #f7f5f0;
+  border: 1.5px solid #0a0a0a;
+  color: #0a0a0a;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.25rem 0.6rem;
+  margin-top: 0.45rem;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 1.5px 1.5px 0 #0a0a0a;
+  touch-action: manipulation;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.cagp-calc-drawer-toggle:hover {
+  background-color: #9e2424;
+  color: #ffffff;
+  box-shadow: 2px 2px 0 #0a0a0a;
+}
+
+.cagp-calc-drawer-toggle:active {
+  transform: translate(1px, 1px);
+  box-shadow: 0.5px 0.5px 0 #0a0a0a;
+}
+
+.cagp-calc-drawer-toggle[aria-expanded="true"] .cagp-drawer-arrow {
+  transform: rotate(180deg);
+}
+
+.cagp-drawer-arrow {
+  display: inline-block;
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+  font-size: 0.75rem;
+}
+
+/* Gaveta "O que conta nisso?" com Interpolação Fluida de Altura 0fr -> 1fr (Apple HIG Spring) */
+.cagp-calc-drawer {
+  width: 100%;
+  display: grid !important;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+  margin-top: 0;
+  pointer-events: none;
+  transition:
+    grid-template-rows 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+    margin-top 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.32s ease;
+}
+
+.cagp-calc-drawer > .cagp-calc-drawer-inner {
+  overflow: hidden;
+  min-height: 0;
+  border: 0 solid #0a0a0a;
+  padding: 0 1rem;
+  box-shadow: none;
+  background-color: #ffffff;
+  border-radius: 6px;
+  transition:
+    padding 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    border-width 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cagp-calc-drawer.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+  pointer-events: auto;
+}
+
+.cagp-calc-drawer.is-open > .cagp-calc-drawer-inner {
+  border: 2px solid #0a0a0a;
+  padding: 0.85rem 1rem;
+  box-shadow: 2px 2px 0 #0a0a0a;
+  animation: cagpDrawerCardFade 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cagpDrawerCardFade {
+  from {
+    opacity: 0.5;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cagp-calc-drawer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 1280px) {
+  .cagp-calc-drawer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+  }
+}
+
+.cagp-calc-drawer-section {
+  padding: 0.65rem 0.75rem;
+  border-radius: 4px;
+}
+
+.cagp-calc-drawer-section.is-accepted {
+  background-color: #f0fdf4;
+  border: 1.5px solid #15803d;
+}
+
+.cagp-calc-drawer-section.is-rejected {
+  background-color: #fef2f2;
+  border: 1.5px solid #dc2626;
+}
+
+.cagp-calc-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.45rem;
+}
+
+.cagp-calc-drawer-section ul {
+  margin: 0;
+  padding-left: 1.15rem;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: #1f2937;
+  list-style-type: disc;
+}
+
+.cagp-calc-drawer-section ul li {
+  margin-bottom: 0.35rem;
+}
+
+.cagp-calc-drawer-section ul li:last-child {
+  margin-bottom: 0;
+}
+
+.cagp-calc-drawer-alert {
+  margin-top: 0.6rem;
+  padding: 0.45rem 0.65rem;
+  background-color: #fffbeb;
+  border: 1.5px solid #b45309;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: #78350f;
+  border-radius: 4px;
+}

@@ -1,0 +1,120 @@
+---
+// percurso.astro — Central Curricular & Grafo Dinâmico 10P: 27 Obrigatórias + Optativas + Formação Livre
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/ui/PageHeader.astro';
+import SegmentedControl from '../components/ui/SegmentedControl.astro';
+import JourneyNav from '../components/ui/JourneyNav.astro';
+import FactCheckBanner from '../components/ui/FactCheckBanner.astro';
+import { getCollection } from 'astro:content';
+import { CurriculumGraphDynamic } from '../components/features/curriculum/graph/CurriculumGraphDynamic';
+import CurriculumCentralOverview from '../components/features/curriculum/CurriculumCentralOverview.astro';
+import { OptativasCatalogExplorer } from '../components/features/curriculum/catalog/OptativasCatalogExplorer';
+import MandatoryTimelineExplorer from '../components/features/curriculum/timeline/MandatoryTimelineExplorer.astro';
+import { StudentDossierTracker } from '../components/features/curriculum/dossie/StudentDossierTracker';
+
+const allDisciplinas = await getCollection('disciplinas');
+
+const catalogOptions = allDisciplinas
+  .filter((d) => d.data.natureza === 'optativa')
+  .map((d) => ({
+    code: d.data.codigo,
+    name: d.data.nome,
+    dept: d.data.modulo || d.data.codigo.split(' ')[0] || 'DCP',
+    ch: d.data.ch,
+  }));
+
+const optativasData = allDisciplinas
+  .filter((d) => d.data.natureza === 'optativa')
+  .map((d) => ({
+    code: d.data.codigo,
+    name: d.data.nome,
+    ch: d.data.ch,
+    modulo: d.data.modulo,
+    ementa: d.data.ementa,
+  }))
+  .sort((a, b) => a.code.localeCompare(b.code));
+
+const tabs = [
+  { id: 'v0', shortLabel: 'Geral', fullLabel: 'Visão Geral Curricular', hash: '#visao-geral' },
+  { id: 'v1', shortLabel: 'Grafo', fullLabel: '1. Grafo Dinâmico 10P', hash: '#grafo' },
+  { id: 'v2', shortLabel: 'Optativas', fullLabel: '2. Catálogo 68 Optativas', hash: '#optativas' },
+  { id: 'v3', shortLabel: 'Obrigatórias', fullLabel: '3. As 27 Obrigatórias', hash: '#obrigatorias' },
+  { id: 'v4', shortLabel: 'Dossiê', fullLabel: '4. Dossiê de Horas 3.000h', hash: '#minha-grade' },
+];
+
+const badges = [
+  { label: 'Central Curricular 10P', variant: 'red' as const, icon: 'bi-diagram-3-fill' },
+  { label: '27 Obrigatórias • 1.860h', variant: 'dark' as const, icon: 'bi-book-half' },
+  { label: '68 Optativas Homologadas', variant: 'blue' as const, icon: 'bi-collection-fill' },
+  { label: '120h Formação Livre', variant: 'gold' as const, icon: 'bi-plus-slash-minus' },
+  { label: '10 Semestres Noturno', variant: 'green' as const, icon: 'bi-calendar3' },
+];
+---
+
+<BaseLayout
+  title="Central Curricular & Grafo Dinâmico 10P"
+  description="Central Curricular unificada de Gestão Pública UFMG: grafo reativo dos 10 semestres, 27 obrigatórias, 68 optativas e adição de disciplinas livres."
+>
+  <PageHeader
+    eyebrow="Eixo 3 · Central Curricular & Matriz 10P"
+    title="Trajetória Curricular, Grafo Vivo & Optativas"
+    subtitle="Navegue pelas 27 disciplinas obrigatórias com travas do SIGA, adicione matérias optativas e de formação livre no Grafo interativo e acompanhe o percentual de integralização no dossiê."
+    badges={badges}
+  />
+
+  <SegmentedControl tabs={tabs} defaultTab="v0" />
+
+  <!-- Sub-view 0: Visão Geral da Central Curricular -->
+  <section id="ws-panel-v0" class="cagp-workspace-view" data-ws-panel="v0">
+    <div id="visao-geral" class="cagp-anchor-target scroll-mt-24"></div>
+    <CurriculumCentralOverview />
+  </section>
+
+  <!-- Sub-view 1: Grafo Dinâmico 10P -->
+  <section id="ws-panel-v1" class="cagp-workspace-view space-y-4" data-ws-panel="v1" hidden>
+    <div id="grafo" class="cagp-anchor-target scroll-mt-24"></div>
+    <FactCheckBanner
+      claim="Posso me matricular em matérias avançadas sem cumprir os pré-requisitos formais se o professor autorizar de boca?"
+      verdict="obrigatorio"
+      stampText="TRAVA SIGA"
+      normativeSource="PPC 2020 • Regulamento do Curso & Normas Gerais de Graduação UFMG"
+      explanation="FALSO. As travas formais (ex.: Estatística I bloqueando Estatística II) são travadas algoritmicamente no sistema SIGA da UFMG durante a fase de matrícula. Nenhuma autorização verbal de docente supera a trava eletrônica sem deliberação formal do Colegiado."
+      officialRuleExcerpt={`PPC 2020 — Regime de Pré-Requisitos:
+A matrícula nas disciplinas com pré-requisito formal cadastrado fica condicionada à obtenção prévia de aprovação (nota mínima 60 e frequência de 75%) na disciplina propedêutica correspondente.`}
+    />
+
+    <CurriculumGraphDynamic client:load catalogOptions={catalogOptions} />
+  </section>
+
+  <!-- Sub-view 2: Catálogo de 68 Optativas e 120h de Formação Livre -->
+  <section id="ws-panel-v2" class="cagp-workspace-view" data-ws-panel="v2" hidden>
+    <div id="optativas" class="cagp-anchor-target scroll-mt-24"></div>
+    <OptativasCatalogExplorer client:load optativas={optativasData} />
+  </section>
+
+  <!-- Sub-view 3: Ementário das 27 Obrigatórias -->
+  <section id="ws-panel-v3" class="cagp-workspace-view" data-ws-panel="v3" hidden>
+    <div id="obrigatorias" class="cagp-anchor-target scroll-mt-24"></div>
+    <MandatoryTimelineExplorer />
+  </section>
+
+  <!-- Sub-view 4: Dossiê Minha Grade & 3.000h -->
+  <section id="ws-panel-v4" class="cagp-workspace-view space-y-4" data-ws-panel="v4" hidden>
+    <div id="minha-grade" class="cagp-anchor-target scroll-mt-24"></div>
+    <StudentDossierTracker client:load />
+  </section>
+
+  <!-- Journey Navigation Trail -->
+  <JourneyNav
+    prev={{
+      title: 'O Bacharelado em Gestão Pública',
+      href: '/curso',
+      desc: 'PPC 2020, perfil do egresso e oportunidades no setor público e terceiro setor.',
+    }}
+    next={{
+      title: 'Extensão & Atividades Complementares (AAC)',
+      href: '/acg',
+      desc: 'Simule 300h de Extensão e 300h de AAC com trava de limites regimentais.',
+    }}
+  />
+</BaseLayout>

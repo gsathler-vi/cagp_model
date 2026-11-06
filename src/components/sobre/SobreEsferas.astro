@@ -1,0 +1,65 @@
+---
+// SobreEsferas.astro - Sub-view 3: Esferas de Representação Discente Tripartite
+const esferas = [
+  {
+    orgao: 'Colegiado do Curso de Gestão Pública',
+    icon: 'bi-door-closed-fill',
+    nivel: 'Instância Local (DCP/FAFICH)',
+    desc: 'Representação formal com direito a voz e voto nas deliberações sobre planos de ensino, equivalências, jubilamento e dispensas pelo Art. 41.',
+  },
+  {
+    orgao: 'Congregação da FAFICH',
+    icon: 'bi-building',
+    nivel: 'Instância Departamental e da Unidade',
+    desc: 'Órgão máximo da FAFICH que vota orçamento anual, abertura de concursos para professores e infraestrutura dos prédios.',
+  },
+  {
+    orgao: 'DAFAFICH (Diretório Acadêmico)',
+    icon: 'bi-people-fill',
+    nivel: 'Articulação entre Cursos da FAFICH',
+    desc: 'Espaço de integração com os centros acadêmicos de Ciências Sociais, História, Filosofia, Psicologia e Comunicação Social.',
+  },
+  {
+    orgao: 'DCE UFMG & Conselho de Entidades de Base',
+    icon: 'bi-megaphone-fill',
+    nivel: 'Instância Universitária Geral',
+    desc: 'Representação de Gestão Pública nas plenárias do Diretório Central dos Estudantes na defesa do RU, assistência e segurança no campus.',
+  },
+];
+---
+
+<div class="space-y-4 text-[#0A0A0A]">
+  <div class="cagp-tool-box p-4 space-y-3">
+    <div class="border-b border-[#DFDBD2] pb-2.5 flex items-center justify-between flex-wrap gap-2">
+      <div>
+        <div class="flex items-center gap-2">
+          <i class="bi bi-diagram-3-fill text-[#8B1E2D] text-lg" aria-hidden="true"></i>
+          <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A]">
+            As 4 Esferas de Representação Política
+          </h3>
+        </div>
+        <p class="text-xs text-gray-600 mt-0.5">Onde os delegados eleitos do CAGP atuam em defesa da comunidade discente:</p>
+      </div>
+      <span class="cagp-badge cagp-badge-dark font-mono">
+        Representação Tripartite
+      </span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+      {esferas.map((e) => (
+        <div class="cagp-card p-3.5 bg-white flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="cagp-badge cagp-badge-red text-xs font-mono">{e.nivel}</span>
+              <div class="w-7 h-7 rounded-[4px] bg-[#F7F5F0] border border-[#DFDBD2] flex items-center justify-center text-[#8B1E2D] shrink-0">
+                <i class={`bi ${e.icon} text-sm`} aria-hidden="true" />
+              </div>
+            </div>
+            <h4 class="font-['Oswald'] font-bold uppercase text-xs text-[#0A0A0A] mb-1">{e.orgao}</h4>
+            <p class="text-xs text-gray-600 leading-relaxed">{e.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

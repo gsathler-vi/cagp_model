@@ -1,0 +1,86 @@
+---
+// OptativasFormacaoLivre.astro - Sub-view 2: Regras de Formação Livre (120h) e cotas por percurso
+import { asset } from '../../lib/paths';
+---
+
+<div class="space-y-4 text-[#0A0A0A]">
+  <!-- Grid das 2 Caixas Principais Bento -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+    <!-- Card 1: Formação Livre (120h) -->
+    <div class="cagp-tool-box p-4 space-y-3">
+      <div class="flex items-center justify-between border-b border-[#DFDBD2] pb-2.5 flex-wrap gap-2">
+        <div class="flex items-center gap-2 text-[#8B1E2D]">
+          <i class="bi bi-globe2 text-base" aria-hidden="true"></i>
+          <h3 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A]">
+            Formação Livre (120h • 8 Créditos)
+          </h3>
+        </div>
+        <span class="cagp-badge cagp-badge-red font-mono">
+          PPC Art. 13
+        </span>
+      </div>
+
+      <p class="text-xs text-gray-700 leading-relaxed">
+        Conforme o <strong>PPC 2020 (Art. 13)</strong> e a Versão Curricular <code>N-20229</code>, das <strong>3.000 horas totais</strong> exigidas para o grau de Bacharel em Gestão Pública, <strong>2.880 horas</strong> compõem o Núcleo Específico e <strong>120 horas (8 créditos)</strong> são reservadas obrigatoriamente à <strong>Formação Livre</strong>.
+      </p>
+
+      <ul class="text-xs text-gray-600 space-y-1.5 list-disc pl-4">
+        <li>
+          <strong>Onde cursar:</strong> Em qualquer unidade acadêmica da UFMG fora da grade regular do curso (Faculdade de Direito, FACE, Engenharia, Ciência da Informação, Belas Artes, FALE/CENEX).
+        </li>
+        <li>
+          <strong>Como se matricular:</strong> Solicite as disciplinas na <strong>3ª Fase de Matrícula do SIGA</strong> (vagas remanescentes em disciplinas eletivas de outros colegiados) ou via requerimento de acerto presencial.
+        </li>
+      </ul>
+
+      <div class="pt-2">
+        <a href={asset('/documentos/requerimento-matricula-formacao-livre.pdf')} download class="cagp-btn-primary inline-flex items-center gap-1.5 text-xs py-1.5 px-3 no-underline">
+          <i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> Baixar Requerimento de Formação Livre (PDF)
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 2: Carga Horária de Optativas por Percurso -->
+    <div class="cagp-tool-box p-4 space-y-3">
+      <div class="flex items-center justify-between border-b border-[#DFDBD2] pb-2.5 flex-wrap gap-2">
+        <div class="flex items-center gap-2 text-[#0A0A0A]">
+          <i class="bi bi-signpost-split text-base" aria-hidden="true"></i>
+          <h3 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A]">
+            Cotas de Optativas por Percurso
+          </h3>
+        </div>
+        <span class="cagp-badge cagp-badge-dark font-mono">
+          Regulamento Art. 3º
+        </span>
+      </div>
+
+      <p class="text-xs text-gray-700 leading-relaxed">
+        A quantidade total de disciplinas optativas que você precisa cursar varia conforme a modalidade de percurso vinculada:
+      </p>
+
+      <div class="space-y-2 text-xs">
+        <div class="cagp-card p-3 bg-white">
+          <div class="flex items-center gap-1.5 mb-0.5">
+            <i class="bi bi-compass text-[#8B1E2D]" aria-hidden="true"></i>
+            <span class="font-mono font-bold text-[#8B1E2D]">Percurso 01-01 (Bacharelado Geral):</span>
+          </div>
+          <p class="text-xs text-gray-600">Exige <strong>1.020 horas</strong> em disciplinas optativas do catálogo oficial.</p>
+        </div>
+        <div class="cagp-card p-3 bg-white">
+          <div class="flex items-center gap-1.5 mb-0.5">
+            <i class="bi bi-diagram-3 text-[#15803D]" aria-hidden="true"></i>
+            <span class="font-mono font-bold text-[#15803D]">Percurso 01-02 (Núcleo Complementar - 5ºP+):</span>
+          </div>
+          <p class="text-xs text-gray-600">Exige <strong>720 horas</strong> em optativas do curso + <strong>300 horas</strong> em Formação Transversal ou Aberta (FCA).</p>
+        </div>
+        <div class="cagp-card p-3 bg-white">
+          <div class="flex items-center gap-1.5 mb-0.5">
+            <i class="bi bi-mortarboard text-[#005A9C]" aria-hidden="true"></i>
+            <span class="font-mono font-bold text-[#005A9C]">Percurso 01-03 (Núcleo Avançado / Pós - 7ºP+):</span>
+          </div>
+          <p class="text-xs text-gray-600">Exige entre <strong>900h e 975h</strong> em optativas da graduação + <strong>45h a 120h</strong> no Mestrado/Doutorado do PPGCP.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

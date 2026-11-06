@@ -1,0 +1,309 @@
+---
+// src/components/features/calouros/noturno/CalouroNoturnoCore.astro — Rotina Noturna, RU II, Circulares e Galeria dos Campi
+import { asset } from '../../../../lib/paths';
+
+const timeline = [
+  {
+    hora: '17h10',
+    titulo: 'Abertura do Jantar no RU II Setorial',
+    desc: 'Início do jantar subsidiado aos fundos da FAFICH (próximo ao ICB, FACE e ECI), conforme Portaria PRAE nº 1.286/2026. Cardápio com opção proteica e vegetariana balanceada.',
+    icon: 'bi-cup-hot-fill',
+    badge: '17h10 – 19h30',
+  },
+  {
+    hora: '18h00',
+    titulo: 'Horário de Ouro para Jantar',
+    desc: 'Janela de menor fila no RU II. Chegar entre 18h00 e 18h25 garante jantar tranquilo com tempo hábil para retornar à FAFICH antes do início das aulas.',
+    icon: 'bi-star-fill',
+    badge: 'Dica Veterana',
+    highlight: true,
+  },
+  {
+    hora: '19h00',
+    titulo: 'Início das Aulas no Turno Noturno (Bloco 1)',
+    desc: 'Início pontual do 1º bloco de aulas nas salas e auditórios da FAFICH (salas dos 2º e 3º andares).',
+    icon: 'bi-mortarboard-fill',
+    badge: '19h00 – 20h40',
+  },
+  {
+    hora: '20h40',
+    titulo: 'Intervalo & Convivência',
+    desc: 'Intervalo de 20 minutos. Momento de café na cantina da FAFICH, convivência na salinha do CAGP e protocolos no CEAG 2º Andar (aberto até 22h).',
+    icon: 'bi-chat-dots-fill',
+    badge: '20h40 – 21h00',
+  },
+  {
+    hora: '21h00',
+    titulo: 'Segundo Bloco de Aulas',
+    desc: 'Continuidade dos seminários de políticas públicas, debates e oficinas de laboratório.',
+    icon: 'bi-book-half',
+    badge: '21h00 – 22h30',
+  },
+  {
+    hora: '22h30',
+    titulo: 'Término das Aulas & Encerramento',
+    desc: 'Final do turno noturno. Saída em grupos em direção aos pontos de ônibus da FAFICH, Av. Antônio Carlos e portaria Catalão.',
+    icon: 'bi-moon-stars-fill',
+    badge: '22h30',
+  },
+  {
+    hora: '22h45',
+    titulo: 'Último Circular Noturno',
+    desc: 'Partida do último ônibus Circular Interno gratuito saindo da FAFICH em direção à Estação Pampulha (MOVE) e portarias.',
+    icon: 'bi-bus-front-fill',
+    badge: 'Último Carro',
+    highlight: true,
+  },
+];
+
+const circularesHorarios = [
+  { linha: 'Linha 3 (Sentido ICEx / RU II)', saidas: ['16h40', '17h20', '18h00', '19h05'], itinerario: 'FAFICH, Farmácia, Setorial II (Jantar), Física, ICEx, FACE e Biblioteca Central.' },
+  { linha: 'Linha 4 (Sentido Reitoria / RU II)', saidas: ['16h20', '17h00', '17h40', '18h35'], itinerario: 'Portaria Catalão, Reitoria, Praça de Serviços, Setorial II e Humanidades.' },
+];
+
+const mapasCampi = [
+  {
+    id: 'pampulha',
+    titulo: 'Campus Pampulha (Detalhamento FAFICH & RU)',
+    sub: 'Sede de Gestão Pública, CAD 2, Restaurantes I e II e paradas do Circular.',
+    arquivo: 'mapa-pampulha-detalhado.jpg',
+  },
+  {
+    id: 'saude',
+    titulo: 'Campus Saúde (Centro-Sul)',
+    sub: 'Faculdade de Medicina, Escola de Enfermagem e Hospital das Clínicas (HC/UFMG).',
+    arquivo: 'mapa-saude.jpg',
+  },
+  {
+    id: 'centro',
+    titulo: 'Campus Centro (Área Central de BH)',
+    sub: 'Faculdade de Direito e Escola de Arquitetura.',
+    arquivo: 'mapa-centro2.jpg',
+  },
+  {
+    id: 'moc',
+    titulo: 'Campus Montes Claros (ICA)',
+    sub: 'Instituto de Ciências Agrárias da UFMG no Norte de Minas.',
+    arquivo: 'mapa-moc-722x1024.jpg',
+  },
+  {
+    id: 'minas',
+    titulo: 'Rede UFMG em Minas Gerais & Viver 2026',
+    sub: 'Mapa integrado de unidades acadêmicas, museus, reservas e polos no estado.',
+    arquivo: 'mapa-minas.jpg',
+  },
+];
+---
+
+<div class="cagp-calouro-noturno space-y-6 select-none text-[#0A0A0A]">
+  {/* Cabeçalho */}
+  <div class="p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
+    <div>
+      <span class="text-[11px] font-['Oswald'] uppercase font-bold tracking-wider text-[#8B1E2D]">
+        Guia Operacional do Turno Noturno
+      </span>
+      <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A] m-0">
+        Linha do Tempo Noturna: Das 17h10 às 22h45
+      </h3>
+      <p class="text-xs text-gray-600 mt-0.5 m-0">
+        Horários operacionais oficiais conforme a Portaria PRAE nº 1.286/2026 e escala de transporte da UFMG.
+      </p>
+    </div>
+    <span class="px-2.5 py-1 rounded bg-[#0A0A0A] text-white font-mono text-xs font-bold shrink-0">
+      Turno Noturno Oficial
+    </span>
+  </div>
+
+  {/* Cronograma Noturno */}
+  <div class="space-y-3">
+    {timeline.map((item) => (
+      <div
+        class={`cagp-card p-3.5 rounded-xl border flex items-start gap-3.5 transition-all ${
+          item.highlight
+            ? 'bg-[#FDF8F8] border-[#8B1E2D] shadow-[2px_2px_0px_#8B1E2D]'
+            : 'bg-white border-[#DFDBD2]'
+        }`}
+      >
+        <span
+          class={`w-14 h-10 rounded-lg flex items-center justify-center font-mono text-xs font-bold shrink-0 ${
+            item.highlight ? 'bg-[#8B1E2D] text-white shadow-[1px_1px_0px_#0A0A0A]' : 'bg-[#F7F5F0] text-[#0A0A0A] border border-[#DFDBD2]'
+          }`}
+        >
+          {item.hora}
+        </span>
+
+        <div class="min-w-0 flex-1">
+          <div class="flex items-center gap-2 mb-1 flex-wrap">
+            <h4 class="font-['Oswald'] text-sm font-bold uppercase text-[#0A0A0A] m-0">
+              {item.titulo}
+            </h4>
+            <span class={`px-2 py-0.5 rounded text-[10px] font-['Oswald'] uppercase font-bold ${
+              item.highlight ? 'bg-[#8B1E2D] text-white' : 'bg-gray-100 text-gray-600 border border-[#DFDBD2]'
+            }`}>
+              {item.badge}
+            </span>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed m-0">
+            {item.desc}
+          </p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  {/* Ônibus Circulares & Acesso ao RU II */}
+  <div class="p-4 bg-white border border-[#DFDBD2] rounded-xl space-y-3 shadow-xs">
+    <div class="flex items-center justify-between border-b border-[#DFDBD2] pb-2 flex-wrap gap-2">
+      <div>
+        <h4 class="font-['Oswald'] text-sm font-bold uppercase text-[#0A0A0A] m-0 flex items-center gap-2">
+          <i class="bi bi-bus-front-fill text-[#8B1E2D]" aria-hidden="true" />
+          <span>Reforço Noturno dos Circulares 3 e 4 (Acesso ao Jantar no RU II)</span>
+        </h4>
+        <p class="text-xs text-gray-600 mt-0.5 m-0">Para atender ao deslocamento até o Setorial II, a Pró-Reitoria de Administração (PRA) estabeleceu horários de reforço:</p>
+      </div>
+      <span class="cagp-badge cagp-badge-green font-mono text-xs">Gratuito na Pampulha</span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+      {circularesHorarios.map((c) => (
+        <div class="p-3 bg-[#F7F5F0] border border-[#DFDBD2] rounded-lg space-y-1.5">
+          <span class="font-['Oswald'] font-bold text-xs uppercase text-[#8B1E2D] block">{c.linha}</span>
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <span class="text-gray-500 font-mono text-[11px]">Saídas especiais:</span>
+            {c.saidas.map((s) => (
+              <span class="px-1.5 py-0.5 rounded bg-white border border-[#DFDBD2] font-mono font-bold text-[11px] text-[#0A0A0A]">{s}</span>
+            ))}
+          </div>
+          <p class="text-[11px] text-gray-600 leading-snug m-0">{c.itinerario}</p>
+        </div>
+      ))}
+    </div>
+
+    {/* Posição Política do CAGP */}
+    <div class="p-3 bg-[#FEF2F2] border-2 border-[#DC2626] rounded-lg text-xs space-y-1">
+      <div class="flex items-center gap-2 text-[#DC2626] font-['Oswald'] font-bold uppercase">
+        <i class="bi bi-megaphone-fill" aria-hidden="true"></i>
+        <span>Posicionamento e Cobrança Política do CAGP</span>
+      </div>
+      <p class="text-xs text-gray-700 leading-relaxed m-0">
+        O CAGP reivindica ativamente perante o DCE, a PRAE e a FUMP a <strong>reabertura do jantar no RU Setorial I</strong> (vizinho imediato à FAFICH, FAE e CAD 2) ou pontos emergenciais de alimentação na unidade. A subida íngreme até o Setorial II à noite sobrecarrega e penaliza discentes que trabalham o dia todo e chegam ao campus entre 18h30 e 19h00.
+      </p>
+    </div>
+  </div>
+
+  {/* Galeria Interativa Oficial de Mapas dos Campi */}
+  <div class="p-4 bg-[#F7F5F0] border border-[#DFDBD2] rounded-xl space-y-4 shadow-xs" id="galeria-campi">
+    <div class="flex items-center justify-between border-b border-[#DFDBD2] pb-2 flex-wrap gap-2">
+      <div>
+        <h4 class="font-['Oswald'] text-sm font-bold uppercase text-[#0A0A0A] m-0 flex items-center gap-2">
+          <i class="bi bi-map-fill text-[#8B1E2D]" aria-hidden="true" />
+          <span>Galeria Oficial de Mapas dos Campi da UFMG</span>
+        </h4>
+        <p class="text-xs text-gray-600 mt-0.5 m-0">Consulte os mapas de orientação do Campus Pampulha, Saúde, Centro, Montes Claros e Minas Gerais:</p>
+      </div>
+      <a
+        id="cagp-map-full-link"
+        href={asset(`/imagens/${mapasCampi[0].arquivo}`)}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="cagp-btn-secondary text-xs py-1.5 px-3 no-underline shrink-0 flex items-center gap-1.5"
+      >
+        <i class="bi bi-arrows-fullscreen"></i> Ver em Alta Resolução
+      </a>
+    </div>
+
+    {/* Botões do Seletor de Campi */}
+    <div class="flex items-center gap-2 overflow-x-auto pb-1" role="tablist" aria-label="Seletor de Mapas dos Campi">
+      {mapasCampi.map((m, idx) => (
+        <button
+          type="button"
+          class={`cagp-map-tab-btn px-3 py-1.5 rounded-lg text-xs font-['Oswald'] uppercase font-bold tracking-wider transition-all whitespace-nowrap cursor-pointer ${
+            idx === 0
+              ? 'bg-[#8B1E2D] text-white shadow-[1px_1px_0px_#0A0A0A]'
+              : 'bg-white hover:bg-gray-100 text-[#0A0A0A] border border-[#DFDBD2]'
+          }`}
+          data-map-id={m.id}
+          data-map-file={asset(`/imagens/${m.arquivo}`)}
+          data-map-title={m.titulo}
+          data-map-sub={m.sub}
+          role="tab"
+          aria-selected={idx === 0 ? 'true' : 'false'}
+        >
+          {m.id === 'pampulha' ? 'Pampulha' : m.id === 'saude' ? 'Campus Saúde' : m.id === 'centro' ? 'Campus Centro' : m.id === 'moc' ? 'Montes Claros' : 'Minas Gerais'}
+        </button>
+      ))}
+    </div>
+
+    {/* Visor de Imagem do Mapa */}
+    <div class="space-y-2">
+      <div class="flex items-center justify-between gap-2">
+        <div>
+          <h5 id="cagp-map-current-title" class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] m-0">
+            {mapasCampi[0].titulo}
+          </h5>
+          <p id="cagp-map-current-sub" class="text-xs text-gray-500 m-0">
+            {mapasCampi[0].sub}
+          </p>
+        </div>
+      </div>
+
+      <div class="rounded-[8px] border-2 border-[#0A0A0A] shadow-[2px_2px_0px_#0A0A0A] overflow-hidden bg-[#0A0A0A] flex items-center justify-center min-h-[300px]">
+        <img
+          id="cagp-map-viewer-img"
+          src={asset(`/imagens/${mapasCampi[0].arquivo}`)}
+          alt={mapasCampi[0].titulo}
+          class="w-full h-auto max-h-[550px] object-contain transition-opacity duration-150"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initCampiMapGallery() {
+    const tabBtns = document.querySelectorAll<HTMLButtonElement>('.cagp-map-tab-btn');
+    const imgEl = document.getElementById('cagp-map-viewer-img') as HTMLImageElement | null;
+    const fullLink = document.getElementById('cagp-map-full-link') as HTMLAnchorElement | null;
+    const titleEl = document.getElementById('cagp-map-current-title');
+    const subEl = document.getElementById('cagp-map-current-sub');
+
+    if (!tabBtns.length || !imgEl) return;
+
+    tabBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach((b) => {
+          b.classList.remove('bg-[#8B1E2D]', 'text-white', 'shadow-[1px_1px_0px_#0A0A0A]');
+          b.classList.add('bg-white', 'text-[#0A0A0A]', 'border', 'border-[#DFDBD2]');
+          b.setAttribute('aria-selected', 'false');
+        });
+
+        btn.classList.remove('bg-white', 'text-[#0A0A0A]', 'border', 'border-[#DFDBD2]');
+        btn.classList.add('bg-[#8B1E2D]', 'text-white', 'shadow-[1px_1px_0px_#0A0A0A]');
+        btn.setAttribute('aria-selected', 'true');
+
+        const file = btn.getAttribute('data-map-file');
+        const title = btn.getAttribute('data-map-title');
+        const sub = btn.getAttribute('data-map-sub');
+
+        if (file && imgEl) {
+          imgEl.style.opacity = '0.3';
+          setTimeout(() => {
+            imgEl.src = file;
+            imgEl.alt = title || '';
+            imgEl.style.opacity = '1';
+          }, 120);
+        }
+        if (fullLink && file) {
+          fullLink.href = file;
+        }
+        if (titleEl && title) titleEl.textContent = title;
+        if (subEl && sub) subEl.textContent = sub;
+      });
+    });
+  }
+
+  // Executar imediatamente e após trocas de view no Astro
+  initCampiMapGallery();
+  document.addEventListener('astro:page-load', initCampiMapGallery);
+</script>

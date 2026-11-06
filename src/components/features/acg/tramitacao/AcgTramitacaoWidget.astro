@@ -1,0 +1,68 @@
+---
+// src/components/features/acg/tramitacao/AcgTramitacaoWidget.astro — Widget de Resumo da Tramitação Colegiado N-20229
+import { asset } from '../../../../lib/paths';
+---
+
+<div class="cagp-card p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col justify-between h-full shadow-xs hover:border-[#0A0A0A] transition-all">
+  <div>
+    <div class="flex items-center justify-between gap-2 mb-3">
+      <div class="flex items-center gap-2">
+        <span class="w-9 h-9 rounded-lg bg-[#8B1E2D]/10 text-[#8B1E2D] flex items-center justify-center text-lg border border-[#8B1E2D]/20">
+          <i class="bi bi-file-earmark-check" aria-hidden="true" />
+        </span>
+        <div>
+          <h3 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A] leading-tight m-0">
+            Protocolo Colegiado N-20229
+          </h3>
+          <span class="text-[11px] text-gray-500 font-mono">Requerimento em PDF & E-mail</span>
+        </div>
+      </div>
+      <span class="px-2 py-0.5 rounded font-['Oswald'] text-[11px] font-bold bg-[#8B1E2D] text-white">
+        Oficial
+      </span>
+    </div>
+
+    <p class="text-xs text-gray-700 leading-relaxed mb-3">
+      Fluxo oficial em 4 passos: preenchimento do formulário N-20229, anexação de comprovantes e envio direto para a Coordenação (<code class="text-[11px] font-mono">coordgestaopublica@gmail.com</code>).
+    </p>
+
+    <!-- Pílulas dos 4 Passos -->
+    <div class="grid grid-cols-2 gap-1.5 mb-3 text-[11px]">
+      <div class="p-1.5 bg-[#F7F5F0] rounded border border-[#DFDBD2] flex items-center gap-1.5">
+        <span class="w-4 h-4 rounded-full bg-[#8B1E2D] text-white flex items-center justify-center text-[10px] font-bold shrink-0">1</span>
+        <span class="text-gray-700 truncate">Identificação</span>
+      </div>
+      <div class="p-1.5 bg-[#F7F5F0] rounded border border-[#DFDBD2] flex items-center gap-1.5">
+        <span class="w-4 h-4 rounded-full bg-[#8B1E2D] text-white flex items-center justify-center text-[10px] font-bold shrink-0">2</span>
+        <span class="text-gray-700 truncate">Modalidade</span>
+      </div>
+      <div class="p-1.5 bg-[#F7F5F0] rounded border border-[#DFDBD2] flex items-center gap-1.5">
+        <span class="w-4 h-4 rounded-full bg-[#8B1E2D] text-white flex items-center justify-center text-[10px] font-bold shrink-0">3</span>
+        <span class="text-gray-700 truncate">E-mail DCP</span>
+      </div>
+      <div class="p-1.5 bg-[#F7F5F0] rounded border border-[#DFDBD2] flex items-center gap-1.5">
+        <span class="w-4 h-4 rounded-full bg-[#8B1E2D] text-white flex items-center justify-center text-[10px] font-bold shrink-0">4</span>
+        <span class="text-gray-700 truncate">Sec. F-2039</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex items-center gap-2 pt-2 border-t border-[#DFDBD2]">
+    <a
+      href="#protocolo-colegiado"
+      class="flex-1 min-h-[44px] px-3 py-2 bg-[#0A0A0A] hover:bg-[#8B1E2D] text-white rounded-lg font-['Oswald'] text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-1.5 transition-all no-underline shadow-[2px_2px_0px_#0A0A0A]"
+    >
+      <span>Ver Passo a Passo</span>
+      <i class="bi bi-arrow-right" aria-hidden="true" />
+    </a>
+    <a
+      href={asset('/documentos/requerimento-atividade-integralizadora-credito-v20229.pdf')}
+      download
+      class="min-h-[44px] min-w-[44px] px-3 py-2 bg-[#F7F5F0] hover:bg-[#EAE6DE] text-[#0A0A0A] border border-[#DFDBD2] rounded-lg flex items-center justify-center transition-all no-underline shrink-0"
+      title="Baixar Requerimento Oficial em PDF"
+      aria-label="Baixar Requerimento Oficial em PDF"
+    >
+      <i class="bi bi-file-earmark-pdf-fill text-[#8B1E2D] text-base" aria-hidden="true" />
+    </a>
+  </div>
+</div>

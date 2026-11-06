@@ -1,0 +1,163 @@
+---
+// SobrePrincipios.astro - Sub-view 1: Candangos, Identidade Visual e Princípios Regimentais
+import { asset } from '../../lib/paths';
+---
+
+<div class="space-y-4 text-[#0A0A0A]">
+  <!-- Os Candangos de Bruno Giorgi -->
+  <div class="cagp-tool-box p-4 space-y-3">
+    <div class="border-b border-[#DFDBD2] pb-2.5 flex items-center justify-between flex-wrap gap-2">
+      <div>
+        <div class="flex items-center gap-2">
+          <i class="bi bi-people-fill text-[#8B1E2D] text-lg" aria-hidden="true"></i>
+          <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A]">
+            A Identidade Visual & O Símbolo dos Candangos
+          </h3>
+        </div>
+        <p class="text-xs text-gray-600 mt-0.5">
+          Origem e semiótica da marca oficial do Centro Acadêmico:
+        </p>
+      </div>
+      <span class="cagp-badge cagp-badge-red font-mono">
+        Bruno Giorgi (1959)
+      </span>
+    </div>
+
+    <p class="text-xs text-gray-700 leading-relaxed">
+      A identidade visual do CAGP é diretamente inspirada no monumento histórico <strong>"Os Candangos"</strong> (título original: <em>Dois Guerreiros</em>), obra-prima do escultor <strong>Bruno Giorgi (1905–1993)</strong> inaugurada em 1959 na Praça dos Três Poderes, em Brasília.
+    </p>
+
+    <!-- Fotografia Histórica do Monumento de Bruno Giorgi -->
+    <div class="my-3">
+      <img
+        src={asset('/imagens/os-candangos.jpg')}
+        alt="Monumento Dois Guerreiros (Os Candangos) de Bruno Giorgi na Praça dos Três Poderes em Brasília"
+        class="w-full h-auto max-h-[360px] object-cover rounded-[6px] border-2 border-[#0A0A0A] shadow-[3px_3px_0px_#0A0A0A]"
+        loading="lazy"
+      />
+      <p class="text-xs text-gray-500 italic mt-1.5 text-center leading-snug">
+        Monumento "Dois Guerreiros" (Os Candangos) — Escultura em bronze de Bruno Giorgi (1959), Praça dos Três Poderes, Brasília/DF. Símbolo do esforço coletivo e base inspiradora da identidade visual do CAGP.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs">
+      <div class="cagp-card p-3.5 bg-white flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 mb-1.5">
+            <i class="bi bi-people-fill text-[#8B1E2D] text-base" aria-hidden="true"></i>
+            <span class="font-['Oswald'] font-bold uppercase text-xs text-[#8B1E2D]">
+              Trabalho Coletivo
+            </span>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed">
+            A união das duas figuras simboliza o esforço solidário dos construtores da nação e a centralidade dos cidadãos no centro da ação estatal.
+          </p>
+        </div>
+      </div>
+
+      <div class="cagp-card p-3.5 bg-white flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 mb-1.5">
+            <i class="bi bi-symmetry-horizontal text-[#0A0A0A] text-base" aria-hidden="true"></i>
+            <span class="font-['Oswald'] font-bold uppercase text-xs text-[#0A0A0A]">
+              Prumo Republicano
+            </span>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed">
+            A haste horizontal representa o equilíbrio, a transparência, a equidade distributiva e o rigor ético que pautam a gestão pública.
+          </p>
+        </div>
+      </div>
+
+      <div class="cagp-card p-3.5 bg-white flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 mb-1.5">
+            <i class="bi bi-columns-gap text-[#15803D] text-base" aria-hidden="true"></i>
+            <span class="font-['Oswald'] font-bold uppercase text-xs text-[#15803D]">
+              Pilares Democráticos
+            </span>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed">
+            As colunas ascendentes personificam a perenidade das instituições republicanas e a defesa irrestrita dos direitos fundamentais.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Princípios Regimentais -->
+  <div class="cagp-tool-box p-4 space-y-3">
+    <div class="border-b border-[#DFDBD2] pb-2.5 flex items-center justify-between flex-wrap gap-2">
+      <div>
+        <div class="flex items-center gap-2">
+          <i class="bi bi-shield-check text-[#8B1E2D] text-lg" aria-hidden="true"></i>
+          <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A]">
+            Princípios e Fundamentos Regimentais (Estatuto de 14/10/2024)
+          </h3>
+        </div>
+        <p class="text-xs text-gray-600 mt-0.5">Conforme os Arts. 2º, 3º, 4º e 8º do Regimento Interno Discente:</p>
+      </div>
+      <span class="cagp-badge cagp-badge-dark font-mono">
+        Arts. 2º a 8º
+      </span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+      <div class="cagp-card p-3.5 bg-white flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 mb-1.5">
+            <i class="bi bi-shield-lock-fill text-[#8B1E2D] text-base" aria-hidden="true"></i>
+            <span class="font-['Oswald'] font-bold uppercase text-xs text-[#8B1E2D]">
+              Princípios Constitucionais (LIMPE)
+            </span>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed">
+            Subordinação expressa aos preceitos do Art. 37 da Constituição Federal: legalidade, impessoalidade, moralidade, publicidade e eficiência.
+          </p>
+        </div>
+      </div>
+
+      <div class="cagp-card p-3.5 bg-white flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 mb-1.5">
+            <i class="bi bi-flag-fill text-[#0A0A0A] text-base" aria-hidden="true"></i>
+            <span class="font-['Oswald'] font-bold uppercase text-xs text-[#0A0A0A]">
+              Independência & Suprapartidarismo
+            </span>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed">
+            Autonomia completa frente à reitoria, direções partidárias, corporações sindicais e governos estaduais ou federais.
+          </p>
+        </div>
+      </div>
+
+      <div class="cagp-card p-3.5 bg-white flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 mb-1.5">
+            <i class="bi bi-mortarboard-fill text-[#15803D] text-base" aria-hidden="true"></i>
+            <span class="font-['Oswald'] font-bold uppercase text-xs text-[#15803D]">
+              Universidade Pública e Gratuita
+            </span>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed">
+            Luta intransigente contra a privatização do ensino superior, cobrança de mensalidades e precarização da assistência estudantil.
+          </p>
+        </div>
+      </div>
+
+      <div class="cagp-card p-3.5 bg-white flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 mb-1.5">
+            <i class="bi bi-heart-fill text-[#005A9C] text-base" aria-hidden="true"></i>
+            <span class="font-['Oswald'] font-bold uppercase text-xs text-[#005A9C]">
+              Combate a Opressões & Assédio
+            </span>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed">
+            Tolerância zero contra o racismo, machismo, homofobia, capacitismo e assédio moral ou sexual no ambiente universitário (Res. UFMG 07/2025).
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

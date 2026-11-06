@@ -1,0 +1,140 @@
+/* navbar.css - Desktop Dropdown & Topbar Navigation Styles (Apple HIG + Neo-Brutalist Brite) */
+
+.cagp-island-dropdown {
+  position: relative;
+}
+
+.cagp-island-dropdown-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: transparent;
+  border: 1.5px solid transparent;
+  border-radius: 9999px;
+  padding: 0.35rem 0.75rem;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #111111;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: 34px;
+}
+
+.cagp-island-dropdown-btn:hover {
+  background: #F7F5F0;
+  border-color: #0A0A0A;
+}
+
+.cagp-island-dropdown-btn.is-active,
+.cagp-island-nav-link.is-active {
+  background: #8B1E2D !important;
+  border: 1.5px solid #0A0A0A !important;
+  color: #FFFFFF !important;
+  font-weight: 700;
+  box-shadow: 1.5px 1.5px 0px #0A0A0A !important;
+}
+
+.cagp-island-dropdown-btn.is-active i,
+.cagp-island-nav-link.is-active i {
+  color: #FFFFFF !important;
+}
+
+.cagp-island-dropdown.is-open .cagp-island-dropdown-btn {
+  background: #F7F5F0;
+  border-color: #0A0A0A;
+  color: #8B1E2D;
+}
+
+.cagp-island-dropdown.is-open .cagp-island-dropdown-btn.is-active {
+  background: #8B1E2D !important;
+  color: #FFFFFF !important;
+}
+
+.cagp-island-dropdown-chevron {
+  font-size: 0.65rem;
+  color: #6B7280;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cagp-island-dropdown.is-open .cagp-island-dropdown-chevron {
+  transform: rotate(180deg);
+}
+
+/* Dropdown Menu Container: Flutua logo abaixo da Ilha da Doca */
+.cagp-island-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.65rem);
+  min-width: 310px;
+  max-width: 360px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  display: none;
+  flex-direction: column;
+  z-index: 1070;
+}
+
+/* Open via class */
+.cagp-island-dropdown.is-open .cagp-island-dropdown-menu {
+  display: flex !important;
+}
+
+.cagp-island-dropdown.is-open .cagp-island-dropdown-card {
+  animation: cagpDropdownAppear 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes cagpDropdownAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.cagp-island-dropdown-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.75rem;
+  text-decoration: none !important;
+  color: #0A0A0A !important;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+}
+
+.cagp-island-dropdown-item:hover {
+  background: #F7F5F0;
+  border-color: #0A0A0A;
+}
+
+.cagp-island-dropdown-item.is-active {
+  background: #FEE2E2;
+  border-color: #8B1E2D;
+}
+
+.cagp-island-dropdown-item.is-active span {
+  color: #8B1E2D;
+}
+
+html[data-a11y-contrast="high"] .cagp-island-dropdown-menu {
+  background: #000000 !important;
+  border-color: #FFFF00 !important;
+  box-shadow: none !important;
+}
+
+html[data-a11y-contrast="high"] .cagp-island-dropdown-btn.is-active,
+html[data-a11y-contrast="high"] .cagp-island-nav-link.is-active {
+  background: #FFFF00 !important;
+  color: #000000 !important;
+  border-color: #FFFF00 !important;
+}
+
+html[data-a11y-contrast="high"] .cagp-island-dropdown-item {
+  color: #FFFF00 !important;
+}

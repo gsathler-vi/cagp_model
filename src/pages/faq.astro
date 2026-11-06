@@ -1,0 +1,290 @@
+---
+// faq.astro - A4 Guia: 2 sub-views (Perguntas · Acessibilidade)
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/ui/PageHeader.astro';
+import SegmentedControl from '../components/ui/SegmentedControl.astro';
+import JourneyNav from '../components/ui/JourneyNav.astro';
+import NormativeDetails from '../components/ui/NormativeDetails.astro';
+import { asset } from '../lib/paths';
+
+const tabs = [
+  { id: 'v1', shortLabel: 'Perguntas', fullLabel: '1. Perguntas Frequentes', hash: '#faq' },
+  { id: 'v2', shortLabel: 'Acessibilidade', fullLabel: '2. Acessibilidade & NAI', hash: '#acessibilidade' },
+];
+
+const badges = [
+  { label: '15 Dúvidas Regimentais', variant: 'red' as const, icon: 'bi-question-circle-fill' },
+  { label: 'Regulamento N-20229', variant: 'dark' as const, icon: 'bi-book-fill' },
+  { label: 'Processos DRCA & Formulários', variant: 'blue' as const, icon: 'bi-archive-fill' },
+  { label: 'Acessibilidade NAI', variant: 'green' as const, icon: 'bi-universal-access' },
+];
+
+const faqs = [
+  {
+    id: 'trancamento',
+    q: '1. Como funciona o trancamento parcial e total de matrícula?',
+    badge: 'Art. 48 • Mín. 180h',
+    icon: 'bi-clock-history',
+    cat: 'matricula',
+    a: 'O trancamento parcial é o cancelamento da inscrição em uma disciplina específica, realizado no SIGA dentro do prazo do Calendário Escolar. A carga horária restante deve permanecer igual ou superior ao mínimo regimental de 180 horas (12 créditos). O trancamento total suspende todas as atividades acadêmicas do semestre. Em casos de saúde ou força maior documentalmente comprovados, o trancamento com justificativa pode ser requerido a qualquer momento no Colegiado e no DRCA.',
+    links: [
+      { label: 'Trancamento Parcial (PDF)', url: '/documentos/requerimento-trancamento-parcial-matricula.pdf' },
+      { label: 'Trancamento Total com Justificativa (PDF)', url: '/documentos/requerimento-trancamento-total-matricula.pdf' },
+    ],
+  },
+  {
+    id: 'pre-requisito',
+    q: '2. Reprovei em matéria pré-requisito. Como pedir quebra de pré-requisito?',
+    badge: 'Ajuste Colegiado',
+    icon: 'bi-signpost-split-fill',
+    cat: 'matricula',
+    a: 'A única trava formal algorítmica no SIGA é Economia do Bem-Estar (ECN 044), exigindo Introdução à Economia (ECN 140). Se você precisar de ajuste de matrícula ou cursar matérias com encadeamento recomendado em concomitância, protocole requerimento presencial fundamentado durante a fase de acerto com o Colegiado na Secretaria.',
+    links: [],
+  },
+  {
+    id: 'ead',
+    q: '3. O curso de Gestão Pública oferece disciplinas a distância (EaD)?',
+    badge: 'Art. 42 • Res. 03/2016',
+    icon: 'bi-display',
+    cat: 'modalidades',
+    a: 'Sim! O Art. 42 do Regulamento e a Resolução nº 03/2016 permitem a oferta de atividades didáticas em EaD até o limite máximo de 20% da carga horária total do curso. Disciplinas obrigatórias teóricas podem ofertar até 25% de sua carga (15 horas) em formato virtual. Optativas como Ética na Gestão Pública e Libras aproveitam essa modalidade.',
+    links: [
+      { label: 'Resolução 03/2016 - Modalidade EaD (PDF)', url: '/documentos/resolucao-03-2016-modalidade-ead.pdf' },
+    ],
+  },
+  {
+    id: 'comprovacao-conhecimentos',
+    q: '4. Posso adiantar disciplinas por Comprovação de Conhecimentos?',
+    badge: 'Art. 51 / NGG Art. 78',
+    icon: 'bi-award-fill',
+    cat: 'dispensa',
+    a: 'Sim! Conforme o Art. 51 do Regulamento e o Art. 78 das Normas Gerais de Graduação, o estudante com extraordinário aproveitamento nos estudos demonstrado por aferição escrita e oral perante banca examinadora especial pode solicitar adiantamento de disciplinas obrigatórias, dispensando a frequência regular.',
+    links: [
+      { label: 'Roteiro de Comprovação de Conhecimentos (PDF)', url: '/documentos/roteiro-comprovacao-conhecimentos-estudante.pdf' },
+    ],
+  },
+  {
+    id: 'mobilidade',
+    q: '5. Como funciona a Mobilidade Acadêmica e Intercâmbio Internacional?',
+    badge: 'Art. 52 • Res. 05/2016',
+    icon: 'bi-airplane-fill',
+    cat: 'modalidades',
+    a: 'O Art. 52 assegura ao discente o direito de realizar mobilidade acadêmica mantendo o vínculo com a UFMG, nos termos da Resolução nº 05/2016. O intercâmbio internacional é gerenciado pela DRI/UFMG com seleção semestral e oferta de disciplinas de Inglês para Fins Acadêmicos (IFA). O intercâmbio nacional ocorre via convênio ANDIFES/PROGRAD.',
+    links: [
+      { label: 'Resolução 05/2016 - Mobilidade Estudantil (PDF)', url: '/documentos/resolucao-05-2016-mobilidade-estudantil.pdf' },
+    ],
+  },
+  {
+    id: 'dispensa-estagio',
+    q: '6. Já trabalho no setor público. Preciso fazer o Estágio Obrigatório?',
+    badge: 'Art. 41 • Setor Público',
+    icon: 'bi-briefcase-fill',
+    cat: 'dispensa',
+    a: 'Não necessariamente! Conforme o Art. 41 do Regulamento, se você possui vínculo de trabalho (efetivo, contratado ou comissionado) em órgãos governamentais ou entidades públicas, pode solicitar dispensa com integralização curricular apresentando formulário oficial de integralização por experiência profissional no início do semestre e relatório de atividades ao final.',
+    links: [
+      { label: 'Requerimento Dispensa Art. 41 (PDF)', url: '/documentos/estagio-requerimento-integralizacao-experiencia-profissional.pdf' },
+      { label: 'Relatório de Atividades Art. 41 (PDF)', url: '/documentos/estagio-relatorio-atividades-experiencia-profissional.pdf' },
+      { label: 'Manual de Estágio FAFICH (PDF)', url: '/documentos/estagio-manual-orientacoes-fafich.pdf' },
+    ],
+  },
+  {
+    id: 'horarios-atendimento',
+    q: '7. Como funciona o atendimento presencial para estudantes do turno noturno?',
+    badge: 'F-2039 & CEAG 2º Andar',
+    icon: 'bi-moon-stars-fill',
+    cat: 'modalidades',
+    a: 'A Secretaria do Curso de Gestão Pública (Sala F-2039, com a secretária Norma Guedes) atende às quartas-feiras das 13h00 às 19h00. O suporte continuado de graduação é realizado pela Central de Atendimento à Graduação (CEAG FAFICH, localizada no 2º andar, Sala F-2033), que atende de segunda a sexta, das 08h00 às 22h00 ininterruptamente, cobrindo integralmente o turno noturno. E-mail do Colegiado: coordgestaopublica@gmail.com.',
+    links: [],
+  },
+  {
+    id: 'aproveitamento',
+    q: '8. Qual o prazo máximo para pedir aproveitamento de estudos?',
+    badge: 'Res. CEPE 06/2019',
+    icon: 'bi-calendar-check-fill',
+    cat: 'dispensa',
+    a: 'Conforme o Art. 2º, inciso I da Resolução CEPE nº 06/2019, o requerimento de aproveitamento de estudos realizados em outras instituições de ensino superior só pode ser submetido até o final do 2º período letivo no curso. Após esse prazo decadencial, extingue-se o direito de requerer convalidação. Preencha os formulários oficiais do Colegiado e do DRCA anexando histórico e ementas carimbadas.',
+    links: [
+      { label: 'Requerimento Colegiado (PDF)', url: '/documentos/requerimento-aproveitamento-de-estudos-colegiado.pdf' },
+      { label: 'Requerimento DRCA (PDF)', url: '/documentos/requerimento-aproveitamento-de-estudos-drca.pdf' },
+      { label: 'Resolução CEPE 06/2019 (PDF)', url: '/documentos/resolucao-cepe-06-2019-aproveitamento-estudos.pdf' },
+    ],
+  },
+  {
+    id: 'imersao',
+    q: '9. O que é o Programa de Imersão e os Laboratórios de Gestão A e B?',
+    badge: 'SIEX 109111 / 109109',
+    icon: 'bi-geo-alt-fill',
+    cat: 'modalidades',
+    a: 'Criado pelo Colegiado em 2017/2, o Programa de Imersão integra ensino e extensão por meio das matérias obrigatórias de Laboratório de Gestão e Políticas Públicas A e B (7º e 8º períodos). Os discentes produzem diagnósticos e planos de ação para órgãos e prefeituras reais, contabilizando horas de extensão no SIEX (nº 109111 e nº 109109).',
+    links: [],
+  },
+  {
+    id: 'raep-saude',
+    q: '10. Como solicitar Regime Especial de Graduação (RAEP) ou Avaliação Médica?',
+    badge: 'RAEP • Saúde & Parentalidade',
+    icon: 'bi-heart-pulse-fill',
+    cat: 'saude',
+    a: 'Estudantes impossibilitados de frequentar as aulas presenciais por motivo de saúde (superior a 15 dias) ou licença gestante/paternidade têm direito ao Regime Especial de Aprendizagem (RAEP). O pedido deve ser aberto no SEI ou presencialmente no CEAG/DRCA com atestado médico, submetendo-se à perícia médica oficial da UFMG.',
+    links: [
+      { label: 'Requerimento de Regime Especial RAEP (PDF)', url: '/documentos/requerimento-regime-especial-graduacao.pdf' },
+      { label: 'Roteiro RAEP para Estudantes (PDF)', url: '/documentos/roteiro-regime-especial-raep-estudante.pdf' },
+      { label: 'Requerimento de Avaliação Médica (PDF)', url: '/documentos/requerimento-avaliacao-medica.pdf' },
+    ],
+  },
+  {
+    id: 'exame-especial',
+    q: '11. Como funciona a inscrição para o Exame Especial (2ª Época)?',
+    badge: 'NGG Art. 82',
+    icon: 'bi-pencil-square',
+    cat: 'matricula',
+    a: 'O discente que obtiver nota final entre 40 e 59 pontos e frequência mínima de 75% tem direito estatutário de prestar o Exame Especial da disciplina. O requerimento deve ser preenchido e protocolado junto à secretaria do departamento responsável pela matéria dentro dos prazos do calendário acadêmico.',
+    links: [
+      { label: 'Requerimento de Inscrição em Exame Especial (PDF)', url: '/documentos/requerimento-inscricao-exame-especial.pdf' },
+    ],
+  },
+  {
+    id: 'colacao-diploma',
+    q: '12. Como proceder para Colação de Grau e emissão prioritária de Diploma?',
+    badge: 'Formatura & Registro',
+    icon: 'bi-mortarboard-fill',
+    cat: 'conclusao',
+    a: 'Ao integralizar as 3.000 horas do curso, o formando deve protocolar o requerimento de inscrição na Colação de Grau tanto no Colegiado quanto no DRCA. Caso necessite do diploma com urgência para posse em concurso público, nomeação em cargo ou matrícula em pós-graduação, utilize o formulário de pedido de prioridade no registro de diploma com comprovação documental.',
+    links: [
+      { label: 'Inscrição Colação - Colegiado (PDF)', url: '/documentos/requerimento-inscricao-colacao-de-grau-colegiado.pdf' },
+      { label: 'Inscrição Colação - DRCA (PDF)', url: '/documentos/requerimento-inscricao-colacao-de-grau-drca.pdf' },
+      { label: 'Prioridade no Registro de Diploma (PDF)', url: '/documentos/requerimento-prioridade-registro-diploma.pdf' },
+    ],
+  },
+  {
+    id: 'mudanca-turno-isolada',
+    q: '13. Como solicitar Mudança de Turno ou cursar Disciplina Isolada?',
+    badge: 'Mobilidade Interna',
+    icon: 'bi-shuffle',
+    cat: 'matricula',
+    a: 'Para solicitar transferência de turno ou matrícula em disciplinas isoladas na UFMG por estudantes externos ou graduados, os formulários padronizados do DRCA devem ser preenchidos e protocolados nos períodos estipulados pelo Calendário Universitário.',
+    links: [
+      { label: 'Requerimento de Mudança de Turno (PDF)', url: '/documentos/requerimento-mudanca-de-turno.pdf' },
+      { label: 'Requerimento de Disciplina Isolada (PDF)', url: '/documentos/requerimento-matricula-disciplina-isolada.pdf' },
+      { label: 'Requerimento Transferência Externa (PDF)', url: '/documentos/requerimento-transferencia-outra-ies.pdf' },
+    ],
+  },
+  {
+    id: 'revisao-desligamento',
+    q: '14. Recebi notificação de Desligamento / Jubilamento. Como recorrer?',
+    badge: 'Defesa & Plano de Estudos',
+    icon: 'bi-exclamation-octagon-fill',
+    cat: 'defesa',
+    a: 'O estudante em vias de desligamento (por ultrapassar o prazo máximo de 17 semestres, reprovações consecutivas ou rendimento insuficiente) tem direito à ampla defesa. É obrigatório apresentar um Plano de Estudos circunstanciado ao Colegiado do Curso e protocolar recurso formal perante o DRCA/UFMG para prorrogação do prazo de integralização.',
+    links: [
+      { label: 'Revisão Desligamento - Plano de Estudos Colegiado (PDF)', url: '/documentos/requerimento-revisao-desligamento-plano-estudos-colegiado.pdf' },
+      { label: 'Revisão Desligamento - Plano DRCA (PDF)', url: '/documentos/requerimento-revisao-desligamento-plano-integralizacao-drca.pdf' },
+    ],
+  },
+  {
+    id: 'dcn-cepe',
+    q: '15. Quais as Diretrizes Nacionais (CNE) e Resoluções Gerais de Graduação (CEPE)?',
+    badge: 'DCN & CEPE',
+    icon: 'bi-journal-bookmark-fill',
+    cat: 'normas',
+    a: 'A estrutura curricular de Gestão Pública cumpre rigorosamente as Resoluções do CEPE (Normas Gerais de Graduação nº 01/2018 e Transição nº 11/2018) e as Diretrizes Curriculares Nacionais do CNE para Educação Ambiental, Educação em Direitos Humanos e Relações Étnico-Raciais.',
+    links: [
+      { label: 'Resolução CEPE 01/2018 - Normas Gerais Graduação (PDF)', url: '/documentos/resolucao-cepe-01-2018-normas-gerais-graduacao.pdf' },
+      { label: 'Resolução CEPE 11/2018 - Regras de Transição (PDF)', url: '/documentos/resolucao-cepe-11-2018-regras-transicao-graduacao.pdf' },
+      { label: 'CNE - DCN Educação Ambiental 2012 (PDF)', url: '/documentos/cne-dcn-educacao-ambiental-2012.pdf' },
+      { label: 'CNE - DCN Direitos Humanos 2012 (PDF)', url: '/documentos/cne-dcn-educacao-direitos-humanos-2012.pdf' },
+      { label: 'CNE - DCN Relações Étnico-Raciais 2004 (PDF)', url: '/documentos/cne-dcn-relacoes-etnico-raciais-2004.pdf' },
+      { label: 'CNE - Parecer 003/2004 Relações Étnico-Raciais (PDF)', url: '/documentos/cne-parecer-003-2004-relacoes-etnico-raciais.pdf' },
+    ],
+  },
+];
+---
+
+<BaseLayout title="Dúvidas Frequentes & Acessibilidade" description="Perguntas frequentes regimentais e recursos de acessibilidade institucional do curso de Gestão Pública UFMG.">
+  <PageHeader
+    eyebrow="Eixo 4 · Dúvidas Regimentais & Suporte"
+    title="Perguntas Frequentes & Acessibilidade"
+    subtitle="Respostas regimentais sobre trancamento, pré-requisitos, dispensa de estágio (Art. 41), EaD, turno noturno e recursos de inclusão NAI/UFMG."
+    badges={badges}
+  />
+
+  <SegmentedControl tabs={tabs} defaultTab="v1" />
+
+  <!-- Sub-view 1: Perguntas Frequentes -->
+  <section id="ws-panel-v1" class="cagp-workspace-view space-y-2" data-ws-panel="v1">
+    <div id="faq" class="cagp-anchor-target scroll-mt-24"></div>
+    <div class="space-y-2">
+      {faqs.map((f) => (
+        <NormativeDetails id={f.id} title={f.q} badge={f.badge} icon={f.icon}>
+          <div class="space-y-3">
+            <p class="text-xs text-gray-700 leading-relaxed m-0">{f.a}</p>
+            {f.links && f.links.length > 0 && (
+              <div class="pt-2 border-t border-[#DFDBD2] flex flex-wrap gap-2">
+                {f.links.map((link) => (
+                  <a
+                    href={asset(link.url)}
+                    download
+                    class="min-h-[44px] px-3 py-1.5 bg-[#F7F5F0] hover:bg-[#8B1E2D] hover:text-white border border-[#DFDBD2] hover:border-[#0A0A0A] rounded-lg text-xs font-mono font-bold text-[#0A0A0A] inline-flex items-center gap-2 transition-colors no-underline shadow-xs cursor-pointer"
+                  >
+                    <i class="bi bi-file-earmark-pdf text-[#8B1E2D] text-sm group-hover:text-white" aria-hidden="true" />
+                    <span>{link.label}</span>
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </NormativeDetails>
+      ))}
+    </div>
+  </section>
+
+  <!-- Sub-view 2: Acessibilidade & NAI -->
+  <section id="ws-panel-v2" class="cagp-workspace-view space-y-3" data-ws-panel="v2" hidden>
+    <div id="acessibilidade" class="cagp-tool-box p-4 space-y-3 text-xs text-gray-700 leading-relaxed">
+      <div class="flex items-center justify-between border-b border-[#DFDBD2] pb-2 flex-wrap gap-2">
+        <div class="flex items-center gap-2">
+          <i class="bi bi-universal-access text-[#8B1E2D] text-lg" aria-hidden="true"></i>
+          <h3 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A]">
+            Núcleo de Acessibilidade e Inclusão (NAI/UFMG)
+          </h3>
+        </div>
+        <span class="cagp-badge cagp-badge-green font-mono">
+          Apoio Pedagógico
+        </span>
+      </div>
+
+      <p>
+        O NAI assessora estudantes com deficiência física, visual, auditiva, transtorno do espectro autista e altas habilidades, garantindo mediação pedagógica, adaptação de provas e tecnologias assistivas.
+      </p>
+
+      <div class="p-3 bg-white rounded-[6px] border border-[#DFDBD2] space-y-1 shadow-[1px_1px_0_#0A0A0A]">
+        <p><strong>Contato Oficial:</strong> <span class="font-mono text-[#8B1E2D] font-bold">nai@ufmg.br</span> • Tel: (31) 3409-4090</p>
+        <p><strong>Atendimento Presencial:</strong> Prédio da Biblioteca Central da UFMG, 1º Andar, Campus Pampulha</p>
+        <p><strong>Equipe de Tradutores-Intérpretes de Libras:</strong> Suporte em aulas expositivas e eventos acadêmicos</p>
+      </div>
+
+      <div class="pt-1">
+        <button
+          type="button"
+          onclick="window.dispatchEvent(new CustomEvent('cagp:open-a11y'))"
+          class="cagp-btn-primary inline-flex items-center gap-1.5 text-xs py-1.5 px-3"
+        >
+          <i class="bi bi-universal-access" aria-hidden="true"></i> Abrir Painel de Acessibilidade do Super App
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Journey Navigation Trail -->
+  <JourneyNav
+    prev={{
+      title: 'Acervo de Documentos & Modelos',
+      href: '/documentos',
+      desc: 'Acesse o PPC, Regulamento, Ementário, Regimento CAGP e formulários oficiais.',
+    }}
+    next={{
+      title: 'Sobre o CAGP & Governança Discente',
+      href: '/sobre',
+      desc: 'Regimento Interno 2024, as 7 Diretorias Executivas, Assembleia Geral e Os Candangos.',
+    }}
+  />
+</BaseLayout>

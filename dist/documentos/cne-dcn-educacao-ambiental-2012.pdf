@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head itemscope itemtype="https://schema.org/WebSite">
+<meta charset="UTF-8" />
+<meta name="description" content="Faculdade de Filosofia e Ciências Humanas" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fafich – Faculdade de Filosofia e Ciências Humanas</title>
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//cdn.jsdelivr.net' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+<link rel="alternate" type="application/rss+xml" title="Feed para Fafich &raquo;" href="https://www.fafich.ufmg.br/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Feed de comentários para Fafich &raquo;" href="https://www.fafich.ufmg.br/comments/feed/" />
+<link rel="canonical" href="https://www.fafich.ufmg.br/" />
+		<!-- This site uses the Google Analytics by MonsterInsights plugin v9.1.1 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+							<script src="//www.googletagmanager.com/gtag/js?id=G-QGY24MJYSH"  data-cfasync="false" data-wpfc-render="false" async></script>
+			<script data-cfasync="false" data-wpfc-render="false">
+				var mi_version = '9.1.1';
+				var mi_track_user = true;
+				var mi_no_track_reason = '';
+								var MonsterInsightsDefaultLocations = {"page_location":"https:\/\/www.fafich.ufmg.br\/"};
+				if ( typeof MonsterInsightsPrivacyGuardFilter === 'function' ) {
+					var MonsterInsightsLocations = (typeof MonsterInsightsExcludeQuery === 'object') ? MonsterInsightsPrivacyGuardFilter( MonsterInsightsExcludeQuery ) : MonsterInsightsPrivacyGuardFilter( MonsterInsightsDefaultLocations );
+				} else {
+					var MonsterInsightsLocations = (typeof MonsterInsightsExcludeQuery === 'object') ? MonsterInsightsExcludeQuery : MonsterInsightsDefaultLocations;
+				}
+
+								var disableStrs = [
+										'ga-disable-G-QGY24MJYSH',
+									];
+
+				/* Function to detect opted out users */
+				function __gtagTrackerIsOptedOut() {
+					for (var index = 0; index < disableStrs.length; index++) {
+						if (document.cookie.indexOf(disableStrs[index] + '=true') > -1) {
+							return true;
+						}
+					}
+
+					return false;
+				}
+
+				/* Disable tracking if the opt-out cookie exists. */
+				if (__gtagTrackerIsOptedOut()) {
+					for (var index = 0; index < disableStrs.length; index++) {
+						window[disableStrs[index]] = true;
+					}
+				}
+
+				/* Opt-out function */
+				function __gtagTrackerOptout() {
+					for (var index = 0; index < disableStrs.length; index++) {
+						document.cookie = disableStrs[index] + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+						window[disableStrs[index]] = true;
+					}
+				}
+
+				if ('undefined' === typeof gaOptout) {
+					function gaOptout() {
+						__gtagTrackerOptout();
+					}
+				}
+								window.dataLayer = window.dataLayer || [];
+
+				window.MonsterInsightsDualTracker = {
+					helpers: {},
+					trackers: {},
+				};
+				if (mi_track_user) {
+					function __gtagDataLayer() {
+						dataLayer.push(arguments);
+					}
+
+					function __gtagTracker(type, name, parameters) {
+						if (!parameters) {
+							parameters = {};
+						}
+
+						if (parameters.send_to) {
+							__gtagDataLayer.apply(null, arguments);
+							return;
+						}
+
+						if (type === 'event') {
+														parameters.send_to = monsterinsights_frontend.v4_id;
+							var hookName = name;
+							if (typeof parameters['event_category'] !== 'undefined') {
+								hookName = parameters['event_category'] + ':' + name;
+							}
+
+							if (typeof MonsterInsightsDualTracker.trackers[hookName] !== 'undefined') {
+								MonsterInsightsDualTracker.trackers[hookName](parameters);
+							} else {
+								__gtagDataLayer('event', name, parameters);
+							}
+							
+						} else {
+							__gtagDataLayer.apply(null, arguments);
+						}
+					}
+
+					__gtagTracker('js', new Date());
+					__gtagTracker('set', {
+						'developer_id.dZGIzZG': true,
+											});
+					if ( MonsterInsightsLocations.page_location ) {
+						__gtagTracker('set', MonsterInsightsLocations);
+					}
+										__gtagTracker('config', 'G-QGY24MJYSH', {"forceSSL":"true","link_attribution":"true"} );
+															window.gtag = __gtagTracker;										(function () {
+						/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+						/* ga and __gaTracker compatibility shim. */
+						var noopfn = function () {
+							return null;
+						};
+						var newtracker = function () {
+							return new Tracker();
+						};
+						var Tracker = function () {
+							return null;
+						};
+						var p = Tracker.prototype;
+						p.get = noopfn;
+						p.set = noopfn;
+						p.send = function () {
+							var args = Array.prototype.slice.call(arguments);
+							args.unshift('send');
+							__gaTracker.apply(null, args);
+						};
+						var __gaTracker = function () {
+							var len = arguments.length;
+							if (len === 0) {
+								return;
+							}
+							var f = arguments[len - 1];
+							if (typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function') {
+								if ('send' === arguments[0]) {
+									var hitConverted, hitObject = false, action;
+									if ('event' === arguments[1]) {
+										if ('undefined' !== typeof arguments[3]) {
+											hitObject = {
+												'eventAction': arguments[3],
+												'eventCategory': arguments[2],
+												'eventLabel': arguments[4],
+												'value': arguments[5] ? arguments[5] : 1,
+											}
+										}
+									}
+									if ('pageview' === arguments[1]) {
+										if ('undefined' !== typeof arguments[2]) {
+											hitObject = {
+												'eventAction': 'page_view',
+												'page_path': arguments[2],
+											}
+										}
+									}
+									if (typeof arguments[2] === 'object') {
+										hitObject = arguments[2];
+									}
+									if (typeof arguments[5] === 'object') {
+										Object.assign(hitObject, arguments[5]);
+									}
+									if ('undefined' !== typeof arguments[1].hitType) {
+										hitObject = arguments[1];
+										if ('pageview' === hitObject.hitType) {
+											hitObject.eventAction = 'page_view';
+										}
+									}
+									if (hitObject) {
+										action = 'timing' === arguments[1].hitType ? 'timing_complete' : hitObject.eventAction;
+										hitConverted = mapArgs(hitObject);
+										__gtagTracker('event', action, hitConverted);
+									}
+								}
+								return;
+							}
+
+							function mapArgs(args) {
+								var arg, hit = {};
+								var gaMap = {
+									'eventCategory': 'event_category',
+									'eventAction': 'event_action',
+									'eventLabel': 'event_label',
+									'eventValue': 'event_value',
+									'nonInteraction': 'non_interaction',
+									'timingCategory': 'event_category',
+									'timingVar': 'name',
+									'timingValue': 'value',
+									'timingLabel': 'event_label',
+									'page': 'page_path',
+									'location': 'page_location',
+									'title': 'page_title',
+									'referrer' : 'page_referrer',
+								};
+								for (arg in args) {
+																		if (!(!args.hasOwnProperty(arg) || !gaMap.hasOwnProperty(arg))) {
+										hit[gaMap[arg]] = args[arg];
+									} else {
+										hit[arg] = args[arg];
+									}
+								}
+								return hit;
+							}
+
+							try {
+								f.hitCallback();
+							} catch (ex) {
+							}
+						};
+						__gaTracker.create = newtracker;
+						__gaTracker.getByName = newtracker;
+						__gaTracker.getAll = function () {
+							return [];
+						};
+						__gaTracker.remove = noopfn;
+						__gaTracker.loaded = true;
+						window['__gaTracker'] = __gaTracker;
+					})();
+									} else {
+										console.log("");
+					(function () {
+						function __gtagTracker() {
+							return null;
+						}
+
+						window['__gtagTracker'] = __gtagTracker;
+						window['gtag'] = __gtagTracker;
+					})();
+									}
+			</script>
+				<!-- / Google Analytics by MonsterInsights -->
+		<script>
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.fafich.ufmg.br\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.6.2"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!n(e,"\ud83d\udc26\u200d\u2b1b","\ud83d\udc26\u200b\u2b1b")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+</script>
+<link rel='stylesheet' id='genesis-blocks-style-css-css' href='https://www.fafich.ufmg.br/wp-content/plugins/genesis-blocks/dist/style-blocks.build.css?ver=1721764068' media='all' />
+<link rel='stylesheet' id='fafich-css' href='https://www.fafich.ufmg.br/wp-content/themes/fafich/style.css?ver=3.4.1' media='all' />
+<style id='fafich-inline-css'>
+
+		.wp-custom-logo .site-container .custom-logo-link {
+			aspect-ratio: 350/59.710798620324;
+		}
+		
+		.wp-custom-logo .title-area {
+			padding-top: 5.1446006898382px;
+		}
+		
+</style>
+<style id='wp-emoji-styles-inline-css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='https://www.fafich.ufmg.br/wp-includes/css/dist/block-library/style.min.css?ver=6.6.2' media='all' />
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--theme-primary: #C10A1E;--wp--preset--color--theme-secondary: #C10A1E;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--font-size--normal: 18px;--wp--preset--font-size--larger: 24px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:root { --wp--style--global--content-size: 702px;--wp--style--global--wide-size: 1062px; }:where(body) { margin: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: 1em; margin-block-end: 0; }:where(.wp-site-blocks) > :first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child { margin-block-end: 0; }:root { --wp--style--block-gap: 1em; }:root :where(.is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.is-layout-flow) > *{margin-block-start: 1em;margin-block-end: 0;}:root :where(.is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.is-layout-constrained) > *{margin-block-start: 1em;margin-block-end: 0;}:root :where(.is-layout-flex){gap: 1em;}:root :where(.is-layout-grid){gap: 1em;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}a:where(:not(.wp-element-button)){text-decoration: underline;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;line-height: inherit;padding: calc(0.667em + 2px) calc(1.333em + 2px);text-decoration: none;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-theme-primary-color{color: var(--wp--preset--color--theme-primary) !important;}.has-theme-secondary-color{color: var(--wp--preset--color--theme-secondary) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-theme-primary-background-color{background-color: var(--wp--preset--color--theme-primary) !important;}.has-theme-secondary-background-color{background-color: var(--wp--preset--color--theme-secondary) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-theme-primary-border-color{border-color: var(--wp--preset--color--theme-primary) !important;}.has-theme-secondary-border-color{border-color: var(--wp--preset--color--theme-secondary) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-normal-font-size{font-size: var(--wp--preset--font-size--normal) !important;}.has-larger-font-size{font-size: var(--wp--preset--font-size--larger) !important;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='dashicons-css' href='https://www.fafich.ufmg.br/wp-includes/css/dashicons.min.css?ver=6.6.2' media='all' />
+<link rel='stylesheet' id='fafich-fonts-css' href='https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700&#038;display=swap' media='all' />
+<link rel='stylesheet' id='fafich-gutenberg-css' href='https://www.fafich.ufmg.br/wp-content/themes/fafich/lib/gutenberg/front-end.css?ver=3.4.1' media='all' />
+<style id='fafich-gutenberg-inline-css'>
+.gb-block-post-grid .gb-post-grid-items h2 a:hover {
+	color: #C10A1E;
+}
+
+.site-container .wp-block-button .wp-block-button__link {
+	background-color: #C10A1E;
+}
+
+.wp-block-button .wp-block-button__link:not(.has-background),
+.wp-block-button .wp-block-button__link:not(.has-background):focus,
+.wp-block-button .wp-block-button__link:not(.has-background):hover {
+	color: #ffffff;
+}
+
+.site-container .wp-block-button.is-style-outline .wp-block-button__link {
+	color: #C10A1E;
+}
+
+.site-container .wp-block-button.is-style-outline .wp-block-button__link:focus,
+.site-container .wp-block-button.is-style-outline .wp-block-button__link:hover {
+	color: #e42d41;
+}		.site-container .has-small-font-size {
+			font-size: 12px;
+		}		.site-container .has-normal-font-size {
+			font-size: 18px;
+		}		.site-container .has-large-font-size {
+			font-size: 20px;
+		}		.site-container .has-larger-font-size {
+			font-size: 24px;
+		}		.site-container .has-theme-primary-color,
+		.site-container .wp-block-button .wp-block-button__link.has-theme-primary-color,
+		.site-container .wp-block-button.is-style-outline .wp-block-button__link.has-theme-primary-color {
+			color: #C10A1E;
+		}
+
+		.site-container .has-theme-primary-background-color,
+		.site-container .wp-block-button .wp-block-button__link.has-theme-primary-background-color,
+		.site-container .wp-block-pullquote.is-style-solid-color.has-theme-primary-background-color {
+			background-color: #C10A1E;
+		}		.site-container .has-theme-secondary-color,
+		.site-container .wp-block-button .wp-block-button__link.has-theme-secondary-color,
+		.site-container .wp-block-button.is-style-outline .wp-block-button__link.has-theme-secondary-color {
+			color: #C10A1E;
+		}
+
+		.site-container .has-theme-secondary-background-color,
+		.site-container .wp-block-button .wp-block-button__link.has-theme-secondary-background-color,
+		.site-container .wp-block-pullquote.is-style-solid-color.has-theme-secondary-background-color {
+			background-color: #C10A1E;
+		}
+</style>
+<link rel='stylesheet' id='pojo-a11y-css' href='https://www.fafich.ufmg.br/wp-content/plugins/pojo-accessibility/assets/css/style.min.css?ver=1.0.0' media='all' />
+<script src="https://www.fafich.ufmg.br/wp-content/plugins/svg-support/vendor/DOMPurify/DOMPurify.min.js?ver=1.0.1" id="bodhi-dompurify-library-js"></script>
+<script src="https://www.fafich.ufmg.br/wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend-gtag.js?ver=9.1.1" id="monsterinsights-frontend-script-js" async data-wp-strategy="async"></script>
+<script data-cfasync="false" data-wpfc-render="false" id='monsterinsights-frontend-script-js-extra'>var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions":"doc,pdf,ppt,zip,xls,docx,pptx,xlsx","inbound_paths":"[{\"path\":\"\\\/go\\\/\",\"label\":\"affiliate\"},{\"path\":\"\\\/recommend\\\/\",\"label\":\"affiliate\"}]","home_url":"https:\/\/www.fafich.ufmg.br","hash_tracking":"false","v4_id":"G-QGY24MJYSH"};</script>
+<script src="https://www.fafich.ufmg.br/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script src="https://www.fafich.ufmg.br/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script src="https://www.fafich.ufmg.br/wp-content/plugins/svg-support/js/min/svgs-inline-min.js?ver=2.5.8" id="bodhi_svg_inline-js"></script>
+<script id="bodhi_svg_inline-js-after">
+cssTarget={"Bodhi":"img.style-svg","ForceInlineSVG":"style-svg"};ForceInlineSVGActive="false";frontSanitizationEnabled="on";
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide?ver=6.6.2" id="glide-js"></script>
+<script src="https://www.fafich.ufmg.br/wp-content/themes/fafich/script.js?ver=6.6.2" id="main-script-js"></script>
+<link rel="https://api.w.org/" href="https://www.fafich.ufmg.br/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://www.fafich.ufmg.br/wp-json/wp/v2/pages/11483" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.fafich.ufmg.br/xmlrpc.php?rsd" />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://www.fafich.ufmg.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.fafich.ufmg.br%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://www.fafich.ufmg.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.fafich.ufmg.br%2F&#038;format=xml" />
+<link rel="pingback" href="https://www.fafich.ufmg.br/xmlrpc.php" />
+<meta itemprop="name" content="Fafich" />
+<meta itemprop="url" content="https://www.fafich.ufmg.br/" />
+<script>
+  (function (s, e, n, d, er) {
+    s['Sender'] = er;
+    s[er] = s[er] || function () {
+      (s[er].q = s[er].q || []).push(arguments)
+    }, s[er].l = 1 * new Date();
+    var a = e.createElement(n),
+        m = e.getElementsByTagName(n)[0];
+    a.async = 1;
+    a.src = d;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://cdn.sender.net/accounts_resources/universal.js', 'sender');
+  sender('c586ed50f78768')
+</script><style type="text/css">
+#pojo-a11y-toolbar .pojo-a11y-toolbar-toggle a{ background-color: #4054b2;	color: #ffffff;}
+#pojo-a11y-toolbar .pojo-a11y-toolbar-overlay, #pojo-a11y-toolbar .pojo-a11y-toolbar-overlay ul.pojo-a11y-toolbar-items.pojo-a11y-links{ border-color: #4054b2;}
+body.pojo-a11y-focusable a:focus{ outline-style: solid !important;	outline-width: 1px !important;	outline-color: #FF0000 !important;}
+#pojo-a11y-toolbar{ top: 160px !important;}
+#pojo-a11y-toolbar .pojo-a11y-toolbar-overlay{ background-color: #ffffff;}
+#pojo-a11y-toolbar .pojo-a11y-toolbar-overlay ul.pojo-a11y-toolbar-items li.pojo-a11y-toolbar-item a, #pojo-a11y-toolbar .pojo-a11y-toolbar-overlay p.pojo-a11y-toolbar-title{ color: #333333;}
+#pojo-a11y-toolbar .pojo-a11y-toolbar-overlay ul.pojo-a11y-toolbar-items li.pojo-a11y-toolbar-item a.active{ background-color: #4054b2;	color: #ffffff;}
+@media (max-width: 767px) { #pojo-a11y-toolbar { top: 160px !important; } }</style><link rel="icon" href="https://www.fafich.ufmg.br/wp-content/uploads/cropped-13_-icone-com-fundo-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://www.fafich.ufmg.br/wp-content/uploads/cropped-13_-icone-com-fundo-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.fafich.ufmg.br/wp-content/uploads/cropped-13_-icone-com-fundo-180x180.png" />
+<meta name="msapplication-TileImage" content="https://www.fafich.ufmg.br/wp-content/uploads/cropped-13_-icone-com-fundo-270x270.png" />
+		<style id="wp-custom-css">
+			.gb-accordion-text .wp-block-table table {
+	width: 99.9%;
+}
+
+.gb-accordion-text .wp-block-table th {
+  background-color: #f6f6f6;
+}
+
+.gb-accordion-text .wp-block-table td,
+.gb-accordion-text .wp-block-table th {
+  border: none !important;
+}
+.gb-accordion-text .wp-block-table tr {
+  border-top: 1px solid #e6e6e6;
+}
+
+.gb-accordion-text .wp-block-table tbody {
+  border-bottom: 1px solid #e6e6e6;
+}
+
+/* sidebar administrativa */
+
+#menu-administrativo > li {
+	list-style-type: none;
+	color: #999;
+}
+
+#menu-administrativo a {
+	text-decoration: none;
+	color: #777;
+	font-weight: normal;
+}
+
+#menu-administrativo a:hover {
+	text-decoration: underline;
+}
+
+#menu-administrativo .current-menu-ancestor > a ,
+#menu-administrativo .current-menu-item > a,
+#menu-administrativo a[aria-current="page"] {
+	color: #666;
+	font-weight: bold;
+}
+
+#menu-administrativo .sub-menu > li {
+	list-style-type: square;
+}
+
+/* nova barra de notícias */
+
+.noticias-destacadas ul {
+	padding-left: 0;
+}
+
+.noticias-destacadas li {
+	list-style-type: none !important;
+}
+
+.noticias-destacadas a {
+	text-decoration: none;
+	color: unset;
+}
+
+/* Acessibilidade */
+
+#gt_float_wrapper {
+  top: 105px !important;
+  right: 0 !important;
+}
+#gt_float_wrapper .gt_float_switcher {
+	box-shadow: none;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12.8px;
+	border: 1px solid #ccc;
+}
+
+#gt_float_wrapper .gt-current-lang {
+	background: #fff !important;
+	box-shadow: none;
+	font-size: 16px;
+	text-align: left;
+}
+
+.pojo-a11y-toolbar-items a:where(:not(.wp-element-button)) {
+	text-decoration: none;
+}
+
+/* Ajustes visuais */
+
+#genesis-nav-primary {
+	background-color: #1F3748;
+	box-shadow: 0 0 8px 5px rgba(0,0,0,0.2);
+	border-bottom: 1px solid #ccc;
+}
+
+@media (max-width: 767px) {
+	.mega-menu-toggle {
+		background-color: #1F3748 !important;
+	}
+}
+
+@media (min-width: 768px) {
+	#genesis-nav-primary {
+		padding: 10px 0;
+	}
+	#mega-menu-primary > li > a.mega-menu-link + .mega-sub-menu {
+		border-top: 12px solid #1F3748 !important;
+	}  
+}
+
+body {
+	background-image: none;
+}
+
+.site-container {
+	background: -webkit-linear-gradient(180deg,rgba(250, 245, 240, 1) 0%, rgba(255, 255, 255, 1) 100%);
+	background: -moz-linear-gradient(180deg,rgba(250, 245, 240, 1) 0%, rgba(255, 255, 255, 1) 100%);
+	background: linear-gradient(180deg,rgba(250, 245, 240, 1) 0%, rgba(255, 255, 255, 1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(
+  startColorstr="#FFFCF9",
+  endColorstr="#FFFFFF",
+  GradientType=0);	
+}
+
+		</style>
+		<style type="text/css">@charset "UTF-8";/** THIS FILE IS AUTOMATICALLY GENERATED - DO NOT MAKE MANUAL EDITS! **//** Custom CSS should be added to Mega Menu > Menu Themes > Custom Styling **/.mega-menu-last-modified-1782840917 {content: "Tuesday 30th June 2026 17:35:17 UTC";}#mega-menu-wrap-primary, #mega-menu-wrap-primary #mega-menu-primary, #mega-menu-wrap-primary #mega-menu-primary ul.mega-sub-menu, #mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item, #mega-menu-wrap-primary #mega-menu-primary li.mega-menu-row, #mega-menu-wrap-primary #mega-menu-primary li.mega-menu-column, #mega-menu-wrap-primary #mega-menu-primary a.mega-menu-link, #mega-menu-wrap-primary #mega-menu-primary span.mega-menu-badge {transition: none;border-radius: 0;box-shadow: none;background: none;border: 0;bottom: auto;box-sizing: border-box;clip: auto;color: white;display: block;float: none;font-family: inherit;font-size: 14px;height: auto;left: auto;line-height: 1.7;list-style-type: none;margin: 0;min-height: auto;max-height: none;min-width: auto;max-width: none;opacity: 1;outline: none;overflow: visible;padding: 0;position: relative;pointer-events: auto;right: auto;text-align: left;text-decoration: none;text-indent: 0;text-transform: none;transform: none;top: auto;vertical-align: baseline;visibility: inherit;width: auto;word-wrap: break-word;white-space: normal;}#mega-menu-wrap-primary:before, #mega-menu-wrap-primary:after, #mega-menu-wrap-primary #mega-menu-primary:before, #mega-menu-wrap-primary #mega-menu-primary:after, #mega-menu-wrap-primary #mega-menu-primary ul.mega-sub-menu:before, #mega-menu-wrap-primary #mega-menu-primary ul.mega-sub-menu:after, #mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item:before, #mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item:after, #mega-menu-wrap-primary #mega-menu-primary li.mega-menu-row:before, #mega-menu-wrap-primary #mega-menu-primary li.mega-menu-row:after, #mega-menu-wrap-primary #mega-menu-primary li.mega-menu-column:before, #mega-menu-wrap-primary #mega-menu-primary li.mega-menu-column:after, #mega-menu-wrap-primary #mega-menu-primary a.mega-menu-link:before, #mega-menu-wrap-primary #mega-menu-primary a.mega-menu-link:after, #mega-menu-wrap-primary #mega-menu-primary span.mega-menu-badge:before, #mega-menu-wrap-primary #mega-menu-primary span.mega-menu-badge:after {display: none;}#mega-menu-wrap-primary {border-radius: 0;}@media only screen and (min-width: 961px) {#mega-menu-wrap-primary {background: rgba(0, 0, 0, 0);}}#mega-menu-wrap-primary.mega-keyboard-navigation .mega-menu-toggle:focus, #mega-menu-wrap-primary.mega-keyboard-navigation .mega-toggle-block:focus, #mega-menu-wrap-primary.mega-keyboard-navigation .mega-toggle-block a:focus, #mega-menu-wrap-primary.mega-keyboard-navigation .mega-toggle-block .mega-search input[type=text]:focus, #mega-menu-wrap-primary.mega-keyboard-navigation .mega-toggle-block button.mega-toggle-animated:focus, #mega-menu-wrap-primary.mega-keyboard-navigation #mega-menu-primary a:focus, #mega-menu-wrap-primary.mega-keyboard-navigation #mega-menu-primary span:focus, #mega-menu-wrap-primary.mega-keyboard-navigation #mega-menu-primary input:focus, #mega-menu-wrap-primary.mega-keyboard-navigation #mega-menu-primary li.mega-menu-item a.mega-menu-link:focus, #mega-menu-wrap-primary.mega-keyboard-navigation #mega-menu-primary form.mega-search-open:has(input[type=text]:focus) {outline-style: solid;outline-width: 3px;outline-color: #109cde;outline-offset: -3px;}#mega-menu-wrap-primary.mega-keyboard-navigation .mega-toggle-block button.mega-toggle-animated:focus {outline-offset: 2px;}#mega-menu-wrap-primary.mega-keyboard-navigation > li.mega-menu-item > a.mega-menu-link:focus {background: rgba(0, 0, 0, 0);color: white;font-weight: bold;text-decoration: underline;border-color: #fff;}@media only screen and (max-width: 960px) {#mega-menu-wrap-primary.mega-keyboard-navigation > li.mega-menu-item > a.mega-menu-link:focus {color: #ffffff;background: #333;}}#mega-menu-wrap-primary #mega-menu-primary {text-align: right;padding: 0px 16px 0px 16px;}#mega-menu-wrap-primary #mega-menu-primary a.mega-menu-link {cursor: pointer;display: inline;transition: background 200ms linear, color 200ms linear, border 200ms linear;}#mega-menu-wrap-primary #mega-menu-primary a.mega-menu-link .mega-description-group {vertical-align: middle;display: inline-block;transition: none;}#mega-menu-wrap-primary #mega-menu-primary a.mega-menu-link .mega-description-group .mega-menu-title, #mega-menu-wrap-primary #mega-menu-primary a.mega-menu-link .mega-description-group .mega-menu-description {transition: none;line-height: 1.5;display: block;}#mega-menu-wrap-primary #mega-menu-primary a.mega-menu-link .mega-description-group .mega-menu-description {font-style: italic;font-size: 0.8em;text-transform: none;font-weight: normal;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu li.mega-menu-item.mega-icon-left.mega-has-description.mega-has-icon > a.mega-menu-link {display: flex;align-items: center;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu li.mega-menu-item.mega-icon-left.mega-has-description.mega-has-icon > a.mega-menu-link:before {flex: 0 0 auto;align-self: flex-start;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-tabbed.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-item.mega-icon-left.mega-has-description.mega-has-icon > a.mega-menu-link {display: block;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item.mega-icon-top > a.mega-menu-link {display: table-cell;vertical-align: middle;line-height: initial;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item.mega-icon-top > a.mega-menu-link:before {display: block;margin: 0 0 6px 0;text-align: center;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item.mega-icon-top > a.mega-menu-link > span.mega-title-below {display: inline-block;transition: none;}@media only screen and (max-width: 960px) {#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item.mega-icon-top > a.mega-menu-link {display: block;line-height: 40px;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item.mega-icon-top > a.mega-menu-link:before {display: inline-block;margin: 0 6px 0 0;text-align: left;}}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item.mega-icon-right > a.mega-menu-link:before {float: right;margin: 0 0 0 6px;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-animating > ul.mega-sub-menu {pointer-events: none;}#mega-menu-wrap-primary #mega-menu-primary li.mega-disable-link > a.mega-menu-link, #mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu li.mega-disable-link > a.mega-menu-link {cursor: inherit;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item-has-children.mega-disable-link > a.mega-menu-link, #mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > li.mega-menu-item-has-children.mega-disable-link > a.mega-menu-link {cursor: pointer;}#mega-menu-wrap-primary #mega-menu-primary p {margin-bottom: 10px;}#mega-menu-wrap-primary #mega-menu-primary input, #mega-menu-wrap-primary #mega-menu-primary img {max-width: 100%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item > ul.mega-sub-menu {display: block;visibility: hidden;opacity: 1;pointer-events: auto;}@media only screen and (max-width: 960px) {#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item > ul.mega-sub-menu {display: none;visibility: visible;opacity: 1;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item.mega-toggle-on > ul.mega-sub-menu, #mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu.mega-menu-item.mega-toggle-on ul.mega-sub-menu {display: block;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu.mega-menu-item.mega-toggle-on li.mega-hide-sub-menu-on-mobile > ul.mega-sub-menu, #mega-menu-wrap-primary #mega-menu-primary li.mega-hide-sub-menu-on-mobile > ul.mega-sub-menu {display: none;}}@media only screen and (min-width: 961px) {#mega-menu-wrap-primary #mega-menu-primary[data-effect="fade"] li.mega-menu-item > ul.mega-sub-menu {opacity: 0;transition: opacity 200ms ease-in, visibility 200ms ease-in;}#mega-menu-wrap-primary #mega-menu-primary[data-effect="fade"].mega-no-js li.mega-menu-item:hover > ul.mega-sub-menu, #mega-menu-wrap-primary #mega-menu-primary[data-effect="fade"].mega-no-js li.mega-menu-item:focus > ul.mega-sub-menu, #mega-menu-wrap-primary #mega-menu-primary[data-effect="fade"] li.mega-menu-item.mega-toggle-on > ul.mega-sub-menu, #mega-menu-wrap-primary #mega-menu-primary[data-effect="fade"] li.mega-menu-item.mega-menu-megamenu.mega-toggle-on ul.mega-sub-menu {opacity: 1;}#mega-menu-wrap-primary #mega-menu-primary[data-effect="fade_up"] li.mega-menu-item.mega-menu-megamenu > ul.mega-sub-menu, #mega-menu-wrap-primary #mega-menu-primary[data-effect="fade_up"] li.mega-menu-item.mega-menu-flyout ul.mega-sub-menu {opacity: 0;transform: translate(0, 10px);transition: opacity 200ms ease-in, transform 200ms ease-in, visibility 200ms ease-in;}#mega-menu-wrap-primary #mega-menu-primary[data-effect="fade_up"].mega-no-js li.mega-menu-item:hover > ul.mega-sub-menu, #mega-menu-wrap-primary #mega-menu-primary[data-effect="fade_up"].mega-no-js li.mega-menu-item:focus > ul.mega-sub-menu, #mega-menu-wrap-primary #mega-menu-primary[data-effect="fade_up"] li.mega-menu-item.mega-toggle-on > ul.mega-sub-menu, #mega-menu-wrap-primary #mega-menu-primary[data-effect="fade_up"] li.mega-menu-item.mega-menu-megamenu.mega-toggle-on ul.mega-sub-menu {opacity: 1;transform: translate(0, 0);}#mega-menu-wrap-primary #mega-menu-primary[data-effect="slide_up"] li.mega-menu-item.mega-menu-megamenu > ul.mega-sub-menu, #mega-menu-wrap-primary #mega-menu-primary[data-effect="slide_up"] li.mega-menu-item.mega-menu-flyout ul.mega-sub-menu {transform: translate(0, 10px);transition: transform 200ms ease-in, visibility 200ms ease-in;}#mega-menu-wrap-primary #mega-menu-primary[data-effect="slide_up"].mega-no-js li.mega-menu-item:hover > ul.mega-sub-menu, #mega-menu-wrap-primary #mega-menu-primary[data-effect="slide_up"].mega-no-js li.mega-menu-item:focus > ul.mega-sub-menu, #mega-menu-wrap-primary #mega-menu-primary[data-effect="slide_up"] li.mega-menu-item.mega-toggle-on > ul.mega-sub-menu, #mega-menu-wrap-primary #mega-menu-primary[data-effect="slide_up"] li.mega-menu-item.mega-menu-megamenu.mega-toggle-on ul.mega-sub-menu {transform: translate(0, 0);}}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item.mega-menu-megamenu ul.mega-sub-menu li.mega-collapse-children > ul.mega-sub-menu {display: none;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item.mega-menu-megamenu ul.mega-sub-menu li.mega-collapse-children.mega-toggle-on > ul.mega-sub-menu {display: block;}#mega-menu-wrap-primary #mega-menu-primary.mega-no-js li.mega-menu-item:hover > ul.mega-sub-menu, #mega-menu-wrap-primary #mega-menu-primary.mega-no-js li.mega-menu-item:focus > ul.mega-sub-menu, #mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item.mega-toggle-on > ul.mega-sub-menu {visibility: visible;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item.mega-menu-megamenu ul.mega-sub-menu ul.mega-sub-menu {visibility: inherit;opacity: 1;display: block;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item.mega-menu-megamenu ul.mega-sub-menu li.mega-1-columns > ul.mega-sub-menu > li.mega-menu-item {float: left;width: 100%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item.mega-menu-megamenu ul.mega-sub-menu li.mega-2-columns > ul.mega-sub-menu > li.mega-menu-item {float: left;width: 50%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item.mega-menu-megamenu ul.mega-sub-menu li.mega-3-columns > ul.mega-sub-menu > li.mega-menu-item {float: left;width: 33.3333333333%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item.mega-menu-megamenu ul.mega-sub-menu li.mega-4-columns > ul.mega-sub-menu > li.mega-menu-item {float: left;width: 25%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item.mega-menu-megamenu ul.mega-sub-menu li.mega-5-columns > ul.mega-sub-menu > li.mega-menu-item {float: left;width: 20%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item.mega-menu-megamenu ul.mega-sub-menu li.mega-6-columns > ul.mega-sub-menu > li.mega-menu-item {float: left;width: 16.6666666667%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item a[class^="dashicons"]:before {font-family: dashicons;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item a.mega-menu-link:before {display: inline-block;font: inherit;font-family: dashicons;position: static;margin: 0 6px 0 0px;vertical-align: top;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;color: inherit;background: transparent;height: auto;width: auto;top: auto;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item.mega-hide-text a.mega-menu-link:before {margin: 0;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item.mega-hide-text li.mega-menu-item a.mega-menu-link:before {margin: 0 6px 0 0;}#mega-menu-wrap-primary #mega-menu-primary li.mega-align-bottom-left.mega-toggle-on > a.mega-menu-link {border-radius: 0;}#mega-menu-wrap-primary #mega-menu-primary li.mega-align-bottom-right > ul.mega-sub-menu {right: 0;}#mega-menu-wrap-primary #mega-menu-primary li.mega-align-bottom-right.mega-toggle-on > a.mega-menu-link {border-radius: 0;}@media only screen and (min-width: 961px) {#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu.mega-menu-item {position: static;}}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item {margin: 0 0px 0 0;display: inline-block;height: auto;vertical-align: middle;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item.mega-item-align-right {float: right;}@media only screen and (min-width: 961px) {#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item.mega-item-align-right {margin: 0 0 0 0px;}}@media only screen and (min-width: 961px) {#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item.mega-item-align-float-left {float: left;}}@media only screen and (min-width: 961px) {#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link:hover, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link:focus {background: rgba(0, 0, 0, 0);color: white;font-weight: bold;text-decoration: underline;border-color: #fff;}}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item.mega-toggle-on > a.mega-menu-link {background: rgba(0, 0, 0, 0);color: white;font-weight: bold;text-decoration: underline;border-color: #fff;}@media only screen and (max-width: 960px) {#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item.mega-toggle-on > a.mega-menu-link {color: #ffffff;background: #333;}}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item.mega-current-menu-item > a.mega-menu-link, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item.mega-current-menu-ancestor > a.mega-menu-link, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item.mega-current-page-ancestor > a.mega-menu-link {background: rgba(0, 0, 0, 0);color: white;font-weight: bold;text-decoration: underline;border-color: #fff;}@media only screen and (max-width: 960px) {#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item.mega-current-menu-item > a.mega-menu-link, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item.mega-current-menu-ancestor > a.mega-menu-link, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item.mega-current-page-ancestor > a.mega-menu-link {color: #ffffff;background: #333;}}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link {line-height: 60px;height: 60px;padding: 0px 16px 0px 16px;vertical-align: baseline;width: auto;display: block;color: white;text-transform: none;text-decoration: none;text-align: left;background: rgba(0, 0, 0, 0);border: 0;border-radius: 0;font-family: inherit;font-size: 18px;font-weight: bold;outline: none;}@media only screen and (min-width: 961px) {#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item.mega-multi-line > a.mega-menu-link {line-height: inherit;display: table-cell;vertical-align: middle;}}@media only screen and (max-width: 960px) {#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item.mega-multi-line > a.mega-menu-link br {display: none;}}@media only screen and (max-width: 960px) {#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item {display: list-item;margin: 0;clear: both;border: 0;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item.mega-item-align-right {float: none;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link {border-radius: 0;border: 0;margin: 0;line-height: 40px;height: 40px;padding: 0 10px;background: transparent;text-align: left;color: #ffffff;font-size: 14px;}}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row {width: 100%;float: left;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row .mega-menu-column {float: left;min-height: 1px;}@media only screen and (min-width: 961px) {#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-1-of-1 {width: 100%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-1-of-2 {width: 50%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-2-of-2 {width: 100%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-1-of-3 {width: 33.3333333333%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-2-of-3 {width: 66.6666666667%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-3-of-3 {width: 100%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-1-of-4 {width: 25%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-2-of-4 {width: 50%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-3-of-4 {width: 75%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-4-of-4 {width: 100%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-1-of-5 {width: 20%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-2-of-5 {width: 40%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-3-of-5 {width: 60%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-4-of-5 {width: 80%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-5-of-5 {width: 100%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-1-of-6 {width: 16.6666666667%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-2-of-6 {width: 33.3333333333%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-3-of-6 {width: 50%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-4-of-6 {width: 66.6666666667%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-5-of-6 {width: 83.3333333333%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-6-of-6 {width: 100%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-1-of-7 {width: 14.2857142857%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-2-of-7 {width: 28.5714285714%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-3-of-7 {width: 42.8571428571%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-4-of-7 {width: 57.1428571429%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-5-of-7 {width: 71.4285714286%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-6-of-7 {width: 85.7142857143%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-7-of-7 {width: 100%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-1-of-8 {width: 12.5%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-2-of-8 {width: 25%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-3-of-8 {width: 37.5%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-4-of-8 {width: 50%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-5-of-8 {width: 62.5%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-6-of-8 {width: 75%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-7-of-8 {width: 87.5%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-8-of-8 {width: 100%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-1-of-9 {width: 11.1111111111%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-2-of-9 {width: 22.2222222222%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-3-of-9 {width: 33.3333333333%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-4-of-9 {width: 44.4444444444%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-5-of-9 {width: 55.5555555556%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-6-of-9 {width: 66.6666666667%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-7-of-9 {width: 77.7777777778%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-8-of-9 {width: 88.8888888889%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-9-of-9 {width: 100%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-1-of-10 {width: 10%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-2-of-10 {width: 20%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-3-of-10 {width: 30%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-4-of-10 {width: 40%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-5-of-10 {width: 50%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-6-of-10 {width: 60%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-7-of-10 {width: 70%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-8-of-10 {width: 80%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-9-of-10 {width: 90%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-10-of-10 {width: 100%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-1-of-11 {width: 9.0909090909%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-2-of-11 {width: 18.1818181818%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-3-of-11 {width: 27.2727272727%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-4-of-11 {width: 36.3636363636%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-5-of-11 {width: 45.4545454545%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-6-of-11 {width: 54.5454545455%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-7-of-11 {width: 63.6363636364%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-8-of-11 {width: 72.7272727273%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-9-of-11 {width: 81.8181818182%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-10-of-11 {width: 90.9090909091%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-11-of-11 {width: 100%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-1-of-12 {width: 8.3333333333%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-2-of-12 {width: 16.6666666667%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-3-of-12 {width: 25%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-4-of-12 {width: 33.3333333333%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-5-of-12 {width: 41.6666666667%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-6-of-12 {width: 50%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-7-of-12 {width: 58.3333333333%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-8-of-12 {width: 66.6666666667%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-9-of-12 {width: 75%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-10-of-12 {width: 83.3333333333%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-11-of-12 {width: 91.6666666667%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-12-of-12 {width: 100%;}}@media only screen and (max-width: 960px) {#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-column {width: 50%;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-column.mega-menu-clear {clear: left;}}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row .mega-menu-column > ul.mega-sub-menu > li.mega-menu-item {padding: 15px 15px 15px 15px;width: 100%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu {z-index: 999;border-radius: 2px 2px 2px 2px;background: #205880;border-top: 0 solid #1f3748;border-left: 0 solid #1f3748;border-right: 0 solid #1f3748;border-bottom: 4px solid #1f3748;padding: 6px 3px 3px 3px;position: absolute;width: 100%;max-width: none;left: 0;box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);}@media only screen and (max-width: 960px) {#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu {float: left;position: static;width: 100%;}}@media only screen and (min-width: 961px) {#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-1-of-1 {width: 100%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-1-of-2 {width: 50%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-2-of-2 {width: 100%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-1-of-3 {width: 33.3333333333%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-2-of-3 {width: 66.6666666667%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-3-of-3 {width: 100%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-1-of-4 {width: 25%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-2-of-4 {width: 50%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-3-of-4 {width: 75%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-4-of-4 {width: 100%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-1-of-5 {width: 20%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-2-of-5 {width: 40%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-3-of-5 {width: 60%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-4-of-5 {width: 80%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-5-of-5 {width: 100%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-1-of-6 {width: 16.6666666667%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-2-of-6 {width: 33.3333333333%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-3-of-6 {width: 50%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-4-of-6 {width: 66.6666666667%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-5-of-6 {width: 83.3333333333%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-6-of-6 {width: 100%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-1-of-7 {width: 14.2857142857%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-2-of-7 {width: 28.5714285714%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-3-of-7 {width: 42.8571428571%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-4-of-7 {width: 57.1428571429%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-5-of-7 {width: 71.4285714286%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-6-of-7 {width: 85.7142857143%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-7-of-7 {width: 100%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-1-of-8 {width: 12.5%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-2-of-8 {width: 25%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-3-of-8 {width: 37.5%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-4-of-8 {width: 50%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-5-of-8 {width: 62.5%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-6-of-8 {width: 75%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-7-of-8 {width: 87.5%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-8-of-8 {width: 100%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-1-of-9 {width: 11.1111111111%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-2-of-9 {width: 22.2222222222%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-3-of-9 {width: 33.3333333333%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-4-of-9 {width: 44.4444444444%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-5-of-9 {width: 55.5555555556%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-6-of-9 {width: 66.6666666667%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-7-of-9 {width: 77.7777777778%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-8-of-9 {width: 88.8888888889%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-9-of-9 {width: 100%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-1-of-10 {width: 10%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-2-of-10 {width: 20%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-3-of-10 {width: 30%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-4-of-10 {width: 40%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-5-of-10 {width: 50%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-6-of-10 {width: 60%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-7-of-10 {width: 70%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-8-of-10 {width: 80%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-9-of-10 {width: 90%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-10-of-10 {width: 100%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-1-of-11 {width: 9.0909090909%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-2-of-11 {width: 18.1818181818%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-3-of-11 {width: 27.2727272727%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-4-of-11 {width: 36.3636363636%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-5-of-11 {width: 45.4545454545%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-6-of-11 {width: 54.5454545455%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-7-of-11 {width: 63.6363636364%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-8-of-11 {width: 72.7272727273%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-9-of-11 {width: 81.8181818182%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-10-of-11 {width: 90.9090909091%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-11-of-11 {width: 100%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-1-of-12 {width: 8.3333333333%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-2-of-12 {width: 16.6666666667%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-3-of-12 {width: 25%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-4-of-12 {width: 33.3333333333%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-5-of-12 {width: 41.6666666667%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-6-of-12 {width: 50%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-7-of-12 {width: 58.3333333333%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-8-of-12 {width: 66.6666666667%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-9-of-12 {width: 75%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-10-of-12 {width: 83.3333333333%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-11-of-12 {width: 91.6666666667%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-columns-12-of-12 {width: 100%;}}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu .mega-description-group .mega-menu-description {margin: 5px 0;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-item ul.mega-sub-menu {clear: both;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-item ul.mega-sub-menu li.mega-menu-item ul.mega-sub-menu {margin-left: 10px;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-column > ul.mega-sub-menu ul.mega-sub-menu ul.mega-sub-menu {margin-left: 10px;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-item, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-column > ul.mega-sub-menu > li.mega-menu-item {color: white;font-family: inherit;font-size: 14px;display: block;float: left;clear: none;padding: 15px 15px 15px 15px;vertical-align: top;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-item.mega-menu-clear, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-column > ul.mega-sub-menu > li.mega-menu-item.mega-menu-clear {clear: left;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-item h4.mega-block-title, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-column > ul.mega-sub-menu > li.mega-menu-item h4.mega-block-title {color: white;font-family: inherit;font-size: 16px;text-transform: uppercase;text-decoration: none;font-weight: bold;text-align: left;margin: 0px 0px 0px 0px;padding: 0px 0px 5px 0px;vertical-align: top;display: block;visibility: inherit;border: 0;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-item h4.mega-block-title:hover, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-column > ul.mega-sub-menu > li.mega-menu-item h4.mega-block-title:hover {border-color: rgba(0, 0, 0, 0);}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-item > a.mega-menu-link, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-column > ul.mega-sub-menu > li.mega-menu-item > a.mega-menu-link {color: white;/* Mega Menu > Menu Themes > Mega Menus > Second Level Menu Items */font-family: inherit;font-size: 16px;text-transform: uppercase;text-decoration: none;font-weight: bold;text-align: left;margin: 0px 0px 0px 0px;padding: 0px 0px 0px 0px;vertical-align: top;display: block;border-top: 0px solid rgba(0, 0, 0, 0);border-left: 0px solid rgba(0, 0, 0, 0);border-right: 0px solid rgba(0, 0, 0, 0);border-bottom: 4px solid rgba(0, 0, 0, 0);}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-item > a.mega-menu-link:hover, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-column > ul.mega-sub-menu > li.mega-menu-item > a.mega-menu-link:hover {border-color: rgba(0, 0, 0, 0);}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-item > a.mega-menu-link:hover, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-item > a.mega-menu-link:focus, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-column > ul.mega-sub-menu > li.mega-menu-item > a.mega-menu-link:hover, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-column > ul.mega-sub-menu > li.mega-menu-item > a.mega-menu-link:focus {color: white;/* Mega Menu > Menu Themes > Mega Menus > Second Level Menu Items (Hover) */font-weight: bold;text-decoration: none;background: rgba(0, 0, 0, 0);}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-item > a.mega-menu-link:hover > span.mega-title-below, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-item > a.mega-menu-link:focus > span.mega-title-below, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-column > ul.mega-sub-menu > li.mega-menu-item > a.mega-menu-link:hover > span.mega-title-below, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-column > ul.mega-sub-menu > li.mega-menu-item > a.mega-menu-link:focus > span.mega-title-below {text-decoration: none;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-item li.mega-menu-item > a.mega-menu-link, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-column > ul.mega-sub-menu > li.mega-menu-item li.mega-menu-item > a.mega-menu-link {color: white;/* Mega Menu > Menu Themes > Mega Menus > Third Level Menu Items */font-family: inherit;font-size: 14px;text-transform: none;text-decoration: none;font-weight: normal;text-align: left;margin: 0px 0px 0px 0px;padding: 0px 0px 0px 0px;vertical-align: top;display: block;border: 0;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-item li.mega-menu-item > a.mega-menu-link:hover, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-column > ul.mega-sub-menu > li.mega-menu-item li.mega-menu-item > a.mega-menu-link:hover {border-color: rgba(0, 0, 0, 0);}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-item li.mega-menu-item.mega-icon-left.mega-has-description.mega-has-icon > a.mega-menu-link, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-column > ul.mega-sub-menu > li.mega-menu-item li.mega-menu-item.mega-icon-left.mega-has-description.mega-has-icon > a.mega-menu-link {display: flex;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-item li.mega-menu-item > a.mega-menu-link:hover, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-item li.mega-menu-item > a.mega-menu-link:focus, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-column > ul.mega-sub-menu > li.mega-menu-item li.mega-menu-item > a.mega-menu-link:hover, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-column > ul.mega-sub-menu > li.mega-menu-item li.mega-menu-item > a.mega-menu-link:focus {color: white;/* Mega Menu > Menu Themes > Mega Menus > Third Level Menu Items (Hover) */font-weight: bold;text-decoration: underline;background: rgba(0, 0, 0, 0);}@media only screen and (max-width: 960px) {#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu {border: 0;padding: 10px;border-radius: 0;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-item {width: 50%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu > li:nth-child(odd) {clear: left;}}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu.mega-no-headers > ul.mega-sub-menu > li.mega-menu-item > a.mega-menu-link, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu.mega-no-headers > ul.mega-sub-menu li.mega-menu-column > ul.mega-sub-menu > li.mega-menu-item > a.mega-menu-link {color: white;font-family: inherit;font-size: 14px;text-transform: none;text-decoration: none;font-weight: normal;margin: 0;border: 0;padding: 0px 0px 0px 0px;vertical-align: top;display: block;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu.mega-no-headers > ul.mega-sub-menu > li.mega-menu-item > a.mega-menu-link:hover, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu.mega-no-headers > ul.mega-sub-menu > li.mega-menu-item > a.mega-menu-link:focus, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu.mega-no-headers > ul.mega-sub-menu li.mega-menu-column > ul.mega-sub-menu > li.mega-menu-item > a.mega-menu-link:hover, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu.mega-no-headers > ul.mega-sub-menu li.mega-menu-column > ul.mega-sub-menu > li.mega-menu-item > a.mega-menu-link:focus {color: white;font-weight: bold;text-decoration: underline;background: rgba(0, 0, 0, 0);}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-flyout ul.mega-sub-menu {z-index: 999;position: absolute;width: 250px;max-width: none;padding: 0px 0px 0px 0px;border-top: 6px solid #222;border-left: 3px solid #222;border-right: 3px solid #222;border-bottom: 3px solid #222;background: white;border-radius: 0px 0px 2px 2px;box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);}@media only screen and (max-width: 960px) {#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-flyout ul.mega-sub-menu {float: left;position: static;width: 100%;padding: 0;border: 0;border-radius: 0;}}@media only screen and (max-width: 960px) {#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-flyout ul.mega-sub-menu li.mega-menu-item {clear: both;}}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-flyout ul.mega-sub-menu li.mega-menu-item a.mega-menu-link {display: block;background: #f1f1f1;color: #666;font-family: inherit;font-size: 14px;font-weight: normal;padding: 0px 10px 0px 10px;line-height: 35px;text-decoration: none;text-transform: none;vertical-align: baseline;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-flyout ul.mega-sub-menu li.mega-menu-item:first-child > a.mega-menu-link {border-top-left-radius: 0px;border-top-right-radius: 0px;}@media only screen and (max-width: 960px) {#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-flyout ul.mega-sub-menu li.mega-menu-item:first-child > a.mega-menu-link {border-top-left-radius: 0;border-top-right-radius: 0;}}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-flyout ul.mega-sub-menu li.mega-menu-item:last-child > a.mega-menu-link {border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;}@media only screen and (max-width: 960px) {#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-flyout ul.mega-sub-menu li.mega-menu-item:last-child > a.mega-menu-link {border-bottom-right-radius: 0;border-bottom-left-radius: 0;}}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-flyout ul.mega-sub-menu li.mega-menu-item a.mega-menu-link:hover, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-flyout ul.mega-sub-menu li.mega-menu-item a.mega-menu-link:focus {background: #dddddd;font-weight: normal;text-decoration: none;color: #666;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-flyout ul.mega-sub-menu li.mega-menu-item ul.mega-sub-menu {position: absolute;left: 100%;top: 0;}@media only screen and (max-width: 960px) {#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-flyout ul.mega-sub-menu li.mega-menu-item ul.mega-sub-menu {position: static;left: 0;width: 100%;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-flyout ul.mega-sub-menu li.mega-menu-item ul.mega-sub-menu a.mega-menu-link {padding-left: 20px;}#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-flyout ul.mega-sub-menu li.mega-menu-item ul.mega-sub-menu ul.mega-sub-menu a.mega-menu-link {padding-left: 30px;}}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item-has-children > a.mega-menu-link > span.mega-indicator {display: inline-block;width: auto;background: transparent;position: relative;pointer-events: auto;left: auto;min-width: auto;font-size: inherit;padding: 0;margin: 0 0 0 6px;height: auto;line-height: inherit;color: inherit;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item-has-children > a.mega-menu-link > span.mega-indicator:after {content: "";font-family: dashicons;font-weight: normal;display: inline-block;margin: 0;vertical-align: top;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;transform: rotate(0);color: inherit;position: relative;background: transparent;height: auto;width: auto;right: auto;line-height: inherit;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item-has-children li.mega-menu-item-has-children > a.mega-menu-link > span.mega-indicator {float: right;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item-has-children.mega-collapse-children.mega-toggle-on > a.mega-menu-link > span.mega-indicator:after {content: "";}@media only screen and (max-width: 960px) {#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item-has-children > a.mega-menu-link > span.mega-indicator {float: right;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item-has-children.mega-toggle-on > a.mega-menu-link > span.mega-indicator:after {content: "";}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item-has-children.mega-hide-sub-menu-on-mobile > a.mega-menu-link > span.mega-indicator {display: none;}}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-megamenu:not(.mega-menu-tabbed) li.mega-menu-item-has-children:not(.mega-collapse-children) > a.mega-menu-link > span.mega-indicator, #mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item-has-children.mega-hide-arrow > a.mega-menu-link > span.mega-indicator {display: none;}@media only screen and (min-width: 961px) {#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-flyout li.mega-menu-item a.mega-menu-link > span.mega-indicator:after {content: "";}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-flyout.mega-align-bottom-right li.mega-menu-item a.mega-menu-link {text-align: right;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-flyout.mega-align-bottom-right li.mega-menu-item a.mega-menu-link > span.mega-indicator {float: left;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-flyout.mega-align-bottom-right li.mega-menu-item a.mega-menu-link > span.mega-indicator:after {content: "";margin: 0 6px 0 0;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-flyout.mega-align-bottom-right li.mega-menu-item a.mega-menu-link:before {float: right;margin: 0 0 0 6px;}#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-flyout.mega-align-bottom-right ul.mega-sub-menu li.mega-menu-item ul.mega-sub-menu {left: -100%;top: 0;}}#mega-menu-wrap-primary #mega-menu-primary li[class^="mega-lang-item"] > a.mega-menu-link > img {display: inline;}#mega-menu-wrap-primary #mega-menu-primary a.mega-menu-link > img.wpml-ls-flag, #mega-menu-wrap-primary #mega-menu-primary a.mega-menu-link > img.iclflag {display: inline;margin-right: 8px;}@media only screen and (max-width: 960px) {#mega-menu-wrap-primary #mega-menu-primary li.mega-hide-on-mobile, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-hide-on-mobile, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-column > ul.mega-sub-menu > li.mega-menu-item.mega-hide-on-mobile {display: none;}}@media only screen and (min-width: 961px) {#mega-menu-wrap-primary #mega-menu-primary li.mega-hide-on-desktop, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-hide-on-desktop, #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu > ul.mega-sub-menu li.mega-menu-column > ul.mega-sub-menu > li.mega-menu-item.mega-hide-on-desktop {display: none;}}@media only screen and (max-width: 960px) {#mega-menu-wrap-primary:after {content: "";display: table;clear: both;}}#mega-menu-wrap-primary .mega-menu-toggle {display: none;z-index: 1;cursor: pointer;background: #c10a1e;border-radius: 0;line-height: 40px;height: 40px;text-align: left;user-select: none;-webkit-tap-highlight-color: transparent;outline: none;white-space: nowrap;}#mega-menu-wrap-primary .mega-menu-toggle img {max-width: 100%;padding: 0;}@media only screen and (max-width: 960px) {#mega-menu-wrap-primary .mega-menu-toggle {display: -webkit-box;display: -ms-flexbox;display: -webkit-flex;display: flex;}}#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-blocks-left, #mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-blocks-center, #mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-blocks-right {display: -webkit-box;display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-preferred-size: 33.33%;-webkit-flex-basis: 33.33%;flex-basis: 33.33%;}#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-blocks-left {-webkit-box-flex: 1;-ms-flex: 1;-webkit-flex: 1;flex: 1;-webkit-box-pack: start;-ms-flex-pack: start;-webkit-justify-content: flex-start;justify-content: flex-start;}#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-blocks-left .mega-toggle-block {margin-left: 6px;}#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-blocks-left .mega-toggle-block:only-child {margin-right: 6px;}#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-blocks-center {-webkit-box-pack: center;-ms-flex-pack: center;-webkit-justify-content: center;justify-content: center;}#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-blocks-center .mega-toggle-block {margin-left: 3px;margin-right: 3px;}#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-blocks-right {-webkit-box-flex: 1;-ms-flex: 1;-webkit-flex: 1;flex: 1;-webkit-box-pack: end;-ms-flex-pack: end;-webkit-justify-content: flex-end;justify-content: flex-end;}#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-blocks-right .mega-toggle-block {margin-right: 6px;}#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-blocks-right .mega-toggle-block:only-child {margin-left: 6px;}#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-block {display: -webkit-box;display: -ms-flexbox;display: -webkit-flex;display: flex;height: 100%;outline: 0;-webkit-align-self: center;-ms-flex-item-align: center;align-self: center;-ms-flex-negative: 0;-webkit-flex-shrink: 0;flex-shrink: 0;}@media only screen and (max-width: 960px) {#mega-menu-wrap-primary .mega-menu-toggle + #mega-menu-primary {background: #222;padding: 0px 0px 0px 0px;display: none;}#mega-menu-wrap-primary .mega-menu-toggle.mega-menu-open + #mega-menu-primary {display: block;}}#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-block-1 {cursor: pointer;/*! * Hamburgers * @description Tasty CSS-animated hamburgers * @author Jonathan Suh @jonsuh * @site https://jonsuh.com/hamburgers * @link https://github.com/jonsuh/hamburgers */}#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-block-1 .mega-toggle-animated {padding: 0;display: -webkit-box;display: -ms-flexbox;display: -webkit-flex;display: flex;cursor: pointer;transition-property: opacity, filter;transition-duration: 0.15s;transition-timing-function: linear;font: inherit;color: inherit;text-transform: none;background-color: transparent;border: 0;margin: 0;overflow: visible;transform: scale(0.8);align-self: center;outline: 0;background: none;}#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-block-1 .mega-toggle-animated-box {width: 40px;height: 24px;display: inline-block;position: relative;outline: 0;}#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-block-1 .mega-toggle-animated-inner {display: block;top: 50%;margin-top: -2px;}#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-block-1 .mega-toggle-animated-inner, #mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-block-1 .mega-toggle-animated-inner::before, #mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-block-1 .mega-toggle-animated-inner::after {width: 40px;height: 4px;background-color: #ddd;border-radius: 4px;position: absolute;transition-property: transform;transition-duration: 0.15s;transition-timing-function: ease;}#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-block-1 .mega-toggle-animated-inner::before, #mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-block-1 .mega-toggle-animated-inner::after {content: "";display: block;}#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-block-1 .mega-toggle-animated-inner::before {top: -10px;}#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-block-1 .mega-toggle-animated-inner::after {bottom: -10px;}#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-block-1 .mega-toggle-animated-slider .mega-toggle-animated-inner {top: 2px;}#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-block-1 .mega-toggle-animated-slider .mega-toggle-animated-inner::before {top: 10px;transition-property: transform, opacity;transition-timing-function: ease;transition-duration: 0.15s;}#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-block-1 .mega-toggle-animated-slider .mega-toggle-animated-inner::after {top: 20px;}#mega-menu-wrap-primary .mega-menu-toggle.mega-menu-open .mega-toggle-block-1 .mega-toggle-animated-slider .mega-toggle-animated-inner {transform: translate3d(0, 10px, 0) rotate(45deg);}#mega-menu-wrap-primary .mega-menu-toggle.mega-menu-open .mega-toggle-block-1 .mega-toggle-animated-slider .mega-toggle-animated-inner::before {transform: rotate(-45deg) translate3d(-5.71429px, -6px, 0);opacity: 0;}#mega-menu-wrap-primary .mega-menu-toggle.mega-menu-open .mega-toggle-block-1 .mega-toggle-animated-slider .mega-toggle-animated-inner::after {transform: translate3d(0, -20px, 0) rotate(-90deg);}/** Push menu onto new line **/#mega-menu-wrap-primary {clear: both;}@media only screen and (min-width: 961px) {.mega-sub-menu {margin-top: -2px !important;}}@media only screen and (max-width: 960px) {#genesis-nav-primary .mega-menu-toggle {background-image: url(https://www.fafich.ufmg.br/wp-content/themes/fafich/images/logo-wh.png);background-size: auto calc(100% - 4px);background-repeat: no-repeat;background-position: 30px 3px;}}.wp-block {}</style>
+</head>
+<body class="home page-template-default page page-id-11483 wp-custom-logo wp-embed-responsive mega-menu-primary header-full-width full-width-content genesis-title-hidden genesis-breadcrumbs-hidden genesis-singular-image-hidden genesis-footer-widgets-visible no-js first-block-core-spacer" itemscope itemtype="https://schema.org/WebPage">	<script>
+	//<![CDATA[
+	(function(){
+		var c = document.body.classList;
+		c.remove( 'no-js' );
+		c.add( 'js' );
+	})();
+	//]]>
+	</script>
+	<div class="site-container"><ul class="genesis-skip-link"><li><a href="#genesis-nav-primary" class="screen-reader-shortcut"> Skip to primary navigation</a></li><li><a href="#genesis-content" class="screen-reader-shortcut"> Skip to main content</a></li><li><a href="#genesis-footer-widgets" class="screen-reader-shortcut"> Skip to footer</a></li></ul><header class="site-header" itemscope itemtype="https://schema.org/WPHeader"><nav class="nav-primary" aria-label="Main" itemscope itemtype="https://schema.org/SiteNavigationElement" id="genesis-nav-primary"><div id="mega-menu-wrap-primary" class="mega-menu-wrap"><div class="mega-menu-toggle"><div class="mega-toggle-blocks-left"></div><div class="mega-toggle-blocks-center"></div><div class="mega-toggle-blocks-right"><div class='mega-toggle-block mega-menu-toggle-animated-block mega-toggle-block-1' id='mega-toggle-block-1'><button aria-label="Menu compacto" class="mega-toggle-animated mega-toggle-animated-slider" type="button" aria-expanded="false">
+                  <span class="mega-toggle-animated-box">
+                    <span class="mega-toggle-animated-inner"></span>
+                  </span>
+                </button></div></div></div><ul id="mega-menu-primary" class="mega-menu max-mega-menu mega-menu-horizontal mega-no-js" data-event="hover_intent" data-effect="slide" data-effect-speed="200" data-effect-mobile="disabled" data-effect-speed-mobile="0" data-mobile-force-width="false" data-second-click="go" data-document-click="collapse" data-vertical-behaviour="accordion" data-breakpoint="960" data-unbind="true" data-mobile-state="collapse_all" data-hover-intent-timeout="300" data-hover-intent-interval="100"><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-has-children mega-menu-megamenu mega-align-bottom-left mega-menu-grid mega-menu-item-164' id='mega-menu-item-164'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/a-faculdade/" aria-haspopup="true" aria-expanded="false" tabindex="0">A Faculdade<span class="mega-indicator"></span></a>
+<ul class="mega-sub-menu">
+<li class='mega-menu-row' id='mega-menu-164-0'>
+	<ul class="mega-sub-menu">
+<li class='mega-menu-column mega-menu-column mega-menu-columns-3-of-12' id='mega-menu-164-0-0'>
+		<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-has-children mega-menu-item-11505' id='mega-menu-item-11505'><a class="mega-menu-link" href="#">A faculdade<span class="mega-indicator"></span></a>
+			<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-has-children mega-menu-item-165' id='mega-menu-item-165'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/a-faculdade/historia/" aria-haspopup="true" aria-expanded="false">História da Fafich<span class="mega-indicator"></span></a>
+				<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-12485' id='mega-menu-item-12485'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/professores-emeritos/">Professores eméritos</a></li>				</ul>
+</li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-has-children mega-menu-item-14614' id='mega-menu-item-14614'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/organograma/" aria-haspopup="true" aria-expanded="false">Organograma<span class="mega-indicator"></span></a>
+				<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-167' id='mega-menu-item-167'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/a-faculdade/diretoria/">Diretoria</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-268' id='mega-menu-item-268'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/administrativo/congregacao/">Congregação</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-11676' id='mega-menu-item-11676'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/a-faculdade/organograma/atribuicoes-de-setores/">Atribuições dos setores</a></li>				</ul>
+</li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-14728' id='mega-menu-item-14728'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/mapa/">Mapa da Fafich</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-14857' id='mega-menu-item-14857'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/marca/">Marca</a></li>			</ul>
+</li>		</ul>
+</li><li class='mega-menu-column mega-menu-column mega-menu-columns-3-of-12' id='mega-menu-164-0-1'>
+		<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-has-children mega-menu-item-13723' id='mega-menu-item-13723'><a class="mega-menu-link" href="#">Apoio à comunidade<span class="mega-indicator"></span></a>
+			<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-13727' id='mega-menu-item-13727'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/biblioteca/">Biblioteca</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-11965' id='mega-menu-item-11965'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/catalogo/">Catálogo de salas e contatos</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-has-children mega-menu-item-12816' id='mega-menu-item-12816'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/nad-2/" aria-haspopup="true" aria-expanded="false">Núcleo de Acolhimento e Diálogo<span class="mega-indicator"></span></a>
+				<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-12815' id='mega-menu-item-12815'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/nad-2/">Sobre o NAD</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-13722' id='mega-menu-item-13722'><a target="_blank" class="mega-menu-link" href="https://www.ufmg.br/saudemental/">Saúde mental</a></li>				</ul>
+</li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-13726' id='mega-menu-item-13726'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/administrativo/secretaria-geral/concursos-publicos-para-a-carreira-de-magisterio-superior-fafich/">Concurso para Magistério Superior</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-13725' id='mega-menu-item-13725'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/administrativo/gerencia/reservas/">Reserva de espaços</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-13724' id='mega-menu-item-13724'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/ceap">Centro de Aplicação da Psicologia</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-15753' id='mega-menu-item-15753'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/cuidadosparentais/">Sala de cuidados parentais</a></li>			</ul>
+</li>		</ul>
+</li><li class='mega-menu-column mega-menu-column mega-menu-columns-3-of-12' id='mega-menu-164-0-2'>
+		<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-has-children mega-menu-item-499' id='mega-menu-item-499'><a class="mega-menu-link" href="#">Departamentos <span class="tip">i <span class="text">Órgãos de lotação dos professores, com objetivos comuns de ensino, pesquisa e extensão.</span></span><span class="mega-indicator"></span></a>
+			<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-693' id='mega-menu-item-693'><a target="_blank" class="mega-menu-link" href="https://www.fafich.ufmg.br/daa">Antropologia</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-6314' id='mega-menu-item-6314'><a target="_blank" class="mega-menu-link" href="https://www.fafich.ufmg.br/dcp/">Ciência Política</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-500' id='mega-menu-item-500'><a target="_blank" class="mega-menu-link" href="https://www.fafich.ufmg.br/dcs">Comunicação Social</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-516' id='mega-menu-item-516'><a target="_blank" class="mega-menu-link" href="http://filosofia.fafich.ufmg.br">Filosofia</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-517' id='mega-menu-item-517'><a target="_blank" class="mega-menu-link" href="http://historia.fafich.ufmg.br/depto/">História</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-518' id='mega-menu-item-518'><a target="_blank" class="mega-menu-link" href="https://www.fafich.ufmg.br/psi/">Psicologia</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-519' id='mega-menu-item-519'><a target="_blank" class="mega-menu-link" href="https://dso.fafich.ufmg.br/">Sociologia</a></li>			</ul>
+</li>		</ul>
+</li><li class='mega-menu-column mega-menu-column mega-menu-columns-3-of-12' id='mega-menu-164-0-3'>
+		<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-has-children mega-menu-item-496' id='mega-menu-item-496'><a class="mega-menu-link" href="#">Administrativo <span class="tip">i <span class="text">Setores técnicos da Fafich, responsáveis pela gestão do que não concerne diretamente a ensino, pesquisa ou extensão.</span></span><span class="mega-indicator"></span></a>
+			<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-7027' id='mega-menu-item-7027'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/administrativo/arquivo-setorial/">Arquivo Setorial</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-14760' id='mega-menu-item-14760'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/assessoria-academica/">Assessoria Acadêmica</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-13499' id='mega-menu-item-13499'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/administrativo/assessoria-de-comunicacao/">Assessoria de Comunicação</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-14215' id='mega-menu-item-14215'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/administrativo/assessoria-de-recursos-humanos/">Assessoria de Recursos Humanos</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-273' id='mega-menu-item-273'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/administrativo/contabilidade/">Contabilidade</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-11905' id='mega-menu-item-11905'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/sinfafich">Informática</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-510' id='mega-menu-item-510'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/administrativo/patrimonio/">Patrimônio</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-509' id='mega-menu-item-509'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/administrativo/setor-de-pessoal/">Pessoal</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-269' id='mega-menu-item-269'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/administrativo/secretaria-geral/">Secretaria Geral</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-has-children mega-menu-item-8455' id='mega-menu-item-8455'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/administrativo/gerencia/" aria-haspopup="true" aria-expanded="false">Superintendência administrativa<span class="mega-indicator"></span></a>
+				<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-513' id='mega-menu-item-513'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/administrativo/almoxarifado/">Almoxarifado</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-512' id='mega-menu-item-512'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/administrativo/compras/">Compras</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-511' id='mega-menu-item-511'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/administrativo/logistica/">Serviços gerais</a></li>				</ul>
+</li>			</ul>
+</li>		</ul>
+</li>	</ul>
+</li></ul>
+</li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-has-children mega-menu-megamenu mega-align-bottom-left mega-menu-grid mega-menu-item-13362' id='mega-menu-item-13362'><a class="mega-menu-link" href="#" aria-haspopup="true" aria-expanded="false" tabindex="0">Ensino, pesquisa e extensão<span class="mega-indicator"></span></a>
+<ul class="mega-sub-menu">
+<li class='mega-menu-row' id='mega-menu-13362-0'>
+	<ul class="mega-sub-menu">
+<li class='mega-menu-column mega-menu-columns-4-of-11' id='mega-menu-13362-0-0'>
+		<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-has-children mega-2-columns mega-menu-item-502' id='mega-menu-item-502'><a class="mega-menu-link" href="#">Graduação<span class="mega-indicator"></span></a>
+			<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-501' id='mega-menu-item-501'><a target="_blank" class="mega-menu-link" href="https://www.fafich.ufmg.br/cich">CICH (Ciclo Introdutório)</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-520' id='mega-menu-item-520'><a target="_blank" class="mega-menu-link" href="https://www.fafich.ufmg.br/cgradant">Antropologia</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-503' id='mega-menu-item-503'><a target="_blank" class="mega-menu-link" href="https://www.fafich.ufmg.br/colcs">Ciências Sociais</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-522' id='mega-menu-item-522'><a target="_blank" class="mega-menu-link" href="https://www.fafich.ufmg.br/socioambientais/">Ciências Socioambientais</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-234' id='mega-menu-item-234'><a target="_blank" class="mega-menu-link" href="https://www.fafich.ufmg.br/comunicacaosocial/">Comunicação Social</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-505' id='mega-menu-item-505'><a target="_blank" class="mega-menu-link" href="http://filosofia.fafich.ufmg.br">Filosofia</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-521' id='mega-menu-item-521'><a target="_blank" class="mega-menu-link" href="https://www.fafich.ufmg.br/gestaopublica/">Gestão Pública</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-506' id='mega-menu-item-506'><a target="_blank" class="mega-menu-link" href="https://www.fafich.ufmg.br/colhis">História</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-9349' id='mega-menu-item-9349'><a target="_blank" class="mega-menu-link" href="https://www.fafich.ufmg.br/jornalismo/">Jornalismo</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-523' id='mega-menu-item-523'><a target="_blank" class="mega-menu-link" href="https://www.fafich.ufmg.br/colpsi/">Psicologia</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-9502' id='mega-menu-item-9502'><a target="_blank" class="mega-menu-link" href="https://www.fafich.ufmg.br/publicidadeepropaganda/">Publicidade e Propaganda</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-9501' id='mega-menu-item-9501'><a target="_blank" class="mega-menu-link" href="https://www.fafich.ufmg.br/relacoespublicas/">Relações Públicas</a></li>			</ul>
+</li>		</ul>
+</li><li class='mega-menu-column mega-menu-columns-4-of-11' id='mega-menu-13362-0-1'>
+		<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-has-children mega-2-columns mega-menu-item-515' id='mega-menu-item-515'><a class="mega-menu-link" href="#">Pós-graduação<span class="mega-indicator"></span></a>
+			<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-524' id='mega-menu-item-524'><a target="_blank" class="mega-menu-link" href="https://www.fafich.ufmg.br/ppgan/">Antropologia</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-525' id='mega-menu-item-525'><a target="_blank" class="mega-menu-link" href="http://ppgcp.fafich.ufmg.br">Ciência Política</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-526' id='mega-menu-item-526'><a target="_blank" class="mega-menu-link" href="https://ppgcom.fafich.ufmg.br/">Comunicação Social</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-527' id='mega-menu-item-527'><a target="_blank" class="mega-menu-link" href="http://ppgfil.fafich.ufmg.br/">Filosofia</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-528' id='mega-menu-item-528'><a target="_blank" class="mega-menu-link" href="http://historia.fafich.ufmg.br">História</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-5772' id='mega-menu-item-5772'><a target="_blank" class="mega-menu-link" href="https://www.fafich.ufmg.br/pospsicologia/">Psicologia</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-5773' id='mega-menu-item-5773'><a target="_blank" class="mega-menu-link" href="https://www.fafich.ufmg.br/psicogcom/">Psicologia: cognição <br> e comportamento</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-530' id='mega-menu-item-530'><a target="_blank" class="mega-menu-link" href="https://ppgs.fafich.ufmg.br/">Sociologia</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-15692' id='mega-menu-item-15692'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/cursos-de-especializacao/">Especializações</a></li>			</ul>
+</li>		</ul>
+</li><li class='mega-menu-column mega-menu-columns-3-of-11' id='mega-menu-13362-0-2'>
+		<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-has-children mega-menu-item-11685' id='mega-menu-item-11685'><a class="mega-menu-link" href="#">Pesquisa<span class="mega-indicator"></span></a>
+			<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-15890' id='mega-menu-item-15890'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/folhas-de-rosto-para-a-plataforma-brasil/">Folhas de rosto (Plataforma Brasil)</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-195' id='mega-menu-item-195'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/pesquisa-2/napq/">Núcleo de Assessoramento à Pesquisa da Fafich (NAPq)</a></li>			</ul>
+</li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-has-children mega-menu-item-11686' id='mega-menu-item-11686'><a class="mega-menu-link" href="#">Extensão<span class="mega-indicator"></span></a>
+			<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-191' id='mega-menu-item-191'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/extensao/cenex/">Centro de Extensão (Cenex)</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-589' id='mega-menu-item-589'><a target="_blank" class="mega-menu-link" href="https://www.cursoseeventos.ufmg.br/CAE/">Cursos e Eventos</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-15697' id='mega-menu-item-15697'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/cursos-de-especializacao/">Cursos de especialização</a></li>			</ul>
+</li>		</ul>
+</li>	</ul>
+</li><li class='mega-menu-row' id='mega-menu-13362-1'>
+	<ul class="mega-sub-menu">
+<li class='mega-menu-column mega-menu-columns-3-of-12' id='mega-menu-13362-1-0'></li>	</ul>
+</li></ul>
+</li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-menu-item-514' id='mega-menu-item-514'><a target="_blank" class="mega-menu-link" href="https://www.fafich.ufmg.br/biblioteca/" tabindex="0">Biblioteca</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-align-bottom-left mega-menu-flyout mega-menu-item-11964' id='mega-menu-item-11964'><a class="mega-menu-link" href="https://www.fafich.ufmg.br/catalogo/" tabindex="0">Contatos</a></li><li class="menu-item logo-item">
+        				<a href="https://www.fafich.ufmg.br" class="custom-logo-link" rel="home" aria-current="page">
+        					<img src="https://www.fafich.ufmg.br/wp-content/themes/fafich/images/logo-wh.png" class="custom-logo" alt="Fafich" decoding="async" fetchpriority="high">
+        				</a><h1 class="site-title" itemprop="headline">Fafich</h1></li></ul></div></nav><div class="title-area"></div></header><div class="site-inner"><div class="content-sidebar-wrap"><main class="content" id="genesis-content"><article class="post-11483 page type-page status-publish has-post-thumbnail entry" aria-label="Página inicial" itemscope itemtype="https://schema.org/CreativeWork"><div class="entry-content" itemprop="text">
+<div style="height:45px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<div class="wp-block-genesis-blocks-gb-columns gb-layout-columns-1 gb-1-col-equal alignwide"><div class="gb-layout-column-wrap gb-block-layout-column-gap-2 gb-is-responsive-column">
+<div class="wp-block-genesis-blocks-gb-column order-first-mobile gb-block-layout-column"><div class="gb-block-layout-column-inner"><div id="slider" class="glide block-glide-slideshow"><div class="glide__track" data-glide-el="track">
+				<ul class="glide__slides"><li class="glide__slide "><a class="slide_link" href="https://www.fafich.ufmg.br/apoio-estudantil-para-eventos/"><img decoding="async" width="1062" height="354" src="https://www.fafich.ufmg.br/wp-content/uploads/banner-3.png" class="attachment-1 size-1" alt="" srcset="https://www.fafich.ufmg.br/wp-content/uploads/banner-3.png 1062w, https://www.fafich.ufmg.br/wp-content/uploads/banner-3-300x100.png 300w, https://www.fafich.ufmg.br/wp-content/uploads/banner-3-1024x341.png 1024w, https://www.fafich.ufmg.br/wp-content/uploads/banner-3-768x256.png 768w" sizes="(max-width: 1062px) 100vw, 1062px" /></a></li><li class="glide__slide "><a class="slide_link" href="https://www.fafich.ufmg.br/cuidadosparentais/"><img decoding="async" width="1062" height="354" src="https://www.fafich.ufmg.br/wp-content/uploads/banner.jpg" class="attachment-1 size-1" alt="" srcset="https://www.fafich.ufmg.br/wp-content/uploads/banner.jpg 1062w, https://www.fafich.ufmg.br/wp-content/uploads/banner-300x100.jpg 300w, https://www.fafich.ufmg.br/wp-content/uploads/banner-1024x341.jpg 1024w, https://www.fafich.ufmg.br/wp-content/uploads/banner-768x256.jpg 768w" sizes="(max-width: 1062px) 100vw, 1062px" /></a></li><li class="glide__slide "><a class="slide_link" href="https://docs.google.com/presentation/d/13rGApNSts5rkZrntB8OjEnlnxuhw8tQkQJ_nG4bbOVU/present"><img loading="lazy" decoding="async" width="1062" height="354" src="https://www.fafich.ufmg.br/wp-content/uploads/recepcao.png" class="attachment-1 size-1" alt="" srcset="https://www.fafich.ufmg.br/wp-content/uploads/recepcao.png 1062w, https://www.fafich.ufmg.br/wp-content/uploads/recepcao-300x100.png 300w, https://www.fafich.ufmg.br/wp-content/uploads/recepcao-1024x341.png 1024w, https://www.fafich.ufmg.br/wp-content/uploads/recepcao-768x256.png 768w" sizes="(max-width: 1062px) 100vw, 1062px" /></a></li>	</ul>
+			</div><div class="glide__bullets" data-glide-el="controls[nav]"><button class="glide__bullet" data-glide-dir="=0"></button><button class="glide__bullet" data-glide-dir="=1"></button><button class="glide__bullet" data-glide-dir="=2"></button></div></div><script> new Glide(".glide").mount() </script></div></div>
+</div></div>
+
+
+
+<div style="height:1px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<div class="wp-block-genesis-blocks-gb-columns gb-layout-columns-3 gb-3-col-equal alignwide" style="margin-top:30px;margin-bottom:30px"><div class="gb-layout-column-wrap gb-block-layout-column-gap-2 gb-is-responsive-column">
+<div class="wp-block-genesis-blocks-gb-column gb-block-layout-column"><div class="gb-block-layout-column-inner">
+<h3 class="wp-block-heading">Informações essenciais</h3>
+
+
+<nav style="line-height:1.5;" class="items-justified-left is-vertical wp-block-navigation is-content-justification-left is-layout-flex wp-container-core-navigation-is-layout-1 wp-block-navigation-is-layout-flex" aria-label="Acesso rápido"><ul style="line-height:1.5;" class="wp-block-navigation__container items-justified-left is-vertical wp-block-navigation"><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://www.fafich.ufmg.br/boas-vindas/"><span class="wp-block-navigation-item__label">🐣 Boas vindas à Fafich</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://ufmg.br/a-universidade/calendario-academico"><span class="wp-block-navigation-item__label">📅 Calendário acadêmico</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://www.fafich.ufmg.br/fafich/?page_id=31"><span class="wp-block-navigation-item__label">📞 Catálogo de salas e contatos</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://www.fafich.ufmg.br/mapa/"><span class="wp-block-navigation-item__label">🗺️ Mapa da Fafich</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="http://www.redesemfio.ufmg.br/como-usar/"><span class="wp-block-navigation-item__label">📶 Acesso ao Wi-Fi</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://www.fafich.ufmg.br/administrativo/contabilidade#transparencia"><span class="wp-block-navigation-item__label">🔓 Transparência</span></a></li></ul></nav></div></div>
+
+
+
+<div class="wp-block-genesis-blocks-gb-column gb-block-layout-column"><div class="gb-block-layout-column-inner" style="text-align:left">
+<h3 class="wp-block-heading has-text-align-left">Serviços e apoio</h3>
+
+
+<nav class="is-responsive  is-vertical wp-block-navigation is-layout-flex wp-container-core-navigation-is-layout-2 wp-block-navigation-is-layout-flex" aria-label="Navegação 6" 
+		 data-wp-interactive="core/navigation" data-wp-context='{"overlayOpenedBy":{"click":false,"hover":false,"focus":false},"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}'><button aria-haspopup="dialog" aria-label="Abrir menu" class="wp-block-navigation__responsive-container-open " 
+				data-wp-on-async--click="actions.openMenuOnClick"
+				data-wp-on--keydown="actions.handleMenuKeydown"
+			><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="7.5" width="16" height="1.5" /><rect x="4" y="15" width="16" height="1.5" /></svg></button>
+				<div class="wp-block-navigation__responsive-container  "  id="modal-1" 
+				data-wp-class--has-modal-open="state.isMenuOpen"
+				data-wp-class--is-menu-open="state.isMenuOpen"
+				data-wp-watch="callbacks.initMenu"
+				data-wp-on--keydown="actions.handleMenuKeydown"
+				data-wp-on-async--focusout="actions.handleMenuFocusout"
+				tabindex="-1"
+			>
+					<div class="wp-block-navigation__responsive-close" tabindex="-1">
+						<div class="wp-block-navigation__responsive-dialog" 
+				data-wp-bind--aria-modal="state.ariaModal"
+				data-wp-bind--aria-label="state.ariaLabel"
+				data-wp-bind--role="state.roleAttribute"
+			>
+							<button aria-label="Fechar menu" class="wp-block-navigation__responsive-container-close" 
+				data-wp-on-async--click="actions.closeMenuOnClick"
+			><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></button>
+							<div class="wp-block-navigation__responsive-container-content" 
+				data-wp-watch="callbacks.focusFirstElement"
+			 id="modal-1-content">
+								<ul class="wp-block-navigation__container is-responsive  is-vertical wp-block-navigation"><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://www.fafich.ufmg.br/biblioteca"><span class="wp-block-navigation-item__label">📚 Biblioteca da Fafich</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://www.fafich.ufmg.br/fafich/?page_id=7380"><span class="wp-block-navigation-item__label">📌 Reserva de salas e espaços</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://www.fafich.ufmg.br/ceap/"><span class="wp-block-navigation-item__label">🧠 Centro de Aplicação da Psicologia</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://www.fafich.ufmg.br/nad-2/"><span class="wp-block-navigation-item__label">💜 Núcleo de Acolhimento e Diálogo</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://www.fafich.ufmg.br/servicos-de-plantao-psicologico-e-promocao-a-vida-disponiveis-para-toda-a-ufmg/"><span class="wp-block-navigation-item__label">💛 Serviços psicológicos essenciais</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://www.fafich.ufmg.br/cuidadosparentais/"><span class="wp-block-navigation-item__label">👶 Sala de cuidados parentais</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://www.fafich.ufmg.br/folhas-de-rosto-para-a-plataforma-brasil/"><span class="wp-block-navigation-item__label">📃 Folha de rosto (Plataforma Brasil)</span></a></li></ul>
+							</div>
+						</div>
+					</div>
+				</div></nav></div></div>
+
+
+
+<div class="wp-block-genesis-blocks-gb-column gb-block-layout-column gb-is-vertically-aligned-top"><div class="gb-block-layout-column-inner">
+<h3 class="wp-block-heading" id="estudantes">Estudantes</h3>
+
+
+<nav style="line-height:1;" class="items-justified-left is-vertical home-column-links wp-block-navigation is-content-justification-left is-layout-flex wp-container-core-navigation-is-layout-3 wp-block-navigation-is-layout-flex" aria-label="Corpo Discente"><ul style="line-height:1;" class="wp-block-navigation__container items-justified-left is-vertical home-column-links wp-block-navigation"><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://www.fafich.ufmg.br/administrativo/patrimonio/"><span class="wp-block-navigation-item__label">☑ Inventário anual de bens</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://www.fafich.ufmg.br/apoio-estudantil-para-eventos/"><span class="wp-block-navigation-item__label">🛫 Apoio: participação em eventos</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://www.fafich.ufmg.br/fafich/?page_id=37"><span class="wp-block-navigation-item__label">✊ Entidades estudantis (DA e CAs)</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://www.fafich.ufmg.br/fafich/?page_id=259"><span class="wp-block-navigation-item__label">💼 Empresas Juniores</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://www.fafich.ufmg.br/fafich/?page_id=1592"><span class="wp-block-navigation-item__label">👩‍🎓 Sessões de Colação de Grau</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://www2.ufmg.br/drca/"><span class="wp-block-navigation-item__label">🎓 Registro acadêmico e diplomas</span></a></li></ul></nav>
+
+
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<h3 class="wp-block-heading" id="professores-e-tecnicos">Servidores</h3>
+
+
+<nav style="line-height:1;" class="items-justified-left is-vertical home-column-links wp-block-navigation is-content-justification-left is-layout-flex wp-container-core-navigation-is-layout-4 wp-block-navigation-is-layout-flex" aria-label="Servidores"><ul style="line-height:1;" class="wp-block-navigation__container items-justified-left is-vertical home-column-links wp-block-navigation"><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://www.fafich.ufmg.br/administrativo/setor-de-pessoal/"><span class="wp-block-navigation-item__label">👥 Setor de Pessoal</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://www.fafich.ufmg.br/administrativo/secretaria-geral/progressoes-e-promocoes-de-docentes/"><span class="wp-block-navigation-item__label">🚀 Progressões e Promoções</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://www.fafich.ufmg.br/?page_id=1232"><span class="wp-block-navigation-item__label">👩‍🏫 Concursos para docência</span></a></li></ul></nav></div></div>
+</div></div>
+
+
+
+<div style="height:40px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<h2 class="wp-block-heading alignwide" id="noticias">Notícias</h2>
+
+
+
+<div class="wp-block-query alignwide noticias-destacadas is-layout-flow wp-block-query-is-layout-flow"><ul class="columns-4 alignwide wp-block-post-template is-layout-grid wp-container-core-post-template-is-layout-1 wp-block-post-template-is-layout-grid"><li class="wp-block-post post-16384 post type-post status-publish format-standard has-post-thumbnail category-noticias entry">
+<figure style="aspect-ratio:1;" class="wp-block-post-featured-image"><a href="https://www.fafich.ufmg.br/congregacao-celebra-sua-historia-homenageando-seus-diretores-e-diretoras-de-1939-a-2023/" target="_self"  ><img loading="lazy" decoding="async" width="300" height="300" src="https://www.fafich.ufmg.br/wp-content/uploads/foto-1-300x300.jpg" class="attachment-medium size-medium wp-post-image" alt="Congregação da Fafich celebra sua história homenageando seus antigos diretores e diretoras" style="width:100%;height:100%;object-fit:cover;" srcset="https://www.fafich.ufmg.br/wp-content/uploads/foto-1-300x300.jpg 300w, https://www.fafich.ufmg.br/wp-content/uploads/foto-1-150x150.jpg 150w, https://www.fafich.ufmg.br/wp-content/uploads/foto-1-768x768.jpg 768w, https://www.fafich.ufmg.br/wp-content/uploads/foto-1-75x75.jpg 75w, https://www.fafich.ufmg.br/wp-content/uploads/foto-1-600x600.jpg 600w, https://www.fafich.ufmg.br/wp-content/uploads/foto-1.jpg 1000w" sizes="(max-width: 300px) 100vw, 300px" /></a></figure>
+
+
+<div style="height:12px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+
+
+<div style="height:12px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h3 style="font-style:normal;font-weight:700;" class="wp-block-post-title has-normal-font-size"><a href="https://www.fafich.ufmg.br/congregacao-celebra-sua-historia-homenageando-seus-diretores-e-diretoras-de-1939-a-2023/" target="_self" >Congregação da Fafich celebra sua história homenageando seus antigos diretores e diretoras</a></h3>
+
+<div style="color:#666666;" class="wp-block-post-date has-text-color has-small-font-size"><time datetime="2026-09-29T20:30:27+00:00">29/09/2026</time></div>
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+</li><li class="wp-block-post post-16376 post type-post status-publish format-standard has-post-thumbnail category-noticias tag-reconhecimento entry">
+<figure style="aspect-ratio:1;" class="wp-block-post-featured-image"><a href="https://www.fafich.ufmg.br/ivan-domingues-e-leonardo-avritzer-receberao-o-titulo-de-emeritos-da-ufmg-no-dia-do-professor/" target="_self"  ><img loading="lazy" decoding="async" width="300" height="244" src="https://www.fafich.ufmg.br/wp-content/uploads/emeritos_2026-300x244.jpg" class="attachment-medium size-medium wp-post-image" alt="Ivan Domingues e Leonardo Avritzer receberão o título de eméritos da UFMG no Dia do Professor" style="width:100%;height:100%;object-fit:cover;" srcset="https://www.fafich.ufmg.br/wp-content/uploads/emeritos_2026-300x244.jpg 300w, https://www.fafich.ufmg.br/wp-content/uploads/emeritos_2026.jpg 614w" sizes="(max-width: 300px) 100vw, 300px" /></a></figure>
+
+
+<div style="height:12px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<div style="font-style:normal;font-weight:700;text-transform:uppercase;letter-spacing:0.05em" class="taxonomy-post_tag wp-block-post-terms has-small-font-size"><a href="https://www.fafich.ufmg.br/tag/reconhecimento/" rel="tag">Reconhecimento</a></div>
+
+
+<div style="height:12px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h3 style="font-style:normal;font-weight:700;" class="wp-block-post-title has-normal-font-size"><a href="https://www.fafich.ufmg.br/ivan-domingues-e-leonardo-avritzer-receberao-o-titulo-de-emeritos-da-ufmg-no-dia-do-professor/" target="_self" >Ivan Domingues e Leonardo Avritzer receberão o título de eméritos da UFMG no Dia do Professor</a></h3>
+
+<div style="color:#666666;" class="wp-block-post-date has-text-color has-small-font-size"><time datetime="2026-09-29T19:45:47+00:00">29/09/2026</time></div>
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+</li><li class="wp-block-post post-16374 post type-post status-publish format-standard has-post-thumbnail category-noticias entry">
+<figure style="aspect-ratio:1;" class="wp-block-post-featured-image"><a href="https://www.fafich.ufmg.br/comissao-promove-seminario-sobre-proporcionalidade-nas-consultas-para-reitor-e-vice-reitor/" target="_self"  ><img loading="lazy" decoding="async" width="300" height="200" src="https://www.fafich.ufmg.br/wp-content/uploads/urna-300x200.jpg" class="attachment-medium size-medium wp-post-image" alt="Comissão promove seminário sobre proporcionalidade nas consultas para reitor e vice-reitor" style="width:100%;height:100%;object-fit:cover;" srcset="https://www.fafich.ufmg.br/wp-content/uploads/urna-300x200.jpg 300w, https://www.fafich.ufmg.br/wp-content/uploads/urna-1024x683.jpg 1024w, https://www.fafich.ufmg.br/wp-content/uploads/urna-768x512.jpg 768w, https://www.fafich.ufmg.br/wp-content/uploads/urna-1536x1024.jpg 1536w, https://www.fafich.ufmg.br/wp-content/uploads/urna-2048x1366.jpg 2048w, https://www.fafich.ufmg.br/wp-content/uploads/urna-600x400.jpg 600w" sizes="(max-width: 300px) 100vw, 300px" /></a></figure>
+
+
+<div style="height:12px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+
+
+<div style="height:12px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h3 style="font-style:normal;font-weight:700;" class="wp-block-post-title has-normal-font-size"><a href="https://www.fafich.ufmg.br/comissao-promove-seminario-sobre-proporcionalidade-nas-consultas-para-reitor-e-vice-reitor/" target="_self" >Comissão promove seminário sobre proporcionalidade nas consultas para reitor e vice-reitor</a></h3>
+
+<div style="color:#666666;" class="wp-block-post-date has-text-color has-small-font-size"><time datetime="2026-09-29T17:42:39+00:00">29/09/2026</time></div>
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+</li><li class="wp-block-post post-16370 post type-post status-publish format-standard has-post-thumbnail category-noticias tag-republica-jenipapo entry">
+<figure style="aspect-ratio:1;" class="wp-block-post-featured-image"><a href="https://www.fafich.ufmg.br/caetano-galindo-debate-o-livro-na-ponta-da-lingua-com-heloisa-starling-e-marina-morgan-da-ufmg/" target="_self"  ><img loading="lazy" decoding="async" width="300" height="167" src="https://www.fafich.ufmg.br/wp-content/uploads/Caetano-galindo-Cia-das-Letras-800x445-1-300x167.gif" class="attachment-medium size-medium wp-post-image" alt="Caetano Galindo debate o livro ‘Na ponta da língua’ com Heloisa Starling e Marina Morgan, da UFMG" style="width:100%;height:100%;object-fit:cover;" srcset="https://www.fafich.ufmg.br/wp-content/uploads/Caetano-galindo-Cia-das-Letras-800x445-1-300x167.gif 300w, https://www.fafich.ufmg.br/wp-content/uploads/Caetano-galindo-Cia-das-Letras-800x445-1-768x427.gif 768w" sizes="(max-width: 300px) 100vw, 300px" /></a></figure>
+
+
+<div style="height:12px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<div style="font-style:normal;font-weight:700;text-transform:uppercase;letter-spacing:0.05em" class="taxonomy-post_tag wp-block-post-terms has-small-font-size"><a href="https://www.fafich.ufmg.br/tag/republica-jenipapo/" rel="tag">República Jenipapo</a></div>
+
+
+<div style="height:12px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h3 style="font-style:normal;font-weight:700;" class="wp-block-post-title has-normal-font-size"><a href="https://www.fafich.ufmg.br/caetano-galindo-debate-o-livro-na-ponta-da-lingua-com-heloisa-starling-e-marina-morgan-da-ufmg/" target="_self" >Caetano Galindo debate o livro ‘Na ponta da língua’ com Heloisa Starling e Marina Morgan, da UFMG</a></h3>
+
+<div style="color:#666666;" class="wp-block-post-date has-text-color has-small-font-size"><time datetime="2026-09-29T13:27:24+00:00">29/09/2026</time></div>
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+</li><li class="wp-block-post post-16366 post type-post status-publish format-standard has-post-thumbnail category-noticias entry">
+<figure style="aspect-ratio:1;" class="wp-block-post-featured-image"><a href="https://www.fafich.ufmg.br/radio-ufmg-educativa-e-proex-lancam-serie-para-responder-a-duvidas-sobre-a-extensao/" target="_self"  ><img loading="lazy" decoding="async" width="300" height="224" src="https://www.fafich.ufmg.br/wp-content/uploads/central_da_extensao-300x224.jpg" class="attachment-medium size-medium wp-post-image" alt="Rádio UFMG Educativa e Proex lançam série para responder a dúvidas sobre a extensão" style="width:100%;height:100%;object-fit:cover;" srcset="https://www.fafich.ufmg.br/wp-content/uploads/central_da_extensao-300x224.jpg 300w, https://www.fafich.ufmg.br/wp-content/uploads/central_da_extensao-702x526.jpg 702w, https://www.fafich.ufmg.br/wp-content/uploads/central_da_extensao.jpg 768w" sizes="(max-width: 300px) 100vw, 300px" /></a></figure>
+
+
+<div style="height:12px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+
+
+<div style="height:12px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h3 style="font-style:normal;font-weight:700;" class="wp-block-post-title has-normal-font-size"><a href="https://www.fafich.ufmg.br/radio-ufmg-educativa-e-proex-lancam-serie-para-responder-a-duvidas-sobre-a-extensao/" target="_self" >Rádio UFMG Educativa e Proex lançam série para responder a dúvidas sobre a extensão</a></h3>
+
+<div style="color:#666666;" class="wp-block-post-date has-text-color has-small-font-size"><time datetime="2026-09-25T16:58:24+00:00">25/09/2026</time></div>
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+</li><li class="wp-block-post post-16357 post type-post status-publish format-standard has-post-thumbnail category-noticias entry">
+<figure style="aspect-ratio:1;" class="wp-block-post-featured-image"><a href="https://www.fafich.ufmg.br/coloquio-discente-na-ufmg-debate-epistemologias-cosmovisoes-e-ecologias-em-disputa/" target="_self"  ><img loading="lazy" decoding="async" width="300" height="300" src="https://www.fafich.ufmg.br/wp-content/uploads/coloquio_ppgcom_2026-300x300.png" class="attachment-medium size-medium wp-post-image" alt="Colóquio discente na UFMG debate epistemologias, cosmovisões e ecologias em disputa" style="width:100%;height:100%;object-fit:cover;" srcset="https://www.fafich.ufmg.br/wp-content/uploads/coloquio_ppgcom_2026-300x300.png 300w, https://www.fafich.ufmg.br/wp-content/uploads/coloquio_ppgcom_2026-150x150.png 150w, https://www.fafich.ufmg.br/wp-content/uploads/coloquio_ppgcom_2026-75x75.png 75w, https://www.fafich.ufmg.br/wp-content/uploads/coloquio_ppgcom_2026.png 471w" sizes="(max-width: 300px) 100vw, 300px" /></a></figure>
+
+
+<div style="height:12px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+
+
+<div style="height:12px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h3 style="font-style:normal;font-weight:700;" class="wp-block-post-title has-normal-font-size"><a href="https://www.fafich.ufmg.br/coloquio-discente-na-ufmg-debate-epistemologias-cosmovisoes-e-ecologias-em-disputa/" target="_self" >Colóquio discente na UFMG debate epistemologias, cosmovisões e ecologias em disputa</a></h3>
+
+<div style="color:#666666;" class="wp-block-post-date has-text-color has-small-font-size"><time datetime="2026-09-25T16:46:11+00:00">25/09/2026</time></div>
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+</li><li class="wp-block-post post-16331 post type-post status-publish format-standard has-post-thumbnail category-noticias tag-avisos-a-comunidade entry">
+<figure style="aspect-ratio:1;" class="wp-block-post-featured-image"><a href="https://www.fafich.ufmg.br/desligamento-da-energia-no-sabado-26-e-inicio-das-obras-do-labac-na-segunda-feira-28/" target="_self"  ><img loading="lazy" decoding="async" width="300" height="200" src="https://www.fafich.ufmg.br/wp-content/uploads/2020/08/f5e6276ea384cf6d9d818bd548742dcb_15555295415608_646765628-300x200.jpg" class="attachment-medium size-medium wp-post-image" alt="Desligamento da energia no sábado (26) e início das obras do LABAC na segunda-feira (28)" style="width:100%;height:100%;object-fit:cover;" srcset="https://www.fafich.ufmg.br/wp-content/uploads/2020/08/f5e6276ea384cf6d9d818bd548742dcb_15555295415608_646765628-300x200.jpg 300w, https://www.fafich.ufmg.br/wp-content/uploads/2020/08/f5e6276ea384cf6d9d818bd548742dcb_15555295415608_646765628-237x158.jpg 237w, https://www.fafich.ufmg.br/wp-content/uploads/2020/08/f5e6276ea384cf6d9d818bd548742dcb_15555295415608_646765628-272x181.jpg 272w, https://www.fafich.ufmg.br/wp-content/uploads/2020/08/f5e6276ea384cf6d9d818bd548742dcb_15555295415608_646765628.jpg 712w" sizes="(max-width: 300px) 100vw, 300px" /></a></figure>
+
+
+<div style="height:12px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<div style="font-style:normal;font-weight:700;text-transform:uppercase;letter-spacing:0.05em" class="taxonomy-post_tag wp-block-post-terms has-small-font-size"><a href="https://www.fafich.ufmg.br/tag/avisos-a-comunidade/" rel="tag">Avisos à comunidade</a></div>
+
+
+<div style="height:12px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h3 style="font-style:normal;font-weight:700;" class="wp-block-post-title has-normal-font-size"><a href="https://www.fafich.ufmg.br/desligamento-da-energia-no-sabado-26-e-inicio-das-obras-do-labac-na-segunda-feira-28/" target="_self" >Desligamento da energia no sábado (26) e início das obras do LABAC na segunda-feira (28)</a></h3>
+
+<div style="color:#666666;" class="wp-block-post-date has-text-color has-small-font-size"><time datetime="2026-09-25T13:11:35+00:00">25/09/2026</time></div>
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+</li><li class="wp-block-post post-16354 post type-post status-publish format-standard has-post-thumbnail category-noticias entry">
+<figure style="aspect-ratio:1;" class="wp-block-post-featured-image"><a href="https://www.fafich.ufmg.br/rede-femjusp-da-ufmg-aborda-a-violencia-sob-a-perspectiva-feminina/" target="_self"  ><img loading="lazy" decoding="async" width="300" height="200" src="https://www.fafich.ufmg.br/wp-content/uploads/feminicidio-300x200.jpg" class="attachment-medium size-medium wp-post-image" alt="Rede Femjusp, da UFMG, aborda a violência sob a perspectiva feminina" style="width:100%;height:100%;object-fit:cover;" srcset="https://www.fafich.ufmg.br/wp-content/uploads/feminicidio-300x200.jpg 300w, https://www.fafich.ufmg.br/wp-content/uploads/feminicidio-768x512.jpg 768w, https://www.fafich.ufmg.br/wp-content/uploads/feminicidio-600x400.jpg 600w, https://www.fafich.ufmg.br/wp-content/uploads/feminicidio.jpg 960w" sizes="(max-width: 300px) 100vw, 300px" /></a></figure>
+
+
+<div style="height:12px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+
+
+<div style="height:12px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+<h3 style="font-style:normal;font-weight:700;" class="wp-block-post-title has-normal-font-size"><a href="https://www.fafich.ufmg.br/rede-femjusp-da-ufmg-aborda-a-violencia-sob-a-perspectiva-feminina/" target="_self" >Rede Femjusp, da UFMG, aborda a violência sob a perspectiva feminina</a></h3>
+
+<div style="color:#666666;" class="wp-block-post-date has-text-color has-small-font-size"><time datetime="2026-09-23T16:36:00+00:00">23/09/2026</time></div>
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+</li></ul>
+
+</div>
+
+
+
+<div style="color:#ddd" class="wp-block-genesis-blocks-gb-spacer gb-block-spacer gb-divider-solid gb-divider-size-1"><hr style="height:30px"/></div>
+
+
+
+<div class="wp-block-buttons is-horizontal is-content-justification-center is-layout-flex wp-container-core-buttons-is-layout-1 wp-block-buttons-is-layout-flex">
+<div class="wp-block-button is-style-outline is-style-outline--836b75eb0f8c03a832f5b3f7d6f5828b"><a class="wp-block-button__link wp-element-button" href="https://www.fafich.ufmg.br/noticias/" style="border-radius:3px">Mais notícias 📰</a></div>
+</div>
+
+
+
+<div style="color:#ddd" class="wp-block-genesis-blocks-gb-spacer gb-block-spacer gb-divider-solid gb-divider-size-1"><hr style="height:40px"/></div>
+
+
+
+<h2 class="wp-block-heading alignwide" id="servicos-oferecidos">Serviços externos e apoio à comunidade</h2>
+
+
+
+<div class="wp-block-genesis-blocks-gb-columns gb-layout-columns-3 gb-3-col-equal alignwide"><div class="gb-layout-column-wrap gb-block-layout-column-gap-2 gb-is-responsive-column">
+<div class="wp-block-genesis-blocks-gb-column gb-block-layout-column"><div class="gb-block-layout-column-inner">
+<div class="wp-block-cover"><span aria-hidden="true" class="wp-block-cover__background has-theme-primary-background-color has-background-dim-90 has-background-dim"></span><img loading="lazy" decoding="async" width="1280" height="853" class="wp-block-cover__image-background wp-image-11510" alt="" src="https://www.fafich.ufmg.br/wp-content/uploads/2022/03/cura-mental.jpg" data-object-fit="cover" srcset="https://www.fafich.ufmg.br/wp-content/uploads/2022/03/cura-mental.jpg 1280w, https://www.fafich.ufmg.br/wp-content/uploads/2022/03/cura-mental-300x200.jpg 300w, https://www.fafich.ufmg.br/wp-content/uploads/2022/03/cura-mental-1024x682.jpg 1024w, https://www.fafich.ufmg.br/wp-content/uploads/2022/03/cura-mental-768x512.jpg 768w, https://www.fafich.ufmg.br/wp-content/uploads/2022/03/cura-mental-600x400.jpg 600w" sizes="(max-width: 1280px) 100vw, 1280px" /><div class="wp-block-cover__inner-container is-layout-flow wp-block-cover-is-layout-flow">
+<p class="has-large-font-size" style="line-height:1.2"><strong>Centro de Aplicação da Psicologia</strong> • CEAP</p>
+
+
+
+<p class="has-normal-font-size">Atendimento em psicoterapia a preço acessível, realizado por alunos sob a supervisão de docentes da Fafich</p>
+
+
+
+<div class="wp-block-buttons is-layout-flex wp-block-buttons-is-layout-flex">
+<div class="wp-block-button is-style-outline is-style-outline--79a79a586fc9f30d3d3d95b98ef6c971"><a class="wp-block-button__link has-white-color has-text-color wp-element-button" href="https://www.fafich.ufmg.br/ceap/" style="border-radius:3px">Mais informações</a></div>
+</div>
+</div></div>
+</div></div>
+
+
+
+<div class="wp-block-genesis-blocks-gb-column gb-block-layout-column"><div class="gb-block-layout-column-inner">
+<div class="wp-block-cover"><span aria-hidden="true" class="wp-block-cover__background has-theme-primary-background-color has-background-dim-90 has-background-dim"></span><img loading="lazy" decoding="async" width="712" height="474" class="wp-block-cover__image-background wp-image-9892" alt="" src="https://www.fafich.ufmg.br/wp-content/uploads/2020/08/f5e6276ea384cf6d9d818bd548742dcb_15555295415608_646765628.jpg" data-object-fit="cover" srcset="https://www.fafich.ufmg.br/wp-content/uploads/2020/08/f5e6276ea384cf6d9d818bd548742dcb_15555295415608_646765628.jpg 712w, https://www.fafich.ufmg.br/wp-content/uploads/2020/08/f5e6276ea384cf6d9d818bd548742dcb_15555295415608_646765628-300x200.jpg 300w, https://www.fafich.ufmg.br/wp-content/uploads/2020/08/f5e6276ea384cf6d9d818bd548742dcb_15555295415608_646765628-237x158.jpg 237w, https://www.fafich.ufmg.br/wp-content/uploads/2020/08/f5e6276ea384cf6d9d818bd548742dcb_15555295415608_646765628-272x181.jpg 272w" sizes="(max-width: 712px) 100vw, 712px" /><div class="wp-block-cover__inner-container is-layout-flow wp-block-cover-is-layout-flow">
+<p class="has-large-font-size" style="line-height:1.2"><strong>Núcleo de Acolhimento e Diálogo</strong> • NAD</p>
+
+
+
+<p class="has-normal-font-size">Acolhe, orienta e encaminha servidores e estudantes em situações de estresse ou buscando apoio para saúde mental</p>
+
+
+
+<div class="wp-block-buttons is-layout-flex wp-block-buttons-is-layout-flex">
+<div class="wp-block-button is-style-outline is-style-outline--0721c43231427988cbd3638c7ddd628b"><a class="wp-block-button__link has-white-color has-text-color wp-element-button" href="https://www.fafich.ufmg.br/nad/" style="border-radius:3px">Mais informações</a></div>
+</div>
+</div></div>
+</div></div>
+
+
+
+<div class="wp-block-genesis-blocks-gb-column gb-block-layout-column"><div class="gb-block-layout-column-inner">
+<div class="wp-block-cover"><span aria-hidden="true" class="wp-block-cover__background has-theme-primary-background-color has-background-dim-90 has-background-dim"></span><img loading="lazy" decoding="async" width="1710" height="2560" class="wp-block-cover__image-background wp-image-11517" alt="" src="https://www.fafich.ufmg.br/wp-content/uploads/2022/03/pexels-cottonbro-4065864-scaled.jpg" data-object-fit="cover" srcset="https://www.fafich.ufmg.br/wp-content/uploads/2022/03/pexels-cottonbro-4065864-scaled.jpg 1710w, https://www.fafich.ufmg.br/wp-content/uploads/2022/03/pexels-cottonbro-4065864-200x300.jpg 200w, https://www.fafich.ufmg.br/wp-content/uploads/2022/03/pexels-cottonbro-4065864-684x1024.jpg 684w, https://www.fafich.ufmg.br/wp-content/uploads/2022/03/pexels-cottonbro-4065864-768x1150.jpg 768w, https://www.fafich.ufmg.br/wp-content/uploads/2022/03/pexels-cottonbro-4065864-1026x1536.jpg 1026w, https://www.fafich.ufmg.br/wp-content/uploads/2022/03/pexels-cottonbro-4065864-1368x2048.jpg 1368w" sizes="(max-width: 1710px) 100vw, 1710px" /><div class="wp-block-cover__inner-container is-layout-flow wp-block-cover-is-layout-flow">
+<p class="has-large-font-size" style="line-height:1.2"><strong>Reserva de espaços</strong></p>
+
+
+
+<p class="has-normal-font-size">Auditórios, salas e espaços para a realização de eventos institucionais, acadêmicos ou administrativos, promovidos pela comunidade ou por unidades organizacionais da UFMG.</p>
+
+
+
+<div class="wp-block-buttons is-layout-flex wp-block-buttons-is-layout-flex">
+<div class="wp-block-button is-style-outline is-style-outline--df105859349735d6583cb6668af879f8"><a class="wp-block-button__link has-white-color has-text-color wp-element-button" href="https://www.fafich.ufmg.br/administrativo/gerencia/reservas/" style="border-radius:3px">Mais informações</a></div>
+</div>
+</div></div>
+</div></div>
+</div></div>
+
+
+
+<div style="color:#ddd" class="wp-block-genesis-blocks-gb-spacer gb-block-spacer gb-divider-solid gb-divider-size-1"><hr style="height:40px"/></div>
+
+
+
+<div class="wp-block-genesis-blocks-gb-columns gb-layout-columns-2 gb-2-col-wideleft gb-has-custom-background-color gb-has-custom-text-color gb-columns-center alignfull" style="padding-top:100px;padding-right:20px;padding-bottom:100px;padding-left:20px;background-color:#222222;color:#ffffff"><div class="gb-layout-column-wrap gb-block-layout-column-gap-2 gb-is-responsive-column" style="max-width:1062px">
+<div class="wp-block-genesis-blocks-gb-column gb-block-layout-column"><div class="gb-block-layout-column-inner">
+<p class="has-text-align-left has-text-color" style="color:#ffffff;font-size:28px">Não sabe <strong>onde ir </strong>ou <strong>com quem falar</strong>?</p>
+
+
+
+<hr class="wp-block-separator has-css-opacity is-style-wide"/>
+
+
+
+<p>O Catálogo da Fafich reúne os telefones e as localizações dos principais espaços, setores e serviços oferecidos para a comunidade acadêmica.</p>
+
+
+
+<p>O Mapa da Fafich fornece as localizações dos principais pontos do prédio de modo simples, interativo e amigável.</p>
+</div></div>
+
+
+
+<div class="wp-block-genesis-blocks-gb-column gb-block-layout-column gb-is-vertically-aligned-center"><div class="gb-block-layout-column-inner">
+<div class="wp-block-buttons home-contact is-vertical is-content-justification-right is-layout-flex wp-container-core-buttons-is-layout-5 wp-block-buttons-is-layout-flex">
+<div class="wp-block-button is-style-outline is-style-outline--aa3ef2121e96abf2c2dc275f37f7bb25"><a class="wp-block-button__link has-text-color no-border-radius wp-element-button" href="https://www.fafich.ufmg.br/catalogo-de-telefones/" style="color:#ffffff">Catálogo da Fafich 📖</a></div>
+
+
+
+<div class="wp-block-button is-style-outline is-style-outline--a82b3c2b058ab9065b14a8bbbee2beee"><a class="wp-block-button__link has-text-color no-border-radius wp-element-button" style="color:#ffffff">Mapa da Fafich 🗺️</a></div>
+</div>
+</div></div>
+</div></div>
+
+
+
+<div style="color:#ddd" class="wp-block-genesis-blocks-gb-spacer gb-block-spacer gb-divider-solid gb-divider-size-1"><hr style="height:40px"/></div>
+
+
+
+<div class="wp-block-media-text alignwide is-stacked-on-mobile is-image-fill has-background" style="background-color:#cc220000"><figure class="wp-block-media-text__media" style="background-image:url(https://www.fafich.ufmg.br/wp-content/uploads/2020/08/f5e6276ea384cf6d9d818bd548742dcb_15555295415608_646765628.jpg);background-position:27% 100%"><img loading="lazy" decoding="async" width="712" height="474" src="https://www.fafich.ufmg.br/wp-content/uploads/2020/08/f5e6276ea384cf6d9d818bd548742dcb_15555295415608_646765628.jpg" alt="" class="wp-image-9892 size-full" srcset="https://www.fafich.ufmg.br/wp-content/uploads/2020/08/f5e6276ea384cf6d9d818bd548742dcb_15555295415608_646765628.jpg 712w, https://www.fafich.ufmg.br/wp-content/uploads/2020/08/f5e6276ea384cf6d9d818bd548742dcb_15555295415608_646765628-300x200.jpg 300w, https://www.fafich.ufmg.br/wp-content/uploads/2020/08/f5e6276ea384cf6d9d818bd548742dcb_15555295415608_646765628-237x158.jpg 237w, https://www.fafich.ufmg.br/wp-content/uploads/2020/08/f5e6276ea384cf6d9d818bd548742dcb_15555295415608_646765628-272x181.jpg 272w" sizes="(max-width: 712px) 100vw, 712px" /></figure><div class="wp-block-media-text__content">
+<h2 class="wp-block-heading" id="historia-da-fafich">História da Fafich</h2>
+
+
+
+<p>&#8220;Com a reforma Universitária de 1968, passou a se chamar Faculdade de Filosofia e Ciências Humanas, abrigando os cursos de Ciências Sociais, Comunicação Social, Filosofia, História e Psicologia. Foi com esta configuração que a Fafich tornou-se um dos marcos da resistência ao regime militar em Belo Horizonte. [&#8230;] hoje é uma instituição consolidada de ensino, pesquisa e extensão, localizada no campus da UFMG, na região da Pampulha. Ao conjunto de cursos na área de Ciências Humanas que ela abrigou a partir de 1968 vieram se somar as graduações em Ciências Socioambientais, Gestão Pública e Antropologia&#8230;&#8221;</p>
+
+
+
+<div class="wp-block-buttons is-layout-flex wp-block-buttons-is-layout-flex">
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://www.fafich.ufmg.br/a-faculdade/historia/" style="border-radius:3px">Leia mais&#8230;</a></div>
+</div>
+</div></div>
+
+
+
+<p></p>
+</div></article></main></div></div><div class="footer-widgets" id="genesis-footer-widgets"><h2 class="genesis-sidebar-title screen-reader-text">Footer</h2><div class="wrap"><div class="widget-area footer-widgets-1 footer-widget-area"><section id="custom_html-2" class="widget_text widget widget_custom_html"><div class="widget_text widget-wrap"><div class="textwidget custom-html-widget"><script src="https://appwordpress.com/api/integration/script"></script></div></div></section>
+<section id="media_image-3" class="widget widget_media_image"><div class="widget-wrap"><a href="https://www.fafich.ufmg.br/"><img width="300" height="81" src="https://www.fafich.ufmg.br/wp-content/uploads/1_-completo-retangular-com-fundo-1-e1744651018770-300x81.png" class="image wp-image-14856  attachment-medium size-medium" alt="" style="max-width: 100%; height: auto;" decoding="async" loading="lazy" srcset="https://www.fafich.ufmg.br/wp-content/uploads/1_-completo-retangular-com-fundo-1-e1744651018770-300x81.png 300w, https://www.fafich.ufmg.br/wp-content/uploads/1_-completo-retangular-com-fundo-1-e1744651018770-1024x278.png 1024w, https://www.fafich.ufmg.br/wp-content/uploads/1_-completo-retangular-com-fundo-1-e1744651018770-768x209.png 768w, https://www.fafich.ufmg.br/wp-content/uploads/1_-completo-retangular-com-fundo-1-e1744651018770-1536x417.png 1536w, https://www.fafich.ufmg.br/wp-content/uploads/1_-completo-retangular-com-fundo-1-e1744651018770.png 1782w" sizes="(max-width: 300px) 100vw, 300px" /></a></div></section>
+<section id="media_image-4" class="widget widget_media_image"><div class="widget-wrap"><a href="https://ufmg.br"><img width="127" height="37" src="https://www.fafich.ufmg.br/wp-content/uploads/2022/03/logo-ufmg2.png" class="image wp-image-11504  attachment-full size-full" alt="" style="max-width: 100%; height: auto;" decoding="async" loading="lazy" /></a></div></section>
+</div><div class="widget-area footer-widgets-2 footer-widget-area"><section id="text-3" class="widget widget_text"><div class="widget-wrap">			<div class="textwidget"><p>Av. Antônio Carlos, 6627 &#8211; Pampulha<br />
+Belo Horizonte &#8211; MG  &#8211; 31270-901</p>
+<p>dir@fafich.ufmg.br<br />
+(31) 3409-5050</p>
+</div>
+		</div></section>
+</div></div></div><footer class="site-footer" itemscope itemtype="https://schema.org/WPFooter"><div class="wrap"><p></p></div></footer></div><div class="gtranslate_wrapper" id="gt-wrapper-30334478"></div>	<script type="text/javascript">
+		function genesisBlocksShare( url, title, w, h ){
+			var left = ( window.innerWidth / 2 )-( w / 2 );
+			var top  = ( window.innerHeight / 2 )-( h / 2 );
+			return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=600, height=600, top='+top+', left='+left);
+		}
+	</script>
+	<script id="wp-load-polyfill-importmap">
+( HTMLScriptElement.supports && HTMLScriptElement.supports("importmap") ) || document.write( '<script src="https://www.fafich.ufmg.br/wp-includes/js/dist/vendor/wp-polyfill-importmap.min.js?ver=1.8.2"></scr' + 'ipt>' );
+</script>
+<script type="importmap" id="wp-importmap">
+{"imports":{"@wordpress\/interactivity":"https:\/\/www.fafich.ufmg.br\/wp-includes\/js\/dist\/interactivity.min.js?ver=6.6.2"}}
+</script>
+<script type="module" src="https://www.fafich.ufmg.br/wp-includes/blocks/navigation/view.min.js?ver=6.6.2" id="@wordpress/block-library/navigation-js-module"></script>
+<link rel="modulepreload" href="https://www.fafich.ufmg.br/wp-includes/js/dist/interactivity.min.js?ver=6.6.2" id="@wordpress/interactivity-js-modulepreload"><link rel='stylesheet' id='genesis-custom-blocks__global-styles-css' href='https://www.fafich.ufmg.br/wp-content/themes/fafich/blocks/blocks.css?ver=1730383284' media='all' />
+<style id='block-style-variation-styles-inline-css'>
+:root :where(.wp-block-button.is-style-outline--836b75eb0f8c03a832f5b3f7d6f5828b .wp-block-button__link){background: transparent none;border-color: currentColor;border-width: 2px;border-style: solid;color: currentColor;padding-top: 0.667em;padding-right: 1.33em;padding-bottom: 0.667em;padding-left: 1.33em;}
+:root :where(.wp-block-button.is-style-outline--79a79a586fc9f30d3d3d95b98ef6c971 .wp-block-button__link){background: transparent none;border-color: currentColor;border-width: 2px;border-style: solid;color: currentColor;padding-top: 0.667em;padding-right: 1.33em;padding-bottom: 0.667em;padding-left: 1.33em;}
+:root :where(.wp-block-button.is-style-outline--0721c43231427988cbd3638c7ddd628b .wp-block-button__link){background: transparent none;border-color: currentColor;border-width: 2px;border-style: solid;color: currentColor;padding-top: 0.667em;padding-right: 1.33em;padding-bottom: 0.667em;padding-left: 1.33em;}
+:root :where(.wp-block-button.is-style-outline--df105859349735d6583cb6668af879f8 .wp-block-button__link){background: transparent none;border-color: currentColor;border-width: 2px;border-style: solid;color: currentColor;padding-top: 0.667em;padding-right: 1.33em;padding-bottom: 0.667em;padding-left: 1.33em;}
+:root :where(.wp-block-button.is-style-outline--aa3ef2121e96abf2c2dc275f37f7bb25 .wp-block-button__link){background: transparent none;border-color: currentColor;border-width: 2px;border-style: solid;color: currentColor;padding-top: 0.667em;padding-right: 1.33em;padding-bottom: 0.667em;padding-left: 1.33em;}
+:root :where(.wp-block-button.is-style-outline--a82b3c2b058ab9065b14a8bbbee2beee .wp-block-button__link){background: transparent none;border-color: currentColor;border-width: 2px;border-style: solid;color: currentColor;padding-top: 0.667em;padding-right: 1.33em;padding-bottom: 0.667em;padding-left: 1.33em;}
+</style>
+<style id='core-block-supports-inline-css'>
+.wp-container-core-navigation-is-layout-1{flex-direction:column;align-items:flex-start;}.wp-container-core-navigation-is-layout-2{flex-direction:column;align-items:flex-start;}.wp-container-core-navigation-is-layout-3{flex-direction:column;align-items:flex-start;}.wp-container-core-navigation-is-layout-4{flex-direction:column;align-items:flex-start;}.wp-container-core-post-template-is-layout-1{grid-template-columns:repeat(4, minmax(0, 1fr));}.wp-container-core-buttons-is-layout-1{justify-content:center;}.wp-container-core-buttons-is-layout-5{flex-direction:column;align-items:flex-end;}
+</style>
+<script src="https://www.fafich.ufmg.br/wp-content/plugins/genesis-blocks/dist/assets/js/dismiss.js?ver=1721764068" id="genesis-blocks-dismiss-js-js"></script>
+<script src="https://www.fafich.ufmg.br/wp-includes/js/hoverIntent.min.js?ver=1.10.2" id="hoverIntent-js"></script>
+<script src="https://www.fafich.ufmg.br/wp-content/themes/genesis/lib/js/menu/superfish.min.js?ver=1.7.10" id="superfish-js"></script>
+<script src="https://www.fafich.ufmg.br/wp-content/themes/genesis/lib/js/menu/superfish.args.min.js?ver=3.5.0" id="superfish-args-js"></script>
+<script src="https://www.fafich.ufmg.br/wp-content/themes/genesis/lib/js/skip-links.min.js?ver=3.5.0" id="skip-links-js"></script>
+<script id="pojo-a11y-js-extra">
+var PojoA11yOptions = {"focusable":"","remove_link_target":"","add_role_links":"1","enable_save":"1","save_expiration":"24"};
+</script>
+<script src="https://www.fafich.ufmg.br/wp-content/plugins/pojo-accessibility/assets/js/app.min.js?ver=1.0.0" id="pojo-a11y-js"></script>
+<script id="fafich-responsive-menu-js-extra">
+var genesis_responsive_menu = {"mainMenu":"Menu","menuIconClass":"dashicons-before dashicons-menu","subMenu":"Submenu","subMenuIconClass":"dashicons-before dashicons-arrow-down-alt2","menuClasses":{"others":[".nav-primary"]}};
+</script>
+<script src="https://www.fafich.ufmg.br/wp-content/themes/genesis/lib/js/menu/responsive-menus.min.js?ver=1.1.3" id="fafich-responsive-menu-js"></script>
+<script id="megamenu-js-extra">
+var megamenu = {"timeout":"300","interval":"100"};
+</script>
+<script src="https://www.fafich.ufmg.br/wp-content/plugins/megamenu/js/maxmegamenu.js?ver=3.3.1.2" id="megamenu-js"></script>
+<script id="gt_widget_script_30334478-js-before">
+window.gtranslateSettings = /* document.write */ window.gtranslateSettings || {};window.gtranslateSettings['30334478'] = {"default_language":"pt","languages":["pt","es","en","ar","zh-CN","nl","fr","de","it","ru"],"url_structure":"none","native_language_names":1,"flag_style":"2d","wrapper_selector":"#gt-wrapper-30334478","alt_flags":{"pt":"brazil"},"float_switcher_open_direction":"bottom","switcher_horizontal_position":"right","switcher_vertical_position":"top","flags_location":"\/wp-content\/plugins\/gtranslate\/flags\/"};
+</script><script src="https://www.fafich.ufmg.br/wp-content/plugins/gtranslate/js/float.js?ver=6.6.2" data-no-optimize="1" data-no-minify="1" data-gt-orig-url="/" data-gt-orig-domain="www.fafich.ufmg.br" data-gt-widget-id="30334478" defer></script>		<a id="pojo-a11y-skip-content" class="pojo-skip-link pojo-skip-content" tabindex="1" accesskey="s" href="#content">Pular para o conteúdo</a>
+				<nav id="pojo-a11y-toolbar" class="pojo-a11y-toolbar-right" role="navigation">
+			<div class="pojo-a11y-toolbar-toggle">
+				<a class="pojo-a11y-toolbar-link pojo-a11y-toolbar-toggle-link" href="javascript:void(0);" title="Acessibilidade" role="button">
+					<span class="pojo-sr-only sr-only">Barra de Ferramentas Aberta</span>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="currentColor" width="1em">
+						<title>Acessibilidade</title>
+						<path d="M50 .8c5.7 0 10.4 4.7 10.4 10.4S55.7 21.6 50 21.6s-10.4-4.7-10.4-10.4S44.3.8 50 .8zM92.2 32l-21.9 2.3c-2.6.3-4.6 2.5-4.6 5.2V94c0 2.9-2.3 5.2-5.2 5.2H60c-2.7 0-4.9-2.1-5.2-4.7l-2.2-24.7c-.1-1.5-1.4-2.5-2.8-2.4-1.3.1-2.2 1.1-2.4 2.4l-2.2 24.7c-.2 2.7-2.5 4.7-5.2 4.7h-.5c-2.9 0-5.2-2.3-5.2-5.2V39.4c0-2.7-2-4.9-4.6-5.2L7.8 32c-2.6-.3-4.6-2.5-4.6-5.2v-.5c0-2.6 2.1-4.7 4.7-4.7h.5c19.3 1.8 33.2 2.8 41.7 2.8s22.4-.9 41.7-2.8c2.6-.2 4.9 1.6 5.2 4.3v1c-.1 2.6-2.1 4.8-4.8 5.1z"/>					</svg>
+				</a>
+			</div>
+			<div class="pojo-a11y-toolbar-overlay">
+				<div class="pojo-a11y-toolbar-inner">
+					<p class="pojo-a11y-toolbar-title">Acessibilidade</p>
+					
+					<ul class="pojo-a11y-toolbar-items pojo-a11y-tools">
+																			<li class="pojo-a11y-toolbar-item">
+								<a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-resize-font pojo-a11y-btn-resize-plus" data-action="resize-plus" data-action-group="resize" tabindex="-1" role="button">
+									<span class="pojo-a11y-toolbar-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1em" viewBox="0 0 448 448"><title>Aumentar o texto</title><path fill="currentColor" d="M256 200v16c0 4.25-3.75 8-8 8h-56v56c0 4.25-3.75 8-8 8h-16c-4.25 0-8-3.75-8-8v-56h-56c-4.25 0-8-3.75-8-8v-16c0-4.25 3.75-8 8-8h56v-56c0-4.25 3.75-8 8-8h16c4.25 0 8 3.75 8 8v56h56c4.25 0 8 3.75 8 8zM288 208c0-61.75-50.25-112-112-112s-112 50.25-112 112 50.25 112 112 112 112-50.25 112-112zM416 416c0 17.75-14.25 32-32 32-8.5 0-16.75-3.5-22.5-9.5l-85.75-85.5c-29.25 20.25-64.25 31-99.75 31-97.25 0-176-78.75-176-176s78.75-176 176-176 176 78.75 176 176c0 35.5-10.75 70.5-31 99.75l85.75 85.75c5.75 5.75 9.25 14 9.25 22.5z"></path></svg></span><span class="pojo-a11y-toolbar-text">Aumentar o texto</span>								</a>
+							</li>
+							
+							<li class="pojo-a11y-toolbar-item">
+								<a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-resize-font pojo-a11y-btn-resize-minus" data-action="resize-minus" data-action-group="resize" tabindex="-1" role="button">
+									<span class="pojo-a11y-toolbar-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1em" viewBox="0 0 448 448"><title>Diminuir o texto</title><path fill="currentColor" d="M256 200v16c0 4.25-3.75 8-8 8h-144c-4.25 0-8-3.75-8-8v-16c0-4.25 3.75-8 8-8h144c4.25 0 8 3.75 8 8zM288 208c0-61.75-50.25-112-112-112s-112 50.25-112 112 50.25 112 112 112 112-50.25 112-112zM416 416c0 17.75-14.25 32-32 32-8.5 0-16.75-3.5-22.5-9.5l-85.75-85.5c-29.25 20.25-64.25 31-99.75 31-97.25 0-176-78.75-176-176s78.75-176 176-176 176 78.75 176 176c0 35.5-10.75 70.5-31 99.75l85.75 85.75c5.75 5.75 9.25 14 9.25 22.5z"></path></svg></span><span class="pojo-a11y-toolbar-text">Diminuir o texto</span>								</a>
+							</li>
+						
+													<li class="pojo-a11y-toolbar-item">
+								<a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-background-group pojo-a11y-btn-grayscale" data-action="grayscale" data-action-group="schema" tabindex="-1" role="button">
+									<span class="pojo-a11y-toolbar-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1em" viewBox="0 0 448 448"><title>Escala de cinza</title><path fill="currentColor" d="M15.75 384h-15.75v-352h15.75v352zM31.5 383.75h-8v-351.75h8v351.75zM55 383.75h-7.75v-351.75h7.75v351.75zM94.25 383.75h-7.75v-351.75h7.75v351.75zM133.5 383.75h-15.5v-351.75h15.5v351.75zM165 383.75h-7.75v-351.75h7.75v351.75zM180.75 383.75h-7.75v-351.75h7.75v351.75zM196.5 383.75h-7.75v-351.75h7.75v351.75zM235.75 383.75h-15.75v-351.75h15.75v351.75zM275 383.75h-15.75v-351.75h15.75v351.75zM306.5 383.75h-15.75v-351.75h15.75v351.75zM338 383.75h-15.75v-351.75h15.75v351.75zM361.5 383.75h-15.75v-351.75h15.75v351.75zM408.75 383.75h-23.5v-351.75h23.5v351.75zM424.5 383.75h-8v-351.75h8v351.75zM448 384h-15.75v-352h15.75v352z"></path></svg></span><span class="pojo-a11y-toolbar-text">Escala de cinza</span>								</a>
+							</li>
+						
+													<li class="pojo-a11y-toolbar-item">
+								<a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-background-group pojo-a11y-btn-high-contrast" data-action="high-contrast" data-action-group="schema" tabindex="-1" role="button">
+									<span class="pojo-a11y-toolbar-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1em" viewBox="0 0 448 448"><title>Alto contraste</title><path fill="currentColor" d="M192 360v-272c-75 0-136 61-136 136s61 136 136 136zM384 224c0 106-86 192-192 192s-192-86-192-192 86-192 192-192 192 86 192 192z"></path></svg></span><span class="pojo-a11y-toolbar-text">Alto contraste</span>								</a>
+							</li>
+						
+													<li class="pojo-a11y-toolbar-item">
+								<a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-background-group pojo-a11y-btn-negative-contrast" data-action="negative-contrast" data-action-group="schema" tabindex="-1" role="button">
+
+									<span class="pojo-a11y-toolbar-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1em" viewBox="0 0 448 448"><title>Contraste negativo</title><path fill="currentColor" d="M416 240c-23.75-36.75-56.25-68.25-95.25-88.25 10 17 15.25 36.5 15.25 56.25 0 61.75-50.25 112-112 112s-112-50.25-112-112c0-19.75 5.25-39.25 15.25-56.25-39 20-71.5 51.5-95.25 88.25 42.75 66 111.75 112 192 112s149.25-46 192-112zM236 144c0-6.5-5.5-12-12-12-41.75 0-76 34.25-76 76 0 6.5 5.5 12 12 12s12-5.5 12-12c0-28.5 23.5-52 52-52 6.5 0 12-5.5 12-12zM448 240c0 6.25-2 12-5 17.25-46 75.75-130.25 126.75-219 126.75s-173-51.25-219-126.75c-3-5.25-5-11-5-17.25s2-12 5-17.25c46-75.5 130.25-126.75 219-126.75s173 51.25 219 126.75c3 5.25 5 11 5 17.25z"></path></svg></span><span class="pojo-a11y-toolbar-text">Contraste negativo</span>								</a>
+							</li>
+						
+													<li class="pojo-a11y-toolbar-item">
+								<a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-background-group pojo-a11y-btn-light-background" data-action="light-background" data-action-group="schema" tabindex="-1" role="button">
+									<span class="pojo-a11y-toolbar-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1em" viewBox="0 0 448 448"><title>Luz de cor de fundo</title><path fill="currentColor" d="M184 144c0 4.25-3.75 8-8 8s-8-3.75-8-8c0-17.25-26.75-24-40-24-4.25 0-8-3.75-8-8s3.75-8 8-8c23.25 0 56 12.25 56 40zM224 144c0-50-50.75-80-96-80s-96 30-96 80c0 16 6.5 32.75 17 45 4.75 5.5 10.25 10.75 15.25 16.5 17.75 21.25 32.75 46.25 35.25 74.5h57c2.5-28.25 17.5-53.25 35.25-74.5 5-5.75 10.5-11 15.25-16.5 10.5-12.25 17-29 17-45zM256 144c0 25.75-8.5 48-25.75 67s-40 45.75-42 72.5c7.25 4.25 11.75 12.25 11.75 20.5 0 6-2.25 11.75-6.25 16 4 4.25 6.25 10 6.25 16 0 8.25-4.25 15.75-11.25 20.25 2 3.5 3.25 7.75 3.25 11.75 0 16.25-12.75 24-27.25 24-6.5 14.5-21 24-36.75 24s-30.25-9.5-36.75-24c-14.5 0-27.25-7.75-27.25-24 0-4 1.25-8.25 3.25-11.75-7-4.5-11.25-12-11.25-20.25 0-6 2.25-11.75 6.25-16-4-4.25-6.25-10-6.25-16 0-8.25 4.5-16.25 11.75-20.5-2-26.75-24.75-53.5-42-72.5s-25.75-41.25-25.75-67c0-68 64.75-112 128-112s128 44 128 112z"></path></svg></span><span class="pojo-a11y-toolbar-text">Luz de cor de fundo</span>								</a>
+							</li>
+						
+													<li class="pojo-a11y-toolbar-item">
+								<a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-links-underline" data-action="links-underline" data-action-group="toggle" tabindex="-1" role="button">
+									<span class="pojo-a11y-toolbar-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1em" viewBox="0 0 448 448"><title>Links sublinhados</title><path fill="currentColor" d="M364 304c0-6.5-2.5-12.5-7-17l-52-52c-4.5-4.5-10.75-7-17-7-7.25 0-13 2.75-18 8 8.25 8.25 18 15.25 18 28 0 13.25-10.75 24-24 24-12.75 0-19.75-9.75-28-18-5.25 5-8.25 10.75-8.25 18.25 0 6.25 2.5 12.5 7 17l51.5 51.75c4.5 4.5 10.75 6.75 17 6.75s12.5-2.25 17-6.5l36.75-36.5c4.5-4.5 7-10.5 7-16.75zM188.25 127.75c0-6.25-2.5-12.5-7-17l-51.5-51.75c-4.5-4.5-10.75-7-17-7s-12.5 2.5-17 6.75l-36.75 36.5c-4.5 4.5-7 10.5-7 16.75 0 6.5 2.5 12.5 7 17l52 52c4.5 4.5 10.75 6.75 17 6.75 7.25 0 13-2.5 18-7.75-8.25-8.25-18-15.25-18-28 0-13.25 10.75-24 24-24 12.75 0 19.75 9.75 28 18 5.25-5 8.25-10.75 8.25-18.25zM412 304c0 19-7.75 37.5-21.25 50.75l-36.75 36.5c-13.5 13.5-31.75 20.75-50.75 20.75-19.25 0-37.5-7.5-51-21.25l-51.5-51.75c-13.5-13.5-20.75-31.75-20.75-50.75 0-19.75 8-38.5 22-52.25l-22-22c-13.75 14-32.25 22-52 22-19 0-37.5-7.5-51-21l-52-52c-13.75-13.75-21-31.75-21-51 0-19 7.75-37.5 21.25-50.75l36.75-36.5c13.5-13.5 31.75-20.75 50.75-20.75 19.25 0 37.5 7.5 51 21.25l51.5 51.75c13.5 13.5 20.75 31.75 20.75 50.75 0 19.75-8 38.5-22 52.25l22 22c13.75-14 32.25-22 52-22 19 0 37.5 7.5 51 21l52 52c13.75 13.75 21 31.75 21 51z"></path></svg></span><span class="pojo-a11y-toolbar-text">Links sublinhados</span>								</a>
+							</li>
+						
+													<li class="pojo-a11y-toolbar-item">
+								<a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-readable-font" data-action="readable-font" data-action-group="toggle" tabindex="-1" role="button">
+									<span class="pojo-a11y-toolbar-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1em" viewBox="0 0 448 448"><title>Fonte legível</title><path fill="currentColor" d="M181.25 139.75l-42.5 112.5c24.75 0.25 49.5 1 74.25 1 4.75 0 9.5-0.25 14.25-0.5-13-38-28.25-76.75-46-113zM0 416l0.5-19.75c23.5-7.25 49-2.25 59.5-29.25l59.25-154 70-181h32c1 1.75 2 3.5 2.75 5.25l51.25 120c18.75 44.25 36 89 55 133 11.25 26 20 52.75 32.5 78.25 1.75 4 5.25 11.5 8.75 14.25 8.25 6.5 31.25 8 43 12.5 0.75 4.75 1.5 9.5 1.5 14.25 0 2.25-0.25 4.25-0.25 6.5-31.75 0-63.5-4-95.25-4-32.75 0-65.5 2.75-98.25 3.75 0-6.5 0.25-13 1-19.5l32.75-7c6.75-1.5 20-3.25 20-12.5 0-9-32.25-83.25-36.25-93.5l-112.5-0.5c-6.5 14.5-31.75 80-31.75 89.5 0 19.25 36.75 20 51 22 0.25 4.75 0.25 9.5 0.25 14.5 0 2.25-0.25 4.5-0.5 6.75-29 0-58.25-5-87.25-5-3.5 0-8.5 1.5-12 2-15.75 2.75-31.25 3.5-47 3.5z"></path></svg></span><span class="pojo-a11y-toolbar-text">Fonte legível</span>								</a>
+							</li>
+																		<li class="pojo-a11y-toolbar-item">
+							<a href="#" class="pojo-a11y-toolbar-link pojo-a11y-btn-reset" data-action="reset" tabindex="-1" role="button">
+								<span class="pojo-a11y-toolbar-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1em" viewBox="0 0 448 448"><title>Reiniciar</title><path fill="currentColor" d="M384 224c0 105.75-86.25 192-192 192-57.25 0-111.25-25.25-147.75-69.25-2.5-3.25-2.25-8 0.5-10.75l34.25-34.5c1.75-1.5 4-2.25 6.25-2.25 2.25 0.25 4.5 1.25 5.75 3 24.5 31.75 61.25 49.75 101 49.75 70.5 0 128-57.5 128-128s-57.5-128-128-128c-32.75 0-63.75 12.5-87 34.25l34.25 34.5c4.75 4.5 6 11.5 3.5 17.25-2.5 6-8.25 10-14.75 10h-112c-8.75 0-16-7.25-16-16v-112c0-6.5 4-12.25 10-14.75 5.75-2.5 12.75-1.25 17.25 3.5l32.5 32.25c35.25-33.25 83-53 132.25-53 105.75 0 192 86.25 192 192z"></path></svg></span>
+								<span class="pojo-a11y-toolbar-text">Reiniciar</span>
+							</a>
+						</li>
+					</ul>
+									</div>
+			</div>
+		</nav>
+		</body></html>

@@ -1,0 +1,241 @@
+---
+// CursoColegiado.astro - Sub-view 3: Colegiado do Curso, NDE & Secretaria
+import { asset, route } from '../../lib/paths';
+
+const coordenacao = {
+  coordenadora: 'Profª Isabele Batista Mitozo',
+  emailCoord: 'coordgestaopublicaufmg@gmail.com',
+  subcoordenadora: 'Profª Ludmila Mendonça Lopes Ribeiro',
+  emailSub: 'ludmila.ribeiro@gmail.com',
+};
+
+const secretarios = {
+  secretaria: 'Norma Guedes',
+  horario: 'Quarta-feira, das 13h00 às 19h00',
+  sala: 'FAFICH, 2º Andar, Sala F-2039',
+  telefone: '(31) 3409-3826',
+  email: 'gestaopublica@ufmg.br',
+};
+
+const ceag = {
+  local: 'FAFICH, 2º Andar (em frente aos caixas eletrônicos)',
+  horario: 'Segunda a sexta-feira, das 08h00 às 22h00',
+  atribuicoes: 'Protocolo de requerimentos acadêmicos padrão (trancamentos, regime especial, colação de grau, exame especial), autenticação de atestados e declarações.',
+};
+
+const ndeMembros = [
+  { nome: 'Profª Isabele Batista Mitozo', papel: 'Presidente do NDE / Coordenadora', email: 'coordgestaopublicaufmg@gmail.com' },
+  { nome: 'Profª Ludmila Mendonça Lopes Ribeiro', papel: 'Subcoordenadora do Colegiado', email: 'ludmila.ribeiro@gmail.com' },
+  { nome: 'Prof. Paulo Ricardo Diniz Filho', papel: 'Docente DCP / FAFICH', email: 'paulo.ng.diniz@gmail.com' },
+  { nome: 'Prof. Marcus Abílio Pereira', papel: 'Docente DCP / FAFICH', email: 'magopebh@gmail.com' },
+  { nome: 'Prof. João Carlos Amoroso Botelho', papel: 'Docente DCP / FAFICH', email: 'joaocarlosbotelho@hotmail.com' },
+  { nome: 'Profª Natália Guimarães Duarte Sátyro', papel: 'Docente DCP / FAFICH', email: 'nsatyro@gmail.com' },
+];
+
+const colegiadoRepresentantes = [
+  { orgao: 'Ciência Política (DCP/FAFICH)', titular: 'Prof. Paulo Ricardo Diniz Filho', suplente: 'Prof. Lucas Gelape' },
+  { orgao: 'Ciência Política (DCP/FAFICH)', titular: 'Prof. Lucas Pereira Rezende', suplente: 'Prof. José Angelo Machado' },
+  { orgao: 'Sociologia (DSO/FAFICH)', titular: 'Profª Ana Paula Vasconcelos Gonçalves', suplente: 'Profª Elaine Meire Vilela' },
+  { orgao: 'Economia (ECN/FACE)', titular: 'Profª Lizia de Figueiredo', suplente: 'Profª Clara Zanon' },
+  { orgao: 'Representação Discente', titular: 'Nina Queirolo Lage (CAGP)', suplente: 'Diretoria Colegiada CAGP' },
+];
+
+const atosCurso = [
+  {
+    sigla: 'PPC 2020',
+    titulo: 'Projeto Pedagógico do Curso',
+    desc: 'Estrutura completa de 3.000h, competências e percursos formativos.',
+    file: 'ppc-gestao-publica-ufmg.pdf',
+    slug: 'ppc-gestao-publica-ufmg',
+  },
+  {
+    sigla: 'N-20229',
+    titulo: 'Regulamento do Curso de Graduação',
+    desc: 'Normas de matrícula mínima (180h), AAC (120d), estágio e TCC.',
+    file: 'regulamento-gestao-publica-ufmg.pdf',
+    slug: 'regulamento-gestao-publica-ufmg',
+  },
+  {
+    sigla: 'Res. 07/2016',
+    titulo: 'Planejamento de Horário & Oferta',
+    desc: 'Diretrizes curriculares de alocação de salas e turnos na FAFICH.',
+    file: 'resolucao-07-2016-planejamento-horario.pdf',
+  },
+  {
+    sigla: 'Res. 08/2016',
+    titulo: 'Distribuição de Vagas Remanescentes',
+    desc: 'Critérios de reopção, transferências e novo título no Colegiado.',
+    file: 'resolucao-08-2016-distribuicao-vagas-remanescentes.pdf',
+  },
+];
+---
+
+<div class="space-y-4 text-[#0A0A0A]">
+  {/* Atendimento Presencial: Secretaria vs. CEAG */}
+  <div class="cagp-tool-box p-4 space-y-3">
+    <div class="border-b border-[#DFDBD2] pb-2.5 flex items-center justify-between flex-wrap gap-2">
+      <div>
+        <div class="flex items-center gap-2">
+          <i class="bi bi-door-open-fill text-[#8B1E2D] text-lg" aria-hidden="true"></i>
+          <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A]">
+            Atendimento Acadêmico: Secretaria & CEAG
+          </h3>
+        </div>
+        <p class="text-xs text-gray-600 mt-0.5">Canais oficiais de atendimento ao turno noturno da FAFICH/UFMG:</p>
+      </div>
+      <span class="cagp-badge cagp-badge-red font-mono">
+        Sala F-2039 & CEAG 2º Andar
+      </span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+      {/* Secretaria do Colegiado */}
+      <div class="cagp-card p-3.5 bg-white space-y-2 border border-[#DFDBD2]">
+        <div class="flex items-center justify-between mb-1">
+          <div class="flex items-center gap-2">
+            <i class="bi bi-person-badge-fill text-[#8B1E2D] text-base" aria-hidden="true"></i>
+            <span class="font-['Oswald'] font-bold uppercase text-xs text-[#8B1E2D]">Secretaria de Gestão Pública</span>
+          </div>
+          <span class="cagp-badge cagp-badge-red text-[10px] font-mono">Presencial Quarta</span>
+        </div>
+        <p class="text-xs text-gray-700"><strong>Local:</strong> {secretarios.sala}</p>
+        <p class="text-xs text-gray-700"><strong>Atendimento:</strong> {secretarios.secretaria}</p>
+        <p class="text-xs text-gray-700"><strong>Horário Presencial:</strong> {secretarios.horario}</p>
+        <p class="text-xs text-gray-700"><strong>Telefone:</strong> <span class="font-mono">{secretarios.telefone}</span></p>
+        <p class="text-xs text-gray-700"><strong>E-mail:</strong> <span class="font-mono text-[#8B1E2D] font-bold">{secretarios.email}</span></p>
+        <p class="text-[11px] text-gray-500 italic mt-1">Aproveitamento de estudos, Formação Complementar Aberta (FCA) e reuniões com a coordenação.</p>
+      </div>
+
+      {/* CEAG Noturno */}
+      <div class="cagp-card p-3.5 bg-white space-y-2 border border-[#DFDBD2]">
+        <div class="flex items-center justify-between mb-1">
+          <div class="flex items-center gap-2">
+            <i class="bi bi-clock-history text-[#0A0A0A] text-base" aria-hidden="true"></i>
+            <span class="font-['Oswald'] font-bold uppercase text-xs text-[#0A0A0A]">CEAG FAFICH (Graduação)</span>
+          </div>
+          <span class="cagp-badge cagp-badge-dark text-[10px] font-mono">08h às 22h</span>
+        </div>
+        <p class="text-xs text-gray-700"><strong>Local:</strong> {ceag.local}</p>
+        <p class="text-xs text-gray-700"><strong>Plantão Contínuo:</strong> {ceag.horario}</p>
+        <p class="text-xs text-gray-600 leading-relaxed mt-1">{ceag.atribuicoes}</p>
+        <div class="p-2 bg-[#F7F5F0] rounded border border-[#DFDBD2] mt-2">
+          <p class="text-[11px] text-gray-600">
+            <strong>Dica Noturna:</strong> Para entregar atestados médicos e requerimentos padrão do DRCA após as 19h, dirija-se diretamente ao guichê do CEAG.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Coordenação do Curso & NDE */}
+  <div class="cagp-tool-box p-4 space-y-3">
+    <div class="border-b border-[#DFDBD2] pb-2 flex items-center justify-between flex-wrap gap-2">
+      <div>
+        <div class="flex items-center gap-2">
+          <i class="bi bi-mortarboard-fill text-[#8B1E2D] text-base" aria-hidden="true"></i>
+          <h3 class="font-['Oswald'] text-sm font-bold uppercase text-[#0A0A0A]">
+            Coordenação Didática & Núcleo Docente Estruturante (NDE)
+          </h3>
+        </div>
+        <p class="text-xs text-gray-600 mt-0.5">Gestão pedagógica e aperfeiçoamento contínuo do PPC de Gestão Pública:</p>
+      </div>
+      <span class="cagp-badge cagp-badge-dark font-mono text-xs">Mandato Vigente 2026</span>
+    </div>
+
+    {/* Coordenação Titular e Sub */}
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+      <div class="cagp-card p-3 bg-white border border-[#DFDBD2]">
+        <span class="text-[10px] font-['Oswald'] uppercase font-bold text-[#8B1E2D] block">Coordenadora do Colegiado</span>
+        <h4 class="font-['Oswald'] text-sm font-bold uppercase text-[#0A0A0A] mt-0.5">{coordenacao.coordenadora}</h4>
+        <p class="text-xs text-gray-600 mt-1">E-mail: <a href={`mailto:${coordenacao.emailCoord}`} class="font-mono text-[#8B1E2D] underline">{coordenacao.emailCoord}</a></p>
+      </div>
+      <div class="cagp-card p-3 bg-white border border-[#DFDBD2]">
+        <span class="text-[10px] font-['Oswald'] uppercase font-bold text-gray-500 block">Subcoordenadora do Colegiado</span>
+        <h4 class="font-['Oswald'] text-sm font-bold uppercase text-[#0A0A0A] mt-0.5">{coordenacao.subcoordenadora}</h4>
+        <p class="text-xs text-gray-600 mt-1">E-mail: <a href={`mailto:${coordenacao.emailSub}`} class="font-mono text-[#8B1E2D] underline">{coordenacao.emailSub}</a></p>
+      </div>
+    </div>
+
+    {/* Membros do NDE */}
+    <div class="mt-3">
+      <span class="font-['Oswald'] font-bold uppercase text-xs text-[#0A0A0A] block mb-2">
+        Membros do Núcleo Docente Estruturante (NDE):
+      </span>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+        {ndeMembros.map((m) => (
+          <div class="p-2.5 bg-white border border-[#DFDBD2] rounded-[4px] text-xs">
+            <strong class="text-[#0A0A0A] block">{m.nome}</strong>
+            <span class="text-[11px] text-gray-500 block">{m.papel}</span>
+            <span class="text-[11px] font-mono text-[#8B1E2D]">{m.email}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Representação por Departamento */}
+    <div class="mt-3 pt-3 border-t border-[#DFDBD2]">
+      <span class="font-['Oswald'] font-bold uppercase text-xs text-[#0A0A0A] block mb-2">
+        Composição Interdepartamental do Colegiado:
+      </span>
+      <div class="space-y-1.5">
+        {colegiadoRepresentantes.map((r) => (
+          <div class="p-2 bg-[#F7F5F0] border border-[#DFDBD2] rounded flex flex-col sm:flex-row sm:items-center justify-between text-xs gap-1">
+            <span class="font-['Oswald'] font-bold text-[#8B1E2D] uppercase">{r.orgao}:</span>
+            <span class="text-gray-700"><strong>Titular:</strong> {r.titular} | <strong>Suplente:</strong> {r.suplente}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  {/* Atos Mestres & Normas do Curso: Leitura Direta e Download */}
+  <div class="cagp-tool-box p-4 space-y-3">
+    <div class="border-b border-[#DFDBD2] pb-2 flex items-center justify-between flex-wrap gap-2">
+      <div>
+        <h4 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A] m-0 flex items-center gap-2">
+          <i class="bi bi-file-earmark-ruled-fill text-[#8B1E2D]" aria-hidden="true" />
+          <span>Atos Mestres e Normas Oficiais do Curso</span>
+        </h4>
+        <p class="text-xs text-gray-600 mt-0.5 m-0">Legislação estruturante com leitura digital e download de PDFs assinados:</p>
+      </div>
+      <span class="text-xs text-gray-500 font-mono">4 Documentos</span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      {atosCurso.map((doc) => (
+        <div class="cagp-card p-3 bg-white flex flex-col justify-between border border-[#DFDBD2] rounded-lg">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-1">
+              <span class="cagp-badge cagp-badge-red text-[10px] font-mono">{doc.sigla}</span>
+              <span class="text-[10px] text-gray-400 font-mono">PDF Oficial</span>
+            </div>
+            <h5 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] m-0 mb-1">{doc.titulo}</h5>
+            <p class="text-xs text-gray-600 leading-snug m-0">{doc.desc}</p>
+          </div>
+
+          <div class="flex items-center gap-2 mt-3 pt-2 border-t border-[#DFDBD2]">
+            {doc.slug && (
+              <a
+                href={route(`/documentos/${doc.slug}`)}
+                class="cagp-btn-secondary text-xs py-1.5 px-2.5 no-underline flex items-center gap-1"
+                title="Abrir no leitor digital"
+              >
+                <i class="bi bi-book-half" aria-hidden="true" />
+                <span>Ler Transcrição</span>
+              </a>
+            )}
+            <a
+              href={asset(`/documentos/${doc.file}`)}
+              download
+              class="cagp-btn-primary text-xs py-1.5 px-3 no-underline flex items-center gap-1.5 ml-auto"
+              title={`Baixar ${doc.titulo}`}
+            >
+              <i class="bi bi-download" aria-hidden="true" />
+              <span>Baixar PDF</span>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

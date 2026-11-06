@@ -1,0 +1,107 @@
+---
+// FactCheckBanner.astro - Tarja Editorial de Homologação e Checagem de Fatos (Estilo "Fato ou Checado" + Apple HIG)
+interface Props {
+  claim: string;
+  verdict: 'homologado' | 'obrigatorio' | 'atencao' | 'desmistificado';
+  stampText?: string;
+  normativeSource: string;
+  explanation: string;
+  officialRuleExcerpt?: string;
+}
+
+const {
+  claim,
+  verdict,
+  stampText,
+  normativeSource,
+  explanation,
+  officialRuleExcerpt,
+} = Astro.props;
+
+const verdictConfig = {
+  homologado: {
+    badge: 'VERIFICADO • NORMA REGIMENTAL',
+    stamp: stampText || 'HOMOLOGADO',
+    stampClass: 'is-deferido text-[#15803D] border-[#15803D] bg-[#DCFCE7]/40',
+    icon: 'bi-check-circle-fill text-[#15803D]',
+    borderClass: 'border-[#15803D]',
+  },
+  obrigatorio: {
+    badge: 'TRAVA OFICIAL • PPC 2020',
+    stamp: stampText || 'OBRIGATÓRIO',
+    stampClass: 'is-indeferido text-[#9E2424] border-[#9E2424] bg-[#FEE2E2]/50',
+    icon: 'bi-shield-exclamation text-[#9E2424]',
+    borderClass: 'border-[#9E2424]',
+  },
+  atencao: {
+    badge: 'PRAZO PEREMPTÓRIO • ATENÇÃO',
+    stamp: stampText || '120 DIAS',
+    stampClass: 'is-homologado text-[#B45309] border-[#B45309] bg-[#FEF3C7]',
+    icon: 'bi-exclamation-triangle-fill text-[#B45309]',
+    borderClass: 'border-[#B45309]',
+  },
+  desmistificado: {
+    badge: 'CHECAGEM ANTI-BOATO • FATO',
+    stamp: stampText || 'FATO REAL',
+    stampClass: 'is-deferido text-[#005A9C] border-[#005A9C] bg-[#E0F2FE]',
+    icon: 'bi-patch-check-fill text-[#005A9C]',
+    borderClass: 'border-[#005A9C]',
+  },
+}[verdict];
+---
+
+<div class={`cagp-fact-check-box bg-white border-2 ${verdictConfig.borderClass} rounded-md p-4 shadow-[3px_3px_0px_#0A0A0A] mb-4 relative overflow-hidden`}>
+  <!-- Top Editorial Bar -->
+  <div class="flex flex-wrap items-center justify-between gap-2 border-b border-[#DFDBD2] pb-2.5 mb-3">
+    <div class="flex items-center gap-2">
+      <i class={`bi ${verdictConfig.icon} text-lg`} aria-hidden="true"></i>
+      <div>
+        <span class="font-['Oswald'] font-bold text-xs uppercase tracking-wider text-[#0A0A0A] block">
+          {verdictConfig.badge}
+        </span>
+        <span class="text-xs font-mono text-gray-500">
+          Fonte: {normativeSource}
+        </span>
+      </div>
+    </div>
+
+    <!-- Authentic Rubber Stamp -->
+    <div class={`cagp-stamp-badge ${verdictConfig.stampClass} font-mono font-black text-xs px-2.5 py-1 uppercase tracking-wider shadow-[2px_2px_0_#0A0A0A]`}>
+      {verdictConfig.stamp}
+    </div>
+  </div>
+
+  <!-- Central Question / Claim -->
+  <div class="mb-2">
+    <span class="text-xs uppercase font-['Oswald'] font-bold text-gray-500 tracking-wider block">
+      O que circula / O que você precisa checar:
+    </span>
+    <p class="font-['Oswald'] font-bold text-base text-[#0A0A0A] leading-snug mt-0.5">
+      "{claim}"
+    </p>
+  </div>
+
+  <!-- Editorial Explanation -->
+  <div class="bg-[#F7F5F0] border border-[#DFDBD2] rounded-[4px] p-3 text-sm text-gray-800 leading-relaxed mb-2">
+    <span class="font-bold text-[#8B1E2D] block mb-1 font-['Oswald'] uppercase text-xs">
+      Checagem do Colegiado & CAGP:
+    </span>
+    {explanation}
+  </div>
+
+  <!-- Optional Official Excerpt Drawer -->
+  {officialRuleExcerpt && (
+    <details class="cagp-normative-details group bg-white border border-[#DFDBD2] rounded-[4px] text-xs">
+      <summary class="px-3 py-2.5 min-h-[44px] cursor-pointer font-['Oswald'] font-bold uppercase text-gray-700 bg-gray-50 hover:bg-gray-100 flex items-center justify-between select-none">
+        <span class="flex items-center gap-1.5">
+          <i class="bi bi-file-earmark-text text-gray-500"></i>
+          <span>Ver texto legal literal da UFMG</span>
+        </span>
+        <i class="bi bi-chevron-down text-xs transition-transform duration-200 group-open:rotate-180"></i>
+      </summary>
+      <div class="px-3 py-2.5 font-mono text-xs text-gray-700 bg-white border-t border-[#DFDBD2] whitespace-pre-line leading-relaxed">
+        {officialRuleExcerpt}
+      </div>
+    </details>
+  )}
+</div>

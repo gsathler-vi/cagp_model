@@ -1,0 +1,253 @@
+---
+// src/components/shell/AxisOverview.astro — Dashboard Bento-Grid Apple HIG para a "Visão Geral" de Cada Eixo
+import { type AxisId, getAxisById } from '../../lib/navigationRegistry';
+import { OverviewCalcWidget } from '../widgets/OverviewCalcWidget';
+import { OverviewGuardianWidget } from '../widgets/OverviewGuardianWidget';
+import { OverviewStageWidget } from '../widgets/OverviewStageWidget';
+import { OverviewCalouroWidget } from '../widgets/OverviewCalouroWidget';
+import OverviewFaqWidget from '../widgets/OverviewFaqWidget.astro';
+import OverviewGestaoWidget from '../widgets/OverviewGestaoWidget.astro';
+import { route } from '../../lib/paths';
+
+interface Props {
+  axisId: AxisId;
+}
+
+const { axisId } = Astro.props;
+const axis = getAxisById(axisId);
+if (!axis) {
+  throw new Error(`Eixo com ID "${axisId}" não encontrado no navigationRegistry.`);
+}
+---
+
+<div class="cagp-axis-overview space-y-5 select-none">
+  <!-- Banner Executivo do Eixo -->
+  <div class="p-4 sm:p-5 bg-[#F7F5F0] border border-[#DFDBD2] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
+    <div class="flex items-start gap-3">
+      <span class="w-10 h-10 rounded-lg bg-[#0A0A0A] text-white flex items-center justify-center text-xl shrink-0 mt-0.5">
+        <i class={`bi ${axis.icon}`} aria-hidden="true" />
+      </span>
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="text-[11px] font-['Oswald'] uppercase font-bold tracking-wider text-[#8B1E2D]">
+            Eixo {axis.number} Canônico
+          </span>
+          <span class="text-gray-300">•</span>
+          <span class="text-xs text-gray-500 font-mono">{axis.items.length} funcionalidades</span>
+        </div>
+        <h2 class="font-['Oswald'] text-lg sm:text-xl font-bold uppercase text-[#0A0A0A] leading-tight">
+          {axis.tagline}
+        </h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bento Grid de Widgets Reativos Apple HIG -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {/* Eixo 3: Currículo */}
+    {axisId === 'curriculo' && (
+      <>
+        <OverviewCalcWidget client:load />
+        <OverviewGuardianWidget client:load />
+        <OverviewStageWidget client:load />
+      </>
+    )}
+
+    {/* Eixo 2: Curso */}
+    {axisId === 'curso' && (
+      <>
+        <OverviewCalouroWidget client:load />
+
+        <div class="cagp-card p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col justify-between h-full shadow-sm hover:border-[#0A0A0A] transition-all">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="w-9 h-9 rounded-lg bg-[#8B1E2D]/10 text-[#8B1E2D] flex items-center justify-center text-lg border border-[#8B1E2D]/20">
+                  <i class="bi bi-geo-alt" aria-hidden="true" />
+                </span>
+                <div>
+                  <h3 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A] leading-tight">
+                    Colegiado & Secretaria
+                  </h3>
+                  <span class="text-[11px] text-gray-500 font-mono">Sala F-2039 FAFICH</span>
+                </div>
+              </div>
+              <span class="px-2 py-0.5 rounded font-['Oswald'] text-xs font-bold bg-[#0A0A0A] text-white">
+                Presencial
+              </span>
+            </div>
+            <p class="text-xs text-gray-700 leading-relaxed mb-3">
+              Atendimento discente com <strong>Norma Guedes</strong>. E-mail oficial: <code class="text-xs bg-[#F7F5F0] px-1 py-0.5 rounded text-[#8B1E2D]">coordgestaopublica@gmail.com</code>.
+            </p>
+          </div>
+          <a
+            href={route('/curso') + '#colegiado'}
+            class="min-h-[44px] px-3 py-2 bg-[#0A0A0A] text-white hover:bg-[#8B1E2D] rounded-lg font-['Oswald'] text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all no-underline mt-2 shadow-[2px_2px_0px_#0A0A0A]"
+          >
+            <span>Ver Horários & Contatos</span>
+            <i class="bi bi-arrow-right" aria-hidden="true" />
+          </a>
+        </div>
+
+        <div class="cagp-card p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col justify-between h-full shadow-sm hover:border-[#0A0A0A] transition-all">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="w-9 h-9 rounded-lg bg-[#2A6264]/10 text-[#2A6264] flex items-center justify-center text-lg border border-[#2A6264]/20">
+                  <i class="bi bi-lightbulb" aria-hidden="true" />
+                </span>
+                <div>
+                  <h3 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A] leading-tight">
+                    Pesquisa & Extensão
+                  </h3>
+                  <span class="text-[11px] text-gray-500 font-mono">11 Núcleos do DCP</span>
+                </div>
+              </div>
+              <span class="px-2 py-0.5 rounded font-['Oswald'] text-xs font-bold bg-[#2A6264] text-white">
+                Nota 7 CAPES
+              </span>
+            </div>
+            <p class="text-xs text-gray-700 leading-relaxed mb-3">
+              Conecte-se aos grupos de pesquisa, bolsas de Iniciação Científica (até 90h de AAC) e laboratórios de políticas públicas.
+            </p>
+          </div>
+          <a
+            href={route('/pesquisa')}
+            class="min-h-[44px] px-3 py-2 bg-[#0A0A0A] text-white hover:bg-[#2A6264] rounded-lg font-['Oswald'] text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all no-underline mt-2 shadow-[2px_2px_0px_#0A0A0A]"
+          >
+            <span>Explorar Núcleos de Pesquisa</span>
+            <i class="bi bi-arrow-right" aria-hidden="true" />
+          </a>
+        </div>
+      </>
+    )}
+
+    {/* Eixo 4: Acervo */}
+    {axisId === 'acervo' && (
+      <>
+        <OverviewFaqWidget />
+
+        <div class="cagp-card p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col justify-between h-full shadow-sm hover:border-[#0A0A0A] transition-all">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="w-9 h-9 rounded-lg bg-[#B45309]/10 text-[#B45309] flex items-center justify-center text-lg border border-[#B45309]/20">
+                  <i class="bi bi-file-earmark-pdf" aria-hidden="true" />
+                </span>
+                <div>
+                  <h3 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A] leading-tight">
+                    Atos Oficiais & PPC
+                  </h3>
+                  <span class="text-[11px] text-gray-500 font-mono">Leitor e Downloads</span>
+                </div>
+              </div>
+              <span class="px-2 py-0.5 rounded font-['Oswald'] text-xs font-bold bg-[#B45309] text-white">
+                PDFs Oficiais
+              </span>
+            </div>
+            <p class="text-xs text-gray-700 leading-relaxed mb-3">
+              Acesse o <strong>PPC 2020</strong>, o <strong>Regulamento N-20229</strong>, o <strong>Regimento do CAGP</strong> e modelos de requerimentos para preenchimento.
+            </p>
+          </div>
+          <a
+            href={route('/documentos') + '#atos'}
+            class="min-h-[44px] px-3 py-2 bg-[#0A0A0A] text-white hover:bg-[#B45309] rounded-lg font-['Oswald'] text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all no-underline mt-2 shadow-[2px_2px_0px_#0A0A0A]"
+          >
+            <span>Abrir Repositório de PDFs</span>
+            <i class="bi bi-arrow-right" aria-hidden="true" />
+          </a>
+        </div>
+
+        <div class="cagp-card p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col justify-between h-full shadow-sm hover:border-[#0A0A0A] transition-all">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="w-9 h-9 rounded-lg bg-[#0A0A0A]/10 text-[#0A0A0A] flex items-center justify-center text-lg border border-[#0A0A0A]/20">
+                  <i class="bi bi-mic" aria-hidden="true" />
+                </span>
+                <div>
+                  <h3 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A] leading-tight">
+                    Transcrições Históricas
+                  </h3>
+                  <span class="text-[11px] text-gray-500 font-mono">Memória Discente</span>
+                </div>
+              </div>
+              <span class="px-2 py-0.5 rounded font-['Oswald'] text-xs font-bold bg-[#0A0A0A] text-white">
+                Histórico
+              </span>
+            </div>
+            <p class="text-xs text-gray-700 leading-relaxed mb-3">
+              Transcrições e apresentações oficiais das recepções de calouros e eventos de acolhimento do curso.
+            </p>
+          </div>
+          <a
+            href={route('/documentos/transcricao-recepcao-ingressantes-2024-2')}
+            class="min-h-[44px] px-3 py-2 bg-[#0A0A0A] text-white hover:bg-[#8B1E2D] rounded-lg font-['Oswald'] text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all no-underline mt-2 shadow-[2px_2px_0px_#0A0A0A]"
+          >
+            <span>Ler Transcrições</span>
+            <i class="bi bi-arrow-right" aria-hidden="true" />
+          </a>
+        </div>
+      </>
+    )}
+
+    {/* Eixo 5: O CAGP */}
+    {axisId === 'cagp' && (
+      <>
+        <OverviewGestaoWidget />
+
+        <div class="cagp-card p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col justify-between h-full shadow-sm hover:border-[#0A0A0A] transition-all">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="w-9 h-9 rounded-lg bg-[#8B1E2D]/10 text-[#8B1E2D] flex items-center justify-center text-lg border border-[#8B1E2D]/20">
+                  <i class="bi bi-building" aria-hidden="true" />
+                </span>
+                <div>
+                  <h3 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A] leading-tight">
+                    Sobre o CAGP & Estatuto
+                  </h3>
+                  <span class="text-[11px] text-gray-500 font-mono">Fundação e Princípios</span>
+                </div>
+              </div>
+              <span class="px-2 py-0.5 rounded font-['Oswald'] text-xs font-bold bg-[#8B1E2D] text-white">
+                Soberano
+              </span>
+            </div>
+            <p class="text-xs text-gray-700 leading-relaxed mb-3">
+              Conheça a história dos Candangos, a estrutura das assembleias gerais e o estatuto aprovado em 14/10/2024.
+            </p>
+          </div>
+          <a
+            href={route('/sobre') + '#governanca'}
+            class="min-h-[44px] px-3 py-2 bg-[#0A0A0A] text-white hover:bg-[#8B1E2D] rounded-lg font-['Oswald'] text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all no-underline mt-2 shadow-[2px_2px_0px_#0A0A0A]"
+          >
+            <span>Ver Estatuto do CAGP</span>
+            <i class="bi bi-arrow-right" aria-hidden="true" />
+          </a>
+        </div>
+      </>
+    )}
+  </div>
+
+  <!-- Barra de Acesso Direto a Todas as Ferramentas do Eixo -->
+  <div class="p-3 bg-white border border-[#DFDBD2] rounded-xl">
+    <div class="flex items-center justify-between mb-2 px-1">
+      <span class="text-[11px] font-['Oswald'] uppercase tracking-wider text-gray-500 font-bold">
+        Todas as Funcionalidades do Eixo {axis.number} ({axis.name}):
+      </span>
+    </div>
+    <div class="flex flex-wrap items-center gap-2">
+      {axis.items.filter((it) => !it.isOverview).map((item) => (
+        <a
+          href={item.href}
+          class="min-h-[44px] px-3 py-2 bg-[#F7F5F0] hover:bg-[#EAE6DE] border border-[#DFDBD2] hover:border-[#0A0A0A] rounded-lg text-xs font-['Oswald'] uppercase font-semibold text-[#0A0A0A] flex items-center gap-2 transition-all no-underline"
+        >
+          <i class={`bi ${item.icon} text-[#8B1E2D]`} aria-hidden="true" />
+          <span>{item.label}</span>
+          <i class="bi bi-chevron-right text-gray-400 text-[10px]" aria-hidden="true" />
+        </a>
+      ))}
+    </div>
+  </div>
+</div>

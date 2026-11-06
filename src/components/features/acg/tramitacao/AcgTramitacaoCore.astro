@@ -1,0 +1,239 @@
+---
+// src/components/features/acg/tramitacao/AcgTramitacaoCore.astro — Guia & Protocolo de Tramitação Colegiado N-20229
+import { asset } from '../../../../lib/paths';
+
+const modalidadesAAC = [
+  { mod: 'I. Pesquisa Interinstitucional', icon: 'bi-globe', teto: '75h', comp: 'Relatório formal assinado com orientador de outra IES pública ou órgão de pesquisa.' },
+  { mod: 'II. Monitoria Acadêmica', icon: 'bi-person-video3', teto: '45h', comp: 'Relatório final de monitoria assinado com docente titular na UFMG.' },
+  { mod: 'III. Eventos I (Ouvinte)', icon: 'bi-megaphone-fill', teto: '60h', comp: 'Certificado com carga horária expressa. Prazo decadencial fatal de 120 dias corridos!', fatal: true },
+  { mod: 'IV. Grupos de Estudo', icon: 'bi-people-fill', teto: '30h', comp: 'Declaração de participação regular com parecer e validação de docente.' },
+  { mod: 'V. Iniciação Científica (UFMG)', icon: 'bi-search', teto: '90h', comp: 'PIBIC ou voluntário cadastrado na PRPq com relatório aprovado.' },
+  { mod: 'VI. Pesquisa Bibliográfica', icon: 'bi-book-fill', teto: '30h', comp: 'Texto científico orientado por docente (distinto do TCC).' },
+  { mod: 'VII. Trabalho em Anais', icon: 'bi-card-text', teto: '30h', comp: 'Apresentação oral ou pôster publicado em anais. Prazo de 120 dias corridos!', fatal: true },
+  { mod: 'VIII. Artigo em Periódico', icon: 'bi-newspaper', teto: '60h', comp: 'Artigo aceito ou publicado em periódico científico classificado no Qualis/CAPES.' },
+  { mod: 'IX. Vivência Profissional', icon: 'bi-briefcase-fill', teto: '60h', comp: 'Estágio não obrigatório com TCE ativo em órgão público ou terceiro setor.' },
+];
+
+const steps = [
+  {
+    num: '1',
+    title: 'Identificação do(a) Estudante',
+    desc: 'Preencha seus dados cadastrais (nome completo, Nº de Matrícula, telefone e e-mail institucional @ufmg.br). Certifique-se de que a versão curricular indicada é a N-20229.',
+    badge: 'Passo 1',
+    icon: 'bi-person-badge',
+  },
+  {
+    num: '2',
+    title: 'Classificação da Atividade & Créditos',
+    desc: 'Indique o Tipo (Modalidades I a IX do Art. 15), período de realização (início e término), entidade promotora e a quantidade de créditos solicitados (1 crédito = 15h comprovadas).',
+    badge: 'Passo 2',
+    icon: 'bi-journal-check',
+  },
+  {
+    num: '3',
+    title: 'Envio para Análise da Coordenação',
+    desc: 'Após preencher e assinar o formulário, anexe os certificados comprobatórios (com link/código de autenticidade eletrônica) e envie para o e-mail da Coordenação: coordgestaopublica@gmail.com solicitando a análise e assinatura da Coordenadora (Profª Isabele Batista Mitozo).',
+    badge: 'Passo 3',
+    icon: 'bi-envelope-check',
+  },
+  {
+    num: '4',
+    title: 'Impressão e Protocolo na Secretaria',
+    desc: 'Com o documento assinado e deferido pela Coordenação, imprima o requerimento homologado e leve pessoalmente à Secretaria do Curso (Sala F-2039 com Norma Guedes) para protocolar a validação e lançamento definitivo no histórico escolar do SIGA.',
+    badge: 'Passo 4',
+    icon: 'bi-printer-fill',
+  },
+];
+---
+
+<div class="cagp-tramitacao-core space-y-6 select-none text-[#0A0A0A]">
+  <!-- Alerta do Prazo Fatal de 120 Dias (Art. 15, § 4º) -->
+  <div class="p-4 rounded-xl bg-red-50 border-2 border-[#DC2626] shadow-[2px_2px_0px_#DC2626] space-y-2">
+    <div class="flex items-center gap-2">
+      <i class="bi bi-exclamation-octagon-fill text-[#DC2626] text-xl" aria-hidden="true" />
+      <h3 class="font-['Oswald'] font-bold text-sm uppercase text-[#DC2626] tracking-wide m-0">
+        Fique Atento ao Prazo Regimental Decadencial de 120 Dias Corridos!
+      </h3>
+    </div>
+    <p class="text-xs text-gray-800 leading-relaxed m-0">
+      Conforme o <strong>Art. 15, § 4º (incisos III e VII) do Regulamento do Curso</strong>, certificados de participação como ouvinte em congressos/seminários (Modalidade III) e apresentação de trabalhos em anais (Modalidade VII) devem ser protocolados no <strong>prazo fatal de até 120 dias corridos</strong> após a data de emissão. O Colegiado de Gestão Pública indefere sumariamente qualquer certificado protocolado fora do prazo.
+    </p>
+    <div class="p-3 bg-white rounded-lg border border-[#DC2626]/30 text-xs text-gray-700 shadow-[1px_1px_0px_#DFDBD2]">
+      <strong>Regra Benéfica de Recesso:</strong> Para eventos ocorridos durante as férias ou recesso acadêmico da UFMG, a contagem do prazo inicia-se a partir do <em>primeiro dia letivo do semestre regular subsequente</em> à emissão do documento.
+    </div>
+  </div>
+
+  <!-- Tutorial Visual com Imagem Anotada e Pins Recalibrados -->
+  <div class="cagp-tool-box p-4 bg-white border border-[#DFDBD2] rounded-xl space-y-3 shadow-xs">
+    <div class="border-b border-[#DFDBD2] pb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div>
+        <span class="text-[11px] font-['Oswald'] uppercase font-bold tracking-wider text-[#8B1E2D]">
+          Guia Visual Passo a Passo
+        </span>
+        <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A] m-0">
+          Como Preencher o Requerimento de AAC (Versão N-20229)
+        </h3>
+        <p class="text-xs text-gray-600 mt-0.5 m-0">
+          Preencha um formulário para cada atividade extracurricular que desejar integralizar na sua carga horária de optativas (Art. 15):
+        </p>
+      </div>
+
+      <a
+        href={asset('/documentos/requerimento-atividade-integralizadora-credito-v20229.pdf')}
+        download
+        class="min-h-[44px] px-4 py-2 bg-[#8B1E2D] hover:bg-[#0A0A0A] text-white rounded-lg text-xs font-['Oswald'] uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all no-underline shrink-0 shadow-[2px_2px_0px_#0A0A0A]"
+      >
+        <i class="bi bi-file-earmark-arrow-down-fill" aria-hidden="true" />
+        <span>Baixar Requerimento Oficial (PDF)</span>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start pt-2">
+      <!-- Visual Anotado com Print e Pins -->
+      <div class="cagp-doc-preview-wrapper" role="region" aria-label="Visualização anotada do formulário de Requerimento de Atividade Integralizadora de Crédito">
+        <img
+          src={asset('/imagens/tutoriais/print-requerimento-aac-1.png')}
+          alt="Formulário oficial de Requerimento de Atividade Integralizadora de Crédito AAC do Colegiado de Gestão Pública com marcações numeradas"
+          class="cagp-doc-preview-img"
+          loading="lazy"
+        />
+
+        <!-- Box 1 & Pin 1: Identificação -->
+        <div class="cagp-doc-box" style="top: 15.7%; left: 13.5%; width: 76.8%; height: 6%;" aria-hidden="true"></div>
+        <button type="button" class="cagp-doc-pin" style="top: 15.7%; left: 13.5%;" aria-label="Ponto 1: Identificação do Requerente">1</button>
+
+        <!-- Box 2 & Pin 2: Dados da Atividade -->
+        <div class="cagp-doc-box" style="top: 23.9%; left: 13.5%; width: 76.8%; height: 22.5%;" aria-hidden="true"></div>
+        <button type="button" class="cagp-doc-pin" style="top: 23.9%; left: 13.5%;" aria-label="Ponto 2: Dados da Atividade e Créditos Requeridos">2</button>
+
+        <!-- Box 3 & Pin 3: Documentos e Assinatura -->
+        <div class="cagp-doc-box" style="top: 49%; left: 13.5%; width: 76.8%; height: 21.2%;" aria-hidden="true"></div>
+        <button type="button" class="cagp-doc-pin" style="top: 49%; left: 13.5%;" aria-label="Ponto 3: Comprovação e Assinatura do Requerente">3</button>
+      </div>
+
+      <!-- Linha do Tempo dos 4 Passos Oficiais -->
+      <div class="space-y-3">
+        {steps.map((st) => (
+          <div class="cagp-card p-3.5 bg-white border border-[#DFDBD2] rounded-xl flex items-start gap-3 shadow-xs">
+            <span class="w-8 h-8 rounded-lg bg-[#8B1E2D] text-white flex items-center justify-center font-['Oswald'] text-sm font-bold shrink-0 shadow-[1px_1px_0px_#0A0A0A]">
+              {st.num}
+            </span>
+            <div class="min-w-0">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="cagp-badge cagp-badge-red text-[10px]">{st.badge}</span>
+                <h4 class="font-['Oswald'] text-xs font-bold uppercase text-[#0A0A0A] leading-tight m-0 truncate">
+                  {st.title}
+                </h4>
+              </div>
+              <p class="text-xs text-gray-700 leading-relaxed m-0">
+                {st.desc}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Duas Colunas: 1. Extensão (300h) vs 2. AAC (Até 300h) -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <!-- Coluna 1: Extensão Obrigatória (300h) -->
+    <div class="cagp-tool-box p-4 bg-white border border-[#DFDBD2] rounded-xl space-y-3 shadow-xs">
+      <div class="flex items-center justify-between border-b border-[#DFDBD2] pb-2 flex-wrap gap-2">
+        <div>
+          <span class="text-[10px] font-mono text-[#8B1E2D] font-bold uppercase block">Resolução CEPE 10/2019</span>
+          <div class="flex items-center gap-2 mt-0.5">
+            <i class="bi bi-diagram-3-fill text-[#8B1E2D] text-base" aria-hidden="true" />
+            <h4 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A] m-0">1. Extensão Obrigatória (300h)</h4>
+          </div>
+        </div>
+        <span class="cagp-badge cagp-badge-red font-mono">10% do Curso</span>
+      </div>
+
+      <p class="text-xs text-gray-700 leading-relaxed m-0">
+        Exigência nacional de curricularização da extensão que conecta os estudantes a projetos comunitários e órgãos de gestão pública:
+      </p>
+
+      <ul class="text-xs text-gray-600 space-y-2 list-disc pl-4 m-0">
+        <li>
+          <strong>Laboratórios de Extensão (DCP 195 e 196):</strong> 90 horas cada (total de até 180h / 12 créditos) em consultoria governamental aplicada nos 7º e 8º períodos.
+        </li>
+        <li>
+          <strong>ATLAS Consultoria Jr.:</strong> Atividades na empresa júnior contam como Atividades Interinstitucionais de Extensão (até 90h / 6 créditos).
+        </li>
+        <li>
+          <strong>Projetos PROEX / SIEX:</strong> Atuação bolsista ou voluntária em programas com registro ativo no SIEX/UFMG (até 90h / 6 créditos).
+        </li>
+        <li>
+          <strong>Cursos Interinstitucionais de Extensão:</strong> Cursos e oficinas em Escolas de Governo reconhecidas (ENAP, FJP, etc., até 120h / 8 créditos).
+        </li>
+      </ul>
+    </div>
+
+    <!-- Coluna 2: Horas Complementares AAC (Até 300h) -->
+    <div class="cagp-tool-box p-4 bg-white border border-[#DFDBD2] rounded-xl space-y-3 shadow-xs">
+      <div class="flex items-center justify-between border-b border-[#DFDBD2] pb-2 flex-wrap gap-2">
+        <div>
+          <span class="text-[10px] font-mono text-gray-500 font-bold uppercase block">Regulamento Art. 15</span>
+          <div class="flex items-center gap-2 mt-0.5">
+            <i class="bi bi-mortarboard-fill text-[#15803D] text-base" aria-hidden="true" />
+            <h4 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A] m-0">2. Horas AAC (Até 300h)</h4>
+          </div>
+        </div>
+        <span class="cagp-badge cagp-badge-green font-mono">15h = 1 Crédito</span>
+      </div>
+
+      <p class="text-xs text-gray-700 leading-relaxed m-0">
+        Atividades extracurriculares facultativas que abatem créditos de optativas do Núcleo Específico:
+      </p>
+
+      <div class="overflow-x-auto text-xs max-h-60 overflow-y-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b-2 border-[#0A0A0A] bg-[#F7F5F0]">
+              <th class="p-2 font-['Oswald'] uppercase font-bold text-[#0A0A0A]">Modalidade</th>
+              <th class="p-2 font-['Oswald'] uppercase font-bold text-[#0A0A0A] text-center">Teto</th>
+              <th class="p-2 font-['Oswald'] uppercase font-bold text-[#0A0A0A]">Comprovação</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#DFDBD2]">
+            {modalidadesAAC.map((m) => (
+              <tr class={m.fatal ? 'bg-red-50/70' : 'hover:bg-[#FBF8F3]'}>
+                <td class="p-2 font-semibold text-[#0A0A0A]">
+                  <div class="flex items-center gap-1.5">
+                    <i class={`bi ${m.icon} text-gray-600`} aria-hidden="true" />
+                    <span>{m.mod}</span>
+                  </div>
+                </td>
+                <td class="p-2 text-center font-mono font-bold">{m.teto}</td>
+                <td class="p-2 text-gray-600 text-[11px]">{m.comp}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Perguntas Práticas dos Veteranos -->
+  <div class="p-4 bg-[#F7F5F0] border border-[#DFDBD2] rounded-xl space-y-3 shadow-xs">
+    <h4 class="font-['Oswald'] text-sm uppercase font-bold text-[#0A0A0A] flex items-center gap-2 m-0">
+      <i class="bi bi-question-circle-fill text-[#8B1E2D]" aria-hidden="true" />
+      <span>Dúvidas Práticas e Recomendações dos Veteranos:</span>
+    </h4>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-gray-700">
+      <div class="p-3 bg-white border border-[#DFDBD2] rounded-lg">
+        <strong class="text-[#0A0A0A] block mb-1">Mesmo evento para Extensão e AAC?</strong>
+        Não. Uma mesma atividade não pode ser duplicada entre categorias. O estudante escolhe se a atividade preenche Extensão ou AAC.
+      </div>
+      <div class="p-3 bg-white border border-[#DFDBD2] rounded-lg">
+        <strong class="text-[#0A0A0A] block mb-1">Atividades anteriores à matrícula?</strong>
+        Não. O Art. 15, § 1º determina que as atividades devem ser realizadas estritamente durante o período em que o estudante estiver matriculado.
+      </div>
+      <div class="p-3 bg-white border border-[#DFDBD2] rounded-lg">
+        <strong class="text-[#0A0A0A] block mb-1">E se a solicitação for indeferida?</strong>
+        Conforme o Art. 16, a atividade indeferida não pode ser reapresentada na mesma modalidade, mas cabe recurso administrativo ao Colegiado.
+      </div>
+    </div>
+  </div>
+</div>

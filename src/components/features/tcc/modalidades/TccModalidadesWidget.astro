@@ -1,0 +1,51 @@
+---
+// src/components/features/tcc/modalidades/TccModalidadesWidget.astro — Widget de Resumo das 4 Modalidades
+---
+
+<div class="cagp-card p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col justify-between h-full shadow-xs hover:border-[#0A0A0A] transition-all select-none">
+  <div>
+    <div class="flex items-center justify-between gap-2 mb-3">
+      <div class="flex items-center gap-2">
+        <span class="w-9 h-9 rounded-lg bg-[#8B1E2D]/10 text-[#8B1E2D] flex items-center justify-center text-lg border border-[#8B1E2D]/20">
+          <i class="bi bi-grid-fill" aria-hidden="true" />
+        </span>
+        <div>
+          <h3 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A] leading-tight m-0">
+            4 Modalidades (Art. 19)
+          </h3>
+          <span class="text-[11px] text-gray-500 font-mono">Monografia, Intervenção, Artigo ou IC</span>
+        </div>
+      </div>
+      <span class="px-2 py-0.5 rounded font-['Oswald'] text-[11px] font-bold bg-[#8B1E2D] text-white">
+        Art. 19
+      </span>
+    </div>
+
+    <p class="text-xs text-gray-700 leading-relaxed mb-3">
+      Flexibilidade regimental para escolher entre viés puramente acadêmico, artigo publicável ou plano de intervenção aplicada na gestão.
+    </p>
+
+    <div class="grid grid-cols-2 gap-1.5 mb-3 text-[11px]">
+      <div class="p-1.5 bg-[#F7F5F0] rounded border border-[#DFDBD2] text-center font-semibold text-gray-700">
+        Monografia
+      </div>
+      <div class="p-1.5 bg-[#F7F5F0] rounded border border-[#DFDBD2] text-center font-semibold text-gray-700">
+        Intervenção
+      </div>
+      <div class="p-1.5 bg-[#F7F5F0] rounded border border-[#DFDBD2] text-center font-semibold text-gray-700">
+        Artigo Qualis
+      </div>
+      <div class="p-1.5 bg-[#F7F5F0] rounded border border-[#DFDBD2] text-center font-semibold text-gray-700">
+        Projeto de IC
+      </div>
+    </div>
+  </div>
+
+  <a
+    href="#modalidades"
+    class="min-h-[44px] px-3 py-2 bg-[#0A0A0A] hover:bg-[#8B1E2D] text-white rounded-lg font-['Oswald'] text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all no-underline shadow-[2px_2px_0px_#0A0A0A]"
+  >
+    <span>Comparar Modalidades</span>
+    <i class="bi bi-arrow-right" aria-hidden="true" />
+  </a>
+</div>

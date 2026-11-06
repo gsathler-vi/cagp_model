@@ -1,0 +1,87 @@
+---
+// estagio.astro — Central de Estágio Supervisionado (300h) & Dispensa Art. 41
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/ui/PageHeader.astro';
+import SegmentedControl from '../components/ui/SegmentedControl.astro';
+import JourneyNav from '../components/ui/JourneyNav.astro';
+import FactCheckBanner from '../components/ui/FactCheckBanner.astro';
+import EstagioCentralOverview from '../components/features/estagio/EstagioCentralOverview.astro';
+import { Art41SimulatorCore } from '../components/features/estagio/art41/Art41SimulatorCore';
+import EstagioObrigatorioCore from '../components/features/estagio/obrigatorio/EstagioObrigatorioCore.astro';
+import EstagioTceCore from '../components/features/estagio/tce/EstagioTceCore.astro';
+
+const tabs = [
+  { id: 'v0', shortLabel: 'Geral', fullLabel: 'Visão Geral do Estágio', hash: '#visao-geral' },
+  { id: 'v1', shortLabel: 'Art. 41', fullLabel: '1. Dispensa Art. 41', hash: '#art41' },
+  { id: 'v2', shortLabel: 'Estágio 300h', fullLabel: '2. Estágio Obrigatório (300h)', hash: '#obrigatorio' },
+  { id: 'v3', shortLabel: 'Tutorial TCE', fullLabel: '3. Tutorial TCE & Modelos', hash: '#tutorial' },
+];
+
+const badges = [
+  { label: '300h Obrigatórias (DCP 135/136)', variant: 'red' as const, icon: 'bi-briefcase-fill' },
+  { label: 'Dispensa Art. 41 Regulamento', variant: 'dark' as const, icon: 'bi-file-earmark-check-fill' },
+  { label: 'Lei Federal 11.788/2008', variant: 'blue' as const, icon: 'bi-journal-text' },
+  { label: 'Regulamento N-20229', variant: 'green' as const, icon: 'bi-shield-check' },
+];
+---
+
+<BaseLayout
+  title="Estágio Supervisionado (300h) & Art. 41"
+  description="Regras do estágio supervisionado de Gestão Pública da UFMG (300h: DCP 135 e DCP 136), simulador do Art. 41 para servidores e modelos oficiais de TCE."
+>
+  <PageHeader
+    eyebrow="Eixo 3 · Estágio Supervisionado"
+    title="Estágio Supervisionado (300h)"
+    subtitle="Verificador interativo de integralização por experiência profissional (Art. 41), regras do Estágio Obrigatório A e B e tutorial visual do Termo de Compromisso (TCE)."
+    badges={badges}
+  />
+
+  <SegmentedControl tabs={tabs} defaultTab="v0" />
+
+  <!-- Sub-view 0: Visão Geral da Central de Estágio -->
+  <section id="ws-panel-v0" class="cagp-workspace-view" data-ws-panel="v0">
+    <div id="visao-geral" class="cagp-anchor-target scroll-mt-24"></div>
+    <EstagioCentralOverview />
+  </section>
+
+  <!-- Sub-view 1: Dispensa Art. 41 -->
+  <section id="ws-panel-v1" class="cagp-workspace-view space-y-4" data-ws-panel="v1" hidden>
+    <div id="art41" class="cagp-anchor-target scroll-mt-24"></div>
+    <FactCheckBanner
+      claim="Servidor público em exercício, celetista no setor público ou comissionado tem dispensa do Estágio Supervisionado (300h)?"
+      verdict="homologado"
+      stampText="DISPENSA ART. 41"
+      normativeSource="Art. 41 do Regulamento Versão N-20229 & Parecer CNE/CES 01/2006"
+      explanation="VERDADEIRO, MEDIANTE PROTOCOLO FORMAL. O discente com vínculo formal ativo na administração pública direta ou indireta pode obter a dispensa total das 300h de estágio (DCP 135 e DCP 136). Para isso, deve apresentar portaria de posse, CTPS ou contrato acompanhado de declaração da chefia e memorial de atividades correlatas à Gestão Pública."
+      officialRuleExcerpt={`Regulamento do Curso — Art. 41:
+O discente que comprovar exercício profissional ou estágio não-obrigatório correlato à área de Gestão Pública na administração direta ou indireta, por período mínimo regulamentar, poderá requerer a dispensa das disciplinas de Estágio Supervisionado A e B, mediante parecer fundamentado da comissão avaliadora designada pelo Colegiado.`}
+    />
+    <Art41SimulatorCore client:load />
+  </section>
+
+  <!-- Sub-view 2: Estágio Obrigatório (300h) -->
+  <section id="ws-panel-v2" class="cagp-workspace-view" data-ws-panel="v2" hidden>
+    <div id="obrigatorio" class="cagp-anchor-target scroll-mt-24"></div>
+    <EstagioObrigatorioCore />
+  </section>
+
+  <!-- Sub-view 3: Tutorial TCE & Minutas -->
+  <section id="ws-panel-v3" class="cagp-workspace-view" data-ws-panel="v3" hidden>
+    <div id="tutorial" class="cagp-anchor-target scroll-mt-24"></div>
+    <EstagioTceCore />
+  </section>
+
+  <!-- Journey Navigation Trail -->
+  <JourneyNav
+    prev={{
+      title: 'Extensão & Horas AAC (Calculadora 600h)',
+      href: '/acg',
+      desc: 'Simule suas horas de Extensão e Atividades Complementares nas 9 categorias do Art. 15.',
+    }}
+    next={{
+      title: 'Trabalho de Conclusão de Curso (180h)',
+      href: '/tcc',
+      desc: 'Conheça as 4 modalidades oficiais (Art. 19), baixe o Termo de Aceite e veja as regras de banca.',
+    }}
+  />
+</BaseLayout>

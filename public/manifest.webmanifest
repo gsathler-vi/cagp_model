@@ -1,0 +1,70 @@
+{
+  "name": "CAGP — Centro Acadêmico de Gestão Pública UFMG",
+  "short_name": "CAGP UFMG",
+  "description": "Portal Institucional & Super App Discente da FAFICH/UFMG: percurso curricular, calculadora de horas e acervo offline.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#F7F5F0",
+  "theme_color": "#8B1E2D",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "categories": ["education", "academics", "government"],
+  "icons": [
+    {
+      "src": "./imagens/pwa/pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./imagens/pwa/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./imagens/pwa/pwa-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "./logos/cagp/10_simbolo_transparente_positivo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Guia do Calouro",
+      "short_name": "Calouros",
+      "description": "Guia de sobrevivência e acolhimento discente na FAFICH/UFMG",
+      "url": "./calouros",
+      "icons": [{ "src": "./imagens/pwa/pwa-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Percurso & Grafo",
+      "short_name": "Percurso",
+      "description": "Grafo de pré-requisitos das 27 obrigatórias e catálogo de 68 optativas",
+      "url": "./percurso",
+      "icons": [{ "src": "./imagens/pwa/pwa-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Calculadora 600h",
+      "short_name": "Calculadora",
+      "description": "Simulador interativo de horas de extensão e AAC",
+      "url": "./acg#calculadora-horas",
+      "icons": [{ "src": "./imagens/pwa/pwa-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Acervo de Documentos",
+      "short_name": "Documentos",
+      "description": "Repositório normativo oficial e formulários para download",
+      "url": "./documentos",
+      "icons": [{ "src": "./imagens/pwa/pwa-192x192.png", "sizes": "192x192" }]
+    }
+  ]
+}

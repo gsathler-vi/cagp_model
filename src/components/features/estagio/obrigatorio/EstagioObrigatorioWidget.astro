@@ -1,0 +1,47 @@
+---
+// src/components/features/estagio/obrigatorio/EstagioObrigatorioWidget.astro — Widget de Resumo das 300h de Estágio
+---
+
+<div class="cagp-card p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col justify-between h-full shadow-xs hover:border-[#0A0A0A] transition-all select-none">
+  <div>
+    <div class="flex items-center justify-between gap-2 mb-3">
+      <div class="flex items-center gap-2">
+        <span class="w-9 h-9 rounded-lg bg-[#0A0A0A]/10 text-[#0A0A0A] flex items-center justify-center text-lg border border-[#0A0A0A]/20">
+          <i class="bi bi-mortarboard-fill" aria-hidden="true" />
+        </span>
+        <div>
+          <h3 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A] leading-tight m-0">
+            Estágio Curricular (300h)
+          </h3>
+          <span class="text-[11px] text-gray-500 font-mono">DCP 135 (180h) + DCP 136 (120h)</span>
+        </div>
+      </div>
+      <span class="px-2 py-0.5 rounded font-['Oswald'] text-[11px] font-bold bg-[#0A0A0A] text-white">
+        7º e 8ºP
+      </span>
+    </div>
+
+    <p class="text-xs text-gray-700 leading-relaxed mb-3">
+      Componente obrigatório supervisionado pelo DCP em órgãos conveniados ou com dispensa prevista pelo Art. 41.
+    </p>
+
+    <div class="grid grid-cols-2 gap-2 mb-3 text-xs">
+      <div class="p-2 bg-[#F7F5F0] border border-[#DFDBD2] rounded text-center">
+        <div class="font-mono font-bold text-[#8B1E2D]">180h (12 cr)</div>
+        <div class="text-[10px] text-gray-500 uppercase font-['Oswald']">DCP 135 • Estágio A</div>
+      </div>
+      <div class="p-2 bg-[#F7F5F0] border border-[#DFDBD2] rounded text-center">
+        <div class="font-mono font-bold text-[#8B1E2D]">120h (8 cr)</div>
+        <div class="text-[10px] text-gray-500 uppercase font-['Oswald']">DCP 136 • Estágio B</div>
+      </div>
+    </div>
+  </div>
+
+  <a
+    href="#obrigatorio"
+    class="min-h-[44px] px-3 py-2 bg-[#0A0A0A] hover:bg-[#8B1E2D] text-white rounded-lg font-['Oswald'] text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all no-underline shadow-[2px_2px_0px_#0A0A0A]"
+  >
+    <span>Ver Normas de Estágio</span>
+    <i class="bi bi-arrow-right" aria-hidden="true" />
+  </a>
+</div>

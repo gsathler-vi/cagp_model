@@ -1,0 +1,151 @@
+---
+// GestaoEquipe.astro - Sub-view 2: Equipe por diretoria e chamada de assessoria
+const diretorias = [
+  {
+    sigla: 'DIPRE',
+    nome: 'Diretoria da Presidência',
+    icon: 'bi-bank',
+    cargo: 'Presidência Executiva & Vice-Presidência',
+    membros: 'Composição do Mandato Vigente',
+    curso: 'Gestão Pública • Noturno • FAFICH/UFMG',
+    bio: 'Representação institucional, coordenação executiva perante a Reitoria e Colegiado, assinatura de convênios e protocolo de ofícios regimentais.',
+    artigo: 'Art. 28 do Regimento Interno',
+    email: 'cagp@fafich.ufmg.br',
+  },
+  {
+    sigla: 'DIJUR',
+    nome: 'Diretoria de Assuntos Jurídicos',
+    icon: 'bi-shield-check',
+    cargo: 'Diretor(a) Jurídico(a) & Assessoria Normativa',
+    membros: 'Composição Aberta / Mandato',
+    curso: 'Gestão Pública • Noturno • FAFICH/UFMG',
+    bio: 'Consultoria jurídica interna, emissão de pareceres de conformidade, guarda física e digital do Livro de Atas e garantia de transparência passiva discente.',
+    artigo: 'Art. 29 do Regimento Interno',
+    email: 'cagp@fafich.ufmg.br',
+  },
+  {
+    sigla: 'DIFI',
+    nome: 'Diretoria Financeira',
+    icon: 'bi-cash-coin',
+    cargo: 'Diretor(a) Financeiro(a) & Tesouraria',
+    membros: 'Composição Aberta / Mandato',
+    curso: 'Gestão Pública • Noturno • FAFICH/UFMG',
+    bio: 'Gestão da conta bancária institucional e CNPJ, emissão compulsória mensal do RREO, controle do livro-caixa e confecção de produtos oficiais do curso.',
+    artigo: 'Art. 30 do Regimento Interno',
+    email: 'cagp@fafich.ufmg.br',
+  },
+  {
+    sigla: 'DIAC',
+    nome: 'Diretoria Acadêmica',
+    icon: 'bi-mortarboard',
+    cargo: 'Diretor(a) Acadêmico(a) & Suporte Discente',
+    membros: 'Composição Aberta / Mandato',
+    curso: 'Gestão Pública • Noturno • FAFICH/UFMG',
+    bio: 'Orientação personalizada sobre percursos curriculares, cálculo de horas complementares (AAC/ACG), monitoramento de trancamentos e diálogo com o Colegiado.',
+    artigo: 'Art. 31 do Regimento Interno',
+    email: 'cagp@fafich.ufmg.br',
+  },
+  {
+    sigla: 'DIAP',
+    nome: 'Diretoria de Articulação e Assuntos Políticos',
+    icon: 'bi-diagram-3',
+    cargo: 'Diretor(a) Político(a) & Relações Estudantis',
+    membros: 'Composição Aberta / Mandato',
+    curso: 'Gestão Pública • Noturno • FAFICH/UFMG',
+    bio: 'Representação do CAGP no Conselho de Centros Acadêmicos (CEB), relação com DA FAFICH e DCE UFMG, e integração com entidades do Campo de Públicas.',
+    artigo: 'Art. 32 do Regimento Interno',
+    email: 'cagp@fafich.ufmg.br',
+  },
+  {
+    sigla: 'DICULT',
+    nome: 'Diretoria de Cultura',
+    icon: 'bi-palette',
+    cargo: 'Diretor(a) de Cultura & Eventos',
+    membros: 'Composição Aberta / Mandato',
+    curso: 'Gestão Pública • Noturno • FAFICH/UFMG',
+    bio: 'Planejamento e execução da recepção de calouros e Calouradas do curso, cineclubes temáticos, debates extracurriculares e articulação esportiva.',
+    artigo: 'Art. 33 do Regimento Interno',
+    email: 'cagp@fafich.ufmg.br',
+  },
+  {
+    sigla: 'DIMAC',
+    nome: 'Diretoria de Marketing e Comunicação',
+    icon: 'bi-broadcast-pin',
+    cargo: 'Diretor(a) de Comunicação & Redes',
+    membros: 'Composição Aberta / Mandato',
+    curso: 'Gestão Pública • Noturno • FAFICH/UFMG',
+    bio: 'Gestão das mídias sociais (@cagp.ufmg), produção visual, manutenção e atualização contínua do Super App e informes de prazos de matrícula via painel.',
+    artigo: 'Art. 34 do Regimento Interno',
+    email: 'cagp@fafich.ufmg.br',
+  },
+];
+---
+
+<div class="space-y-4 text-[#0A0A0A]">
+  <!-- Apresentação dos Quadros -->
+  <div class="cagp-tool-box p-4 space-y-3">
+    <div class="border-b border-[#DFDBD2] pb-2.5 flex items-center justify-between flex-wrap gap-2">
+      <div>
+        <div class="flex items-center gap-2">
+          <i class="bi bi-people-fill text-[#8B1E2D] text-lg" aria-hidden="true"></i>
+          <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A]">
+            Quadro das 7 Diretorias Estatutárias
+          </h3>
+        </div>
+        <p class="text-xs text-gray-600 mt-0.5">
+          Distribuição de competências e contatos para acolhimento de demandas discentes:
+        </p>
+      </div>
+      <span class="cagp-badge cagp-badge-red font-mono">
+        Arts. 24 e 25
+      </span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      {diretorias.map((d) => (
+        <div class="cagp-card p-3.5 bg-white flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-2">
+                <span class="cagp-badge cagp-badge-red text-xs font-mono font-bold">
+                  {d.sigla}
+                </span>
+                <i class={`bi ${d.icon} text-[#8B1E2D] text-sm`} aria-hidden="true" />
+              </div>
+              <span class="text-xs font-mono text-gray-500 font-semibold">{d.artigo}</span>
+            </div>
+            <h4 class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] mb-0.5">{d.nome}</h4>
+            <span class="text-xs font-medium text-gray-700 block mb-1">{d.cargo}</span>
+            <p class="text-xs text-gray-600 leading-relaxed mb-2">{d.bio}</p>
+          </div>
+          <div class="pt-2 border-t border-[#DFDBD2] flex items-center justify-between text-xs">
+            <span class="text-gray-500 italic">{d.membros}</span>
+            <a href={`mailto:${d.email}`} class="text-[#8B1E2D] font-bold hover:underline inline-flex items-center gap-1">
+              <i class="bi bi-envelope" aria-hidden="true"></i> Contatar
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Chamada para Novos Assessores Discentes -->
+  <div class="p-4 rounded-[6px] bg-[#0A0A0A] text-white border-2 border-[#0A0A0A] shadow-[2px_2px_0px_#8B1E2D] space-y-3">
+    <div class="flex items-center gap-2">
+      <span class="cagp-badge cagp-badge-gold font-mono uppercase text-xs">
+        Edital Permanente
+      </span>
+      <h3 class="font-['Oswald'] text-sm uppercase font-bold text-white tracking-wide">
+        Participe da Gestão: Chamada para Novos Assessores
+      </h3>
+    </div>
+    <p class="text-xs text-white/90 leading-relaxed">
+      Todas as diretorias executivas possuem previsão regimental expressa para inclusão contínua de <strong>Assessores Discentes Voluntários</strong> (Arts. 24 a 34). A atuação discente proporciona vivência prática em gestão pública e contabilidade social, concessão de horas complementares (AAC/Extensão) e atuação direta nas decisões da faculdade.
+    </p>
+    <div>
+      <a href="mailto:cagp@fafich.ufmg.br?subject=Interesse%20em%20Assessoria%20CAGP" class="cagp-btn-primary inline-flex items-center gap-2 text-xs py-2 px-3 no-underline">
+        <i class="bi bi-envelope-plus" aria-hidden="true"></i> Enviar Mensagem de Interesse para Assessoria &rarr;
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+---
+// JourneyNav.astro - Trilha de continuidade discente no rodapé de páginas
+import { route } from '../../lib/paths';
+
+interface Step {
+  title: string;
+  href: string;
+  desc: string;
+}
+
+interface Props {
+  prev?: Step;
+  next?: Step;
+}
+
+const { prev, next } = Astro.props;
+---
+
+{(prev || next) && (
+  <nav class="mt-10 pt-6 border-t-2 border-[#0A0A0A] select-none" aria-label="Continuidade da jornada acadêmica">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {prev ? (
+        <a
+          href={route(prev.href)}
+          class="p-4 rounded-md bg-white border-2 border-[#0A0A0A] shadow-[3px_3px_0px_#0A0A0A] hover:shadow-[5px_5px_0px_#0A0A0A] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all no-underline text-[#0A0A0A] flex flex-col justify-between group"
+        >
+          <div>
+            <span class="font-['Oswald'] font-bold text-xs uppercase tracking-wider text-[#8B1E2D] block mb-1">
+              &larr; Passo Anterior
+            </span>
+            <h4 class="font-['Oswald'] font-bold text-base uppercase text-[#0A0A0A] group-hover:text-[#8B1E2D] transition-colors leading-tight">
+              {prev.title}
+            </h4>
+          </div>
+          <p class="text-xs text-gray-600 mt-2 leading-relaxed">{prev.desc}</p>
+        </a>
+      ) : <div class="hidden md:block" />}
+
+      {next ? (
+        <a
+          href={route(next.href)}
+          class="p-4 rounded-md bg-white border-2 border-[#0A0A0A] shadow-[3px_3px_0px_#0A0A0A] hover:shadow-[5px_5px_0px_#0A0A0A] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all no-underline text-[#0A0A0A] flex flex-col justify-between group text-left md:text-right"
+        >
+          <div>
+            <span class="font-['Oswald'] font-bold text-xs uppercase tracking-wider text-[#8B1E2D] block mb-1">
+              Próximo Passo &rarr;
+            </span>
+            <h4 class="font-['Oswald'] font-bold text-base uppercase text-[#0A0A0A] group-hover:text-[#8B1E2D] transition-colors leading-tight">
+              {next.title}
+            </h4>
+          </div>
+          <p class="text-xs text-gray-600 mt-2 leading-relaxed">{next.desc}</p>
+        </a>
+      ) : <div class="hidden md:block" />}
+    </div>
+  </nav>
+)}

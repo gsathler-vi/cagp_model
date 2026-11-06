@@ -1,0 +1,52 @@
+---
+// src/components/widgets/OverviewGestaoWidget.astro — Widget do Processo Eleitoral e Talentos (Eixo 5: O CAGP)
+import { route } from '../../lib/paths';
+---
+
+<div class="cagp-card p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col justify-between h-full shadow-sm hover:border-[#0A0A0A] transition-all">
+  <div>
+    <!-- Header do Widget -->
+    <div class="flex items-center justify-between gap-2 mb-3">
+      <div class="flex items-center gap-2">
+        <span class="w-9 h-9 rounded-lg bg-[#8B1E2D]/10 text-[#8B1E2D] flex items-center justify-center text-lg border border-[#8B1E2D]/20">
+          <i class="bi bi-people-fill" aria-hidden="true"></i>
+        </span>
+        <div>
+          <h3 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A] leading-tight">
+            Processo Eleitoral & Diretorias
+          </h3>
+          <span class="text-[11px] text-gray-500 font-mono">7 Diretorias Estatutárias</span>
+        </div>
+      </div>
+      <span class="px-2 py-0.5 rounded font-['Oswald'] text-xs font-bold bg-[#8B1E2D] text-white">
+        Eleições
+      </span>
+    </div>
+
+    <!-- Conteúdo & Banco de Talentos -->
+    <div class="space-y-2 mb-4">
+      <p class="text-xs text-gray-700 leading-relaxed">
+        O CAGP está em período eleitoral. Conheça o organograma regimental (Art. 8º do Regimento), as 7 diretorias executivas e as comissões discentes.
+      </p>
+
+      <div class="p-2.5 bg-[#F7F5F0] border border-[#DFDBD2] rounded-lg text-xs space-y-1">
+        <div class="font-bold text-[#0A0A0A] flex items-center gap-1.5">
+          <i class="bi bi-stars text-[#8B1E2D]" aria-hidden="true"></i>
+          <span>Banco de Talentos Discente</span>
+        </div>
+        <p class="text-[11px] text-gray-600">
+          Cadastre suas habilidades no Passaporte para atuar em projetos, representação discente e comissões do centro acadêmico.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ação Apple HIG -->
+  <a
+    href={route('/gestao')}
+    class="min-h-[44px] px-3 py-2 bg-[#0A0A0A] text-white hover:bg-[#8B1E2D] hover:text-white rounded-lg font-['Oswald'] text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all no-underline mt-2 shadow-[2px_2px_0px_#0A0A0A]"
+  >
+    <span>Conhecer Diretorias & Transição</span>
+    <i class="bi bi-arrow-right" aria-hidden="true"></i>
+  </a>
+</div>

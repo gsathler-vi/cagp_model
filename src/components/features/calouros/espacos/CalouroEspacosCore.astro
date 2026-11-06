@@ -1,0 +1,98 @@
+---
+// src/components/features/calouros/espacos/CalouroEspacosCore.astro — Espaços Estratégicos da FAFICH e do Campus
+const espacos = [
+  {
+    nome: 'Biblioteca Baeta Neves',
+    local: '1º Andar da FAFICH',
+    icon: 'bi-book-fill',
+    desc: 'Mais de 180 mil volumes em humanidades e ciências sociais. Salões silenciosos de estudo individual e cabines climatizadas para grupos.',
+    horario: 'Seg a Sex • 07h30 às 21h45',
+  },
+  {
+    nome: 'Secretaria do Colegiado (Sala F-2039)',
+    local: '2º Andar da FAFICH',
+    icon: 'bi-door-open-fill',
+    desc: 'Atendimento didático-pedagógico exclusivo com Norma Guedes para aproveitamento de estudos, FCA e despachos da coordenação. E-mail: gestaopublica@ufmg.br.',
+    horario: 'Quarta-feira • 13h00 às 19h00',
+  },
+  {
+    nome: 'CEAG FAFICH (Central da Graduação)',
+    local: '2º Andar da FAFICH (em frente aos caixas eletrônicos)',
+    icon: 'bi-headset',
+    desc: 'Atendimento contínuo ao turno noturno. Protocolo geral de requerimentos acadêmicos padrão, atestados médicos, trancamentos e autenticação de certidões.',
+    horario: 'Seg a Sex • 08h00 às 22h00',
+  },
+  {
+    nome: 'Restaurante Universitário II (Setorial II)',
+    local: 'Atrás da FAFICH (próximo ao ICB, ECI e FACE)',
+    icon: 'bi-cup-hot-fill',
+    desc: 'Jantar noturno subsidiado pela UFMG/FUMP. Acesso com a carteirinha física ou código digital do MinhaUFMG/SIGA.',
+    horario: 'Jantar • 17h10 às 19h30',
+  },
+  {
+    nome: 'Sede do CAGP & Centro de Convivência',
+    local: 'Subsolo da FAFICH (Vão dos Centros Acadêmicos)',
+    icon: 'bi-people-fill',
+    desc: 'Espaço de acolhimento estudantil, sofás, micro-ondas, tomadas para carregar notebook e ponto de encontro discente.',
+    horario: 'Acesso Livre aos Estudantes',
+  },
+  {
+    nome: 'Xerox & Gráfica Rápida da FAFICH',
+    local: '1º Andar (próximo à cantina)',
+    icon: 'bi-printer-fill',
+    desc: 'Impressão de artigos, encadernação de trabalhos, cópia de textos das pastas de professores e compra de fichas.',
+    horario: 'Seg a Sex • 08h00 às 21h30',
+  },
+];
+---
+
+<div class="cagp-calouro-espacos space-y-6 select-none text-[#0A0A0A]">
+  {/* Cabeçalho */}
+  <div class="p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
+    <div>
+      <span class="text-[11px] font-['Oswald'] uppercase font-bold tracking-wider text-[#8B1E2D]">
+        Mapeamento de Campo
+      </span>
+      <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A] m-0">
+        Espaços Estratégicos no Prédio da FAFICH
+      </h3>
+      <p class="text-xs text-gray-600 mt-0.5 m-0">
+        Locais indispensáveis para sua rotina acadêmica, estudo e alimentação.
+      </p>
+    </div>
+    <span class="px-2.5 py-1 rounded bg-[#0A0A0A] text-white font-mono text-xs font-bold shrink-0">
+      Guia de Espaços
+    </span>
+  </div>
+
+  {/* Grid dos Espaços */}
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+    {espacos.map((esp) => (
+      <div class="cagp-card p-4 bg-white border border-[#DFDBD2] hover:border-[#0A0A0A] rounded-xl flex flex-col justify-between shadow-xs transition-all">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <div class="flex items-center gap-2">
+              <span class="w-8 h-8 rounded-lg bg-[#8B1E2D]/10 text-[#8B1E2D] flex items-center justify-center text-sm border border-[#8B1E2D]/20">
+                <i class={`bi ${esp.icon}`} aria-hidden="true" />
+              </span>
+              <span class="font-['Oswald'] text-xs font-bold uppercase text-[#0A0A0A] truncate">{esp.nome}</span>
+            </div>
+          </div>
+
+          <span class="inline-block text-[10px] font-mono font-bold text-[#8B1E2D] uppercase tracking-wide mb-1.5">
+            {esp.local}
+          </span>
+
+          <p class="text-xs text-gray-600 leading-relaxed m-0 mb-3">
+            {esp.desc}
+          </p>
+        </div>
+
+        <div class="pt-2 border-t border-[#DFDBD2] flex items-center justify-between text-[11px] text-gray-500">
+          <i class="bi bi-clock me-1" aria-hidden="true" />
+          <span class="font-semibold text-gray-700">{esp.horario}</span>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

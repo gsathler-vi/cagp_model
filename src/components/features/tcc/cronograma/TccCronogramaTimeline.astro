@@ -1,0 +1,110 @@
+---
+// src/components/features/tcc/cronograma/TccCronogramaTimeline.astro — Cronograma do Ciclo de TCC (180h) e Regras de Banca
+const etapas = [
+  {
+    disciplina: 'DCP 089',
+    periodo: '9º Período',
+    ch: '60h (4 créditos)',
+    nome: 'Projeto de Pesquisa em TCC',
+    foco: 'Delimitação do problema de pesquisa, justificativa, revisão bibliográfica e desenho metodológico.',
+    requisito: 'Exige o Termo de Aceite assinado pelo docente orientador credenciado antes da matrícula.',
+    icon: 'bi-compass-fill',
+  },
+  {
+    disciplina: 'DCP 137',
+    periodo: '10º Período',
+    ch: '120h (8 créditos)',
+    nome: 'Monografia / Trabalho de Conclusão',
+    foco: 'Redação final da versão de defesa, coleta e análise de evidências e submissão à banca examinadora.',
+    requisito: 'Aprovação prévia em DCP 089 e agendamento da sessão pública de defesa na Secretaria.',
+    icon: 'bi-mortarboard-fill',
+  },
+];
+
+const regrasBanca = [
+  {
+    art: 'Arts. 21 e 22',
+    titulo: 'Orientação Acadêmica',
+    desc: 'Docentes do Departamento de Ciência Política (DCP) ou autorizados pelo Colegiado. Limite de até 4 orientandos por docente.',
+  },
+  {
+    art: 'Arts. 24 a 27',
+    titulo: 'Banca Examinadora',
+    desc: 'Composta por no mínimo 2 membros titulares (orientador + avaliador). Defesa pública com nota mínima de 60 pontos em 100.',
+  },
+  {
+    art: 'Art. 28',
+    titulo: 'Depósito Final',
+    desc: 'Entrega da versão final corrigida em PDF à Secretaria do Colegiado (Sala F-2039) para emissão de ata e homologação do diploma.',
+  },
+];
+---
+
+<div class="cagp-tcc-cronograma space-y-6 select-none text-[#0A0A0A]">
+  {/* Cabeçalho */}
+  <div class="p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
+    <div>
+      <span class="text-[11px] font-['Oswald'] uppercase font-bold tracking-wider text-[#8B1E2D]">
+        Fluxo Curricular de Formatura
+      </span>
+      <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A] m-0">
+        Ciclo do TCC: 9º e 10º Períodos (180h)
+      </h3>
+      <p class="text-xs text-gray-600 mt-0.5 m-0">
+        Estrutura em duas fases sequenciais: Projeto (DCP 089) e Defesa Pública (DCP 137).
+      </p>
+    </div>
+    <span class="px-2.5 py-1 rounded bg-[#0A0A0A] text-white font-mono text-xs font-bold shrink-0">
+      180h • 12 Créditos
+    </span>
+  </div>
+
+  {/* As 2 Etapas Curriculares */}
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    {etapas.map((et) => (
+      <div class="cagp-card p-4 bg-white border border-[#DFDBD2] rounded-xl space-y-3 shadow-xs">
+        <div class="flex items-center justify-between border-b border-[#DFDBD2] pb-2">
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-8 rounded-lg bg-[#8B1E2D] text-white flex items-center justify-center font-['Oswald'] text-xs font-bold shadow-[1px_1px_0px_#0A0A0A]">
+              {et.disciplina}
+            </span>
+            <span class="font-['Oswald'] text-sm font-bold uppercase text-[#0A0A0A]">{et.nome}</span>
+          </div>
+          <span class="text-xs font-mono font-bold text-[#8B1E2D]">{et.periodo} • {et.ch}</span>
+        </div>
+
+        <p class="text-xs text-gray-700 leading-relaxed m-0">
+          {et.foco}
+        </p>
+
+        <div class="p-2.5 bg-[#F7F5F0] border border-[#DFDBD2] rounded-lg text-xs text-gray-800">
+          <strong class="text-[#8B1E2D] block mb-0.5">Requisito Formal:</strong>
+          {et.requisito}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  {/* Regras Regimentais de Banca */}
+  <div class="p-4 bg-[#F7F5F0] border border-[#DFDBD2] rounded-xl space-y-3 shadow-xs">
+    <div class="flex items-center justify-between border-b border-[#DFDBD2] pb-2">
+      <h4 class="font-['Oswald'] text-sm font-bold uppercase text-[#0A0A0A] m-0 flex items-center gap-2">
+        <i class="bi bi-shield-check text-[#8B1E2D]" aria-hidden="true" />
+        <span>Normas Regimentais de Orientação, Banca e Depósito</span>
+      </h4>
+      <span class="text-xs text-gray-500 font-mono">Regulamento Arts. 21 a 28</span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      {regrasBanca.map((r) => (
+        <div class="p-3 bg-white border border-[#DFDBD2] rounded-lg space-y-1">
+          <div class="flex items-center justify-between">
+            <span class="font-['Oswald'] text-xs font-bold uppercase text-[#0A0A0A]">{r.titulo}</span>
+            <span class="cagp-badge cagp-badge-red text-[10px]">{r.art}</span>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed m-0">{r.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

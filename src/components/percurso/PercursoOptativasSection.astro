@@ -1,0 +1,272 @@
+---
+// PercursoOptativasSection.astro - Central de 68 Optativas & 120h Formação Livre
+import { getCollection } from 'astro:content';
+import NormativeDetails from '../ui/NormativeDetails.astro';
+import OptativasFormacaoLivre from '../optativas/OptativasFormacaoLivre.astro';
+
+const allDisciplinas = await getCollection('disciplinas');
+const optativas = allDisciplinas
+  .filter((d) => d.data.natureza === 'optativa')
+  .sort((a, b) => a.data.codigo.localeCompare(b.data.codigo));
+---
+
+<div class="space-y-4">
+  <!-- Search & Filter Controls -->
+  <div class="cagp-tool-box p-3.5 space-y-3">
+    <div>
+      <label for="opt-search-input" class="sr-only">Buscar disciplina optativa</label>
+      <div class="relative">
+        <i class="bi bi-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm" aria-hidden="true"></i>
+        <input
+          type="search"
+          id="opt-search-input"
+          placeholder="Buscar por código, nome ou tema (ex: Burocracia, Avaliação, Orçamento)..."
+          class="w-full bg-white border border-[#DFDBD2] pl-9 pr-3 py-2.5 rounded-[4px] text-base sm:text-xs text-[#0A0A0A] placeholder-gray-500 focus:border-[#8B1E2D] focus:outline-none"
+        />
+      </div>
+    </div>
+
+    <!-- Presets & Department Filters -->
+    <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-[#DFDBD2]">
+      <div class="flex flex-wrap items-center gap-1.5">
+        <span class="text-xs font-['Oswald'] uppercase text-gray-600 font-bold mr-1">Atalhos:</span>
+        {['Avaliação', 'Orçamento', 'Governança', 'Metodologia', 'Economia'].map((p) => (
+          <button
+            type="button"
+            class="opt-preset-btn text-xs bg-white hover:bg-[#EAE5DC] border border-[#DFDBD2] px-2 py-0.5 rounded-[4px] text-gray-700 cursor-pointer transition-colors shadow-[1px_1px_0_#0A0A0A]"
+            data-term={p.toLowerCase()}
+          >
+            {p}
+          </button>
+        ))}
+      </div>
+
+      <div class="flex flex-wrap items-center gap-1.5">
+        <span class="text-xs font-['Oswald'] uppercase text-gray-600 font-bold mr-1">Depto:</span>
+        {['TODOS', 'DCP', 'ECN', 'SOA', 'OUTROS'].map((d) => (
+          <button
+            type="button"
+            class={`opt-dept-filter text-xs font-['Oswald'] uppercase font-bold px-2.5 py-0.5 rounded-[4px] border-2 transition-colors cursor-pointer ${
+              d === 'TODOS' ? 'bg-[#0A0A0A] text-white border-[#0A0A0A]' : 'bg-white text-gray-700 border-[#DFDBD2] hover:border-[#0A0A0A]'
+            }`}
+            data-dept={d}
+          >
+            {d}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between text-xs text-gray-500 pt-1 border-t border-[#DFDBD2]">
+      <span id="opt-counter">Exibindo 68 de 68 disciplinas optativas</span>
+      <span class="cagp-badge cagp-badge-red text-xs font-mono">PPC N-20229</span>
+    </div>
+  </div>
+
+  <!-- Electives Details List -->
+  <div id="opt-list-container" class="space-y-2.5">
+    {optativas.map((d) => (
+      <div
+        class="opt-item cagp-card bg-white p-3.5 space-y-2"
+        data-code={d.data.codigo.toLowerCase()}
+        data-name={d.data.nome.toLowerCase()}
+        data-dept={d.data.departamento || 'OUTROS'}
+        data-desc={d.data.ementa.toLowerCase()}
+      >
+        <div class="flex items-start justify-between gap-2">
+          <div>
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <span class="font-mono text-xs font-bold text-[#8B1E2D] bg-[#8B1E2D]/10 px-1.5 py-0.5 rounded-[3px] border border-[#8B1E2D]/20">{d.data.codigo}</span>
+              <span class="cagp-badge text-xs font-mono">
+                {d.data.ch}h &bull; {d.data.creditos} cr &bull; {d.data.departamento}
+              </span>
+            </div>
+            <h4 class="font-['Oswald'] text-sm font-bold text-[#0A0A0A] m-0 leading-tight">
+              {d.data.nome}
+            </h4>
+          </div>
+
+          <button
+            type="button"
+            class="opt-favorite-btn text-xs font-['Oswald'] uppercase font-bold px-2.5 py-1.5 rounded-[4px] border-2 border-[#0A0A0A] bg-[#F7F5F0] hover:bg-[#8B1E2D] hover:text-white transition-all cursor-pointer shrink-0 flex items-center gap-1 shadow-[1px_1px_0_#0A0A0A]"
+            data-course-code={d.data.codigo}
+          >
+            <i class="bi bi-star" aria-hidden="true" />
+            <span class="opt-btn-label">Salvar na Grade</span>
+          </button>
+        </div>
+
+        <p class="text-xs text-gray-700 leading-relaxed m-0 border-t border-gray-100 pt-2">
+          <strong>Ementa Oficial:</strong> {d.data.ementa}
+        </p>
+
+        {d.data.preRequisitos && d.data.preRequisitos.length > 0 && (
+          <div class="text-xs text-[#DC2626] font-semibold bg-red-50 p-2 rounded-[4px] border border-red-200 flex items-center gap-1.5">
+            <i class="bi bi-exclamation-triangle-fill shrink-0" aria-hidden="true" />
+            <span>Pré-requisito formal no SIGA: {d.data.preRequisitos.join(', ')}</span>
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+
+  <!-- Destaque: Ementário Oficial Completo -->
+  <div class="cagp-card p-3 bg-white border border-[#DFDBD2] flex items-center justify-between gap-3 flex-wrap">
+    <div class="flex items-center gap-2.5">
+      <div class="w-8 h-8 rounded-[4px] bg-[#8B1E2D]/10 text-[#8B1E2D] border border-[#8B1E2D]/20 flex items-center justify-center shrink-0">
+        <i class="bi bi-card-text text-base" aria-hidden="true" />
+      </div>
+      <div>
+        <span class="font-['Oswald'] font-bold text-xs uppercase text-[#0A0A0A] block">
+          Ementário Oficial do Curso (Apêndice 2 do PPC 2020)
+        </span>
+        <p class="text-[11px] text-gray-500">
+          Consulte o ementário integral em Markdown com as 27 obrigatórias, 68 optativas e 16 AACs.
+        </p>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <a
+        href="/documentos/ementario-gestao-publica-ufmg"
+        class="cagp-btn-secondary text-xs py-1.5 px-3 no-underline inline-flex items-center gap-1 shrink-0"
+      >
+        <i class="bi bi-eye" aria-hidden="true" /> Ler Transcrição
+      </a>
+      <a
+        href="/documentos/ementario-gestao-publica-ufmg.pdf"
+        download
+        class="cagp-btn-primary text-xs py-1.5 px-2.5 no-underline inline-flex items-center gap-1 shrink-0"
+      >
+        <i class="bi bi-download" aria-hidden="true" /> PDF
+      </a>
+    </div>
+  </div>
+
+  <!-- Formação Livre (120h) -->
+  <div class="mt-8 pt-4 border-t-2 border-[#0A0A0A]">
+    <h3 class="font-['Oswald'] text-base uppercase font-bold text-[#0A0A0A] mb-3 flex items-center gap-2">
+      <i class="bi bi-globe2 text-[#8B1E2D]" aria-hidden="true" />
+      <span>Diretrizes das 120h de Formação Livre (PPC Art. 13)</span>
+    </h3>
+    <OptativasFormacaoLivre />
+  </div>
+</div>
+
+<script>
+  function setupOptFiltering() {
+    const input = document.getElementById('opt-search-input') as HTMLInputElement | null;
+    const counter = document.getElementById('opt-counter');
+    const items = document.querySelectorAll<HTMLElement>('.opt-item');
+    const deptBtns = document.querySelectorAll<HTMLButtonElement>('.opt-dept-filter');
+    const presetBtns = document.querySelectorAll<HTMLButtonElement>('.opt-preset-btn');
+    const favoriteBtns = document.querySelectorAll<HTMLButtonElement>('.opt-favorite-btn');
+
+    let currentDept = 'TODOS';
+
+    function syncFavorites() {
+      try {
+        const raw = localStorage.getItem('cagp_minha_grade_v1');
+        const saved: string[] = raw ? JSON.parse(raw).savedCourses || [] : [];
+
+        favoriteBtns.forEach((btn) => {
+          const code = btn.getAttribute('data-course-code') || '';
+          const isSaved = saved.includes(code);
+          const icon = btn.querySelector('i');
+          const label = btn.querySelector('.opt-btn-label');
+
+          if (isSaved) {
+            btn.classList.add('bg-[#15803D]', 'text-white', 'border-[#15803D]');
+            btn.classList.remove('bg-[#F7F5F0]', 'text-gray-700', 'border-[#DFDBD2]');
+            if (icon) icon.className = 'bi bi-check-lg text-white';
+            if (label) label.textContent = 'Salva na Grade ✓';
+          } else {
+            btn.classList.remove('bg-[#15803D]', 'text-white', 'border-[#15803D]');
+            btn.classList.add('bg-[#F7F5F0]', 'text-gray-700', 'border-[#DFDBD2]');
+            if (icon) icon.className = 'bi bi-star';
+            if (label) label.textContent = 'Salvar na Grade';
+          }
+        });
+      } catch (e) {}
+    }
+
+    favoriteBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const code = btn.getAttribute('data-course-code');
+        if (!code) return;
+
+        try {
+          const raw = localStorage.getItem('cagp_minha_grade_v1');
+          const data = raw ? JSON.parse(raw) : { savedCourses: [] };
+          let list: string[] = data.savedCourses || [];
+
+          if (list.includes(code)) {
+            list = list.filter((c) => c !== code);
+          } else {
+            list.push(code);
+          }
+
+          localStorage.setItem('cagp_minha_grade_v1', JSON.stringify({ savedCourses: list }));
+          window.dispatchEvent(new CustomEvent('cagp:vault-updated'));
+          syncFavorites();
+        } catch (e) {}
+      });
+    });
+
+    syncFavorites();
+    window.addEventListener('cagp:vault-updated', syncFavorites);
+
+    function applyFilter() {
+      const q = (input?.value || '').toLowerCase().trim();
+      let visible = 0;
+
+      items.forEach((item) => {
+        const c = item.getAttribute('data-code') || '';
+        const n = item.getAttribute('data-name') || '';
+        const d = item.getAttribute('data-desc') || '';
+        const dept = item.getAttribute('data-dept') || '';
+
+        const matchesQuery = !q || c.includes(q) || n.includes(q) || d.includes(q);
+        const matchesDept =
+          currentDept === 'TODOS' ||
+          (currentDept === 'OUTROS' ? !['DCP', 'ECN', 'SOA'].includes(dept) : dept === currentDept);
+
+        if (matchesQuery && matchesDept) {
+          item.style.display = 'block';
+          visible++;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      if (counter) {
+        counter.textContent = `Exibindo ${visible} de ${items.length} disciplinas optativas`;
+      }
+    }
+
+    input?.addEventListener('input', applyFilter);
+
+    deptBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        deptBtns.forEach((b) => {
+          b.classList.remove('bg-[#0A0A0A]', 'text-white', 'border-[#0A0A0A]');
+          b.classList.add('bg-[#F7F5F0]', 'text-gray-700', 'border-[#DFDBD2]');
+        });
+        btn.classList.remove('bg-[#F7F5F0]', 'text-gray-700', 'border-[#DFDBD2]');
+        btn.classList.add('bg-[#0A0A0A]', 'text-white', 'border-[#0A0A0A]');
+        currentDept = btn.getAttribute('data-dept') || 'TODOS';
+        applyFilter();
+      });
+    });
+
+    presetBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        if (input) {
+          input.value = btn.getAttribute('data-term') || '';
+          applyFilter();
+        }
+      });
+    });
+  }
+
+  document.addEventListener('astro:page-load', setupOptFiltering);
+</script>

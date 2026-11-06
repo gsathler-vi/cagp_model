@@ -1,0 +1,114 @@
+---
+// src/components/features/calouros/CalouroCentralOverview.astro — Visão Geral do Guia do Calouro
+import { CalouroChecklistWidget } from './checklist/CalouroChecklistWidget';
+---
+
+<div class="cagp-calouro-central-overview space-y-6 select-none text-[#0A0A0A]">
+  {/* Apresentação do Guia do Calouro */}
+  <div class="p-4 sm:p-5 bg-[#F7F5F0] border border-[#DFDBD2] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
+    <div class="flex items-start gap-3.5">
+      <span class="w-11 h-11 rounded-lg bg-[#8B1E2D] text-white flex items-center justify-center text-xl shrink-0 mt-0.5 shadow-[2px_2px_0px_#0A0A0A]">
+        <i class="bi bi-backpack-fill" aria-hidden="true" />
+      </span>
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="text-[11px] font-['Oswald'] uppercase font-bold tracking-wider text-[#8B1E2D]">
+            Acolhimento Discente & Sobrevivência
+          </span>
+          <span class="text-gray-300">•</span>
+          <span class="text-xs text-gray-500 font-mono">1º Período Noturno</span>
+        </div>
+        <h2 class="font-['Oswald'] text-lg sm:text-xl font-bold uppercase text-[#0A0A0A] leading-tight m-0">
+          Manual de Sobrevivência na FAFICH & Campus Pampulha
+        </h2>
+        <p class="text-xs text-gray-600 mt-1 max-w-3xl leading-relaxed m-0">
+          Checklist interativo dos primeiros 30 dias, linha do tempo da rotina noturna (RU Setorial II às 18h15 e último Circular às 22h45), espaços da faculdade e bolsas FUMP.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  {/* Bento Grid dos Widgets de Calouro */}
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {/* Widget do Checklist */}
+    <CalouroChecklistWidget client:load />
+
+    {/* Card da Rotina Noturna */}
+    <div class="cagp-card p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col justify-between h-full shadow-xs hover:border-[#0A0A0A] transition-all">
+      <div>
+        <div class="flex items-center justify-between gap-2 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-9 h-9 rounded-lg bg-[#8B1E2D]/10 text-[#8B1E2D] flex items-center justify-center text-lg border border-[#8B1E2D]/20">
+              <i class="bi bi-moon-stars-fill" aria-hidden="true" />
+            </span>
+            <div>
+              <h3 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A] leading-tight m-0">
+                Rotina Noturna & RU
+              </h3>
+              <span class="text-[11px] text-gray-500 font-mono">17h30 às 22h45</span>
+            </div>
+          </div>
+          <span class="px-2 py-0.5 rounded font-['Oswald'] text-[11px] font-bold bg-[#8B1E2D] text-white">
+            Crucial
+          </span>
+        </div>
+
+        <p class="text-xs text-gray-700 leading-relaxed mb-3">
+          Jantar às 18h15 no RU II Setorial para evitar filas, aulas das 19h às 22h30 e último circular da FAFICH às 22h45.
+        </p>
+
+        <div class="p-2.5 bg-[#F7F5F0] border border-[#DFDBD2] rounded-lg mb-3 flex items-center justify-between text-xs">
+          <span class="text-gray-600">Último Ônibus:</span>
+          <span class="font-mono font-bold text-[#8B1E2D]">22h45 (Circular)</span>
+        </div>
+      </div>
+
+      <a
+        href="#rotina-noturna"
+        class="min-h-[44px] px-3 py-2 bg-[#0A0A0A] hover:bg-[#8B1E2D] text-white rounded-lg font-['Oswald'] text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all no-underline shadow-[2px_2px_0px_#0A0A0A]"
+      >
+        <span>Ver Rotina Noturna</span>
+        <i class="bi bi-arrow-right" aria-hidden="true" />
+      </a>
+    </div>
+
+    {/* Card dos Espaços & FUMP */}
+    <div class="cagp-card p-4 bg-white border border-[#DFDBD2] rounded-xl flex flex-col justify-between h-full shadow-xs hover:border-[#0A0A0A] transition-all">
+      <div>
+        <div class="flex items-center justify-between gap-2 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-9 h-9 rounded-lg bg-[#15803D]/10 text-[#15803D] flex items-center justify-center text-lg border border-[#15803D]/20">
+              <i class="bi bi-building" aria-hidden="true" />
+            </span>
+            <div>
+              <h3 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A] leading-tight m-0">
+                FAFICH & Apoio FUMP
+              </h3>
+              <span class="text-[11px] text-gray-500 font-mono">Sec. F-2039, CEAG & Bolsas</span>
+            </div>
+          </div>
+          <span class="px-2 py-0.5 rounded font-['Oswald'] text-[11px] font-bold bg-[#15803D] text-white">
+            Apoio
+          </span>
+        </div>
+
+        <p class="text-xs text-gray-700 leading-relaxed mb-3">
+          Localização da Secretaria do Colegiado (Sala F-2039), biblioteca e regras de isenção de RU e moradia FUMP.
+        </p>
+
+        <div class="p-2.5 bg-[#F7F5F0] border border-[#DFDBD2] rounded-lg mb-3 flex items-center justify-between text-xs">
+          <span class="text-gray-600">Secretaria FAFICH:</span>
+          <span class="font-mono font-bold text-[#0A0A0A]">Sala F-2039 (2º Andar)</span>
+        </div>
+      </div>
+
+      <a
+        href="#espacos"
+        class="min-h-[44px] px-3 py-2 bg-[#0A0A0A] hover:bg-[#15803D] text-white rounded-lg font-['Oswald'] text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-2 transition-all no-underline shadow-[2px_2px_0px_#0A0A0A]"
+      >
+        <span>Mapear Espaços</span>
+        <i class="bi bi-arrow-right" aria-hidden="true" />
+      </a>
+    </div>
+  </div>
+</div>

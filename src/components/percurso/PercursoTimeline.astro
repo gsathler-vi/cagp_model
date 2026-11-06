@@ -1,0 +1,139 @@
+---
+// PercursoTimeline.astro - Sub-view 2: Linha do tempo dos 10 períodos com 27 ementas obrigatórias
+import { getCollection } from 'astro:content';
+import NormativeDetails from '../ui/NormativeDetails.astro';
+
+const allDisciplinas = await getCollection('disciplinas');
+const obrigatorias = allDisciplinas.filter((d) => d.data.natureza === 'obrigatoria');
+
+const periodosInfo = [
+  {
+    num: 1,
+    titulo: 'Fundamentos das Ciências Sociais e do Estado',
+    desc: 'Introdução teórica, jurídica e metodológica às bases da Gestão Pública e da Ciência Política.',
+    dica: 'Período fundamental de ambientação universitária. As leituras de Ciência Política e Sociologia formam o vocabulário analítico de todo o curso.',
+  },
+  {
+    num: 2,
+    titulo: 'Instituições, Economia e Organizações',
+    desc: 'Estudo comparado de democracias, introdução à teoria econômica e sociologia da burocracia pública.',
+    dica: 'A disciplina de Economia (ECN 140) é essencial para as matérias de Finanças e Econometria. Não deixe de fazer os exercícios práticos.',
+  },
+  {
+    num: 3,
+    titulo: 'Políticas Públicas, Bem-Estar e Governo Digital',
+    desc: 'Compreensão do ciclo de políticas públicas, economia do bem-estar e tecnologias de governo eletrônico.',
+    dica: 'Democracia Digital (DCP 132) e Gestão Pública B consolidam o entendimento sobre inovação e governança no setor governamental.',
+  },
+  {
+    num: 4,
+    titulo: 'Planejamento, Orçamento e Estatística',
+    desc: 'Instrumentalização em finanças públicas, peças orçamentárias (PPA, LDO, LOA) e métodos quantitativos.',
+    dica: 'Momento de planejamento: a partir do próximo semestre você pode requerer opção formal de vinculação ao Núcleo Complementar (Formação Transversal / Aberta).',
+  },
+  {
+    num: 5,
+    titulo: 'Avaliação de Políticas e Métodos Avançados',
+    desc: 'Formulação e implementação de programas públicos, modelagem econométrica e técnicas de avaliação.',
+    dica: 'Econometria I (ECN 190) exige dedicação contínua. Forme grupos de estudo prático para dominar a análise estatística de dados no R.',
+  },
+  {
+    num: 6,
+    titulo: 'Gestão de Pessoas, Logística e Políticas Setoriais',
+    desc: 'Administração de pessoal no setor público, compras governamentais, contratos e políticas sociais setoriais.',
+    dica: 'Excelente momento para iniciar o levantamento de oportunidades de estágio obrigatório supervisionado e alinhar seu tema preliminar de pesquisa.',
+  },
+  {
+    num: 7,
+    titulo: 'Gestão de Projetos e Início do Estágio',
+    desc: 'Metodologias ágeis e tradicionais de gestão de projetos, aliadas ao início formal do Estágio Supervisionado A.',
+    dica: 'Atenção aos prazos de protocolo do Termo de Compromisso de Estágio (TCE) no SEI UFMG antes do início efetivo das atividades na concedente.',
+  },
+  {
+    num: 8,
+    titulo: 'Controle Social, Regulação e Estágio B',
+    desc: 'Mecanismos de controle interno e externo (TCU/TCE), regulação de serviços públicos e consolidação das 300h de estágio.',
+    dica: 'Finalize o relatório final de Estágio Supervisionado B com antecedência e verifique sua pontuação acumulada de AAC (mínimo 300h).',
+  },
+  {
+    num: 9,
+    titulo: 'Metodologia de Pesquisa Aplicada & TCC A',
+    desc: 'Elaboração e defesa formal do pré-projeto de pesquisa ou plano de intervenção institucional.',
+    dica: 'Defina seu orientador(a) docente credenciado(a) no Colegiado e protocole a folha de aceite do TCC A no início do semestre.',
+  },
+  {
+    num: 10,
+    titulo: 'Trabalho de Conclusão de Curso B & Integralização',
+    desc: 'Redação final, qualificação e banca pública examinadora perante a comunidade acadêmica da FAFICH.',
+    dica: 'Consulte os prazos finais do Colegiado para entrega da versão definitiva encadernada e verifique a ausência de pendências na Biblioteca Universitária (BU).',
+  },
+];
+---
+
+<div class="space-y-4 text-[#0A0A0A]">
+  <div class="cagp-tool-box p-4 space-y-2">
+    <div class="flex items-center justify-between border-b border-[#DFDBD2] pb-2.5 flex-wrap gap-2">
+      <div class="flex items-center gap-2">
+        <i class="bi bi-clock-history text-[#8B1E2D] text-lg" aria-hidden="true"></i>
+        <h3 class="font-['Oswald'] text-base font-bold uppercase text-[#0A0A0A]">
+          Trajetória Semestral Oficial (1º ao 10º Período)
+        </h3>
+      </div>
+      <span class="cagp-badge cagp-badge-red font-mono font-bold">27 Obrigatórias · 1.860h</span>
+    </div>
+    <p class="text-xs text-gray-600 leading-relaxed">
+      A matriz curricular N-20229 prevê duração padrão de 10 semestres no turno noturno (mínimo 8, máximo 17 semestres). Toque em qualquer disciplina para expandir a ementa oficial:
+    </p>
+  </div>
+
+  <div class="space-y-4">
+    {periodosInfo.map((p) => {
+      const disciplinasDoPeriodo = obrigatorias
+        .filter((d) => d.data.periodo === p.num)
+        .sort((a, b) => a.data.codigo.localeCompare(b.data.codigo));
+
+      return (
+        <div class="cagp-card p-4 bg-white space-y-3">
+          <div class="flex items-center gap-2.5 border-b border-[#DFDBD2] pb-2.5">
+            <span class="w-8 h-8 rounded-[4px] bg-[#8B1E2D] text-white flex items-center justify-center font-['Oswald'] font-bold text-xs shadow-[1px_1px_0_#0A0A0A] shrink-0">
+              {p.num}º
+            </span>
+            <div>
+              <h4 class="font-['Oswald'] font-bold text-sm uppercase text-[#0A0A0A] leading-tight">
+                {p.num}º Período: {p.titulo}
+              </h4>
+              <p class="text-xs text-gray-500 leading-tight mt-0.5">{p.desc}</p>
+            </div>
+          </div>
+
+          <div class="space-y-1.5">
+            {disciplinasDoPeriodo.map((d) => (
+              <NormativeDetails
+                title={`${d.data.codigo}: ${d.data.nome}`}
+                badge={`${d.data.ch}h · ${d.data.creditos} cr · ${d.data.departamento}`}
+                icon="bi-journal-text"
+              >
+                <div class="space-y-1.5 text-xs text-gray-700">
+                  <p class="leading-relaxed"><strong>Ementa Oficial:</strong> {d.data.ementa}</p>
+                  {d.data.preRequisitos && d.data.preRequisitos.length > 0 && (
+                    <p class="text-[#DC2626] font-semibold bg-red-50 p-2 rounded-[4px] border border-red-200 flex items-center gap-1.5">
+                      <i class="bi bi-exclamation-triangle-fill shrink-0" aria-hidden="true" />
+                      <span>Trava Formal no SIGA: Exige aprovação em {d.data.preRequisitos.join(', ')}.</span>
+                    </p>
+                  )}
+                </div>
+              </NormativeDetails>
+            ))}
+          </div>
+
+          <div class="p-3 rounded-[6px] bg-[#F7F5F0] border border-[#DFDBD2] text-xs">
+            <span class="font-['Oswald'] font-bold text-[#8B1E2D] uppercase text-xs block mb-0.5">
+              💡 Dica do Colegiado & CAGP
+            </span>
+            <p class="text-xs text-gray-600 leading-relaxed">{p.dica}</p>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</div>

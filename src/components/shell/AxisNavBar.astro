@@ -1,0 +1,173 @@
+---
+// src/components/shell/AxisNavBar.astro — Barra de Pílulas do Eixo (Apple HIG & Neo-Brutalista CAGP)
+import {
+  type AxisId,
+  getAxisById,
+  getAxisByPath,
+  getActiveItemId,
+} from '../../lib/navigationRegistry';
+
+interface Props {
+  axisId?: AxisId;
+  activeId?: string;
+  showBadge?: boolean;
+  className?: string;
+}
+
+const {
+  axisId: explicitAxisId,
+  activeId: explicitActiveId,
+  showBadge = true,
+  className = '',
+} = Astro.props;
+
+// Resolução inteligente do Eixo a partir da rota atual se não fornecido
+const currentPath = Astro.url.pathname;
+const axis = explicitAxisId ? getAxisById(explicitAxisId) : getAxisByPath(currentPath);
+
+// Se não estiver em um dos eixos (ex: página especial isolada), não renderiza
+const activeItemId = axis
+  ? explicitActiveId || getActiveItemId(axis, currentPath, Astro.url.hash)
+  : '';
+---
+
+{axis && (
+  <nav
+    class={`cagp-axis-navbar-wrap mb-3 select-none ${className}`}
+    aria-label={`Navegação do Eixo ${axis.number}: ${axis.name}`}
+  >
+    <div class="cagp-axis-navbar-container flex items-center gap-1.5 overflow-x-auto py-1 scrollbar-none">
+      {/* Badge do Eixo */}
+      {showBadge && (
+        <div class="cagp-axis-badge shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 bg-[#0A0A0A] text-[#FFFFFF] rounded-md border border-[#0A0A0A] text-xs font-['Oswald'] uppercase tracking-wider font-bold">
+          <i class={`bi ${axis.icon} text-sm text-[#FF8718]`} aria-hidden="true" />
+          <span>{axis.name}</span>
+        </div>
+      )}
+
+      {/* Pílulas de Navegação das Ferramentas / Páginas */}
+      <div class="cagp-axis-pills flex items-center gap-1.5 shrink-0">
+        {axis.items.map((item) => {
+          const isActive = item.id === activeItemId;
+          return (
+            <a
+              href={item.href}
+              data-axis-id={item.id}
+              data-axis-href={item.href}
+              class={`cagp-axis-pill min-h-[44px] px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-xs font-['Oswald'] uppercase tracking-tight transition-all duration-150 no-underline shrink-0 ${
+                isActive
+                  ? 'is-active bg-[#8B1E2D] text-[#FFFFFF] font-bold border-2 border-[#0A0A0A] shadow-[2px_2px_0px_#0A0A0A]'
+                  : 'bg-[#F7F5F0] text-[#0A0A0A] font-semibold border border-[#DFDBD2] hover:bg-[#EAE6DE] hover:border-[#0A0A0A]'
+              }`}
+              aria-current={isActive ? 'page' : undefined}
+              title={item.description}
+            >
+              <i class={`bi ${item.icon} text-sm ${isActive ? 'text-[#FFFFFF]' : 'text-gray-600'}`} aria-hidden="true" />
+              <span class="hidden sm:inline">{item.label}</span>
+              <span class="inline sm:hidden">{item.shortLabel}</span>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </nav>
+)}
+
+<style>
+  .cagp-axis-navbar-container {
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    touch-action: pan-x;
+    mask-image: linear-gradient(to right, transparent 0px, black 16px, black calc(100% - 16px), transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0px, black 16px, black calc(100% - 16px), transparent 100%);
+  }
+  .cagp-axis-pill {
+    scroll-snap-align: start;
+  }
+  .cagp-axis-pill:active {
+    transform: scale(0.96);
+  }
+</style>
+
+<script>
+  function setupAxisNavBar() {
+    const bars = document.querySelectorAll<HTMLElement>('.cagp-axis-navbar-wrap');
+    bars.forEach((bar) => {
+      const pills = bar.querySelectorAll<HTMLAnchorElement>('.cagp-axis-pill');
+      if (!pills.length) return;
+
+      const updateActivePill = () => {
+        const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+        const currentHash = window.location.hash;
+
+        let matchedPill: HTMLAnchorElement | null = null;
+
+        // 1. Prioridade para correspondência de hash se existir
+        if (currentHash) {
+          pills.forEach((p) => {
+            const href = p.getAttribute('href') || '';
+            if (href.includes(currentHash)) {
+              matchedPill = p;
+            }
+          });
+        }
+
+        // 2. Prioridade para correspondência exata de pathname
+        if (!matchedPill) {
+          pills.forEach((p) => {
+            const href = p.getAttribute('href') || '';
+            const pathOnly = href.split('#')[0].replace(/\/$/, '') || '/';
+            if (pathOnly === currentPath || (pathOnly !== '/' && currentPath.startsWith(pathOnly))) {
+              matchedPill = p;
+            }
+          });
+        }
+
+        // 3. Fallback: primeira pill
+        if (!matchedPill && pills.length > 0) {
+          matchedPill = pills[0];
+        }
+
+        if (matchedPill) {
+          // Centralizar suavemente no viewport mobile (BUG-17)
+          (matchedPill as HTMLElement).scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+
+          pills.forEach((p) => {
+            const isMatch = p === matchedPill;
+            p.classList.toggle('is-active', isMatch);
+            p.classList.toggle('bg-[#8B1E2D]', isMatch);
+            p.classList.toggle('text-[#FFFFFF]', isMatch);
+            p.classList.toggle('font-bold', isMatch);
+            p.classList.toggle('border-2', isMatch);
+            p.classList.toggle('border-[#0A0A0A]', isMatch);
+            p.classList.toggle('shadow-[2px_2px_0px_#0A0A0A]', isMatch);
+
+            p.classList.toggle('bg-[#F7F5F0]', !isMatch);
+            p.classList.toggle('text-[#0A0A0A]', !isMatch);
+            p.classList.toggle('font-semibold', !isMatch);
+            p.classList.toggle('border', !isMatch);
+            p.classList.toggle('border-[#DFDBD2]', !isMatch);
+
+            if (isMatch) {
+              p.setAttribute('aria-current', 'page');
+            } else {
+              p.removeAttribute('aria-current');
+            }
+
+            const icon = p.querySelector('i');
+            if (icon) {
+              icon.classList.toggle('text-[#FFFFFF]', isMatch);
+              icon.classList.toggle('text-gray-600', !isMatch);
+            }
+          });
+        }
+      };
+
+      updateActivePill();
+      window.addEventListener('hashchange', updateActivePill);
+    });
+  }
+
+  setupAxisNavBar();
+  document.addEventListener('astro:page-load', setupAxisNavBar);
+</script>
